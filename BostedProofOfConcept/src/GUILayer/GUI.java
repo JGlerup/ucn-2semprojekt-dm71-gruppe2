@@ -8,7 +8,6 @@
  *
  * Created on 19-10-2010, 10:05:03
  */
-
 package GUILayer;
 
 import ControlLayer.CtrEmp;
@@ -230,21 +229,26 @@ public class GUI extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         CtrEmp empObj = new CtrEmp();
         ArrayList<Employee> emps = empObj.getAllEmployee();
-        String empss = emps.toString();
-        txtAll.insert(empss, 1);
+        int counter = 0;
+        for (Employee e : emps) {
+            String name = e.getFname();
+            txtAll.insert(name + " \n", 0);
+            counter++;
+        }
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
-    * @param args the command line arguments
-    */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
                 new GUI().setVisible(true);
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -267,5 +271,4 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField txtlname;
     private javax.swing.JTextField txtphone;
     // End of variables declaration//GEN-END:variables
-
 }

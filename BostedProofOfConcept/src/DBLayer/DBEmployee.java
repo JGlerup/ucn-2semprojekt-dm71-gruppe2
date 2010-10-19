@@ -23,13 +23,13 @@ public class DBEmployee implements IFDBEmp {
         public int insertEmployee(Employee emp) {  //call to get the next ssn number
 
         int rc = -1;
-        String query = "INSERT INTO employee(fname, lname, initial, adresse, tlfnr, email)  VALUES('"
+        String query = "INSERT INTO employee(fornavn, efternavn, initialer, adresse, tlfnr, email)  VALUES('"
                 + emp.getFname() + "','"
                 + emp.getLname() + "','"
                 + emp.getInitial() + "','"
-                + emp.getAdresse() + "','"
-                + emp.getTlfnr() + "','"
-                + emp.getEmail();
+                + emp.getAdresse() + "',"
+                + emp.getTlfnr() + ",'"
+                + emp.getEmail() + "')";
 
 
         System.out.println("insert : " + query);

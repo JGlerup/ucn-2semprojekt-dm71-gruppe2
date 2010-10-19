@@ -18,6 +18,10 @@ public class Employee {
     private int tlfnr;
     private String email;
 
+    public Employee() {
+
+    }
+
     public Employee(String fname, String lname, String initial, String adresse, int tlfnr, String email) {
         this.fname = fname;
         this.lname = lname;

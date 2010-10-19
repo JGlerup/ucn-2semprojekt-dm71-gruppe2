@@ -4,6 +4,7 @@
  */
 package DBLayer;
 import ModelLayer.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -11,7 +12,7 @@ import ModelLayer.*;
  */
 public interface IFDBEmp {
 
-    public Employee searchEmployeeInitial(String empssn, boolean retriveAssociation);
+    public ArrayList<Employee> getAllEmployees(boolean retriveAssociation);
     //find one employee having the fname
     public int insertEmployee(Employee emp);
     //update information about an employee

@@ -23,15 +23,12 @@ public class CtrEmp {
         return allEmp;
     }
 
-    public void insert(String fname, String lname, String initial, String adresse, int tlfnr, String email) {
-        IFDBEmp dbEmp = new DBEmployee();
+    public void insert(int employeeNo, int managerNo, String jobTitle) {
+        IFDBEmp DBEmp = new DBEmployee();
         Employee empObj = new Employee();
-        empObj.setFname(fname);
-        empObj.setLname(lname);
-        empObj.setInitial(initial);
-        empObj.setAdresse(adresse);
-        empObj.setTlfnr(tlfnr);
-        empObj.setEmail(email);
-        dbEmp.insertEmployee(empObj);
+        empObj.setEmployeeNo(employeeNo);
+        empObj.setManagerNo(managerNo);
+        empObj.setJobTitle(jobTitle);
+
     }
 }

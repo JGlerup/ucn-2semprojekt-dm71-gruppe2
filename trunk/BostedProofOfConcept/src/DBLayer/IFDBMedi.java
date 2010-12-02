@@ -12,8 +12,18 @@ import java.util.ArrayList;
  */
 public interface IFDBMedi {
 
+
+        public Medicine findMedicineByName(String name, boolean retrieveAssociation);
+    //find one employee having the employeeNo
+
     public ArrayList<Medicine> getAllMedicine(boolean retriveAssociation);
     //find one medicine having the fname
     public int insertMedicine(Medicine medi);
     //update information about an medicine
+
+    public int updateMedicine(Medicine medi);
+    //update information about an employee
+
+    public int deleteMedicine(String name);
+    //delete an employee
 }

@@ -1,4 +1,5 @@
 package DBLayer;
+
 import ModelLayer.*;
 import java.util.ArrayList;
 
@@ -8,8 +9,18 @@ import java.util.ArrayList;
  */
 public interface IFDBClient {
 
+    public Client findClient(int clientNo, boolean retrieveAssociation);
+    //find one client having the clientNo
+
     public ArrayList<Client> getAllClient(boolean retriveAssociation);
     //find one client having the fname
+
     public int insertClient(Client c);
-    //update information about an employee
+    //update information about an client
+
+    public int updateClient(Client c);
+    //update information about an client
+
+    public int deleteClient(int clientNo);
+    //delete a client
 }

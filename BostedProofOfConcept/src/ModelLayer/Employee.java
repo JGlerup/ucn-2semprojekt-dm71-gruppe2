@@ -9,73 +9,57 @@ package ModelLayer;
  *
  * @author Erik
  */
-public class Employee {
+public class Employee extends Ssn {
 
-    private String fname;
-    private String lname;
-    private String initial;
-    private String adresse;
-    private int tlfnr;
-    private String email;
+    private int employeeNo;
+    private int managerNo;
+    private String jobTitle;
+ 
+    public Employee(String ssn, int employeeNo, int managerNo, String jobTitle, String firstName, String middleName, String lastName, String address, int zipCode, String city, int phoneNo, String email) {
+        super(ssn, firstName, middleName, lastName, address, zipCode, city, phoneNo, email);
+        this.employeeNo = employeeNo;
+        this.managerNo = managerNo;
+        this.jobTitle = jobTitle;
+       
+    }
 
-    public Employee() {
+    public Employee()
+    {
 
     }
 
-    public Employee(String fname, String lname, String initial, String adresse, int tlfnr, String email) {
-        this.fname = fname;
-        this.lname = lname;
-        this.initial = initial;
-        this.adresse = adresse;
-        this.tlfnr = tlfnr;
-        this.email = email;
+
+
+
+    public int getEmployeeNo()
+    {
+        return employeeNo;
     }
 
-    public String getAdresse() {
-        return adresse;
+    public String getJobTitle()
+    {
+        return jobTitle;
     }
 
-    public String getEmail() {
-        return email;
+    public int getManagerNo()
+    {
+        return managerNo;
     }
 
-    public String getFname() {
-        return fname;
+    public void setEmployeeNo(int employeeNo)
+    {
+        this.employeeNo = employeeNo;
     }
 
-    public String getInitial() {
-        return initial;
+    public void setJobTitle(String jobTitle)
+    {
+        this.jobTitle = jobTitle;
     }
 
-    public String getLname() {
-        return lname;
-    }
-
-    public int getTlfnr() {
-        return tlfnr;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
-
-    public void setInitial(String initial) {
-        this.initial = initial;
-    }
-
-    public void setLname(String lname) {
-        this.lname = lname;
-    }
-
-    public void setTlfnr(int tlfnr) {
-        this.tlfnr = tlfnr;
+    public void setManagerNo(int managerNo)
+    {
+        this.managerNo = managerNo;
     }
 }
+
+   

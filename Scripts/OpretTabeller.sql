@@ -152,5 +152,5 @@ create table employee_client
 	employee_id			int			not null,
 	client_id			int			not null,
 	primary key (employee_client_id),
-	foreign key (employee_id) references employee(employee_id)
+	foreign key (employee_id) references employee(employee_id),
 	foreign key (client_id) references client(client_id));

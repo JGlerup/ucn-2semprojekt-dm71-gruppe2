@@ -1,0 +1,11 @@
+drop table ClubDiscount
+drop table Customer
+drop table Department
+drop table Discount
+drop table Employee
+drop table MonthlyInvoice
+drop table Product
+drop table SalesLineItem
+drop table SalesOrder
+drop table SalesOrderMonthlyInvoice
+drop table Supplier

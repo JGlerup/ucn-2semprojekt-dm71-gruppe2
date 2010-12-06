@@ -162,12 +162,24 @@ public class DBEmployee implements IFDBEmp
     {
         Employee empObj = new Employee();
 
-        try {
-            empObj.setEmployeeNo(results.getInt(1));
-            empObj.setManagerNo(results.getInt(2));
-            empObj.setJobTitle(results.getString(3));
+        try
+        {
+            empObj.setEmployeeNo(results.getString(2));
+            empObj.setPassword(results.getString(3));
+            empObj.setManagerNo(results.getInt(4));
+            empObj.setJobTitle(results.getString(5));
+            empObj.setSsn(results.getString(6));
+            empObj.setFirstName(results.getString(7));
+            empObj.setMiddleName(results.getString(8));
+            empObj.setLastName(results.getString(9));
+            empObj.setAddress(results.getString(10));
+            empObj.setLocationID(results.getInt(11));
+            empObj.setPhoneNo(results.getInt(12));
+            empObj.setEmail(results.getString(13));
 
-        } catch (Exception e) {
+        } 
+        catch (Exception e)
+        {
             System.out.println("building employee object");
         }
 

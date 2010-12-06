@@ -29,16 +29,15 @@ public class CtrClient {
         return allCli;
     }
 
-    public void insert(int clientNo, int id, String description, String interests, String health, int ssn, String firstName, String middleName, String lastName, String address, int zipCode, String city, int phoneNo, String email) {
+    public void insert(int clientNo, int id, String description, String interests, String health, String ssn, String firstName, String middleName, String lastName, String address, int zipCode, String city, int phoneNo, String email) {
         IFDBClient dbClient = new DBClient();
         Client cObj = new Client();
         cObj.setClientNo(clientNo);
-        cObj.setId(id);
         cObj.setDescription(description);
         cObj.setInterests(interests);
         cObj.setHealth(health);
         cObj.setSsn(ssn);
-        cObj.setfirstName(firstName);
+        cObj.setFirstName(firstName);
         cObj.setMiddleName(middleName);
         cObj.setLastName(lastName);
         cObj.setAddress(address);
@@ -52,10 +51,10 @@ public class CtrClient {
         
     }
 
-    public void updateClient(int clientNo, int clientid, String description, String interests, String health, int ssn, String firstName, String middleName, String lastName, String address, int zipCode, String city, int phoneNo, String email) {
+    public void updateClient(int clientNo, String description, String interests, String health, String ssn, String firstName, String middleName, String lastName, String address, int zipCode, String city, int phoneNo, String email) {
+        IFDBClient dbClient = new DBClient();
         Client cObj = new Client();
-        cObj.setClientNo(clientNo);
-        cObj.setClientId(clientid);
+        cObj.setClientNo(clientNo);     
         cObj.setDescription(description);
         cObj.setInterests(interests);
         cObj.setHealth(health);

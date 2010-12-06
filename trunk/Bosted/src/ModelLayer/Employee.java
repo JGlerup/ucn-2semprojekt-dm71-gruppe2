@@ -4,7 +4,8 @@ package ModelLayer;
  * @author Gruppe 2 - DM71
  * December 2010
  */
-public class Employee {
+public class Employee
+{
 
     private int employeeID;
     private String employeeNo;
@@ -15,13 +16,12 @@ public class Employee {
     private String middleName;
     private String lastName;
     private String address;
-    private int zipCode;
-    private String city;
+    private int locationID;
     private int phoneNo;
     private String email;
     private String ssn;
 
-    public Employee(int employeeID, String employeeNo, String password, int managerNo, String jobTitle, String firstName, String middleName, String lastName, String address, int zipCode, String city, int phoneNo, String email, String ssn)
+    public Employee(int employeeID, String employeeNo, String password, int managerNo, String jobTitle, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String ssn)
     {
         this.employeeID = employeeID;
         this.employeeNo = employeeNo;
@@ -32,12 +32,12 @@ public class Employee {
         this.middleName = middleName;
         this.lastName = lastName;
         this.address = address;
-        this.zipCode = zipCode;
-        this.city = city;
+        this.locationID = locationID;
         this.phoneNo = phoneNo;
         this.email = email;
         this.ssn = ssn;
     }
+
 
     public Employee()
     {
@@ -62,16 +62,6 @@ public class Employee {
     public void setAddress(String address)
     {
         this.address = address;
-    }
-
-    public String getCity()
-    {
-        return city;
-    }
-
-    public void setCity(String city)
-    {
-        this.city = city;
     }
 
     public String getEmail()
@@ -164,14 +154,14 @@ public class Employee {
         this.phoneNo = phoneNo;
     }
 
-    public int getZipCode()
+    public int getLocationID()
     {
-        return zipCode;
+        return locationID;
     }
 
-    public void setZipCode(int zipCode)
+    public void setLocationID(int locationID)
     {
-        this.zipCode = zipCode;
+        this.locationID = locationID;
     }
 
     public String getSsn()

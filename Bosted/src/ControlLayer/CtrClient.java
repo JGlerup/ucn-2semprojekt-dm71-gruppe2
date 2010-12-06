@@ -60,14 +60,14 @@ public class CtrClient {
         cObj.setInterests(interests);
         cObj.setHealth(health);
         cObj.setSsn(ssn);
-        cObj.setfirstName(firstName);
-        cObj.setMiddleName(middleName)
-        cObj.setLastName(lastName)
-        cObj.setAddress(address)
-        cObj.setZipCode(zipCode)
-        cObj.setCity(city)
-        cObj.setPhoneNo(phoneNo)
-        cObj.setEmail(email)
+        cObj.setFirstName(firstName);
+        cObj.setMiddleName(middleName);
+        cObj.setLastName(lastName);
+        cObj.setAddress(address);
+        cObj.setZipCode(zipCode);
+        cObj.setCity(city);
+        cObj.setPhoneNo(phoneNo);
+        cObj.setEmail(email);
         dbClient.updateClient(cObj);
     }
 

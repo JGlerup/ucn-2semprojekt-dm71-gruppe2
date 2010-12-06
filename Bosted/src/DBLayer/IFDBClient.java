@@ -4,8 +4,8 @@ import ModelLayer.*;
 import java.util.ArrayList;
 
 /**
- *
  * @author Gruppe 2 - DM71
+ * December 2010
  */
 public interface IFDBClient {
 

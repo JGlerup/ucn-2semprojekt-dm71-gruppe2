@@ -5,30 +5,34 @@ import java.util.ArrayList;
 import ModelLayer.Employee;
 
 /**
- * DBEmployee.java
- * @author Kristian Byrialsen
- * @version 20. oktober 2006
+ * @author Gruppe 2 - DM71
+ * December 2010
  */
-public class DBEmployee implements IFDBEmp {
+public class DBEmployee implements IFDBEmp
+{
 
     private Connection con;
 
     /** Creates a new instance of DBWorksOn */
-    public DBEmployee() {
+    public DBEmployee()
+    {
         con = DbConnection1.getInstance().getDBcon();
     }
 
-    public Employee findEmployee(int employeeNo, boolean retrieveAssociation) {
+    public Employee findEmployee(int employeeNo, boolean retrieveAssociation)
+    {
         Employee empObj = new Employee();
         empObj = singleWhere("employeeno = '" + employeeNo + "'", false);
         return empObj;
     }
 
-    public ArrayList<Employee> getAllEmployees(boolean retriveAssociation) {
+    public ArrayList<Employee> getAllEmployees(boolean retriveAssociation)
+    {
         return miscWhere("", retriveAssociation);
     }
 
-    public int insertEmployee(Employee emp) {  //call to get the next ssn number
+    public int insertEmployee(Employee emp)
+    {  //call to get the next ssn number
         int employeeID = GetMax.getMaxId("Select max(employeeid) from employee");
         employeeID = employeeID + 1;
         System.out.println("next employeeid = " + employeeID);
@@ -54,7 +58,8 @@ public class DBEmployee implements IFDBEmp {
         return (rc);
     }
 
-    public int updateEmployee(Employee emp) {
+    public int updateEmployee(Employee emp)
+    {
         Employee empObj = emp;
         int rc = -1;
 
@@ -69,14 +74,15 @@ public class DBEmployee implements IFDBEmp {
             rc = stmt.executeUpdate(query);
 
             stmt.close();
-        }//slut try
+        }//end try
         catch (Exception ex) {
             System.out.println("Update exception in employee db: " + ex);
         }
         return (rc);
     }
 
-    public int deleteEmployee(int employeeNo) {
+    public int deleteEmployee(int employeeNo)
+    {
         int rc = -1;
 
         String query = "DELETE FROM employee "
@@ -88,7 +94,7 @@ public class DBEmployee implements IFDBEmp {
             rc = stmt.executeUpdate(query);
 
             stmt.close();
-        }//slut try
+        }//end try
         catch (Exception ex) {
             System.out.println("Delete exception in employee db: " + ex);
         }
@@ -96,7 +102,8 @@ public class DBEmployee implements IFDBEmp {
     }
 
     //singlewhere is used when only one employee object is to be build
-    private Employee singleWhere(String wClause, boolean retrieveAssociation) {
+    private Employee singleWhere(String wClause, boolean retrieveAssociation)
+    {
         ResultSet results;
         Employee empObj = new Employee();
         String query = buildQuery(wClause);
@@ -112,7 +119,7 @@ public class DBEmployee implements IFDBEmp {
 
             }//end if
             stmt.close();
-        }//slut try
+        }//end try
         catch (Exception e) {
             System.out.println("Query exception - select employee : " + e);
             e.printStackTrace();
@@ -123,7 +130,8 @@ public class DBEmployee implements IFDBEmp {
     }
     //miscWhere is used when more than one employee is selected and build
 
-    private ArrayList miscWhere(String wClause, boolean retrieveAssociation) {
+    private ArrayList miscWhere(String wClause, boolean retrieveAssociation)
+    {
         ResultSet results;
         ArrayList list = new ArrayList();
 
@@ -142,7 +150,7 @@ public class DBEmployee implements IFDBEmp {
                 //missing tes on retriveAssociation
             }//end while
             stmt.close();
-        }//slut try
+        }//end try
         catch (Exception e) {
             System.out.println("Query exception - select employee : " + e);
             e.printStackTrace();
@@ -150,7 +158,8 @@ public class DBEmployee implements IFDBEmp {
         return list;
     }
 
-    private Employee buildEmployee(ResultSet results) {
+    private Employee buildEmployee(ResultSet results)
+    {
         Employee empObj = new Employee();
 
         try {
@@ -167,7 +176,8 @@ public class DBEmployee implements IFDBEmp {
     }
     //method to build the query
 
-    private String buildQuery(String wClause) {
+    private String buildQuery(String wClause)
+    {
         String query = "SELECT * FROM employee";
 
         if (wClause.length() > 0) {

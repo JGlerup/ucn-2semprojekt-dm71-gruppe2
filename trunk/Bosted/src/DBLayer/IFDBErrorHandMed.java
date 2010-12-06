@@ -17,7 +17,7 @@ public interface IFDBErrorHandMed
      public ErrorHandlingMedicine findErrorHandlingMedicine(int errorHandlingMedicineNo, boolean retrieveAssociation);
     //find one errorHandlingMedicine having the errorHandlingMedicineNo
 
-    public ArrayList<ErrorHandlingMedicine> getAllErrorHandlingMedicine(boolean retriveAssociation);
+    public ArrayList<ErrorHandlingMedicine> getAllErrorHandlingMedicines(boolean retriveAssociation);
     //find one errorHandlingMedicine having the errorHandlingMedicine????????????
 
     public int insertErrorHandlingMedicine(ErrorHandlingMedicine ehm);

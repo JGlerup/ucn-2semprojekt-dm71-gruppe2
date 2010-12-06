@@ -1,9 +1,7 @@
 package DBLayer;
 
 import ModelLayer.ErrorHandlingMedicine;
-import java.beans.Statement;
-import java.sql.Connection;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 
 /**
@@ -42,7 +40,7 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
         int rc = -1;
         String query = "INSERT INTO errorHandlingMedicine(errorHandlingMedicineid, errorHandlingMedicineno, date, episode, quantity)  VALUES("
                 + errorHandlingMedicineID + ","
-                + ehm.getErrorHandlingMedicineNo + ",'"
+                + errorHandlingMedicineID + ",'"
                 + ehm.getDate() + "','"
                 + ehm.getEpisode() + "',"
                 + ehm.getQuantity();

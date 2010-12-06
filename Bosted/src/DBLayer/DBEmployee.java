@@ -19,7 +19,7 @@ public class DBEmployee implements IFDBEmp
         con = DbConnection1.getInstance().getDBcon();
     }
 
-    public Employee findEmployee(int employeeNo, boolean retrieveAssociation)
+    public Employee findEmployee(String employeeNo, boolean retrieveAssociation)
     {
         Employee empObj = new Employee();
         empObj = singleWhere("employeeno = '" + employeeNo + "'", false);

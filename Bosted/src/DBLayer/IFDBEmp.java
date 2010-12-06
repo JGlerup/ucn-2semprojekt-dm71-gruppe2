@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public interface IFDBEmp {
 
-    public Employee findEmployee(int employeeNo, boolean retrieveAssociation);
+    public Employee findEmployee(String employeeNo, boolean retrieveAssociation);
     //find one employee having the employeeNo
 
     public ArrayList<Employee> getAllEmployees(boolean retriveAssociation);

@@ -17,9 +17,9 @@ public class CtrEmp {
     public CtrEmp() {
     }
 
-    public Employee findEmployee(int employeeID) {
+    public Employee findEmployee(String employeeNo) {
         IFDBEmp dbEmp = new DBEmployee();
-        return dbEmp.findEmployee(employeeID, true);
+        return dbEmp.findEmployee(employeeNo, true);
     }
 
     public ArrayList getAllEmployee() {
@@ -29,16 +29,26 @@ public class CtrEmp {
         return allEmp;
     }
 
-    public void insert(String employeeNo, String managerNo, String jobTitle, int clientNo, int id, String description, String interests, String health, int ssn, String firstName, String middleName, String lastName, String address, int zipCode, String city, int phoneNo, String email) {
+    public void insert(String employeeNo, int employeeID, int managerNo, String jobTitle, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int zipCode, String city, int phoneNo, String email, String password) {
         IFDBEmp dbEmp = new DBEmployee();
         Employee empObj = new Employee();
         empObj.setEmployeeNo(employeeNo);
         empObj.setManagerNo(managerNo);
         empObj.setJobTitle(jobTitle);
+        empObj.setSsn(ssn);
+        empObj.setFirstName(firstName);
+        empObj.setMiddleName(middleName);
+        empObj.setLastName(lastName);
+        empObj.setAddress(address);
+        empObj.setLocationID(locationID);
+        empObj.setPhoneNo(phoneNo);
+        empObj.setEmail(email);
+        empObj.setPassword(password);
+        dbEmp.updateEmployee(empObj);
         
     }
 
-    public void updateEmp(String employeeNo, int employeeID, int managerNo, String jobTitle, String ssn, String firstName, String middleName, String lastName, String address, int zipCode, String city, int phoneNo, String email, String password) {
+    public void updateEmp(String employeeNo, int employeeID, int managerNo, String jobTitle, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int zipCode, String city, int phoneNo, String email, String password) {
         IFDBEmp dbEmp = new DBEmployee();
         Employee empObj = new Employee();
         empObj.setEmployeeNo(employeeNo);
@@ -50,8 +60,7 @@ public class CtrEmp {
         empObj.setMiddleName(middleName);
         empObj.setLastName(lastName);
         empObj.setAddress(address);
-        empObj.setZipCode(zipCode);
-        empObj.setCity(city);
+        empObj.setLocationID(locationID);
         empObj.setPhoneNo(phoneNo);
         empObj.setEmail(email);
         empObj.setPassword(password);

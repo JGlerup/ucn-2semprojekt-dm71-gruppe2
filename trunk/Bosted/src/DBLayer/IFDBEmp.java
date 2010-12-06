@@ -1,15 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package DBLayer;
 
 import ModelLayer.*;
 import java.util.ArrayList;
 
 /**
- *
- * @author Erik
+ * @author Gruppe 2 - DM71
+ * December 2010
  */
 public interface IFDBEmp {
 

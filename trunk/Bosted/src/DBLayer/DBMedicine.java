@@ -5,9 +5,8 @@ import java.util.ArrayList;
 import ModelLayer.Medicine;
 
 /**
- * DBEmployee.java
- * @author Kristian Byrialsen
- * @version 2. dec 2010
+ * @author Gruppe 2 - DM71
+ * December 2010
  */
 public class DBMedicine implements IFDBMedi {
 

@@ -5,9 +5,8 @@ import java.util.ArrayList;
 import ModelLayer.Client;
 
 /**
- * DBEmployee.java
- * @author Kristian Byrialsen
- * @version 20. oktober 2006
+ * @author Gruppe 2 - DM71
+ * December 2010
  */
 public class DBClient implements IFDBClient {
 

@@ -15,46 +15,47 @@ public class ErrorHandlingMedicine {
     private Date date;
     private String episode;
     private int quantity;
-    private int errorHandlingMedicineNo;
+    private int errorHandlingMedicineID;
 
     public ErrorHandlingMedicine() {
     }
 
-    public ErrorHandlingMedicine(Date date, String episode, int quantity) {
+    public ErrorHandlingMedicine(Date date, String episode, int quantity, int errorHandlingMedicineID) {
         this.date = date;
         this.episode = episode;
         this.quantity = quantity;
+        this.errorHandlingMedicineID = errorHandlingMedicineID;
     }
 
     public Date getDate() {
         return date;
     }
 
-    public String getEpisode() {
-        return episode;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public int getErrorHandlingMedicineNo() {
-        return errorHandlingMedicineNo;
-    }
-
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getEpisode() {
+        return episode;
     }
 
     public void setEpisode(String episode) {
         this.episode = episode;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public int getErrorHandlingMedicineID() {
+        return errorHandlingMedicineID;
     }
 
-    public void setErrorHandlingMedicineNo(int errorHandlingMedicineNo) {
-        this.errorHandlingMedicineNo = errorHandlingMedicineNo;
+    public void setErrorHandlingMedicineID(int errorHandlingMedicineID) {
+        this.errorHandlingMedicineID = errorHandlingMedicineID;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

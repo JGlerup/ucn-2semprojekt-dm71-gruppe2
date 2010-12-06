@@ -17,7 +17,7 @@ public class DBClient implements IFDBClient {
         con = DbConnection1.getInstance().getDBcon();
     }
 
-    public Client findClient(int clientNo, boolean retrieveAssociation) {
+    public Client findClient(String clientNo, boolean retrieveAssociation) {
         Client cObj = new Client();
         cObj = singleWhere("clientno = '" + clientNo + "'", false);
         return cObj;
@@ -33,13 +33,20 @@ public class DBClient implements IFDBClient {
         System.out.println("next clientID = " + clientID);
 
         int rc = -1;
-        String query = "INSERT INTO client(clientid, clientno, description, interests, health)  VALUES('"
+        String query = "INSERT INTO client(client_id, clientno, description, interests, health, ssn, firstname, middlename, lastname, address, location_id, phoneno, email)  VALUES('"
                 + clientID + "','"
                 + c.getClientNo() + "','"
                 + c.getDescription() + "','"
                 + c.getInterests() + "','"
-                + c.getHealth() + "'";
-
+                + c.getHealth() + "'"
+                + c.getSsn() + "'"
+                + c.getFirstName() + "'"
+                + c.getMiddleName() + "'"
+                + c.getLastName() + "'"
+                + c.getAddress() + "'"
+                + c.getLocationID() + "'"
+                + c.getPhoneNo() + "'"
+                + c.getEmail() + "'";
 
         System.out.println("insert : " + query);
         try { // insert new deptloyee
@@ -155,11 +162,18 @@ public class DBClient implements IFDBClient {
         Client cObj = new Client();
 
         try {
-            cObj.setClientNo(results.getInt(1));
-            cObj.setDescription(results.getString(2));
-            cObj.setInterests(results.getString(3));
-            cObj.setHealth(results.getString(4));
-
+            cObj.setClientID(results.getInt(1));
+            cObj.setClientNo(results.getInt(2));
+            cObj.setDescription(results.getString(3));
+            cObj.setInterests(results.getString(4));
+            cObj.setHealth(results.getString(5));
+            cObj.setSsn(results.getString(6));
+            cObj.setFirstName(results.getString(7));
+            cObj.setMiddleName(results.getString(8));
+            cObj.setLastName(results.getString(9));
+            cObj.setAddress(results.getString(10));
+            cObj.setPhoneNo(results.getInt(11));
+            cObj.setEmail(results.getString(12));
         } catch (Exception e) {
             System.out.println("building client object");
         }

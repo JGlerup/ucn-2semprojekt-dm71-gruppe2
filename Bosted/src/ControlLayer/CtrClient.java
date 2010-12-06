@@ -17,9 +17,9 @@ public class CtrClient {
     public CtrClient() {
     }
 
-    public Client findClient(int clientNo) {
+    public Client findClient(int clientId) {
         IFDBClient dbCli = new DBClient();
-        return dbCli.findClient(clientNo, true);
+        return dbCli.findClient(clientId, true);
     }
 
     public ArrayList getAllClient() {
@@ -29,28 +29,50 @@ public class CtrClient {
         return allCli;
     }
 
-    public void insert(int clientNo, String description, String interests, String health) {
+    public void insert(int clientNo, int id, String description, String interests, String health, int ssn, String firstName, String middleName, String lastName, String address, int zipCode, String city, int phoneNo, String email) {
         IFDBClient dbClient = new DBClient();
         Client cObj = new Client();
         cObj.setClientNo(clientNo);
+        cObj.setId(id);
         cObj.setDescription(description);
         cObj.setInterests(interests);
         cObj.setHealth(health);
+        cObj.setSsn(ssn);
+        cObj.setfirstName(firstName);
+        cObj.setMiddleName(middleName)
+        cObj.setLastName(lastName)
+        cObj.setAddress(address)
+        cObj.setZipCode(zipCode)
+        cObj.setCity(city)
+        cObj.setPhoneNo(phoneNo)
+        cObj.setEmail(email)
         dbClient.insertClient(cObj);
+
+
+        
     }
 
-    public void updateClient(int clientNo, String description, String interests, String health) {
-        IFDBClient dbClient = new DBClient();
+    public void updateClient(int clientNo, int clientid, String description, String interests, String health, int ssn, String firstName, String middleName, String lastName, String address, int zipCode, String city, int phoneNo, String email) {
         Client cObj = new Client();
         cObj.setClientNo(clientNo);
+        cObj.setClientId(clientid);
         cObj.setDescription(description);
         cObj.setInterests(interests);
         cObj.setHealth(health);
+        cObj.setSsn(ssn);
+        cObj.setfirstName(firstName);
+        cObj.setMiddleName(middleName)
+        cObj.setLastName(lastName)
+        cObj.setAddress(address)
+        cObj.setZipCode(zipCode)
+        cObj.setCity(city)
+        cObj.setPhoneNo(phoneNo)
+        cObj.setEmail(email)
         dbClient.updateClient(cObj);
     }
 
-    public void deleteClient(int clientNo) {
+    public void deleteClient(int clientId) {
         IFDBClient dbClient = new DBClient();
-        dbClient.deleteClient(clientNo);
+        dbClient.deleteClient(clientId);
     }
 }

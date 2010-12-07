@@ -22,5 +22,5 @@ public interface IFDBLoca {
     //update information about an location
 
     public int deleteLocation(int locationID);
-    //delete an location
+     //delete an location
 }

@@ -34,7 +34,7 @@ create table externalcontact
 
 create table client 
 	(client_id			int			PRIMARY KEY IDENTITY,
-	clientno			int			not null,
+	clientno			varchar(15)	not null,
 	description			varchar(50) not null,
 	interests			varchar(50) not null,
 	health				varchar(50) not null,

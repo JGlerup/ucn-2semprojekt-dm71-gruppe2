@@ -124,7 +124,7 @@ public class CtrClientTest {
         CtrClient instance = new CtrClient();
         instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email);
         String clientNoCurrent = "banan123456";
-        ////////////////////////////////////////////////////////////
+       
         System.out.println("updateClient");
         String clientNoNew = "weotpk235";
         description = "wetoji";

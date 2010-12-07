@@ -21,10 +21,10 @@ public class Employee
     private String email;
     private String ssn;
 
-    public Employee(int employeeID, String employeeNo, String password, int managerNo, String jobTitle, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String ssn)
+    public Employee(int employeeID, String password, int managerNo, String jobTitle, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String ssn)
     {
         this.employeeID = employeeID;
-        this.employeeNo = employeeNo;
+        this.employeeNo = null;
         this.password = password;
         this.managerNo = managerNo;
         this.jobTitle = jobTitle;
@@ -36,6 +36,7 @@ public class Employee
         this.phoneNo = phoneNo;
         this.email = email;
         this.ssn = ssn;
+        createEmployeeNo();
     }
 
 
@@ -47,11 +48,6 @@ public class Employee
      public int getEmployeeID()
     {
         return employeeID;
-    }
-
-    public void setEmployeeID(int employeeID)
-    {
-        this.employeeID = employeeID;
     }
 
     public String getAddress()
@@ -172,6 +168,23 @@ public class Employee
     public void setSsn(String ssn)
     {
         this.ssn = ssn;
+    }
+
+    public String createEmployeeNo()
+    {
+        String createdEmployeeNo = "";
+
+        if(firstName.length() > 5)
+        {
+            createdEmployeeNo = firstName.substring(0,5) + ssn.substring(0, 6);
+        }
+        else
+        {
+            createdEmployeeNo = firstName + ssn.substring(0, 6);
+        }
+        
+        setEmployeeNo(createdEmployeeNo);
+        return createdEmployeeNo;
     }
 
 }

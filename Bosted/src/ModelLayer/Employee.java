@@ -10,7 +10,7 @@ public class Employee
     private int employeeID;
     private String employeeNo;
     private String password;
-    private int managerNo;
+    private String managerNo;
     private String jobTitle;
     private String firstName;
     private String middleName;
@@ -21,7 +21,7 @@ public class Employee
     private String email;
     private String ssn;
 
-    public Employee(int employeeID, String password, int managerNo, String jobTitle, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String ssn)
+    public Employee(int employeeID, String password, String managerNo, String jobTitle, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String ssn)
     {
         this.employeeID = employeeID;
         this.employeeNo = null;
@@ -120,12 +120,12 @@ public class Employee
         this.lastName = lastName;
     }
 
-    public int getManagerNo()
+    public String getManagerNo()
     {
         return managerNo;
     }
 
-    public void setManagerNo(int managerNo)
+    public void setManagerNo(String managerNo)
     {
         this.managerNo = managerNo;
     }

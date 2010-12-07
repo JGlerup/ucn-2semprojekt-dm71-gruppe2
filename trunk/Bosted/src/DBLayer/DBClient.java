@@ -28,13 +28,8 @@ public class DBClient implements IFDBClient {
     }
 
     public int insertClient(Client c) {  //call to get the next ssn number
-        int clientID = GetMax.getMaxId("Select max(clientID) from employee");
-        clientID = clientID + 1;
-        System.out.println("next clientID = " + clientID);
-
         int rc = -1;
-        String query = "INSERT INTO client(client_id, clientno, description, interests, health, ssn, firstname, middlename, lastname, address, location_id, phoneno, email)  VALUES('"
-                + clientID + "','"
+        String query = "INSERT INTO client(clientno, description, interests, health, ssn, firstname, middlename, lastname, address, location_id, phoneno, email)  VALUES('"
                 + c.getClientNo() + "','"
                 + c.getDescription() + "','"
                 + c.getInterests() + "','"
@@ -66,10 +61,19 @@ public class DBClient implements IFDBClient {
         int rc = -1;
 
         String query = "UPDATE client SET "
+                + "clientno = '" + cObj.getClientNo() + "', "
                 + "description ='" + cObj.getDescription() + "', "
                 + "interests ='" + cObj.getInterests() + "' "
                 + "health ='" + cObj.getHealth() + "' "
-                + " WHERE clientno = '" + cObj.getClientNo() + "'";
+                + "ssn ='" + cObj.getSsn() + "' "
+                + "firstname ='" + cObj.getFirstName() + "' "
+                + "middlename ='" + cObj.getMiddleName() + "' "
+                + "lastname ='" + cObj.getLastName() + "' "
+                + "address ='" + cObj.getAddress() + "' "
+                + "location_id ='" + cObj.getLocationID() + "' "
+                + "phoneno ='" + cObj.getPhoneNo() + "' "
+                + "email ='" + cObj.getEmail() + "' "
+                + " WHERE client_id ='" + cObj.getClientID() + "'";
         System.out.println("Update query:" + query);
         try { // update cloyee
             Statement stmt = con.createStatement();
@@ -84,7 +88,7 @@ public class DBClient implements IFDBClient {
         return (rc);
     }
 
-    public int deleteClient(int clientNo) {
+    public int deleteClient(String clientNo) {
         int rc = -1;
 
         String query = "DELETE FROM client "
@@ -162,16 +166,16 @@ public class DBClient implements IFDBClient {
         Client cObj = new Client();
 
         try {
-            cObj.setClientID(results.getInt(1));
-            cObj.setClientNo(results.getInt(2));
-            cObj.setDescription(results.getString(3));
-            cObj.setInterests(results.getString(4));
-            cObj.setHealth(results.getString(5));
-            cObj.setSsn(results.getString(6));
-            cObj.setFirstName(results.getString(7));
-            cObj.setMiddleName(results.getString(8));
-            cObj.setLastName(results.getString(9));
-            cObj.setAddress(results.getString(10));
+            cObj.setClientNo(results.getString(1));
+            cObj.setDescription(results.getString(2));
+            cObj.setInterests(results.getString(3));
+            cObj.setHealth(results.getString(4));
+            cObj.setSsn(results.getString(5));
+            cObj.setFirstName(results.getString(6));
+            cObj.setMiddleName(results.getString(7));
+            cObj.setLastName(results.getString(8));
+            cObj.setAddress(results.getString(9));
+            cObj.setLocationID(results.getInt(10));
             cObj.setPhoneNo(results.getInt(11));
             cObj.setEmail(results.getString(12));
         } catch (Exception e) {

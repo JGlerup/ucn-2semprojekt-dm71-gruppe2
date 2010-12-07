@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public interface IFDBClient {
 
-    public Client findClient(int clientNo, boolean retrieveAssociation);
+    public Client findClient(String clientNo, boolean retrieveAssociation);
     //find one client having the clientNo
 
     public ArrayList<Client> getAllClient(boolean retriveAssociation);
@@ -21,6 +21,6 @@ public interface IFDBClient {
     public int updateClient(Client c);
     //update information about an client
 
-    public int deleteClient(int clientNo);
+    public int deleteClient(String clientNo);
     //delete a client
 }

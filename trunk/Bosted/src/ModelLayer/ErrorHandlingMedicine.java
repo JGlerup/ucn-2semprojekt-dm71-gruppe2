@@ -30,7 +30,7 @@ public class ErrorHandlingMedicine {
         this.errorHandlingMedicineID = errorHandlingMedicineID;
         this.medicineID = medicineID;
         this.employeeID = employeeID;
-        this.date = date;
+        this.date = new Date();
         this.episode = episode;
         this.quantity = quantity;
         
@@ -54,6 +54,11 @@ public class ErrorHandlingMedicine {
     public void setDate(Date date)
     {
         this.date = date;
+    }
+
+    public void setThisDate()
+    {
+        this.date = new Date();
     }
 
     public int getEmployeeID()

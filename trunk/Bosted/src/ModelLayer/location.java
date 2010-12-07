@@ -9,7 +9,7 @@ package ModelLayer;
  *
  * @author Rasmus
  */
-public class Location
+public class Location 
 {
 private int locationID;
 private int zipcode;

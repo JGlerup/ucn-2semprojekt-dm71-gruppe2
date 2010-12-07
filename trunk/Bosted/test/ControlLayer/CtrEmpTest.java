@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package ControlLayer;
 
 import ModelLayer.Employee;
@@ -15,30 +10,39 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author Kristian Byrialsen
+ * @author Gruppe 2 - DM71
+ * December 2010
  */
-public class CtrEmpTest {
+public class CtrEmpTest
+{
 
-    public CtrEmpTest() {
+    public CtrEmpTest() 
+    {
+
     }
 
     @BeforeClass
     public static void setUpClass() throws Exception
     {
+
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception
     {
+
     }
 
     @Before
-    public void setUp() {
+    public void setUp() 
+    {
+
     }
 
     @After
-    public void tearDown() {
+    public void tearDown() 
+    {
+
     }
 
     /**
@@ -107,8 +111,6 @@ public class CtrEmpTest {
         assertEquals("Von@dannebrogsgade.dk", result.getEmail());
         assertEquals("123456", result.getPassword());
         
-
-
     }
 
     /**

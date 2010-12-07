@@ -63,15 +63,15 @@ public class DBClient implements IFDBClient {
         String query = "UPDATE client SET "
                 + "clientno = '" + cObj.getClientNo() + "', "
                 + "description ='" + cObj.getDescription() + "', "
-                + "interests ='" + cObj.getInterests() + "' "
-                + "health ='" + cObj.getHealth() + "' "
-                + "ssn ='" + cObj.getSsn() + "' "
-                + "firstname ='" + cObj.getFirstName() + "' "
-                + "middlename ='" + cObj.getMiddleName() + "' "
-                + "lastname ='" + cObj.getLastName() + "' "
-                + "address ='" + cObj.getAddress() + "' "
-                + "location_id ='" + cObj.getLocationID() + "' "
-                + "phoneno ='" + cObj.getPhoneNo() + "' "
+                + "interests ='" + cObj.getInterests() + "', "
+                + "health ='" + cObj.getHealth() + "', "
+                + "ssn ='" + cObj.getSsn() + "', "
+                + "firstname ='" + cObj.getFirstName() + "', "
+                + "middlename ='" + cObj.getMiddleName() + "', "
+                + "lastname ='" + cObj.getLastName() + "', "
+                + "address ='" + cObj.getAddress() + "', "
+                + "location_id ='" + cObj.getLocationID() + "', "
+                + "phoneno ='" + cObj.getPhoneNo() + "', "
                 + "email ='" + cObj.getEmail() + "' "
                 + " WHERE client_id ='" + cObj.getClientID() + "'";
         System.out.println("Update query:" + query);
@@ -166,6 +166,7 @@ public class DBClient implements IFDBClient {
         Client cObj = new Client();
 
         try {
+            cObj.setClientID(results.getInt(1));
             cObj.setClientNo(results.getString(2));
             cObj.setDescription(results.getString(3));
             cObj.setInterests(results.getString(4));

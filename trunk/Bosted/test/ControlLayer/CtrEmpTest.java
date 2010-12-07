@@ -79,7 +79,6 @@ public class CtrEmpTest {
     public void testInsert()
     {
         System.out.println("insert");
-        String employeeNo = "1234567";
         String managerNo = "1";
         String jobTitle = "Direktør";
         String ssn = "123456-1234";
@@ -95,8 +94,7 @@ public class CtrEmpTest {
         instance.insert( managerNo, jobTitle, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
-        Employee result = instance.findEmployee(employeeNo);
-        assertEquals("1234567", result.getEmployeeNo());
+        Employee result = instance.findEmployee("Mjød123456");
         assertEquals("1", result.getManagerNo());
         assertEquals("Direktør", result.getJobTitle());
         assertEquals("123456-1234", result.getSsn());
@@ -144,10 +142,9 @@ public class CtrEmpTest {
     @Test
     public void testDeleteEmp()
     {   System.out.println("insert");
-        String employeeNo = "1234567";
         String managerNo = "1";
         String jobTitle = "Direktør";
-        String ssn = "123";
+        String ssn = "123456789";
         String firstName = "Mjød";
         String middleName = "Von";
         String lastName = "Hansen";
@@ -159,8 +156,8 @@ public class CtrEmpTest {
         CtrEmp instance = new CtrEmp();
         instance.insert( managerNo, jobTitle, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
         System.out.println("deleteEmp");
-        instance.deleteEmp(employeeNo);
-        Employee result = instance.findEmployee(employeeNo);
+        instance.deleteEmp("Mjød123456");
+        Employee result = instance.findEmployee("Mjød123456");
         assertNull(null, result.getEmployeeNo());
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");

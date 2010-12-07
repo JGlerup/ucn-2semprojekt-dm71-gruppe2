@@ -74,7 +74,6 @@ public class CtrClientTest {
     @Test
     public void testInsertClient() {
         System.out.println("insert");
-        String clientNo = "bp1234";
         String description = "jeg leger med aber";
         String interests = "jeg elsker bananer";
         String health = "???";
@@ -87,11 +86,10 @@ public class CtrClientTest {
         int phoneNo = 98163044;
         String email = "bananmand@junglen.dk";
         CtrClient instance = new CtrClient();
-        instance.insertClient(clientNo, description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email);
+        instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
-        Client result = instance.findClientByClientNo(clientNo);
-        assertEquals("bp1234", result.getClientNo());
+        Client result = instance.findClientByClientNo("banan123456");
         assertEquals("jeg leger med aber", result.getDescription());
         assertEquals("jeg elsker bananer", result.getInterests());
         assertEquals("???", result.getHealth());
@@ -103,7 +101,7 @@ public class CtrClientTest {
         assertEquals(1, result.getLocationID());
         assertEquals(98163044, result.getPhoneNo());
         assertEquals("bananmand@junglen.dk", result.getEmail());
-        instance.deleteClient(clientNo);
+        instance.deleteClient("banan123456");
     }
 
     /**
@@ -112,7 +110,6 @@ public class CtrClientTest {
     @Test
     public void testUpdateClient() {
         System.out.println("insert");
-        String clientNo = "bp1234";
         String description = "jeg leger med aber";
         String interests = "jeg elsker bananer";
         String health = "???";
@@ -125,8 +122,8 @@ public class CtrClientTest {
         int phoneNo = 98163044;
         String email = "bananmand@junglen.dk";
         CtrClient instance = new CtrClient();
-        instance.insertClient(clientNo, description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email);
-        //int clientID = instance.findClientByClientNo(clientNo).getClientID();
+        instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email);
+        String clientNoCurrent = "banan123456";
         ////////////////////////////////////////////////////////////
         System.out.println("updateClient");
         String clientNoNew = "weotpk235";
@@ -141,7 +138,7 @@ public class CtrClientTest {
         locationID = 1;
         phoneNo = 983252010;
         email = "sutmin@junglen.dk";
-        instance.updateClient(clientNo, clientNoNew, description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email);
+        instance.updateClient(clientNoCurrent, clientNoNew, description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email);
         Client result = instance.findClientByClientNo("weotpk235");
         assertEquals("weotpk235", result.getClientNo());
         assertEquals("wetoji", result.getDescription());
@@ -155,7 +152,7 @@ public class CtrClientTest {
         assertEquals(1, result.getLocationID());
         assertEquals(983252010, result.getPhoneNo());
         assertEquals("sutmin@junglen.dk", result.getEmail());
-        
+        instance.deleteClient(clientNoNew);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
@@ -180,9 +177,9 @@ public class CtrClientTest {
         int phoneNo = 98163000;
         String email = "bananmand@junglen.dk";
         CtrClient instance = new CtrClient();
-        instance.insertClient(clientNo, description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email);
-        instance.deleteClient(clientNo);
-        Client result = instance.findClientByClientNo(clientNo);
+        instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email);
+        instance.deleteClient("test123456");
+        Client result = instance.findClientByClientNo("test123456");
         assertNull(null, result.getClientNo());
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");

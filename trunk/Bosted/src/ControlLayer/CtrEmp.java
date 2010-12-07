@@ -43,6 +43,7 @@ public class CtrEmp
         empObj.setPhoneNo(phoneNo);
         empObj.setEmail(email);
         empObj.setPassword(password);
+        empObj.createEmployeeNo();
         dbEmp.insertEmployee(empObj);
         
     }

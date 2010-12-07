@@ -33,13 +33,8 @@ public class DBLocation implements IFDBLoca
 
     public int insertLocation(Location loca)
     {  //call to get the next ssn number
-        int locationID = GetMax.getMaxId("Select max(locationID) from location");
-        locationID = locationID + 1;
-        System.out.println("next locationID = " + locationID);
-
         int rc = -1;
-        String query = "INSERT INTO location(locationID, zipcode, city)  VALUES('"
-                + locationID + "','"
+        String query = "INSERT INTO location(zipcode, city)  VALUES('"
                 + loca.getZipCode() + "','"
                 + loca.getCity() + "'";
 

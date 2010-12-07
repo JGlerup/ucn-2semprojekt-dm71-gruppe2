@@ -13,7 +13,7 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
 
     private Connection con;
 
-    /** Creates a new instance of DBWorksOn */
+    /** Creates a new instance of DBErrorHandlingMedicine */
     public DBErrorHandlingMedicine()
     {
         con = DbConnection1.getInstance().getDBcon();
@@ -33,27 +33,27 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
 
     public int insertErrorHandlingMedicine(ErrorHandlingMedicine ehm)
     {  //call to get the next ssn number
-        int errorHandlingMedicineID = GetMax.getMaxId("Select max(errorHandlingMedicineid) from errorHandlingMedicine");
-        errorHandlingMedicineID = errorHandlingMedicineID + 1;
-        System.out.println("next errorHandlingMedicineid = " + errorHandlingMedicineID);
 
         int rc = -1;
-        String query = "INSERT INTO errorHandlingMedicine(errorHandlingMedicineid, errorHandlingMedicineno, date, episode, quantity)  VALUES("
-                + errorHandlingMedicineID + ","
-                + errorHandlingMedicineID + ",'"
-                + ehm.getDate() + "','"
+        String query = "INSERT INTO errorHandlingMedicine(medicin_id, client_id, employee_id, date, episode, quantity)  VALUES("
+                + ehm.getMedicineID() + ","
+                + ehm.getClientID() + ","
+                + ehm.getEmployeeID() + ","
+                + ehm.getDate() + ",'"
                 + ehm.getEpisode() + "',"
                 + ehm.getQuantity();
 
 
         System.out.println("insert : " + query);
-        try { // insert new deptloyee
+        try 
+        { // insert new errorHandlingMedicine
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             rc = stmt.executeUpdate(query);
             stmt.close();
         }//end try
-        catch (Exception ex) {
+        catch (Exception ex)
+        {
             System.out.println("Insert exception in errorHandlingMedicine db: " + ex);
         }
         return (rc);
@@ -65,19 +65,24 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
         int rc = -1;
 
         String query = "UPDATE errorHandlingMedicine SET "
+                + "medicine_id ='" + ehmObj.getMedicineID() + "', "
+                + "client_id ='" + ehmObj.getClientID() + "', "
+                + "employee_id ='" + ehmObj.getEmployeeID() + "', "
                 + "date ='" + ehmObj.getDate() + "', "
                 + "episode ='" + ehmObj.getEpisode() + "' "
                 + "quantity ='" + ehmObj.getQuantity() + "' "
-                + " WHERE errorHandlingMedicineno = '" + ehmObj.getErrorHandlingMedicineNo() + "'";
+                + " WHERE errorHandlingMedicineid = '" + ehmObj.getErrorHandlingMedicineID() + "'";
         System.out.println("Update query:" + query);
-        try { // update errorHandlingMedicine
+        try
+        { // update errorHandlingMedicine
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             rc = stmt.executeUpdate(query);
 
             stmt.close();
         }//end try
-        catch (Exception ex) {
+        catch (Exception ex)
+        {
             System.out.println("Update exception in errorHandlingMedicine db: " + ex);
         }
         return (rc);
@@ -90,14 +95,16 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
         String query = "DELETE FROM errorHandlingMedicine "
                 + " WHERE errorHandlingMedicineno = '" + errorHandlingMedicineNo + "'";
         System.out.println("Update query:" + query);
-        try { // update errorHandlingMedicine
+        try
+        { // update errorHandlingMedicine
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             rc = stmt.executeUpdate(query);
 
             stmt.close();
         }//end try
-        catch (Exception ex) {
+        catch (Exception ex)
+        {
             System.out.println("Delete exception in errorHandlingMedicine db: " + ex);
         }
         return (rc);
@@ -110,19 +117,22 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
         ErrorHandlingMedicine ehmObj = new ErrorHandlingMedicine();
         String query = buildQuery(wClause);
         System.out.println("DbErrorHandlingMedicine -singelWhere " + query);
-        try { // read from errorHandlingMedicine
+        try
+        { // read from errorHandlingMedicine
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             results = stmt.executeQuery(query);
             int snr = 0;
-            if (results.next()) {
+            if (results.next())
+            {
                 ehmObj = buildErrorHandlingMedicine(results);
                 //missing the test on retriveassociation
 
             }//end if
             stmt.close();
         }//end try
-        catch (Exception e) {
+        catch (Exception e)
+        {
             System.out.println("Query exception - select errorHandlingMedicine : " + e);
             e.printStackTrace();
         }
@@ -139,13 +149,15 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
 
         String query = buildQuery(wClause);
         System.out.println("DbErrorHandlingMedicine " + query);
-        try { // read from errorHandlingMedicine
+        try
+        { // read from errorHandlingMedicine
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             results = stmt.executeQuery(query);
 
             int snr = 0;
-            while (results.next()) {
+            while (results.next())
+            {
                 ErrorHandlingMedicine ehmObj = new ErrorHandlingMedicine();
                 ehmObj = buildErrorHandlingMedicine(results);
                 list.add(ehmObj);
@@ -153,7 +165,8 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
             }//end while
             stmt.close();
         }//end try
-        catch (Exception e) {
+        catch (Exception e)
+        {
             System.out.println("Query exception - select errorHandlingMedicine : " + e);
             e.printStackTrace();
         }
@@ -164,13 +177,17 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
     {
         ErrorHandlingMedicine ehmObj = new ErrorHandlingMedicine();
 
-        try {
-            ehmObj.setErrorHandlingMedicineNo(results.getInt(1));
-            ehmObj.setDate(results.getDate(2));
-            ehmObj.setEpisode(results.getString(3));
-            ehmObj.setQuantity(results.getInt(4));
+        try
+        {
+            ehmObj.setMedicineID(results.getInt(2));
+            ehmObj.setClientID(results.getInt(3));
+            ehmObj.setEmployeeID(results.getInt(4));
+            ehmObj.setDate(results.getDate(5));
+            ehmObj.setEpisode(results.getString(6));
+            ehmObj.setQuantity(results.getInt(7));
 
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             System.out.println("building errorHandlingMedicine object");
         }
 
@@ -183,7 +200,8 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
     {
         String query = "SELECT * FROM errorHandlingMedicine";
 
-        if (wClause.length() > 0) {
+        if (wClause.length() > 0)
+        {
             query = query + " WHERE " + wClause;
         }
 

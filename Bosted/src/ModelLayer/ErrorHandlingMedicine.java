@@ -20,7 +20,9 @@ public class ErrorHandlingMedicine {
     private int quantity;
     
 
-    public ErrorHandlingMedicine() {
+    public ErrorHandlingMedicine() 
+    {
+
     }
 
     public ErrorHandlingMedicine(int errorHandlingMedicineID, int medicineID, int employeeID, Date date, String episode, int quantity)

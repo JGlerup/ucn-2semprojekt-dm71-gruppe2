@@ -82,7 +82,7 @@ public class CtrEmpTest {
         String employeeNo = "1234567";
         String managerNo = "1";
         String jobTitle = "Direktør";
-        String ssn = "123";
+        String ssn = "123456-1234";
         String firstName = "Mjød";
         String middleName = "Von";
         String lastName = "Hansen";
@@ -92,14 +92,14 @@ public class CtrEmpTest {
         String email = "Von@dannebrogsgade.dk";
         String password = "123456";
         CtrEmp instance = new CtrEmp();
-        instance.insert(employeeNo, managerNo, jobTitle, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
+        instance.insert( managerNo, jobTitle, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
         Employee result = instance.findEmployee(employeeNo);
         assertEquals("1234567", result.getEmployeeNo());
         assertEquals("1", result.getManagerNo());
         assertEquals("Direktør", result.getJobTitle());
-        assertEquals("123", result.getSsn());
+        assertEquals("123456-1234", result.getSsn());
         assertEquals("Mjød", result.getFirstName());
         assertEquals("Von", result.getMiddleName());
         assertEquals("Hansen", result.getLastName());
@@ -121,7 +121,7 @@ public class CtrEmpTest {
     {
         System.out.println("updateEmp");
         String employeeNo = "";
-        int managerNo = 0;
+        String managerNo = "";
         String jobTitle = "";
         String ssn = "";
         String firstName = "";
@@ -157,7 +157,7 @@ public class CtrEmpTest {
         String email = "Von@dannebrogsgade.dk";
         String password = "123456";
         CtrEmp instance = new CtrEmp();
-        instance.insert(employeeNo, managerNo, jobTitle, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
+        instance.insert( managerNo, jobTitle, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
         System.out.println("deleteEmp");
         instance.deleteEmp(employeeNo);
         Employee result = instance.findEmployee(employeeNo);

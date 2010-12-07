@@ -25,7 +25,7 @@ public class ErrorHandlingMedicine {
 
     }
 
-    public ErrorHandlingMedicine(int errorHandlingMedicineID, int medicineID, int employeeID, Date date, String episode, int quantity)
+    public ErrorHandlingMedicine(int errorHandlingMedicineID, int medicineID, int employeeID, String episode, int quantity)
     {
         this.errorHandlingMedicineID = errorHandlingMedicineID;
         this.medicineID = medicineID;

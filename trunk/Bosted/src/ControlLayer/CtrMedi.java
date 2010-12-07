@@ -31,13 +31,13 @@ public class CtrMedi
         return allMedi;
     }
 
-    public void insert(String name, String description, Date date, int quantity)
+    public void insert(String name, String description, int quantity)
     {
         IFDBMedi dbMedi = new DBMedicine();
         Medicine mediObj = new Medicine();
         mediObj.setName(name);
         mediObj.setDescription(description);
-        mediObj.setDate(date);
+        mediObj.setThisDate();
         mediObj.setQuantity(quantity);
         dbMedi.insertMedicine(mediObj);
     }

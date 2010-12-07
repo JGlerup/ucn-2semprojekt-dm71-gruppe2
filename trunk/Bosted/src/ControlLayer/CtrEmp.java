@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ControlLayer;
 
 import ModelLayer.*;
@@ -9,30 +5,33 @@ import DBLayer.*;
 import java.util.ArrayList;
 
 /**
- *
- * @author Kristian Byrialsen
+ * @author Gruppe 2 - DM71
+ * December 2010
  */
-public class CtrEmp {
+public class CtrEmp
+{
 
-    public CtrEmp() {
+    public CtrEmp()
+    {
     }
 
-    public Employee findEmployee(String employeeNo) {
+    public Employee findEmployee(String employeeNo)
+    {
         IFDBEmp dbEmp = new DBEmployee();
         return dbEmp.findEmployee(employeeNo, true);
     }
 
-    public ArrayList getAllEmployee() {
+    public ArrayList getAllEmployee()
+    {
         IFDBEmp dbEmp = new DBEmployee();
         ArrayList allEmp = new ArrayList<Employee>();
         allEmp = dbEmp.getAllEmployees(false);
         return allEmp;
     }
 
-    public void insert(String employeeNo, String managerNo, String jobTitle, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String password) {
+    public void insert(String managerNo, String jobTitle, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String password) {
         IFDBEmp dbEmp = new DBEmployee();
         Employee empObj = new Employee();
-        empObj.setEmployeeNo(employeeNo);
         empObj.setManagerNo(managerNo);
         empObj.setJobTitle(jobTitle);
         empObj.setSsn(ssn);
@@ -66,7 +65,8 @@ public class CtrEmp {
         dbEmp.updateEmployee(empObj);
     }
 
-    public void deleteEmp(String employeeNo) {
+    public void deleteEmp(String employeeNo)
+    {
         IFDBEmp dbEmp = new DBEmployee();
         dbEmp.deleteEmployee(employeeNo);
     }

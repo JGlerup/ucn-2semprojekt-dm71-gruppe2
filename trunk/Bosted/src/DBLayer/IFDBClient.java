@@ -12,7 +12,7 @@ public interface IFDBClient {
     public Client findClient(String clientNo, boolean retrieveAssociation);
     //find one client having the clientNo
 
-    public ArrayList<Client> getAllClient(boolean retriveAssociation);
+    public ArrayList<Client> getAllClients(boolean retriveAssociation);
     //find one client having the fname
 
     public int insertClient(Client c);

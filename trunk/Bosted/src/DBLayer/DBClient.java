@@ -23,7 +23,7 @@ public class DBClient implements IFDBClient {
         return cObj;
     }
 
-    public ArrayList<Client> getAllClient(boolean retriveAssociation) {
+    public ArrayList<Client> getAllClients(boolean retriveAssociation) {
         return miscWhere("", retriveAssociation);
     }
 
@@ -33,15 +33,15 @@ public class DBClient implements IFDBClient {
                 + c.getClientNo() + "','"
                 + c.getDescription() + "','"
                 + c.getInterests() + "','"
-                + c.getHealth() + "'"
-                + c.getSsn() + "'"
-                + c.getFirstName() + "'"
-                + c.getMiddleName() + "'"
-                + c.getLastName() + "'"
-                + c.getAddress() + "'"
-                + c.getLocationID() + "'"
-                + c.getPhoneNo() + "'"
-                + c.getEmail() + "'";
+                + c.getHealth() + "','"
+                + c.getSsn() + "','"
+                + c.getFirstName() + "','"
+                + c.getMiddleName() + "','"
+                + c.getLastName() + "','"
+                + c.getAddress() + "','"
+                + c.getLocationID() + "','"
+                + c.getPhoneNo() + "','"
+                + c.getEmail() + "')";
 
         System.out.println("insert : " + query);
         try { // insert new deptloyee
@@ -166,18 +166,18 @@ public class DBClient implements IFDBClient {
         Client cObj = new Client();
 
         try {
-            cObj.setClientNo(results.getString(1));
-            cObj.setDescription(results.getString(2));
-            cObj.setInterests(results.getString(3));
-            cObj.setHealth(results.getString(4));
-            cObj.setSsn(results.getString(5));
-            cObj.setFirstName(results.getString(6));
-            cObj.setMiddleName(results.getString(7));
-            cObj.setLastName(results.getString(8));
-            cObj.setAddress(results.getString(9));
-            cObj.setLocationID(results.getInt(10));
-            cObj.setPhoneNo(results.getInt(11));
-            cObj.setEmail(results.getString(12));
+            cObj.setClientNo(results.getString(2));
+            cObj.setDescription(results.getString(3));
+            cObj.setInterests(results.getString(4));
+            cObj.setHealth(results.getString(5));
+            cObj.setSsn(results.getString(6));
+            cObj.setFirstName(results.getString(7));
+            cObj.setMiddleName(results.getString(8));
+            cObj.setLastName(results.getString(9));
+            cObj.setAddress(results.getString(10));
+            cObj.setLocationID(results.getInt(11));
+            cObj.setPhoneNo(results.getInt(12));
+            cObj.setEmail(results.getString(13));
         } catch (Exception e) {
             System.out.println("building client object");
         }

@@ -1,11 +1,15 @@
-drop table ClubDiscount
-drop table Customer
-drop table Department
-drop table Discount
-drop table Employee
-drop table MonthlyInvoice
-drop table Product
-drop table SalesLineItem
-drop table SalesOrder
-drop table SalesOrderMonthlyInvoice
-drop table Supplier
+use dm71_2
+drop table car
+drop table client
+drop table client_externalcontact
+drop table dailyreport
+drop table employee
+drop table employee_client
+drop table errorhandlingmedicine
+drop table externalcontact
+drop table externaldocument
+drop table frequency
+drop table location
+drop table medicine
+drop table milestone
+drop table reservation

@@ -11,7 +11,7 @@ package ModelLayer;
 public class Client {
 
     private int clientID;
-    private int clientNo;
+    private String clientNo;
     private int locationID;
     private String description;
     private String interests;
@@ -27,7 +27,7 @@ public class Client {
     public Client() {
     }
 
-    public Client(int clientID, int clientNo, int locationID, String description, String interests, String health, String firstName, String middleName, String lastName, String address, int phoneNo, String email, String ssn) {
+    public Client(int clientID, String clientNo, int locationID, String description, String interests, String health, String firstName, String middleName, String lastName, String address, int phoneNo, String email, String ssn) {
         this.clientID = clientID;
         this.clientNo = clientNo;
         this.locationID = locationID;
@@ -59,11 +59,11 @@ public class Client {
         this.clientID = clientID;
     }
 
-    public int getClientNo() {
+    public String getClientNo() {
         return clientNo;
     }
 
-    public void setClientNo(int clientNo) {
+    public void setClientNo(String clientNo) {
         this.clientNo = clientNo;
     }
 

@@ -9,20 +9,26 @@ package ModelLayer;
  *
  * @author Rasmus
  */
-public class location
+public class Location
 {
 private int locationID;
 private int zipcode;
 private String city;
 
+    public Location()
+    {
 
-	public location (int locationID, int zipcode, String city)
-        {
+    }
 
-	this.locationID = locationID;
-	this.zipcode = zipcode;
-	this.city = city;
-        }
+
+    public Location (int locationID, int zipcode, String city)
+    {
+
+    this.locationID = locationID;
+    this.zipcode = zipcode;
+    this.city = city;
+    }
+
 
     public String getCity() {
         return city;
@@ -40,11 +46,11 @@ private String city;
         this.locationID = locationID;
     }
 
-    public int getZipcode() {
+    public int getZipCode() {
         return zipcode;
     }
 
-    public void setZipcode(int zipcode) {
+    public void setZipCode(int zipcode) {
         this.zipcode = zipcode;
     }
 

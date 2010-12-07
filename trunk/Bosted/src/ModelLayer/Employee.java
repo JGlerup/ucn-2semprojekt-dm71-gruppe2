@@ -50,6 +50,11 @@ public class Employee
         return employeeID;
     }
 
+    public void setEmployeeID(int employeeID)
+    {
+        this.employeeID = employeeID;
+    }
+
     public String getAddress()
     {
         return address;

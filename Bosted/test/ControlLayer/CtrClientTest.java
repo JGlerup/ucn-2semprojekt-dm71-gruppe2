@@ -164,7 +164,6 @@ public class CtrClientTest {
     public void testDeleteClient() {
         System.out.println("deleteClient");
                 System.out.println("insert");
-        String clientNo = "test";
         String description = "jeg leger med aber";
         String interests = "jeg elsker bananer";
         String health = "???";

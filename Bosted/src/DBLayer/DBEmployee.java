@@ -43,10 +43,10 @@ public class DBEmployee implements IFDBEmp
                 + emp.getFirstName() + "','"
                 + emp.getMiddleName() + "','"
                 + emp.getLastName() +"','"
-                + emp.getAddress() + "',"
-                + emp.getLocationID() + ","
-                + emp.getPhoneNo() + ",'"
-                + emp.getEmail() + "'";
+                + emp.getAddress() + "','"
+                + emp.getLocationID() + "','"
+                + emp.getPhoneNo() + "','"
+                + emp.getEmail() + "')";
 
 
         System.out.println("insert : " + query);
@@ -97,7 +97,7 @@ public class DBEmployee implements IFDBEmp
         return (rc);
     }
 
-    public int deleteEmployee(int employeeNo)
+    public int deleteEmployee(String employeeNo)
     {
         int rc = -1;
 
@@ -190,7 +190,7 @@ public class DBEmployee implements IFDBEmp
         {
             empObj.setEmployeeNo(results.getString(2));
             empObj.setPassword(results.getString(3));
-            empObj.setManagerNo(results.getInt(4));
+            empObj.setManagerNo(results.getString(4));
             empObj.setJobTitle(results.getString(5));
             empObj.setSsn(results.getString(6));
             empObj.setFirstName(results.getString(7));

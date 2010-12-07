@@ -29,7 +29,7 @@ public class CtrEmp {
         return allEmp;
     }
 
-    public void insert(String employeeNo, int employeeID, int managerNo, String jobTitle, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int zipCode, String city, int phoneNo, String email, String password) {
+    public void insert(String employeeNo, String managerNo, String jobTitle, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String password) {
         IFDBEmp dbEmp = new DBEmployee();
         Employee empObj = new Employee();
         empObj.setEmployeeNo(employeeNo);
@@ -44,15 +44,14 @@ public class CtrEmp {
         empObj.setPhoneNo(phoneNo);
         empObj.setEmail(email);
         empObj.setPassword(password);
-        dbEmp.updateEmployee(empObj);
+        dbEmp.insertEmployee(empObj);
         
     }
 
-    public void updateEmp(String employeeNo, int employeeID, int managerNo, String jobTitle, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int zipCode, String city, int phoneNo, String email, String password) {
+    public void updateEmp(String employeeNo, String managerNo, String jobTitle, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String password) {
         IFDBEmp dbEmp = new DBEmployee();
         Employee empObj = new Employee();
         empObj.setEmployeeNo(employeeNo);
-        empObj.setEmployeeID(employeeID);
         empObj.setManagerNo(managerNo);
         empObj.setJobTitle(jobTitle);
         empObj.setSsn(ssn);
@@ -67,8 +66,8 @@ public class CtrEmp {
         dbEmp.updateEmployee(empObj);
     }
 
-    public void deleteEmp(int employeeID) {
+    public void deleteEmp(String employeeNo) {
         IFDBEmp dbEmp = new DBEmployee();
-        dbEmp.deleteEmployee(employeeID);
+        dbEmp.deleteEmployee(employeeNo);
     }
 }

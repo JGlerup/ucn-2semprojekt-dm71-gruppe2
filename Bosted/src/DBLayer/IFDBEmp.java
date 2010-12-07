@@ -21,6 +21,6 @@ public interface IFDBEmp {
     public int updateEmployee(Employee emp);
     //update information about an employee
 
-    public int deleteEmployee(int employeeNo);
+    public int deleteEmployee(String employeeNo);
     //delete an employee
 }

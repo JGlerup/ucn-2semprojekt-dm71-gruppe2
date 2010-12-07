@@ -13,7 +13,7 @@ public class DBEmployee implements IFDBEmp
 
     private Connection con;
 
-    /** Creates a new instance of DBWorksOn */
+    /** Creates a new instance of DBEmployee*/
     public DBEmployee()
     {
         con = DbConnection1.getInstance().getDBcon();
@@ -32,17 +32,21 @@ public class DBEmployee implements IFDBEmp
     }
 
     public int insertEmployee(Employee emp)
-    {  //call to get the next ssn number
-        int employeeID = GetMax.getMaxId("Select max(employeeid) from employee");
-        employeeID = employeeID + 1;
-        System.out.println("next employeeid = " + employeeID);
-
+    {  
         int rc = -1;
-        String query = "INSERT INTO employee(employeeid, employeeno, managerno, jobtitle)  VALUES('"
-                + employeeID + "','"
+        String query = "INSERT INTO employee(employeeno, password, managerno, jobtitle, ssn, firstname, middlename, lastname, address, location_id, phoneno, email)  VALUES('"
                 + emp.getEmployeeNo() + "','"
+                + emp.getPassword() + "','"
                 + emp.getManagerNo() + "','"
-                + emp.getJobTitle() + "'";
+                + emp.getJobTitle() + "','"
+                + emp.getSsn() + "','"
+                + emp.getFirstName() + "','"
+                + emp.getMiddleName() + "','"
+                + emp.getLastName() +"','"
+                + emp.getAddress() + "',"
+                + emp.getLocationID() + ","
+                + emp.getPhoneNo() + ",'"
+                + emp.getEmail() + "'";
 
 
         System.out.println("insert : " + query);
@@ -64,18 +68,30 @@ public class DBEmployee implements IFDBEmp
         int rc = -1;
 
         String query = "UPDATE employee SET "
-                + "jobtitle ='" + empObj.getJobTitle() + "', "
-                + "managerno ='" + empObj.getManagerNo() + "' "
-                + " WHERE employeeno = '" + empObj.getEmployeeNo() + "'";
+                + "employeeno ='" + empObj.getEmployeeNo() + "','"
+                + "password ='" + empObj.getPassword() + "','"
+                + "managerno ='" + empObj.getManagerNo() + "','"
+                + "jobtitle ='" + empObj.getJobTitle() + "','"
+                + "ssn ='" + empObj.getSsn() + "','"
+                + "firstname ='" + empObj.getFirstName() + "','"
+                + "middlename ='" + empObj.getMiddleName() + "','"
+                + "lastname ='" + empObj.getLastName() + "','"
+                + "address ='" + empObj.getAddress() + "',"
+                + "location_id ='" + empObj.getLocationID() + ","
+                + "phoneno ='" + empObj.getPhoneNo() + ",'"
+                + "email ='" + empObj.getEmail() + "' "
+                + " WHERE employeeid = '" + empObj.getEmployeeID() + "'";
         System.out.println("Update query:" + query);
-        try { // update employee
+        try
+        { // update employee
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             rc = stmt.executeUpdate(query);
 
             stmt.close();
         }//end try
-        catch (Exception ex) {
+        catch (Exception ex)
+        {
             System.out.println("Update exception in employee db: " + ex);
         }
         return (rc);
@@ -88,14 +104,16 @@ public class DBEmployee implements IFDBEmp
         String query = "DELETE FROM employee "
                 + " WHERE employeeno = '" + employeeNo + "'";
         System.out.println("Update query:" + query);
-        try { // update employee
+        try
+        { // update employee
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             rc = stmt.executeUpdate(query);
 
             stmt.close();
         }//end try
-        catch (Exception ex) {
+        catch (Exception ex)
+        {
             System.out.println("Delete exception in employee db: " + ex);
         }
         return (rc);
@@ -108,19 +126,22 @@ public class DBEmployee implements IFDBEmp
         Employee empObj = new Employee();
         String query = buildQuery(wClause);
         System.out.println("DbEmployee -singelWhere " + query);
-        try { // read from employee
+        try
+        { // read from employee
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             results = stmt.executeQuery(query);
             int snr = 0;
-            if (results.next()) {
+            if (results.next())
+            {
                 empObj = buildEmployee(results);
                 //missing the test on retriveassociation
 
             }//end if
             stmt.close();
         }//end try
-        catch (Exception e) {
+        catch (Exception e)
+        {
             System.out.println("Query exception - select employee : " + e);
             e.printStackTrace();
         }
@@ -137,13 +158,15 @@ public class DBEmployee implements IFDBEmp
 
         String query = buildQuery(wClause);
         System.out.println("DbEmployee " + query);
-        try { // read from employee
+        try
+        { // read from employee
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             results = stmt.executeQuery(query);
 
             int snr = 0;
-            while (results.next()) {
+            while (results.next())
+            {
                 Employee empObj = new Employee();
                 empObj = buildEmployee(results);
                 list.add(empObj);
@@ -151,7 +174,8 @@ public class DBEmployee implements IFDBEmp
             }//end while
             stmt.close();
         }//end try
-        catch (Exception e) {
+        catch (Exception e)
+        {
             System.out.println("Query exception - select employee : " + e);
             e.printStackTrace();
         }
@@ -192,7 +216,8 @@ public class DBEmployee implements IFDBEmp
     {
         String query = "SELECT * FROM employee";
 
-        if (wClause.length() > 0) {
+        if (wClause.length() > 0)
+        {
             query = query + " WHERE " + wClause;
         }
 

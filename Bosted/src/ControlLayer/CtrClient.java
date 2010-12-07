@@ -29,10 +29,9 @@ public class CtrClient {
         return allCli;
     }
 
-    public void insertClient(String clientNo, String description, String interests, String health, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email) {
+    public void insertClient(String description, String interests, String health, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email) {
         IFDBClient dbClient = new DBClient();
         Client cObj = new Client();
-        cObj.setClientNo(clientNo);
         cObj.setDescription(description);
         cObj.setInterests(interests);
         cObj.setHealth(health);
@@ -44,16 +43,14 @@ public class CtrClient {
         cObj.setLocationID(locationID);
         cObj.setPhoneNo(phoneNo);
         cObj.setEmail(email);
+        cObj.createClientNo();
         dbClient.insertClient(cObj);
-
-
-        
     }
 
-    public void updateClient(String clientOld, String clientNoNew, String description, String interests, String health, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email) {
+    public void updateClient(String clientNoCurrent, String clientNoNew, String description, String interests, String health, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email) {
         IFDBClient dbClient = new DBClient();
         Client cObj = new Client();
-        int clientID = findClientByClientNo(clientOld).getClientID();
+        int clientID = findClientByClientNo(clientNoCurrent).getClientID();
         cObj.setClientID(clientID);
         cObj.setClientNo(clientNoNew);
         cObj.setDescription(description);

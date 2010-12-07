@@ -72,7 +72,7 @@ public class CtrClientTest {
      * Test of insert method, of class CtrClient.
      */
     @Test
-    public void testInsert() {
+    public void testInsertClient() {
         System.out.println("insert");
         String clientNo = "bp1234";
         String description = "jeg leger med aber";
@@ -87,7 +87,7 @@ public class CtrClientTest {
         int phoneNo = 98163044;
         String email = "bananmand@junglen.dk";
         CtrClient instance = new CtrClient();
-        instance.insert(clientNo, description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email);
+        instance.insertClient(clientNo, description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
         Client result = instance.findClientByClientNo(clientNo);
@@ -109,27 +109,56 @@ public class CtrClientTest {
     /**
      * Test of updateClient method, of class CtrClient.
      */
-//    @Test
-//    public void testUpdateClient() {
-//
-//        System.out.println("updateClient");
-//        String clientNo = "";
-//        String description = "";
-//        String interests = "";
-//        String health = "";
-//        String ssn = "";
-//        String firstName = "";
-//        String middleName = "";
-//        String lastName = "";
-//        String address = "";
-//        int locationID = 0;
-//        int phoneNo = 0;
-//        String email = "";
-//        CtrClient instance = new CtrClient();
-//        instance.updateClient(clientNo, description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testUpdateClient() {
+        System.out.println("insert");
+        String clientNo = "bp1234";
+        String description = "jeg leger med aber";
+        String interests = "jeg elsker bananer";
+        String health = "???";
+        String ssn = "123456-1234";
+        String firstName = "banan";
+        String middleName = "and";
+        String lastName = "mand";
+        String address = "banangade 14";
+        int locationID = 1;
+        int phoneNo = 98163044;
+        String email = "bananmand@junglen.dk";
+        CtrClient instance = new CtrClient();
+        instance.insertClient(clientNo, description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email);
+        //int clientID = instance.findClientByClientNo(clientNo).getClientID();
+        ////////////////////////////////////////////////////////////
+        System.out.println("updateClient");
+        String clientNoNew = "weotpk235";
+        description = "wetoji";
+        interests = "wtojitew";
+        health = "ktprytry";
+        ssn = "porkye";
+        firstName = "pkwet";
+        middleName = "98awytehph";
+        lastName = "aiwhpt9";
+        address = "atpijoew";
+        locationID = 1;
+        phoneNo = 983252010;
+        email = "sutmin@junglen.dk";
+        instance.updateClient(clientNo, clientNoNew, description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email);
+        Client result = instance.findClientByClientNo("weotpk235");
+        assertEquals("weotpk235", result.getClientNo());
+        assertEquals("wetoji", result.getDescription());
+        assertEquals("wtojitew", result.getInterests());
+        assertEquals("ktprytry", result.getHealth());
+        assertEquals("porkye", result.getSsn());
+        assertEquals("pkwet", result.getFirstName());
+        assertEquals("98awytehph", result.getMiddleName());
+        assertEquals("aiwhpt9", result.getLastName());
+        assertEquals("atpijoew", result.getAddress());
+        assertEquals(1, result.getLocationID());
+        assertEquals(983252010, result.getPhoneNo());
+        assertEquals("sutmin@junglen.dk", result.getEmail());
+        
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
 
     /**
      * Test of deleteClient method, of class CtrClient.
@@ -151,7 +180,7 @@ public class CtrClientTest {
         int phoneNo = 98163000;
         String email = "bananmand@junglen.dk";
         CtrClient instance = new CtrClient();
-        instance.insert(clientNo, description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email);
+        instance.insertClient(clientNo, description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email);
         instance.deleteClient(clientNo);
         Client result = instance.findClientByClientNo(clientNo);
         assertNull(null, result.getClientNo());

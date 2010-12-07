@@ -20,7 +20,7 @@ public class Client
     private String email;
     private String ssn;
 
-    public Client() 
+       public Client()
     {
 
     }
@@ -56,6 +56,11 @@ public class Client
     public int getClientID()
     {
         return clientID;
+    }
+
+     public void setClientID(int clientID)
+    {
+        this.clientID = clientID;
     }
 
     public String getClientNo()

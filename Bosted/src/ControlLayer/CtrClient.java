@@ -22,10 +22,10 @@ public class CtrClient {
         return dbCli.findClient(clientNo, true);
     }
 
-    public ArrayList getAllClient() {
+    public ArrayList getAllClients() {
         IFDBClient dbCli = new DBClient();
         ArrayList allCli = new ArrayList<Client>();
-        allCli = dbCli.getAllClient(false);
+        allCli = dbCli.getAllClients(false);
         return allCli;
     }
 

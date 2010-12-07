@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ControlLayer;
 
 import ModelLayer.*;
@@ -10,27 +6,33 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- *
- * @author Kristian Byrialsen
+ * @author Gruppe 2 - DM71
+ * December 2010
  */
-public class CtrMedi {
+public class CtrMedi
+{
 
-    public CtrMedi() {
+    public CtrMedi() 
+    {
+
     }
 
-    public Medicine findMedicineByName(String name) {
+    public Medicine findMedicineByName(String name)
+    {
         IFDBMedi dbMedi = new DBMedicine();
         return dbMedi.findMedicineByName(name, true);
     }
 
-    public ArrayList getAllMedicine() {
+    public ArrayList getAllMedicine()
+    {
         IFDBMedi dbMedi = new DBMedicine();
         ArrayList allMedi = new ArrayList<Medicine>();
         allMedi = dbMedi.getAllMedicine(false);
         return allMedi;
     }
 
-    public void insert(String name, String description, Date date, int quantity) {
+    public void insert(String name, String description, Date date, int quantity)
+    {
         IFDBMedi dbMedi = new DBMedicine();
         Medicine mediObj = new Medicine();
         mediObj.setName(name);
@@ -40,7 +42,8 @@ public class CtrMedi {
         dbMedi.insertMedicine(mediObj);
     }
 
-    public void updateMedic(String name, String description, Date date, int quantity) {
+    public void updateMedic(String name, String description, Date date, int quantity)
+    {
         IFDBMedi dbMedi = new DBMedicine();
         Medicine mediObj = new Medicine();
         mediObj.setName(name);
@@ -50,7 +53,8 @@ public class CtrMedi {
         dbMedi.updateMedicine(mediObj);
     }
 
-    public void deleteMedicine(String name) {
+    public void deleteMedicine(String name)
+    {
         IFDBMedi dbMedi = new DBMedicine();
         dbMedi.deleteMedicine(name);
     }

@@ -45,6 +45,9 @@ public class CtrClient
         cObj.setLocationID(locationID);
         cObj.setPhoneNo(phoneNo);
         cObj.setEmail(email);
+        cObj.setStartDate();
+        cObj.setInUse("Yes");
+        cObj.setStopDate(null);
         cObj.createClientNo();
         dbClient.insertClient(cObj);
     }

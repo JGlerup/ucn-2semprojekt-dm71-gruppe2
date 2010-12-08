@@ -152,7 +152,7 @@ public class DBMedicine implements IFDBMedi {
         try {
             mediObj.setName(results.getString(1));
             mediObj.setDescription(results.getString(2));
-            mediObj.setDate(results.getDate(3));
+            mediObj.setDate(results.getString(3));
             mediObj.setQuantity(results.getInt(4));
         } catch (Exception e) {
             System.out.println("building medicine object");

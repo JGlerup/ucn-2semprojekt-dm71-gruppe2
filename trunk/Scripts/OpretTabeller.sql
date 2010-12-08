@@ -7,16 +7,16 @@ create table location
 
 create table frequency 
 	(frequency_id		int			PRIMARY KEY IDENTITY,
-	time				varchar(30)	not null,
-	quantity			int			not null,
-	date				date		not null,
+	time_per_day		int			not null,
+	quantity_each_time	int			not null,
+	description_usage	varchar(200)not null,
+	date				date,
 	);
 
 create table car 
-	(car_id				int			not null,
+	(car_id				int			PRIMARY KEY IDENTITY,
 	registrationsno		int			not null,
 	description			varchar(30)	not null,
-	primary key (car_id),
 	unique(registrationsno));
 
 create table externalcontact 
@@ -38,7 +38,7 @@ create table client
 	description			varchar(50) not null,
 	interests			varchar(50) not null,
 	health				varchar(50) not null,
-	ssn					varchar(11)			not null,
+	ssn					varchar(11)	not null,
 	firstname			varchar(15)	not null,
 	middlename			varchar(15),
 	lastname			varchar(15)	not null,

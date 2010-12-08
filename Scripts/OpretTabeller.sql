@@ -46,6 +46,9 @@ create table client
 	location_id			int			not null,
 	phoneno				int,
 	email				varchar(50),
+	start_date			datetime	not null,
+	in_use				varchar(3)	not null,
+	stop_date			datetime,
 	unique(ssn),
 	foreign key (location_id) references location(location_id));
 
@@ -63,6 +66,9 @@ create table employee
 	location_id			int			not null,
 	phoneno				int,
 	email				varchar(50),
+	start_date			datetime	not null,
+	in_use				varchar(3)	not null,
+	stop_date			datetime,
 	unique(employeeno),
 	unique(ssn),
 	foreign key (managerno) references employee(employeeno),
@@ -85,7 +91,7 @@ create table dailyreport
 	(dailyreport_id		int			PRIMARY KEY IDENTITY,
 	client_id			int			not null,
 	employee_id			int			not null,
-	text				varchar(8000)not null,
+	text				varchar(max)not null,
 	date				datetime	not null,
 	foreign key (client_id) references client(client_id),
 	foreign key (employee_id) references employee(employee_id));
@@ -105,7 +111,7 @@ create table reservation
 create table externaldocument
 	(externaldocument_id int		PRIMARY KEY IDENTITY,
 	client_id			int			not null,
-	text				varchar(8000)not null,
+	text				varchar(max)not null,
 	date				datetime	not null,
 	source				varchar(50),
 	author				varchar(50),
@@ -114,7 +120,7 @@ create table externaldocument
 create table milestone
 	(milestone_id		int			PRIMARY KEY IDENTITY,
 	client_id			int			not null,
-	text				varchar(8000)not null,
+	text				varchar(max)not null,
 	date				datetime	not null,
 	successdate			datetime,
 	foreign key (client_id) references client(client_id));
@@ -125,7 +131,7 @@ create table errorhandlingmedicine
 	client_id			int			not null,
 	employee_id			int			not null,
 	date				datetime	not null,
-	episode				varchar(8000)not null,
+	episode				varchar(max)not null,
 	quantity			int			not null,
 	foreign key (medicine_id) references medicine(medicine_id),
 	foreign key (client_id) references client(client_id),

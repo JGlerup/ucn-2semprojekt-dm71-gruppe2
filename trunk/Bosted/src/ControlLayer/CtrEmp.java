@@ -48,10 +48,12 @@ public class CtrEmp
         
     }
 
-    public void updateEmp(String employeeNo, String managerNo, String jobTitle, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String password) {
+    public void updateEmp(String employeeNoCurrent, String employeeNoNew, String managerNo, String jobTitle, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String password) {
         IFDBEmp dbEmp = new DBEmployee();
         Employee empObj = new Employee();
-        empObj.setEmployeeNo(employeeNo);
+        int employeeID = findEmployee(employeeNoCurrent).getEmployeeID();
+        empObj.setEmployeeID(employeeID);
+        empObj.setEmployeeNo(employeeNoNew);
         empObj.setManagerNo(managerNo);
         empObj.setJobTitle(jobTitle);
         empObj.setSsn(ssn);

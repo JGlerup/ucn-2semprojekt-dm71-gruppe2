@@ -110,6 +110,7 @@ public class CtrEmpTest
         assertEquals(98674033, result.getPhoneNo());
         assertEquals("Von@dannebrogsgade.dk", result.getEmail());
         assertEquals("123456", result.getPassword());
+        instance.deleteEmp("Mjød123456");
         
     }
 
@@ -119,23 +120,51 @@ public class CtrEmpTest
     @Test
     public void testUpdateEmp()
     {
-        System.out.println("updateEmp");
-        String employeeNo = "";
-        String managerNo = "";
-        String jobTitle = "";
-        String ssn = "";
-        String firstName = "";
-        String middleName = "";
-        String lastName = "";
-        String address = "";
-        int locationID = 0;
-        int phoneNo = 0;
-        String email = "";
-        String password = "";
+        System.out.println("insert");
+        String managerNo = "1";
+        String jobTitle = "Direktør";
+        String ssn = "123456-1234";
+        String firstName = "Mjød";
+        String middleName = "Von";
+        String lastName = "Hansen";
+        String address = "Dannebrogsgade 63";
+        int locationID = 1;
+        int phoneNo = 98674033;
+        String email = "Von@dannebrogsgade.dk";
+        String password = "123456";
         CtrEmp instance = new CtrEmp();
-        instance.updateEmp(employeeNo, managerNo, jobTitle, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
+        instance.insert( managerNo, jobTitle, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
+
+
+        System.out.println("updateEmp");
+        String employeeNoNew = "2";
+        managerNo = "2";
+        jobTitle = "Landstryger";
+        ssn = "1223456-7777";
+        firstName = "Jacob";
+        middleName = "Jul";
+        lastName = "Glerup";
+        address = "Lærkevej 9";
+        locationID = 1;
+        phoneNo = 98765443;
+        email = "Glerup9@gmail.com";
+        password = "123456789";
+        instance.updateEmp("Mjød123456", employeeNoNew,  managerNo, jobTitle, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
+        Employee result = instance.findEmployee("Mjød123456");
+        assertEquals("2", result.getManagerNo());
+        assertEquals("Landstryger", result.getJobTitle());
+        assertEquals("123456-7777", result.getSsn());
+        assertEquals("Jacob", result.getFirstName());
+        assertEquals("Jul", result.getMiddleName());
+        assertEquals("Glerup", result.getLastName());
+        assertEquals("Lærkevej 9", result.getAddress());
+        assertEquals(1, result.getLocationID());
+        assertEquals(98765443, result.getPhoneNo());
+        assertEquals("Gleup9@gmail.com", result.getEmail());
+        assertEquals("123456789", result.getPassword());
+        instance.deleteEmp(employeeNoNew);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**

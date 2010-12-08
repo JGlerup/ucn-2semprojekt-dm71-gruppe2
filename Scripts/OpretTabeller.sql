@@ -9,7 +9,7 @@ create table frequency
 	(frequency_id		int			PRIMARY KEY IDENTITY,
 	time				varchar(30)	not null,
 	quantity			int			not null,
-	date				datetime	not null,
+	date				date		not null,
 	);
 
 create table car 
@@ -46,9 +46,9 @@ create table client
 	location_id			int			not null,
 	phoneno				int,
 	email				varchar(50),
-	start_date			datetime	not null,
+	start_date			date		not null,
 	in_use				varchar(3)	not null,
-	stop_date			datetime,
+	stop_date			date,
 	unique(ssn),
 	foreign key (location_id) references location(location_id));
 
@@ -66,9 +66,9 @@ create table employee
 	location_id			int			not null,
 	phoneno				int,
 	email				varchar(50),
-	start_date			datetime	not null,
+	start_date			date		not null,
 	in_use				varchar(3)	not null,
-	stop_date			datetime,
+	stop_date			date,
 	unique(employeeno),
 	unique(ssn),
 	foreign key (managerno) references employee(employeeno),
@@ -81,7 +81,7 @@ create table medicine
 	client_id			int			not null,
 	name				varchar(30)	not null,
 	description			varchar(50)	not null,
-	date				datetime	not null,
+	date				date		not null,
 	quantity			int			not null,
 	foreign key (frequency_id) references frequency(frequency_id),
 	foreign key (externalcontact_id) references externalcontact(externalcontact_id),
@@ -101,9 +101,9 @@ create table reservation
 	car_id				int			not null,
 	employee_id			int			not null,
 	client_id			int			not null,
-	startdate			datetime	not null,
-	enddate				datetime	not null,
-	reservationdate		datetime	not null,
+	startdate			date		not null,
+	enddate				date		not null,
+	reservationdate		date		not null,
 	foreign key (car_id) references car(car_id),
 	foreign key (employee_id) references employee(employee_id),
 	foreign key (client_id) references client(client_id));
@@ -112,7 +112,7 @@ create table externaldocument
 	(externaldocument_id int		PRIMARY KEY IDENTITY,
 	client_id			int			not null,
 	text				varchar(max)not null,
-	date				datetime	not null,
+	date				date		not null,
 	source				varchar(50),
 	author				varchar(50),
 	foreign key (client_id) references client(client_id));
@@ -121,8 +121,8 @@ create table milestone
 	(milestone_id		int			PRIMARY KEY IDENTITY,
 	client_id			int			not null,
 	text				varchar(max)not null,
-	date				datetime	not null,
-	successdate			datetime,
+	date				date		not null,
+	successdate			date,
 	foreign key (client_id) references client(client_id));
 
 create table errorhandlingmedicine
@@ -130,7 +130,7 @@ create table errorhandlingmedicine
 	medicine_id			int			not null,
 	client_id			int			not null,
 	employee_id			int			not null,
-	date				datetime	not null,
+	date				date		not null,
 	episode				varchar(max)not null,
 	quantity			int			not null,
 	foreign key (medicine_id) references medicine(medicine_id),

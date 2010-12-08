@@ -11,11 +11,12 @@ import java.util.Date;
  *
  * @author Kristian Byrialsen
  */
-public class Medicine {
+public class Medicine
+{
 
     private String name;
     private String description;
-    private Date date;
+    private String date;
     private int quantity;
 
 
@@ -26,17 +27,18 @@ public Medicine()
 }
 
 
-public Medicine(String name, String description, Date date, int quantity)
+public Medicine(String name, String description, int quantity)
 {
 
     this.name = name;
     this.description = description;
-    this.date = date;
+    this.date = "";
     this.quantity = quantity;
+    setThisDate();
 
 }
 
-    public Date getDate()
+    public String getDate()
     {
         return date;
     }
@@ -56,7 +58,7 @@ public Medicine(String name, String description, Date date, int quantity)
         return quantity;
     }
 
-    public void setDate(Date date)
+    public void setDate(String date)
     {
         this.date = date;
     }
@@ -76,8 +78,11 @@ public Medicine(String name, String description, Date date, int quantity)
         this.quantity = quantity;
     }
 
-
-
+    public void setThisDate()
+    {
+        ToDaysDate toDaysDate = new ToDaysDate();
+        date = toDaysDate.toString();
+    }
 }
 
 

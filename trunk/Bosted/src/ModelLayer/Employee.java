@@ -1,5 +1,7 @@
 package ModelLayer;
 
+
+
 /**
  * @author Gruppe 2 - DM71
  * December 2010
@@ -20,6 +22,15 @@ public class Employee
     private int phoneNo;
     private String email;
     private String ssn;
+    private String inUse;
+    private String startDate;
+    private String stopDate;
+
+    public Employee()
+    {
+     
+    }
+
 
     public Employee(int employeeID, String password, String managerNo, String jobTitle, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String ssn)
     {
@@ -37,22 +48,6 @@ public class Employee
         this.email = email;
         this.ssn = ssn;
         createEmployeeNo();
-    }
-
-
-    public Employee()
-    {
-
-    }
-
-     public int getEmployeeID()
-    {
-        return employeeID;
-    }
-
-    public void setEmployeeID(int employeeID)
-    {
-        this.employeeID = employeeID;
     }
 
     public String getAddress()
@@ -75,24 +70,24 @@ public class Employee
         this.email = email;
     }
 
-   public String getEmployeeNo()
-   {
+    public int getEmployeeID()
+    {
+        return employeeID;
+    }
+
+    public void setEmployeeID(int employeeID)
+    {
+        this.employeeID = employeeID;
+    }
+
+    public String getEmployeeNo()
+    {
         return employeeNo;
-   }
+    }
 
     public void setEmployeeNo(String employeeNo)
     {
         this.employeeNo = employeeNo;
-    }
-
-    public String getPassword()
-    {
-        return password;
-    }
-
-    public void setPassword(String password)
-    {
-        this.password = password;
     }
 
     public String getFirstName()
@@ -103,6 +98,16 @@ public class Employee
     public void setFirstName(String firstName)
     {
         this.firstName = firstName;
+    }
+
+    public String getInUse()
+    {
+        return inUse;
+    }
+
+    public void setInUse(String inUse)
+    {
+        this.inUse = inUse;
     }
 
     public String getJobTitle()
@@ -125,6 +130,16 @@ public class Employee
         this.lastName = lastName;
     }
 
+    public int getLocationID()
+    {
+        return locationID;
+    }
+
+    public void setLocationID(int locationID)
+    {
+        this.locationID = locationID;
+    }
+
     public String getManagerNo()
     {
         return managerNo;
@@ -145,6 +160,16 @@ public class Employee
         this.middleName = middleName;
     }
 
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
+    }
+
     public int getPhoneNo()
     {
         return phoneNo;
@@ -153,16 +178,6 @@ public class Employee
     public void setPhoneNo(int phoneNo)
     {
         this.phoneNo = phoneNo;
-    }
-
-    public int getLocationID()
-    {
-        return locationID;
-    }
-
-    public void setLocationID(int locationID)
-    {
-        this.locationID = locationID;
     }
 
     public String getSsn()
@@ -174,6 +189,30 @@ public class Employee
     {
         this.ssn = ssn;
     }
+
+    public String getStartDate() {
+        return startDate.toString();
+    }
+
+    public void setStartDate() {
+        ToDaysDate toDaysDate = new ToDaysDate();
+        startDate = toDaysDate.toString();
+    }
+
+    public void setNewStartDate(String newDate) {
+        startDate = newDate;
+    }
+
+    public String getStopDate() {
+        return stopDate;
+    }
+
+    public void setStopDate(String stopDate) {
+        this.stopDate = stopDate;
+    }
+
+
+    
 
     public String createEmployeeNo()
     {

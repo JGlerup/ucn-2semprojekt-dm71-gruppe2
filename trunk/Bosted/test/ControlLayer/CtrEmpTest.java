@@ -95,7 +95,7 @@ public class CtrEmpTest
         String email = "Von@dannebrogsgade.dk";
         String password = "123456";
         CtrEmp instance = new CtrEmp();
-        instance.insert( managerNo, jobTitle, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
+        instance.insert(managerNo, jobTitle, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
         Employee result = instance.findEmployee("Mjød123456");
@@ -133,7 +133,7 @@ public class CtrEmpTest
         String email = "Von@dannebrogsgade.dk";
         String password = "123456";
         CtrEmp instance = new CtrEmp();
-        instance.insert( managerNo, jobTitle, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
+        instance.insert(managerNo, jobTitle, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
 
 
         System.out.println("updateEmp");
@@ -185,7 +185,7 @@ public class CtrEmpTest
         String email = "Von@dannebrogsgade.dk";
         String password = "123456";
         CtrEmp instance = new CtrEmp();
-        instance.insert( managerNo, jobTitle, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
+        instance.insert(managerNo, jobTitle, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
         System.out.println("deleteEmp");
         instance.deleteEmp("Mjød123456");
         Employee result = instance.findEmployee("Mjød123456");

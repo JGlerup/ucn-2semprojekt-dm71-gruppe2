@@ -40,9 +40,15 @@ public class ToDaysDate {
     {
         return Integer.parseInt(toDay.substring(3,5));
     }
-    public int getDay()
+    public String getDay()
     {
-        return Integer.parseInt(toDay.substring(0,2));
+        int dd = Integer.parseInt(toDay.substring(0, 2));
+        if(dd < 10){
+            return "0" + dd;
+        }
+        else{
+            return "" + dd;
+        }
     } //return year as string
     public String getYear()
     {
@@ -60,6 +66,6 @@ public class ToDaysDate {
     }
     public String toString()
     {
-       return  getYear() + getMonth() + getDay();
+       return 20 + getYear() + getMonth() + getDay();
     }
 }

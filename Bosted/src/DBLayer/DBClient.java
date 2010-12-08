@@ -29,7 +29,7 @@ public class DBClient implements IFDBClient {
 
     public int insertClient(Client c) {  //call to get the next ssn number
         int rc = -1;
-        String query = "INSERT INTO client(clientno, description, interests, health, ssn, firstname, middlename, lastname, address, location_id, phoneno, email)  VALUES('"
+        String query = "INSERT INTO client(clientno, description, interests, health, ssn, firstname, middlename, lastname, address, location_id, phoneno, email, start_date, in_use, stop_date)  VALUES('"
                 + c.getClientNo() + "','"
                 + c.getDescription() + "','"
                 + c.getInterests() + "','"
@@ -41,7 +41,10 @@ public class DBClient implements IFDBClient {
                 + c.getAddress() + "','"
                 + c.getLocationID() + "','"
                 + c.getPhoneNo() + "','"
-                + c.getEmail() + "')";
+                + c.getEmail() + "','"
+                + c.getStartDate() + "','"
+                + c.getInUse() + "',"
+                + c.getStopDate() + ")";
 
         System.out.println("insert : " + query);
         try { // insert new deptloyee

@@ -21,14 +21,11 @@ public class Client {
     private int phoneNo;
     private String email;
     private String ssn;
-    private ToDaysDate startDate;
+    private String startDate;
     private String inUse;
-    private ToDaysDate stopDate;
+    private String stopDate;
 
     public Client() {
-        startDate = new ToDaysDate();
-        inUse = "Yes";
-        stopDate = null;
     }
 
     public Client(int clientID, int locationID, String description, String interests, String health, String firstName, String middleName, String lastName, String address, int phoneNo, String email, String ssn) {
@@ -171,5 +168,26 @@ public class Client {
 
     public void setInUse(String inUse) {
         this.inUse = inUse;
+    }
+
+    public String getStartDate() {
+        return startDate.toString();
+    }
+
+    public void setStartDate() {
+        ToDaysDate toDaysDate = new ToDaysDate();
+        startDate = toDaysDate.toString();
+    }
+
+    public void setNewStartDate(String newDate) {
+        startDate = newDate;
+    }
+
+    public String getStopDate() {
+        return stopDate;
+    }
+
+    public void setStopDate(String stopDate) {
+        this.stopDate = stopDate;
     }
 }

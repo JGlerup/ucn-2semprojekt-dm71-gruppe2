@@ -1,5 +1,4 @@
 use dm71_2
-insert into location values(9000, 'Aalborg V')
 insert into externalcontact values('34567', 'læge', 'Peter', '', 'Frodin', 'Yogade 3', 1, 98765432, 'wkjeb@khut.dk')
 insert into frequency values('ved hovedmåltider', 1, '19990101')
 insert into client values('1', 'hahaha', 'han er grim', 'hans udseende er ikk for godt', '123456-7894', 'Hans', '', 'Pilgaard', 'Hahavej 13', 1, 12345678, 'gj@ha.dk', '19990101', 'ja', null)

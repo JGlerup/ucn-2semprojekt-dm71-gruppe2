@@ -1,1 +1,2 @@
-select * from employee
+use dm71_2
+select * from location

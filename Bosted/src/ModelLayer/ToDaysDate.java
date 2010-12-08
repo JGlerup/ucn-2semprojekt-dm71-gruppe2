@@ -1,4 +1,4 @@
-package DBLayer;
+package ModelLayer;
 
 import java.util.Date;
 import java.text.DateFormat;

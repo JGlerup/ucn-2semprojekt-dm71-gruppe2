@@ -34,7 +34,7 @@ public class DBEmployee implements IFDBEmp
     public int insertEmployee(Employee emp)
     {  
         int rc = -1;
-        String query = "INSERT INTO employee(employeeno, password, managerno, jobtitle, ssn, firstname, middlename, lastname, address, location_id, phoneno, email)  VALUES('"
+        String query = "INSERT INTO employee(employeeno, password, managerno, jobtitle, ssn, firstname, middlename, lastname, address, location_id, phoneno, email, start_date, in_use, stop_date)  VALUES('"
                 + emp.getEmployeeNo() + "','"
                 + emp.getPassword() + "','"
                 + emp.getManagerNo() + "','"
@@ -46,7 +46,10 @@ public class DBEmployee implements IFDBEmp
                 + emp.getAddress() + "','"
                 + emp.getLocationID() + "','"
                 + emp.getPhoneNo() + "','"
-                + emp.getEmail() + "')";
+                + emp.getEmail() + "','"
+                + emp.getStartDate() + "','"
+                + emp.getInUse() + "',"
+                + emp.getStopDate() + ")";
 
 
         System.out.println("insert : " + query);

@@ -2,7 +2,7 @@ use dm71_2
 create table location 
 	(location_id		int			PRIMARY KEY IDENTITY,
 	zipcode				int			not null,
-	city				varchar(100)	not null,
+	city				varchar(100)not null,
 	unique(zipcode));
 
 create table frequency 

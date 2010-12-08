@@ -15,7 +15,7 @@ public class ErrorHandlingMedicine {
     private int medicineID;
     private int clientID;
     private int employeeID;
-    private Date date;
+    private ToDaysDate date;
     private String episode;
     private int quantity;
     
@@ -30,7 +30,7 @@ public class ErrorHandlingMedicine {
         this.errorHandlingMedicineID = errorHandlingMedicineID;
         this.medicineID = medicineID;
         this.employeeID = employeeID;
-        this.date = new Date();
+        this.date = new ToDaysDate();
         this.episode = episode;
         this.quantity = quantity;
         
@@ -46,19 +46,19 @@ public class ErrorHandlingMedicine {
         this.clientID = clientID;
     }
 
-    public Date getDate()
+    public ToDaysDate getDate()
     {
         return date;
     }
 
-    public void setDate(Date date)
+    public void setDate(ToDaysDate date)
     {
         this.date = date;
     }
 
     public void setThisDate()
     {
-        this.date = new Date();
+        this.date = new ToDaysDate();
     }
 
     public int getEmployeeID()

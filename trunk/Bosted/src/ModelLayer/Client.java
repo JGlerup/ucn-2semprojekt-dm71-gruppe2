@@ -1,11 +1,13 @@
 package ModelLayer;
 
+import java.util.Date;
+
 /**
  * @author Gruppe 2 - DM71
  * December 2010
  */
-public class Client
-{
+public class Client {
+
     private int clientID;
     private String clientNo;
     private int locationID;
@@ -19,14 +21,17 @@ public class Client
     private int phoneNo;
     private String email;
     private String ssn;
+    private ToDaysDate startDate;
+    private String inUse;
+    private ToDaysDate stopDate;
 
-       public Client()
-    {
-
+    public Client() {
+        startDate = new ToDaysDate();
+        inUse = "Yes";
+        stopDate = null;
     }
 
-    public Client(int clientID, int locationID, String description, String interests, String health, String firstName, String middleName, String lastName, String address, int phoneNo, String email, String ssn)
-    {
+    public Client(int clientID, int locationID, String description, String interests, String health, String firstName, String middleName, String lastName, String address, int phoneNo, String email, String ssn) {
         this.clientID = clientID;
         this.clientNo = null;
         this.locationID = locationID;
@@ -43,93 +48,75 @@ public class Client
         createClientNo();
     }
 
-    public String getAddress()
-    {
+    public String getAddress() {
         return address;
     }
 
-    public void setAddress(String address)
-    {
+    public void setAddress(String address) {
         this.address = address;
     }
 
-    public int getClientID()
-    {
+    public int getClientID() {
         return clientID;
     }
 
-     public void setClientID(int clientID)
-    {
+    public void setClientID(int clientID) {
         this.clientID = clientID;
     }
 
-    public String getClientNo()
-    {
+    public String getClientNo() {
         return clientNo;
     }
 
-    public void setClientNo(String clientNo)
-    {
+    public void setClientNo(String clientNo) {
         this.clientNo = clientNo;
     }
 
-    public String getDescription()
-    {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description)
-    {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public String getEmail()
-    {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email)
-    {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getFirstName()
-    {
+    public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName)
-    {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public String getHealth()
-    {
+    public String getHealth() {
         return health;
     }
 
-    public void setHealth(String health)
-    {
+    public void setHealth(String health) {
         this.health = health;
     }
 
-    public String getInterests()
-    {
+    public String getInterests() {
         return interests;
     }
 
-    public void setInterests(String interests)
-    {
+    public void setInterests(String interests) {
         this.interests = interests;
     }
 
-    public String getLastName()
-    {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName)
-    {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
@@ -137,51 +124,40 @@ public class Client
         return locationID;
     }
 
-    public void setLocationID(int locationID)
-    {
+    public void setLocationID(int locationID) {
         this.locationID = locationID;
     }
 
-    public String getMiddleName()
-    {
+    public String getMiddleName() {
         return middleName;
     }
 
-    public void setMiddleName(String middleName)
-    {
+    public void setMiddleName(String middleName) {
         this.middleName = middleName;
     }
 
-    public int getPhoneNo()
-    {
+    public int getPhoneNo() {
         return phoneNo;
     }
 
-    public void setPhoneNo(int phoneNo)
-    {
+    public void setPhoneNo(int phoneNo) {
         this.phoneNo = phoneNo;
     }
 
-    public String getSsn()
-    {
+    public String getSsn() {
         return ssn;
     }
 
-    public void setSsn(String ssn)
-    {
+    public void setSsn(String ssn) {
         this.ssn = ssn;
     }
 
-    public String createClientNo()
-    {
+    public String createClientNo() {
         String createdClientNo = "";
 
-        if(firstName.length() > 5)
-        {
-            createdClientNo = firstName.substring(0,5) + ssn.substring(0, 6);
-        }
-        else
-        {
+        if (firstName.length() > 5) {
+            createdClientNo = firstName.substring(0, 5) + ssn.substring(0, 6);
+        } else {
             createdClientNo = firstName + ssn.substring(0, 6);
         }
 
@@ -189,4 +165,11 @@ public class Client
         return createdClientNo;
     }
 
+    public String getInUse() {
+        return inUse;
+    }
+
+    public void setInUse(String inUse) {
+        this.inUse = inUse;
+    }
 }

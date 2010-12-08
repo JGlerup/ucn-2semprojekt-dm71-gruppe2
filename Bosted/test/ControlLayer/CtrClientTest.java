@@ -177,7 +177,7 @@ public class CtrClientTest {
         String email = "bananmand@junglen.dk";
         CtrClient instance = new CtrClient();
         instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email);
-        instance.deleteClient("test123456");
+        instance.deleteClient("banan123456");
         Client result = instance.findClientByClientNo("test123456");
         assertNull(null, result.getClientNo());
         // TODO review the generated test code and remove the default call to fail.

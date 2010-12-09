@@ -10,10 +10,10 @@ import java.util.ArrayList;
  * @author Gruppe 2 - DM71
  * December 2010
  */
-public interface IFDBMedi {
+public interface IFDBMedi
+{
 
-
-        public Medicine findMedicineByName(String name, boolean retrieveAssociation);
+    public Medicine findMedicineByClientIDAndName(int clientID, String name, boolean retrieveAssociation);
     //find one employee having the employeeNo
 
     public ArrayList<Medicine> getAllMedicine(boolean retriveAssociation);
@@ -26,4 +26,5 @@ public interface IFDBMedi {
 
     public int deleteMedicine(String name);
     //delete an employee
+
 }

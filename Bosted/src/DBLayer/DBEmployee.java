@@ -71,19 +71,19 @@ public class DBEmployee implements IFDBEmp
         int rc = -1;
 
         String query = "UPDATE employee SET "
-                + "employeeno ='" + empObj.getEmployeeNo() + "','"
-                + "password ='" + empObj.getPassword() + "','"
-                + "managerno ='" + empObj.getManagerNo() + "','"
-                + "jobtitle ='" + empObj.getJobTitle() + "','"
-                + "ssn ='" + empObj.getSsn() + "','"
-                + "firstname ='" + empObj.getFirstName() + "','"
-                + "middlename ='" + empObj.getMiddleName() + "','"
-                + "lastname ='" + empObj.getLastName() + "','"
+                + "employeeno ='" + empObj.getEmployeeNo() + "',"
+                + "password ='" + empObj.getPassword() + "',"
+                + "managerno ='" + empObj.getManagerNo() + "',"
+                + "jobtitle ='" + empObj.getJobTitle() + "',"
+                + "ssn ='" + empObj.getSsn() + "',"
+                + "firstname ='" + empObj.getFirstName() + "',"
+                + "middlename ='" + empObj.getMiddleName() + "',"
+                + "lastname ='" + empObj.getLastName() + "',"
                 + "address ='" + empObj.getAddress() + "',"
-                + "location_id ='" + empObj.getLocationID() + ","
-                + "phoneno ='" + empObj.getPhoneNo() + ",'"
+                + "location_id ='" + empObj.getLocationID() + "',"
+                + "phoneno ='" + empObj.getPhoneNo() + "',"
                 + "email ='" + empObj.getEmail() + "' "
-                + " WHERE employeeid = '" + empObj.getEmployeeID() + "'";
+                + " WHERE employee_id = '" + empObj.getEmployeeID() + "'";
         System.out.println("Update query:" + query);
         try
         { // update employee

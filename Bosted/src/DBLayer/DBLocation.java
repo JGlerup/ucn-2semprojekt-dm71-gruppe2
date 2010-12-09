@@ -22,7 +22,7 @@ public class DBLocation implements IFDBLoca
     public Location findLocation(int locationID, boolean retrieveAssociation)
     {
         Location locaObj = new Location();
-        locaObj = singleWhere("locationID = '" + locationID + "'", false);
+        locaObj = singleWhere("location_id = '" + locationID + "'", false);
         return locaObj;
     }
 
@@ -36,7 +36,7 @@ public class DBLocation implements IFDBLoca
         int rc = -1;
         String query = "INSERT INTO location(zipcode, city)  VALUES('"
                 + loca.getZipCode() + "','"
-                + loca.getCity() + "'";
+                + loca.getCity() + "')";
 
 
         System.out.println("insert : " + query);
@@ -58,9 +58,9 @@ public class DBLocation implements IFDBLoca
         int rc = -1;
 
         String query = "UPDATE location SET "
-                + "locationID ='" + locaObj.getLocationID() + "', "
-                + "zipcode ='" + locaObj.getZipCode() + "' "
-                + " WHERE city = '" + locaObj.getCity() + "'";
+                + "zipcode ='" + locaObj.getZipCode() + "', "
+                + "city ='" + locaObj.getCity() + "' "
+                + " WHERE location_id = '" + locaObj.getLocationID() + "'";
         System.out.println("Update query:" + query);
         try { // update employee
             Statement stmt = con.createStatement();
@@ -80,7 +80,7 @@ public class DBLocation implements IFDBLoca
         int rc = -1;
 
         String query = "DELETE FROM location "
-                + " WHERE locationID = '" + locationID + "'";
+                + " WHERE location_ID = '" + locationID + "'";
         System.out.println("Update query:" + query);
         try { // update location
             Statement stmt = con.createStatement();
@@ -127,7 +127,7 @@ public class DBLocation implements IFDBLoca
     private ArrayList miscWhere(String wClause, boolean retrieveAssociation)
     {
         ResultSet results;
-        ArrayList list = new ArrayList();
+        ArrayList<Location> list = new ArrayList<Location>();
 
         String query = buildQuery(wClause);
         System.out.println("DbLocation " + query);
@@ -158,9 +158,9 @@ public class DBLocation implements IFDBLoca
 
         try
         {
-            locaObj.setLocationID(results.getInt(2));
-            locaObj.setZipCode(results.getInt(3));
-            locaObj.setCity(results.getString(4));
+            locaObj.setLocationID(results.getInt(1));
+            locaObj.setZipCode(results.getInt(2));
+            locaObj.setCity(results.getString(3));
 
 
         }

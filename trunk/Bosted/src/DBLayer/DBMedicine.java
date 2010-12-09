@@ -74,7 +74,7 @@ public class DBMedicine implements IFDBMedi
             rc = stmt.executeUpdate(query);
 
             stmt.close();
-        }//slut try
+        }//end try
         catch (Exception ex)
         {
             System.out.println("Update exception in medicine db: " + ex);

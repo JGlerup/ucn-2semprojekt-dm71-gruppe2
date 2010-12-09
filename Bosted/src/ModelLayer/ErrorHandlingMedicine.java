@@ -1,6 +1,5 @@
 package ModelLayer;
 
-
 /**
  * @author Gruppe 2 - DM71
  * December 2010
@@ -21,10 +20,11 @@ public class ErrorHandlingMedicine
 
     }
 
-    public ErrorHandlingMedicine(int errorHandlingMedicineID, int medicineID, int employeeID, String episode, int quantity)
+    public ErrorHandlingMedicine(int errorHandlingMedicineID, int medicineID, int clientID, int employeeID, String episode, int quantity)
     {
         this.errorHandlingMedicineID = errorHandlingMedicineID;
         this.medicineID = medicineID;
+        this.clientID = clientID;
         this.employeeID = employeeID;
         this.date = "";
         this.episode = episode;

@@ -19,10 +19,10 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
         con = DbConnection1.getInstance().getDBcon();
     }
 
-    public ErrorHandlingMedicine findErrorHandlingMedicine(int errorHandlingMedicineNo, boolean retrieveAssociation)
+    public ErrorHandlingMedicine findErrorHandlingMedicine(int errorHandlingMedicineID, boolean retrieveAssociation)
     {
         ErrorHandlingMedicine ehmObj = new ErrorHandlingMedicine();
-        ehmObj = singleWhere("errorHandlingMedicineno = '" + errorHandlingMedicineNo + "'", false);
+        ehmObj = singleWhere("errorHandlingMedicineno = '" + errorHandlingMedicineID + "'", false);
         return ehmObj;
     }
 
@@ -31,9 +31,13 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
         return miscWhere("", retriveAssociation);
     }
 
-    public int insertErrorHandlingMedicine(ErrorHandlingMedicine ehm)
-    {  //call to get the next ssn number
+    public ArrayList<ErrorHandlingMedicine> getAllErrorHandlingMedicinesByDate(String date, boolean retriveAssociation)
+    {
+        return miscWhere("date = '" + date + "'", retriveAssociation);
+    }
 
+    public int insertErrorHandlingMedicine(ErrorHandlingMedicine ehm)
+    {  
         int rc = -1;
         String query = "INSERT INTO errorHandlingMedicine(medicin_id, client_id, employee_id, date, episode, quantity)  VALUES("
                 + ehm.getMedicineID() + ","

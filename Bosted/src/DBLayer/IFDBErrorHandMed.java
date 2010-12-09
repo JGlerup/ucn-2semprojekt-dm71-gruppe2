@@ -18,7 +18,10 @@ public interface IFDBErrorHandMed
     //find one errorHandlingMedicine having the errorHandlingMedicineNo
 
     public ArrayList<ErrorHandlingMedicine> getAllErrorHandlingMedicines(boolean retriveAssociation);
-    //find one errorHandlingMedicine having the errorHandlingMedicine????????????
+    //find all errorHandlingMedicine
+
+    public ArrayList<ErrorHandlingMedicine> getAllErrorHandlingMedicinesByDate(String date, boolean retriveAssociation);
+    //find all errorHandlingMedicine on a specific date
 
     public int insertErrorHandlingMedicine(ErrorHandlingMedicine ehm);
     //update information about an errorHandlingMedicine

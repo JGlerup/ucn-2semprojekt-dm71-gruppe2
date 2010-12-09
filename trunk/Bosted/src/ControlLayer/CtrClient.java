@@ -78,4 +78,20 @@ public class CtrClient
         IFDBClient dbClient = new DBClient();
         dbClient.deleteClient(clientNo);
     }
+
+    public ArrayList<Employee> findClientsEmployees(int clientID)
+    {
+        ArrayList<Employee> employeeList = new ArrayList<Employee>();
+        IFDBClient dbClient = new DBClient();
+        employeeList = dbClient.findClientsEmployees(clientID);
+        return employeeList;
+    }
+
+        public ArrayList<Client> findEmployeesClient(int employeeID)
+    {
+        ArrayList<Client> clientList = new ArrayList<Client>();
+        IFDBEmp dbEmp = new DBEmployee();
+        clientList = dbEmp.findEmployeesClients(employeeID);
+        return clientList;
+    }
 }

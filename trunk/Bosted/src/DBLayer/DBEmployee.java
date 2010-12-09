@@ -9,31 +9,26 @@ import ModelLayer.Employee;
  * @author Gruppe 2 - DM71
  * December 2010
  */
-public class DBEmployee implements IFDBEmp
-{
+public class DBEmployee implements IFDBEmp {
 
     private Connection con;
 
     /** Creates a new instance of DBEmployee*/
-    public DBEmployee()
-    {
+    public DBEmployee() {
         con = DbConnection1.getInstance().getDBcon();
     }
 
-    public Employee findEmployee(String employeeNo, boolean retrieveAssociation)
-    {
+    public Employee findEmployee(String employeeNo, boolean retrieveAssociation) {
         Employee empObj = new Employee();
         empObj = singleWhere("employeeno = '" + employeeNo + "'", false);
         return empObj;
     }
 
-    public ArrayList<Employee> getAllEmployees(boolean retriveAssociation)
-    {
+    public ArrayList<Employee> getAllEmployees(boolean retriveAssociation) {
         return miscWhere("", retriveAssociation);
     }
 
-    public int insertEmployee(Employee emp)
-    {  
+    public int insertEmployee(Employee emp) {
         int rc = -1;
         String query = "INSERT INTO employee(employeeno, password, managerno, jobtitle, crud_client, crud_employee, crud_medicine, crud_car,  ssn, firstname, middlename, lastname, address, location_id, phoneno, email, start_date, in_use, stop_date)  VALUES('"
                 + emp.getEmployeeNo() + "','"
@@ -47,7 +42,7 @@ public class DBEmployee implements IFDBEmp
                 + emp.getSsn() + "','"
                 + emp.getFirstName() + "','"
                 + emp.getMiddleName() + "','"
-                + emp.getLastName() +"','"
+                + emp.getLastName() + "','"
                 + emp.getAddress() + "','"
                 + emp.getLocationID() + "','"
                 + emp.getPhoneNo() + "','"
@@ -70,8 +65,7 @@ public class DBEmployee implements IFDBEmp
         return (rc);
     }
 
-    public int updateEmployee(Employee emp)
-    {
+    public int updateEmployee(Employee emp) {
         Employee empObj = emp;
         int rc = -1;
 
@@ -94,66 +88,57 @@ public class DBEmployee implements IFDBEmp
                 + "email ='" + empObj.getEmail() + "' "
                 + " WHERE employee_id = '" + empObj.getEmployeeID() + "'";
         System.out.println("Update query:" + query);
-        try
-        { // update employee
+        try { // update employee
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             rc = stmt.executeUpdate(query);
 
             stmt.close();
         }//end try
-        catch (Exception ex)
-        {
+        catch (Exception ex) {
             System.out.println("Update exception in employee db: " + ex);
         }
         return (rc);
     }
 
-    public int deleteEmployee(String employeeNo)
-    {
+    public int deleteEmployee(String employeeNo) {
         int rc = -1;
 
         String query = "DELETE FROM employee "
                 + " WHERE employeeno = '" + employeeNo + "'";
         System.out.println("Update query:" + query);
-        try
-        { // update employee
+        try { // update employee
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             rc = stmt.executeUpdate(query);
 
             stmt.close();
         }//end try
-        catch (Exception ex)
-        {
+        catch (Exception ex) {
             System.out.println("Delete exception in employee db: " + ex);
         }
         return (rc);
     }
 
     //singlewhere is used when only one employee object is to be build
-    private Employee singleWhere(String wClause, boolean retrieveAssociation)
-    {
+    private Employee singleWhere(String wClause, boolean retrieveAssociation) {
         ResultSet results;
         Employee empObj = new Employee();
         String query = buildQuery(wClause);
         System.out.println("DbEmployee -singelWhere " + query);
-        try
-        { // read from employee
+        try { // read from employee
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             results = stmt.executeQuery(query);
             int snr = 0;
-            if (results.next())
-            {
+            if (results.next()) {
                 empObj = buildEmployee(results);
                 //missing the test on retriveassociation
 
             }//end if
             stmt.close();
         }//end try
-        catch (Exception e)
-        {
+        catch (Exception e) {
             System.out.println("Query exception - select employee : " + e);
             e.printStackTrace();
         }
@@ -163,22 +148,19 @@ public class DBEmployee implements IFDBEmp
     }
     //miscWhere is used when more than one employee is selected and build
 
-    private ArrayList miscWhere(String wClause, boolean retrieveAssociation)
-    {
+    private ArrayList miscWhere(String wClause, boolean retrieveAssociation) {
         ResultSet results;
         ArrayList list = new ArrayList();
 
         String query = buildQuery(wClause);
         System.out.println("DbEmployee " + query);
-        try
-        { // read from employee
+        try { // read from employee
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             results = stmt.executeQuery(query);
 
             int snr = 0;
-            while (results.next())
-            {
+            while (results.next()) {
                 Employee empObj = new Employee();
                 empObj = buildEmployee(results);
                 list.add(empObj);
@@ -186,20 +168,17 @@ public class DBEmployee implements IFDBEmp
             }//end while
             stmt.close();
         }//end try
-        catch (Exception e)
-        {
+        catch (Exception e) {
             System.out.println("Query exception - select employee : " + e);
             e.printStackTrace();
         }
         return list;
     }
 
-    private Employee buildEmployee(ResultSet results)
-    {
+    private Employee buildEmployee(ResultSet results) {
         Employee empObj = new Employee();
 
-        try
-        {
+        try {
             empObj.setEmployeeID(results.getInt(1));
             empObj.setEmployeeNo(results.getString(2));
             empObj.setPassword(results.getString(3));
@@ -218,9 +197,7 @@ public class DBEmployee implements IFDBEmp
             empObj.setPhoneNo(results.getInt(16));
             empObj.setEmail(results.getString(17));
 
-        } 
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             System.out.println("building employee object");
         }
 
@@ -229,20 +206,42 @@ public class DBEmployee implements IFDBEmp
     }
     //method to build the query
 
-    private String buildQuery(String wClause)
-    {
+    private String buildQuery(String wClause) {
         String query = "SELECT * FROM employee";
 
-        if (wClause.length() > 0)
-        {
+        if (wClause.length() > 0) {
             query = query + " WHERE " + wClause;
         }
 
         return query;
     }
 
-    public ArrayList<Client> findEmployeesClients(int employeeID)
-    {
+    public ArrayList<Employee> buildListOfEmployees(int clientID) {
+        ResultSet results;
+        ArrayList<Employee> list = new ArrayList<Employee>();
+        String query = "SELCT * FROM employee WHERE employee_id in(SELECT employee_id FROM employee_client WHERE client_id =  " + clientID + ")";
+        try { // read from employee
+            Statement stmt = con.createStatement();
+            stmt.setQueryTimeout(5);
+            results = stmt.executeQuery(query);
+
+            int snr = 0;
+            while (results.next()) {
+                Employee empObj = new Employee();
+                empObj = buildEmployee(results);
+                list.add(empObj);
+                //missing tes on retriveAssociation
+            }//end while
+            stmt.close();
+        }//end try
+        catch (Exception e) {
+            System.out.println("Query exception - select client : " + e);
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public ArrayList<Client> findEmployeesClients(int employeeID) {
         IFDBClient dbCli = new DBClient();
         ArrayList<Client> clientList = new ArrayList<Client>();
         clientList = dbCli.buildListOfClients(employeeID);

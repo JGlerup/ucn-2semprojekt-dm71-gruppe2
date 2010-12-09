@@ -3,6 +3,7 @@ package DBLayer;
 import java.sql.*;
 import java.util.ArrayList;
 import ModelLayer.Client;
+import ModelLayer.Employee;
 
 /**
  * @author Gruppe 2 - DM71
@@ -201,20 +202,17 @@ public class DBClient implements IFDBClient {
         return query;
     }
 
-    public ArrayList<Client> buildListOfClients(int employeeID)
-    {
+    public ArrayList<Client> buildListOfClients(int employeeID) {
         ResultSet results;
         ArrayList<Client> list = new ArrayList<Client>();
         String query = "SELCT * FROM client WHERE client_id in(SELECT client_id FROM employee_client WHERE employee_id =  " + employeeID + ")";
-         try
-        { // read from employee
+        try { // read from employee
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             results = stmt.executeQuery(query);
 
             int snr = 0;
-            while (results.next())
-            {
+            while (results.next()) {
                 Client cObj = new Client();
                 cObj = buildClient(results);
                 list.add(cObj);
@@ -222,16 +220,18 @@ public class DBClient implements IFDBClient {
             }//end while
             stmt.close();
         }//end try
-        catch (Exception e)
-        {
+        catch (Exception e) {
             System.out.println("Query exception - select client : " + e);
             e.printStackTrace();
         }
         return list;
     }
 
+    public ArrayList<Employee> findClientsEmployees(int clientID)
+    {
+        IFDBEmp dbEmp = new DBEmployee();
+        ArrayList<Employee> employeeList = new ArrayList<Employee>();
+        employeeList =  dbEmp.buildListOfEmployees(clientID);
+        return employeeList;
     }
-
-
-
-
+}

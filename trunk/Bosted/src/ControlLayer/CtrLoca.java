@@ -22,29 +22,46 @@ public class CtrLoca {
         return dbLoca.findLocation(locationID, true);
     }
 
-    public ArrayList getAllLocotions() {
+    public Location findLocationByZipCode(int zipCode) {
+        ArrayList<Location> allLoca = new ArrayList<Location>();
+        allLoca = getAllLocations();
+        boolean found = false;
+        Location l = null;
+        int index = 0;
+        while(index < allLoca.size() && !found){
+            if(allLoca.get(index).getZipCode() == zipCode){
+                found = true;
+                l = allLoca.get(index);
+            }
+            index++;
+        }
+        return l;
+    }
+
+    public ArrayList getAllLocations() {
         IFDBLoca dbLoca = new DBLocation();
         ArrayList allLoca = new ArrayList<Location>();
         allLoca = dbLoca.getAllLocations(false);
         return allLoca;
     }
 
-    public void insert(int locationID, int zipCode, String city) {
+    public void insert(int zipCode, String city) {
         IFDBLoca dbLoca = new DBLocation();
         Location locaObj = new Location();
-        locaObj.setLocationID(locationID);
         locaObj.setZipCode(zipCode);
         locaObj.setCity(city);
-
-
+        dbLoca.insertLocation(locaObj);
     }
 
-    public void updateLoca(int locationID, int zipCode, String city) {
+    public void updateLoca(int zipCodeCurrent, int zipCodeNew, String city) {
+        Location l = findLocationByZipCode(zipCodeCurrent);
+        int locationID = l.getLocationID();
         IFDBLoca dbLoca = new DBLocation();
         Location locaObj = new Location();
         locaObj.setLocationID(locationID);
-        locaObj.setZipCode(zipCode);
+        locaObj.setZipCode(zipCodeNew);
         locaObj.setCity(city);
+        dbLoca.updateLocation(locaObj);
 
     }
 

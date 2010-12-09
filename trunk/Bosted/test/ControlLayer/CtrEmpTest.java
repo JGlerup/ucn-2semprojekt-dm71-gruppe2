@@ -140,7 +140,7 @@ public class CtrEmpTest
         String employeeNoNew = "2";
         managerNo = "2";
         jobTitle = "Landstryger";
-        ssn = "1223456-7777";
+        ssn = "123450-7777";
         firstName = "Jacob";
         middleName = "Jul";
         lastName = "Glerup";
@@ -150,7 +150,7 @@ public class CtrEmpTest
         email = "Glerup9@gmail.com";
         password = "123456789";
         instance.updateEmp("Mjød123456", employeeNoNew,  managerNo, jobTitle, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
-        Employee result = instance.findEmployee("Mjød123456");
+        Employee result = instance.findEmployee("2");
         assertEquals("2", result.getManagerNo());
         assertEquals("Landstryger", result.getJobTitle());
         assertEquals("123456-7777", result.getSsn());

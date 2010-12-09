@@ -23,5 +23,8 @@ public interface IFDBEmp {
 
     public int deleteEmployee(String employeeNo);
     //delete an employee
+
+    public ArrayList<Employee> buildListOfEmployees(int clientID);
+
     public ArrayList<Client> findEmployeesClients(int employeeID);
 }

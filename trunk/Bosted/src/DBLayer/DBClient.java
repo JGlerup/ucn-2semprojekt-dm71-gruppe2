@@ -165,7 +165,7 @@ public class DBClient implements IFDBClient {
         return list;
     }
 
-    private Client buildClient(ResultSet results) {
+    public Client buildClient(ResultSet results) {
         Client cObj = new Client();
 
         try {
@@ -200,4 +200,38 @@ public class DBClient implements IFDBClient {
 
         return query;
     }
-}
+
+    public ArrayList<Client> buildListOfClients(int employeeID)
+    {
+        ResultSet results;
+        ArrayList<Client> list = new ArrayList<Client>();
+        String query = "SELCT * FROM client WHERE client_id in(SELECT client_id FROM employee_client WHERE employee_id =  " + employeeID + ")";
+         try
+        { // read from employee
+            Statement stmt = con.createStatement();
+            stmt.setQueryTimeout(5);
+            results = stmt.executeQuery(query);
+
+            int snr = 0;
+            while (results.next())
+            {
+                Client cObj = new Client();
+                cObj = buildClient(results);
+                list.add(cObj);
+                //missing tes on retriveAssociation
+            }//end while
+            stmt.close();
+        }//end try
+        catch (Exception e)
+        {
+            System.out.println("Query exception - select client : " + e);
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    }
+
+
+
+

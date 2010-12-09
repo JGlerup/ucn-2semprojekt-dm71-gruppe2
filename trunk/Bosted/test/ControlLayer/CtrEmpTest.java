@@ -85,6 +85,10 @@ public class CtrEmpTest
         System.out.println("insert");
         String managerNo = "1";
         String jobTitle = "Direktør";
+        String crudClient = "Yes";
+        String crudEmployee = "Yes";
+        String crudMedicine = "Yes";
+        String crudCar = "Yes";
         String ssn = "123456-1234";
         String firstName = "Mjød";
         String middleName = "Von";
@@ -95,12 +99,16 @@ public class CtrEmpTest
         String email = "Von@dannebrogsgade.dk";
         String password = "123456";
         CtrEmp instance = new CtrEmp();
-        instance.insert(managerNo, jobTitle, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
+        instance.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
         Employee result = instance.findEmployee("Mjød123456");
         assertEquals("1", result.getManagerNo());
         assertEquals("Direktør", result.getJobTitle());
+        assertEquals("Yes", result.getCrudClient());
+        assertEquals("Yes", result.getCrudEmployee());
+        assertEquals("Yes", result.getCrudMedicine());
+        assertEquals("Yes", result.getCrudCar());
         assertEquals("123456-1234", result.getSsn());
         assertEquals("Mjød", result.getFirstName());
         assertEquals("Von", result.getMiddleName());
@@ -121,10 +129,14 @@ public class CtrEmpTest
     public void testUpdateEmp()
     {
         System.out.println("insert");
-        String managerNo = "1";
+        String managerNo = "2";
         String jobTitle = "Direktør";
-        String ssn = "123456-1234";
-        String firstName = "Mjød";
+        String crudClient = "Yes";
+        String crudEmployee = "Yes";
+        String crudMedicine = "Yes";
+        String crudCar = "Yes";
+        String ssn = "12345678";
+        String firstName = "Karl";
         String middleName = "Von";
         String lastName = "Hansen";
         String address = "Dannebrogsgade 63";
@@ -133,14 +145,18 @@ public class CtrEmpTest
         String email = "Von@dannebrogsgade.dk";
         String password = "123456";
         CtrEmp instance = new CtrEmp();
-        instance.insert(managerNo, jobTitle, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
+        instance.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
 
 
         System.out.println("updateEmp");
-        String employeeNoNew = "2";
+        String employeeNoNew = "uhiu8";
         managerNo = "2";
         jobTitle = "Landstryger";
-        ssn = "123450-7777";
+        crudClient = "No";
+        crudEmployee = "No";
+        crudMedicine = "No";
+        crudCar = "No";
+        ssn = "123450-8888";
         firstName = "Jacob";
         middleName = "Jul";
         lastName = "Glerup";
@@ -149,18 +165,22 @@ public class CtrEmpTest
         phoneNo = 98765443;
         email = "Glerup9@gmail.com";
         password = "123456789";
-        instance.updateEmp("Mjød123456", employeeNoNew,  managerNo, jobTitle, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
-        Employee result = instance.findEmployee("2");
+        instance.updateEmp("Karl123456", employeeNoNew,  managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
+        Employee result = instance.findEmployee("uhiu8");
         assertEquals("2", result.getManagerNo());
         assertEquals("Landstryger", result.getJobTitle());
-        assertEquals("123456-7777", result.getSsn());
+        assertEquals("No", result.getCrudClient());
+        assertEquals("No", result.getCrudEmployee());
+        assertEquals("No", result.getCrudMedicine());
+        assertEquals("No", result.getCrudCar());
+        assertEquals("123450-8888", result.getSsn());
         assertEquals("Jacob", result.getFirstName());
         assertEquals("Jul", result.getMiddleName());
         assertEquals("Glerup", result.getLastName());
         assertEquals("Lærkevej 9", result.getAddress());
         assertEquals(1, result.getLocationID());
         assertEquals(98765443, result.getPhoneNo());
-        assertEquals("Gleup9@gmail.com", result.getEmail());
+        assertEquals("Glerup9@gmail.com", result.getEmail());
         assertEquals("123456789", result.getPassword());
         instance.deleteEmp(employeeNoNew);
         // TODO review the generated test code and remove the default call to fail.
@@ -175,6 +195,10 @@ public class CtrEmpTest
     {   System.out.println("insert");
         String managerNo = "1";
         String jobTitle = "Direktør";
+        String crudClient = "Yes";
+        String crudEmployee = "Yes";
+        String crudMedicine = "Yes";
+        String crudCar = "Yes";
         String ssn = "123456789";
         String firstName = "Mjød";
         String middleName = "Von";
@@ -185,7 +209,7 @@ public class CtrEmpTest
         String email = "Von@dannebrogsgade.dk";
         String password = "123456";
         CtrEmp instance = new CtrEmp();
-        instance.insert(managerNo, jobTitle, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
+        instance.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
         System.out.println("deleteEmp");
         instance.deleteEmp("Mjød123456");
         Employee result = instance.findEmployee("Mjød123456");

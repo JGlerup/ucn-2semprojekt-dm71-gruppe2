@@ -14,6 +14,10 @@ public class Employee
     private String password;
     private String managerNo;
     private String jobTitle;
+    private String crudClient;
+    private String crudEmployee;
+    private String crudMedicine;
+    private String crudCar;
     private String firstName;
     private String middleName;
     private String lastName;
@@ -32,13 +36,17 @@ public class Employee
     }
 
 
-    public Employee(int employeeID, String password, String managerNo, String jobTitle, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String ssn)
+    public Employee(int employeeID, String password, String managerNo, String jobTitle, String crud_Client, String crud_Employee, String crud_Medicine, String crud_Car, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String ssn)
     {
         this.employeeID = employeeID;
         this.employeeNo = null;
         this.password = password;
         this.managerNo = managerNo;
         this.jobTitle = jobTitle;
+        this.crudClient = crud_Client;
+        this.crudEmployee = crud_Employee;
+        this.crudMedicine = crud_Medicine;
+        this.crudCar = crud_Car;
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
@@ -58,6 +66,46 @@ public class Employee
     public void setAddress(String address)
     {
         this.address = address;
+    }
+
+    public String getCrudCar()
+    {
+        return crudCar;
+    }
+
+    public void setCrudCar(String crud_car)
+    {
+        this.crudCar = crud_car;
+    }
+
+    public String getCrudClient()
+    {
+        return crudClient;
+    }
+
+    public void setCrudClient(String crudClient)
+    {
+        this.crudClient = crudClient;
+    }
+
+    public String getCrudEmployee()
+    {
+        return crudEmployee;
+    }
+
+    public void setCrudEmployee(String crudEmployee)
+    {
+        this.crudEmployee = crudEmployee;
+    }
+
+    public String getCrudMedicine()
+    {
+        return crudMedicine;
+    }
+
+    public void setCrudMedicine(String crudMedicine)
+    {
+        this.crudMedicine = crudMedicine;
     }
 
     public String getEmail()
@@ -190,8 +238,9 @@ public class Employee
         this.ssn = ssn;
     }
 
-    public String getStartDate() {
-        return startDate.toString();
+    public String getStartDate()
+    {
+        return startDate;
     }
 
     public void setStartDate() {
@@ -199,17 +248,17 @@ public class Employee
         startDate = toDaysDate.toString();
     }
 
-    public void setNewStartDate(String newDate) {
-        startDate = newDate;
-    }
-
-    public String getStopDate() {
+    public String getStopDate()
+    {
         return stopDate;
     }
 
-    public void setStopDate(String stopDate) {
+    public void setStopDate(String stopDate)
+    {
         this.stopDate = stopDate;
     }
+
+    
 
 
     

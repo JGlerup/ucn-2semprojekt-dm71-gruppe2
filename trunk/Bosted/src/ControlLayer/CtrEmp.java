@@ -29,11 +29,15 @@ public class CtrEmp
         return allEmp;
     }
 
-    public void insert(String managerNo, String jobTitle, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String password) {
+    public void insert(String managerNo, String jobTitle, String crudClient, String crudEmployee, String crudMedicine, String crudCar, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String password) {
         IFDBEmp dbEmp = new DBEmployee();
         Employee empObj = new Employee();
         empObj.setManagerNo(managerNo);
         empObj.setJobTitle(jobTitle);
+        empObj.setCrudClient(crudClient);
+        empObj.setCrudEmployee(crudEmployee);
+        empObj.setCrudMedicine(crudMedicine);
+        empObj.setCrudCar(crudCar);
         empObj.setSsn(ssn);
         empObj.setFirstName(firstName);
         empObj.setMiddleName(middleName);
@@ -51,7 +55,7 @@ public class CtrEmp
         
     }
 
-    public void updateEmp(String employeeNoCurrent, String employeeNoNew, String managerNo, String jobTitle, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String password) {
+    public void updateEmp(String employeeNoCurrent, String employeeNoNew, String managerNo, String jobTitle, String crudClient, String crudEmployee, String crudMedicine, String crudCar, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String password) {
         IFDBEmp dbEmp = new DBEmployee();
         Employee empObj = new Employee();
         int employeeID = findEmployee(employeeNoCurrent).getEmployeeID();
@@ -59,6 +63,10 @@ public class CtrEmp
         empObj.setEmployeeNo(employeeNoNew);
         empObj.setManagerNo(managerNo);
         empObj.setJobTitle(jobTitle);
+        empObj.setCrudClient(crudClient);
+        empObj.setCrudEmployee(crudEmployee);
+        empObj.setCrudMedicine(crudMedicine);
+        empObj.setCrudCar(crudCar);
         empObj.setSsn(ssn);
         empObj.setFirstName(firstName);
         empObj.setMiddleName(middleName);
@@ -76,4 +84,15 @@ public class CtrEmp
         IFDBEmp dbEmp = new DBEmployee();
         dbEmp.deleteEmployee(employeeNo);
     }
+
+    public ArrayList<Client> findEmployeesClient(int employeeID)
+    {
+        ArrayList<Client> clientList = new ArrayList<Client>();
+        IFDBEmp dbEmp = new DBEmployee();
+        clientList = dbEmp.findEmployeesClients(employeeID);
+        return clientList;
+    }
+
+    
+
 }

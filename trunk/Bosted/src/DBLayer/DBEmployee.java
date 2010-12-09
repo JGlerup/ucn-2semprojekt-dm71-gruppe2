@@ -1,5 +1,6 @@
 package DBLayer;
 
+import ModelLayer.Client;
 import java.sql.*;
 import java.util.ArrayList;
 import ModelLayer.Employee;
@@ -34,11 +35,15 @@ public class DBEmployee implements IFDBEmp
     public int insertEmployee(Employee emp)
     {  
         int rc = -1;
-        String query = "INSERT INTO employee(employeeno, password, managerno, jobtitle, ssn, firstname, middlename, lastname, address, location_id, phoneno, email, start_date, in_use, stop_date)  VALUES('"
+        String query = "INSERT INTO employee(employeeno, password, managerno, jobtitle, crud_client, crud_employee, crud_medicine, crud_car,  ssn, firstname, middlename, lastname, address, location_id, phoneno, email, start_date, in_use, stop_date)  VALUES('"
                 + emp.getEmployeeNo() + "','"
                 + emp.getPassword() + "','"
                 + emp.getManagerNo() + "','"
                 + emp.getJobTitle() + "','"
+                + emp.getCrudClient() + "','"
+                + emp.getCrudEmployee() + "','"
+                + emp.getCrudMedicine() + "','"
+                + emp.getCrudCar() + "','"
                 + emp.getSsn() + "','"
                 + emp.getFirstName() + "','"
                 + emp.getMiddleName() + "','"
@@ -75,6 +80,10 @@ public class DBEmployee implements IFDBEmp
                 + "password ='" + empObj.getPassword() + "',"
                 + "managerno ='" + empObj.getManagerNo() + "',"
                 + "jobtitle ='" + empObj.getJobTitle() + "',"
+                + "crud_client ='" + empObj.getCrudClient() + "',"
+                + "crud_employee ='" + empObj.getCrudEmployee() + "',"
+                + "crud_medicine = '" + empObj.getCrudMedicine() + "',"
+                + "crud_car = '" + empObj.getCrudCar() + "',"
                 + "ssn ='" + empObj.getSsn() + "',"
                 + "firstname ='" + empObj.getFirstName() + "',"
                 + "middlename ='" + empObj.getMiddleName() + "',"
@@ -191,18 +200,23 @@ public class DBEmployee implements IFDBEmp
 
         try
         {
+            empObj.setEmployeeID(results.getInt(1));
             empObj.setEmployeeNo(results.getString(2));
             empObj.setPassword(results.getString(3));
             empObj.setManagerNo(results.getString(4));
             empObj.setJobTitle(results.getString(5));
-            empObj.setSsn(results.getString(6));
-            empObj.setFirstName(results.getString(7));
-            empObj.setMiddleName(results.getString(8));
-            empObj.setLastName(results.getString(9));
-            empObj.setAddress(results.getString(10));
-            empObj.setLocationID(results.getInt(11));
-            empObj.setPhoneNo(results.getInt(12));
-            empObj.setEmail(results.getString(13));
+            empObj.setCrudClient(results.getString(6));
+            empObj.setCrudEmployee(results.getString(7));
+            empObj.setCrudMedicine(results.getString(8));
+            empObj.setCrudCar(results.getString(9));
+            empObj.setSsn(results.getString(10));
+            empObj.setFirstName(results.getString(11));
+            empObj.setMiddleName(results.getString(12));
+            empObj.setLastName(results.getString(13));
+            empObj.setAddress(results.getString(14));
+            empObj.setLocationID(results.getInt(15));
+            empObj.setPhoneNo(results.getInt(16));
+            empObj.setEmail(results.getString(17));
 
         } 
         catch (Exception e)
@@ -225,5 +239,14 @@ public class DBEmployee implements IFDBEmp
         }
 
         return query;
+    }
+
+    public ArrayList<Client> findEmployeesClients(int employeeID)
+    {
+        IFDBClient dbCli = new DBClient();
+        ArrayList<Client> clientList = new ArrayList<Client>();
+        clientList = dbCli.buildListOfClients(employeeID);
+
+        return clientList;
     }
 }

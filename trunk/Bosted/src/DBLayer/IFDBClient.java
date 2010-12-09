@@ -23,4 +23,6 @@ public interface IFDBClient {
 
     public int deleteClient(String clientNo);
     //delete a client
+
+    public ArrayList<Client>buildListOfClients(int employeeID);
 }

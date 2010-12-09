@@ -1,16 +1,12 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ModelLayer;
 
-import java.util.Date;
 
 /**
- *
- * @author Kristian Byrialsen
+ * @author Gruppe 2 - DM71
+ * December 2010
  */
-public class ErrorHandlingMedicine {
+public class ErrorHandlingMedicine
+{
     private int errorHandlingMedicineID;
     private int medicineID;
     private int clientID;

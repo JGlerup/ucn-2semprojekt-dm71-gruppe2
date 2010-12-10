@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package ControlLayer;
 
 import ModelLayer.Client;
@@ -18,25 +13,36 @@ import static org.junit.Assert.*;
  *
  * @author Erik
  */
-public class CtrClientTest {
+public class CtrClientTest
+{
 
-    public CtrClientTest() {
+    public CtrClientTest() 
+    {
+
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void setUpClass() throws Exception 
+    {
+
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() throws Exception 
+    {
+
     }
 
     @Before
-    public void setUp() {
+    public void setUp() 
+    {
+
     }
 
     @After
-    public void tearDown() {
+    public void tearDown() 
+    {
+
     }
 
     /**
@@ -72,7 +78,8 @@ public class CtrClientTest {
      * Test of insert method, of class CtrClient.
      */
     @Test
-    public void testInsertClient() {
+    public void testInsertClient()
+    {
         System.out.println("insert");
         String description = "jeg leger med aber";
         String interests = "jeg elsker bananer";
@@ -108,7 +115,8 @@ public class CtrClientTest {
      * Test of updateClient method, of class CtrClient.
      */
     @Test
-    public void testUpdateClient() {
+    public void testUpdateClient()
+    {
         System.out.println("insert");
         String description = "jeg leger med aber";
         String interests = "jeg elsker bananer";
@@ -161,7 +169,8 @@ public class CtrClientTest {
      * Test of deleteClient method, of class CtrClient.
      */
     @Test
-    public void testDeleteClient() {
+    public void testDeleteClient()
+    {
         System.out.println("deleteClient");
                 System.out.println("insert");
         String description = "jeg leger med aber";

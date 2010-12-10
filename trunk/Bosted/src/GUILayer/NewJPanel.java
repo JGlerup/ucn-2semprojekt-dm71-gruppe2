@@ -33,6 +33,7 @@ public class NewJPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        btnCreateEmployee = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -47,13 +48,22 @@ public class NewJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        btnCreateEmployee.setText("Opret");
+        btnCreateEmployee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateEmployeeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(234, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addComponent(btnCreateEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(124, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -61,11 +71,56 @@ public class NewJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(113, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(151, Short.MAX_VALUE)
+                .addComponent(btnCreateEmployee)
+                .addGap(126, 126, 126))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCreateEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateEmployeeActionPerformed
+        // TODO add your handling code here:
+        String password = txtEmployeePassword.getText();
+        String managerNo = txtEmployeeManagerNo.getText();
+        String address = txtEmployeeAddress.getText();
+        String city = txtEmployeeCity.getText();
+        String email = txtEmployeeEmail.getText();
+        String firstName = txtEmployeeFirstName.getText();
+        String middleName = txtEmployeeMiddleName.getText();
+        String lastName = txtEmployeeLastName.getText();
+        int phoneNo = Integer.parseInt(txtEmployeePhoneNo.getText());
+        String jobTitle = txtEmployeeJobTitle.getText();
+        String ssn = txtEmployeeSsn.getText();
+        int zipCode = Integer.parseInt(txtEmployeeZipCode.getText());
+        String crudEmployee = "No";
+        if(checkBoxCrudEmployee.isSelected()){
+            crudEmployee = "Yes";
+        }
+        String crudClient = "No";
+        if(checkBoxCrudClient.isSelected()){
+            crudClient = "Yes";
+        }
+        String crudMedicine = "No";
+        if(checkBoxCrudMedicine.isSelected()){
+            crudMedicine = "Yes";
+        }
+        String crudCar = "No";
+        if(checkBoxCrudCar.isSelected()){
+            crudCar = "Yes";
+        }
+        String inUse = "No";
+        if(checkBoxInUse.isSelected()){
+            inUse = "Yes";
+        }
+        CtrEmp ctrEmp = new CtrEmp();
+        CtrLoca ctrLoca = new CtrLoca();
+        int locationID = ctrLoca.findLocationByZipCode(zipCode).getLocationID();
+        ctrEmp.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
+}//GEN-LAST:event_btnCreateEmployeeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCreateEmployee;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

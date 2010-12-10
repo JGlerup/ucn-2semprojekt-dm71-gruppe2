@@ -16,10 +16,26 @@ public class CtrMedi
 
     }
 
-    public Medicine findMedicineByName(int clientID, String name)
+    public Medicine findMedicineByClientIDAndName(int clientID, String name)
     {
         IFDBMedi dbMedi = new DBMedicine();
         return dbMedi.findMedicineByClientIDAndName(clientID, name, true);
+    }
+
+    public Medicine findMedicine(int medicineID)
+    {
+        Medicine medi = new Medicine();
+        try
+        {
+            IFDBMedi dbMedi = new DBMedicine();
+            medi = dbMedi.findMedicine(medicineID, true);
+        }
+        catch (Exception e)
+        {
+            System.out.println("Query exception - select medicine : " + e);
+            e.printStackTrace();
+        }
+        return medi;
     }
 
     public ArrayList<Medicine> getAllMedicine()
@@ -30,10 +46,13 @@ public class CtrMedi
         return allMedi;
     }
 
-    public void insertMedicine(String name, String description, int quantity)
+    public void insertMedicine(int frequencyID, int externalContactID, int clientID, String name, String description, int quantity)
     {
         IFDBMedi dbMedi = new DBMedicine();
         Medicine mediObj = new Medicine();
+        mediObj.setFrequencyID(frequencyID);
+        mediObj.setExternalContactID(externalContactID);
+        mediObj.setClientID(clientID);
         mediObj.setName(name);
         mediObj.setDescription(description);
         mediObj.setThisDate();
@@ -41,10 +60,13 @@ public class CtrMedi
         dbMedi.insertMedicine(mediObj);
     }
 
-    public void updateMedicine(String name, String description, String date, int quantity)
+    public void updateMedicine(int frequencyID, int externalContactID, int clientID, String name, String description, String date, int quantity)
     {
         IFDBMedi dbMedi = new DBMedicine();
         Medicine mediObj = new Medicine();
+        mediObj.setFrequencyID(frequencyID);
+        mediObj.setExternalContactID(externalContactID);
+        mediObj.setClientID(clientID);
         mediObj.setName(name);
         mediObj.setDescription(description);
         mediObj.setDate(date);
@@ -52,10 +74,10 @@ public class CtrMedi
         dbMedi.updateMedicine(mediObj);
     }
 
-    public void deleteMedicine(String name)
+    public void deleteMedicine(int medicineID)
     {
         IFDBMedi dbMedi = new DBMedicine();
-        dbMedi.deleteMedicine(name);
+        dbMedi.deleteMedicine(medicineID);
     }
 
     public ErrorHandlingMedicine findErrorHandlingMedicineByID(int errorHandlingMedicineID)
@@ -85,27 +107,44 @@ public class CtrMedi
         String managermessage = null;
         try
         {
-            IFDBErrorHandMed dbErHaMedDa = new DBErrorHandlingMedicine();
-            ErrorHandlingMedicine erHaMedObj = new ErrorHandlingMedicine();
-            erHaMedObj.setMedicineID(medicineID);
-            erHaMedObj.setClientID(clientID);
-            erHaMedObj.setEmployeeID(employeeID);
-            erHaMedObj.setThisDate();
-            erHaMedObj.setEpisode(episode);
-            erHaMedObj.setQuantity(quantity);
-            dbErHaMedDa.insertErrorHandlingMedicine(erHaMedObj);
-            managermessage = sendEmailtoManager(findManager(managerNo));
+            IFDBMedi dbMedi = new DBMedicine();
+            Medicine medi = new Medicine();
+            medi = dbMedi.findMedicine(medicineID, true);
+            int newQuantity = medi.getQuantity() - quantity;
+            if(medi.getQuantity() > 0 || newQuantity >= 0)
+            {
+                try
+                {
+                    IFDBErrorHandMed dbErHaMedDa = new DBErrorHandlingMedicine();
+                    ErrorHandlingMedicine erHaMedObj = new ErrorHandlingMedicine();
+                    medi.setQuantity(newQuantity);
+                    dbMedi.updateMedicine(medi);
+                    erHaMedObj.setMedicineID(medicineID);
+                    erHaMedObj.setClientID(clientID);
+                    erHaMedObj.setEmployeeID(employeeID);
+                    erHaMedObj.setThisDate();
+                    erHaMedObj.setEpisode(episode);
+                    erHaMedObj.setQuantity(quantity);
+                    dbErHaMedDa.insertErrorHandlingMedicine(erHaMedObj);
+                    managermessage = sendEmailtoManager(findManager(managerNo));
+                }
+                catch (Exception Ex)
+                {
+                    System.out.println("Update exception in errorHandlingMedicine db: " + Ex);
+                }
+            }
         }
-        catch (Exception Ex)
+        catch (Exception e)
         {
-            
+            System.out.println("Query exception - select medicine : " + e);
+            e.printStackTrace();
         }
         return managermessage;
     }
 
     public void updateErrorHandlingMedicine(int medicineID, int clientID, int employeeID, String date, String episode, int quantity)
     {
-        IFDBErrorHandMed dbErHaMedDa = new DBErrorHandlingMedicine();
+        IFDBErrorHandMed dbErHaMed = new DBErrorHandlingMedicine();
         ErrorHandlingMedicine erHaMedObj = new ErrorHandlingMedicine();
         erHaMedObj.setMedicineID(medicineID);
         erHaMedObj.setClientID(clientID);
@@ -113,13 +152,20 @@ public class CtrMedi
         erHaMedObj.setDate(date);
         erHaMedObj.setEpisode(episode);
         erHaMedObj.setQuantity(quantity);
-        dbErHaMedDa.updateErrorHandlingMedicine(erHaMedObj);
+        dbErHaMed.updateErrorHandlingMedicine(erHaMedObj);
     }
 
-    public void deleteErrorHandlingMedicine(String name)
+    public void deleteErrorHandlingMedicine(int ErrorHandlingMedicineID)
     {
-        IFDBMedi dbMedi = new DBMedicine();
-        dbMedi.deleteMedicine(name);
+        try
+        {
+            IFDBErrorHandMed dbErHaMed = new DBErrorHandlingMedicine();
+            dbErHaMed.deleteErrorHandlingMedicine(ErrorHandlingMedicineID);
+        }
+        catch (Exception ex)
+        {
+            System.out.println("Delete exception in errorHandlingMedicine db: " + ex);
+        }
     }
 
     public Employee findManager(String managerNo)

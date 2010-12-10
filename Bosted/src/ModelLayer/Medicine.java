@@ -1,37 +1,74 @@
 package ModelLayer;
 
-import java.util.Date;
-
 /**
  * @author Gruppe 2 - DM71
  * December 2010
  */
 public class Medicine
 {
-
+    private int medicineID;
+    private int frequencyID;
+    private int externalContactID;
+    private int clientID;
     private String name;
     private String description;
     private String date;
     private int quantity;
 
 
+    public Medicine()
+    {
 
-public Medicine()
-{
+    }
 
-}
+    public Medicine(String name, String description, int quantity)
+    {
+        this.name = name;
+        this.description = description;
+        this.date = "";
+        this.quantity = quantity;
+        setThisDate();
+    }
 
+    public int getMedicineID()
+    {
+        return medicineID;
+    }
 
-public Medicine(String name, String description, int quantity)
-{
+    public void setMedicineID(int medicineID)
+    {
+        this.medicineID = medicineID;
+    }
 
-    this.name = name;
-    this.description = description;
-    this.date = "";
-    this.quantity = quantity;
-    setThisDate();
+    public int getClientID()
+    {
+        return clientID;
+    }
 
-}
+    public void setClientID(int clientID)
+    {
+        this.clientID = clientID;
+    }
+
+    public int getExternalContactID()
+    {
+        return externalContactID;
+    }
+
+    public void setExternalContactID(int externalContactID)
+    {
+        this.externalContactID = externalContactID;
+    }
+
+    public int getFrequencyID()
+    {
+        return frequencyID;
+    }
+
+    public void setFrequencyID(int frequencyID)
+    {
+        this.frequencyID = frequencyID;
+    }
 
     public String getDate()
     {

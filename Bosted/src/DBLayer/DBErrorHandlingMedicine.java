@@ -92,15 +92,15 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
         return (rc);
     }
 
-    public int deleteErrorHandlingMedicine(int errorHandlingMedicineNo)
+    public int deleteErrorHandlingMedicine(int errorHandlingMedicineID)
     {
         int rc = -1;
 
         String query = "DELETE FROM errorHandlingMedicine "
-                + " WHERE errorHandlingMedicineno = '" + errorHandlingMedicineNo + "'";
+                + " WHERE errorHandlingMedicineid = '" + errorHandlingMedicineID + "'";
         System.out.println("Update query:" + query);
         try
-        { // update errorHandlingMedicine
+        { // delete errorHandlingMedicine
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             rc = stmt.executeUpdate(query);
@@ -126,7 +126,6 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             results = stmt.executeQuery(query);
-            int snr = 0;
             if (results.next())
             {
                 ehmObj = buildErrorHandlingMedicine(results);
@@ -158,14 +157,12 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             results = stmt.executeQuery(query);
-
-            int snr = 0;
             while (results.next())
             {
                 ErrorHandlingMedicine ehmObj = new ErrorHandlingMedicine();
                 ehmObj = buildErrorHandlingMedicine(results);
                 list.add(ehmObj);
-                //missing tes on retriveAssociation
+                //missing test on retriveAssociation
             }//end while
             stmt.close();
         }//end try
@@ -183,16 +180,16 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
 
         try
         {
-            ehmObj.setMedicineID(results.getInt(2));
+            ehmObj.setErrorHandlingMedicineID(results.getInt(1));
             ehmObj.setClientID(results.getInt(3));
             ehmObj.setEmployeeID(results.getInt(4));
             ehmObj.setDate(results.getString(5));
             ehmObj.setEpisode(results.getString(6));
             ehmObj.setQuantity(results.getInt(7));
 
-        } catch (Exception e)
+        } catch (Exception Ex)
         {
-            System.out.println("building errorHandlingMedicine object");
+            System.out.println("building errorHandlingMedicine object" + Ex);
         }
 
         return ehmObj;

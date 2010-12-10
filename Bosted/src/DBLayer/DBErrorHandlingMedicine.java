@@ -22,7 +22,7 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
     public ErrorHandlingMedicine findErrorHandlingMedicine(int errorHandlingMedicineID, boolean retrieveAssociation)
     {
         ErrorHandlingMedicine ehmObj = new ErrorHandlingMedicine();
-        ehmObj = singleWhere("errorHandlingMedicineno = '" + errorHandlingMedicineID + "'", false);
+        ehmObj = singleWhere("errorhandlingmedicine_id = '" + errorHandlingMedicineID + "'", false);
         return ehmObj;
     }
 
@@ -75,7 +75,7 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
                 + "date ='" + ehmObj.getDate() + "', "
                 + "episode ='" + ehmObj.getEpisode() + "' "
                 + "quantity ='" + ehmObj.getQuantity() + "' "
-                + " WHERE errorHandlingMedicineid = '" + ehmObj.getErrorHandlingMedicineID() + "'";
+                + " WHERE errorHandlingMedicine_id = '" + ehmObj.getErrorHandlingMedicineID() + "'";
         System.out.println("Update query:" + query);
         try
         { // update errorHandlingMedicine
@@ -97,7 +97,7 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
         int rc = -1;
 
         String query = "DELETE FROM errorHandlingMedicine "
-                + " WHERE errorHandlingMedicineid = '" + errorHandlingMedicineID + "'";
+                + " WHERE errorHandlingMedicine_id = '" + errorHandlingMedicineID + "'";
         System.out.println("Update query:" + query);
         try
         { // delete errorHandlingMedicine

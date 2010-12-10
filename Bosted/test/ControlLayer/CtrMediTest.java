@@ -1,5 +1,8 @@
 package ControlLayer;
 
+import java.util.Date;
+import ModelLayer.ErrorHandlingMedicine;
+import ModelLayer.Medicine;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -8,8 +11,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author Anita
+ * @author Gruppe 2 - DM71
+ * December 2010
  */
 public class CtrMediTest
 {
@@ -94,13 +97,53 @@ public class CtrMediTest
     @Test
     public void testInsertMedicine()
     {
-
+        System.out.println("insert");
+        int frequencyID = 1;
+        int externalContactID = 1;
+        int clientID = 1;
+        String name = "bananflue";
+        String description = "ØreMedicin";
+        int quantity = 40;
+        CtrMedi instance = new CtrMedi();
+        instance.insertMedicine(frequencyID, externalContactID, clientID, name, description, quantity);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+        Medicine result = instance.findMedicineByClientIDAndName(1, "bananflue");
+        assertEquals(1, result.getFrequencyID());
+        assertEquals(1, result.getExternalContactID());
+        assertEquals(1, result.getClientID());
+        assertEquals("bananflue", result.getName());
+        assertEquals("ØreMedicin", result.getDescription());
+        assertEquals(40, result.getQuantity());
+        instance.deleteMedicine(result.getMedicineID());
     }
 
     @Test
-    public void testInsertErrorHandleMedicine()
+    public void testInsertErrorHandlingMedicine()
     {
-
+//
+        System.out.println("insert");
+        int medicineID = 1;
+        int clientID = 1;
+        int employeeID = 2;
+        String episode = "Hunden spiste den";
+        int quantity = 1;
+        String managerNo = "1";
+        CtrMedi instance = new CtrMedi();
+        instance.insertErrorHandlingMedicine(medicineID, clientID, employeeID, episode, quantity, managerNo);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+        Medicine result = instance.findMedicine(1);
+        result.setThisDate();
+        String date = result.getDate();
+//        Arraylist<ErrorHandlingMedicine> results = instance.getAllErrorHandlingMedicineByDate(date);
+//        assertEquals(1 , results.getFrequencyID());
+//        assertEquals(1, results.getExternalContactID());
+//        assertEquals(1, results.getClientID());
+//        assertEquals("bananflue", results.getName());
+//        assertEquals("ØreMedicin", results.getDescription());
+//        assertEquals(40, results.getQuantity());
+//        instance.deleteMedicine(result.getMedicineID());
     }
 
     @Test

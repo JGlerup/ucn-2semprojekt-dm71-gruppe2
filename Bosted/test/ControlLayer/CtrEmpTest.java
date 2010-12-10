@@ -146,8 +146,6 @@ public class CtrEmpTest
         String password = "123456";
         CtrEmp instance = new CtrEmp();
         instance.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
-
-
         System.out.println("updateEmp");
         String employeeNoNew = "uhiu8";
         managerNo = "2";

@@ -7,6 +7,7 @@ package ControlLayer;
 import ModelLayer.*;
 import DBLayer.*;
 import java.util.ArrayList;
+import ExceptionsPack.*;
 
 /**
  *
@@ -22,7 +23,7 @@ public class CtrLoca {
         return dbLoca.findLocation(locationID, true);
     }
 
-    public Location findLocationByZipCode(int zipCode) {
+    public Location findLocationByZipCode(int zipCode) throws NoSuchZipCodeException{
         ArrayList<Location> allLoca = new ArrayList<Location>();
         allLoca = getAllLocations();
         boolean found = false;
@@ -35,7 +36,12 @@ public class CtrLoca {
             }
             index++;
         }
+        if(l == null){
+            throw new NoSuchZipCodeException("Postnr. " + zipCode + " eksisterer ikke.");
+        }
+        else{
         return l;
+        }
     }
 
     public ArrayList getAllLocations() {
@@ -54,6 +60,7 @@ public class CtrLoca {
     }
 
     public void updateLoca(int zipCodeCurrent, int zipCodeNew, String city) {
+        try{
         Location l = findLocationByZipCode(zipCodeCurrent);
         int locationID = l.getLocationID();
         IFDBLoca dbLoca = new DBLocation();
@@ -62,6 +69,10 @@ public class CtrLoca {
         locaObj.setZipCode(zipCodeNew);
         locaObj.setCity(city);
         dbLoca.updateLocation(locaObj);
+        }
+        catch(NoSuchZipCodeException e){
+            e.getMessage();
+        }
 
     }
 

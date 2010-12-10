@@ -14,17 +14,21 @@ public interface IFDBMedi
 {
 
     public Medicine findMedicineByClientIDAndName(int clientID, String name, boolean retrieveAssociation);
-    //find one employee having the employeeNo
+    //find one medicine having the clientID and medicienName
+
+    public Medicine findMedicine(int medicineID, boolean retrieveAssociation);
+    //find one medicine having the medicienID
 
     public ArrayList<Medicine> getAllMedicine(boolean retriveAssociation);
     //find one medicine having the fname
+
     public int insertMedicine(Medicine medi);
     //update information about an medicine
 
     public int updateMedicine(Medicine medi);
     //update information about an employee
 
-    public int deleteMedicine(String name);
+    public int deleteMedicine(int medicineID);
     //delete an employee
 
 }

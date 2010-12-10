@@ -13,7 +13,7 @@ public class DBMedicine implements IFDBMedi
 
     private Connection con;
 
-    /** Creates a new instance of DBWorksOn */
+    /** Creates a new instance of DBMedicine */
     public DBMedicine()
     {
         con = DbConnection1.getInstance().getDBcon();
@@ -26,16 +26,26 @@ public class DBMedicine implements IFDBMedi
         return mediObj;
     }
 
+    public Medicine findMedicine(int medicineID, boolean retrieveAssociation)
+    {
+        Medicine mediObj = new Medicine();
+        mediObj = singleWhere("medicienid = " + medicineID , false);
+        return mediObj;
+    }
+
+
     public ArrayList<Medicine> getAllMedicine(boolean retriveAssociation)
     {
         return miscWhere("", retriveAssociation);
     }
 
     public int insertMedicine(Medicine medi)
-    {  //call to get the next ssn number
-
+    {  
         int rc = -1;
         String query = "INSERT INTO medicine(name, description, date, quantity)  VALUES('"
+                + medi.getFrequencyID() + ","
+                + medi.getExternalContactID() + ","
+                + medi.getClientID() + ",'"
                 + medi.getName() + "','"
                 + medi.getDescription() + "','"
                 + medi.getDate() + "','"
@@ -62,10 +72,14 @@ public class DBMedicine implements IFDBMedi
         int rc = -1;
 
         String query = "UPDATE medicine SET "
-                + "description ='" + mediObj.getDescription() + "' "
-                + "date ='" + mediObj.getDate() + "' "
-                + "quantity ='" + mediObj.getQuantity() + "' "
-                + " WHERE name = '" + mediObj.getName() + "' ";
+                + "frequencyid = " + mediObj.getFrequencyID() + " "
+                + "externalcontactid = " + mediObj.getExternalContactID() + " "
+                + "clientid = " + mediObj.getClientID() + " "
+                + "name = '" + mediObj.getName() + "' "
+                + "description = '" + mediObj.getDescription() + "' "
+                + "date = '" + mediObj.getDate() + "' "
+                + "quantity = '" + mediObj.getQuantity() + "' "
+                + " WHERE medicineID = " + mediObj.getMedicineID();
         System.out.println("Update query:" + query);
         try
         { // update medicine
@@ -82,12 +96,12 @@ public class DBMedicine implements IFDBMedi
         return (rc);
     }
 
-    public int deleteMedicine(String name)
+    public int deleteMedicine(int medicineID)
     {
         int rc = -1;
 
         String query = "DELETE FROM medicine "
-                + " WHERE name = '" + name + "'";
+                + " WHERE medicine = '" + medicineID + "'";
         System.out.println("Update query:" + query);
         try
         { // update medicine
@@ -116,7 +130,6 @@ public class DBMedicine implements IFDBMedi
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             results = stmt.executeQuery(query);
-            int snr = 0;
             if (results.next())
             {
                 mediObj = buildMedicine(results);
@@ -136,10 +149,10 @@ public class DBMedicine implements IFDBMedi
     }
     //miscWhere is used when more than one employee is selected and build
 
-    private ArrayList miscWhere(String wClause, boolean retrieveAssociation)
+    private ArrayList<Medicine> miscWhere(String wClause, boolean retrieveAssociation)
     {
         ResultSet results;
-        ArrayList list = new ArrayList();
+        ArrayList<Medicine> list = new ArrayList();
 
         String query = buildQuery(wClause);
         System.out.println("DbMedicine " + query);
@@ -148,8 +161,6 @@ public class DBMedicine implements IFDBMedi
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             results = stmt.executeQuery(query);
-
-            int snr = 0;
             while (results.next())
             {
                 Medicine mediObj = new Medicine();
@@ -161,7 +172,7 @@ public class DBMedicine implements IFDBMedi
         }//end try
         catch (Exception e)
         {
-            System.out.println("Query exception - select medicine : " + e);
+            System.out.println("Query exception - select medicine : ");
             e.printStackTrace();
         }
         return list;
@@ -173,10 +184,14 @@ public class DBMedicine implements IFDBMedi
 
         try
         {
-            mediObj.setName(results.getString(1));
-            mediObj.setDescription(results.getString(2));
-            mediObj.setDate(results.getString(3));
-            mediObj.setQuantity(results.getInt(4));
+            mediObj.setMedicineID(results.getInt(1));
+            mediObj.setFrequencyID(results.getInt(2));
+            mediObj.setExternalContactID(results.getInt(3));
+            mediObj.setClientID(results.getInt(4));
+            mediObj.setName(results.getString(5));
+            mediObj.setDescription(results.getString(6));
+            mediObj.setDate(results.getString(7));
+            mediObj.setQuantity(results.getInt(8));
         } 
         catch (Exception e)
         {

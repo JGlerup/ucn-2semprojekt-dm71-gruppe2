@@ -105,11 +105,10 @@ public class CtrMedi
     public String insertErrorHandlingMedicine(int medicineID, int clientID, int employeeID, String episode, int quantity, String managerNo)
     {
         String managermessage = null;
-        try
+        Medicine medi = new Medicine();
+        medi = findMedicine(medicineID);
+        if(medi.getExternalContactID() != 0)
         {
-            IFDBMedi dbMedi = new DBMedicine();
-            Medicine medi = new Medicine();
-            medi = dbMedi.findMedicine(medicineID, true);
             int newQuantity = medi.getQuantity() - quantity;
             if(medi.getQuantity() > 0 || newQuantity >= 0)
             {
@@ -118,7 +117,7 @@ public class CtrMedi
                     IFDBErrorHandMed dbErHaMedDa = new DBErrorHandlingMedicine();
                     ErrorHandlingMedicine erHaMedObj = new ErrorHandlingMedicine();
                     medi.setQuantity(newQuantity);
-                    dbMedi.updateMedicine(medi);
+                    updateMedicine(medi.getFrequencyID(), medi.getExternalContactID(), medi.getClientID(), medi.getName(), medi.getDescription(), medi.getDate(), medi.getQuantity());
                     erHaMedObj.setMedicineID(medicineID);
                     erHaMedObj.setClientID(clientID);
                     erHaMedObj.setEmployeeID(employeeID);
@@ -126,7 +125,7 @@ public class CtrMedi
                     erHaMedObj.setEpisode(episode);
                     erHaMedObj.setQuantity(quantity);
                     dbErHaMedDa.insertErrorHandlingMedicine(erHaMedObj);
-                    managermessage = sendEmailtoManager(findManager(managerNo));
+                    managermessage = sendEmailtoManager(findManager(managerNo)) + " om hændelsen.";
                 }
                 catch (Exception Ex)
                 {
@@ -134,25 +133,58 @@ public class CtrMedi
                 }
             }
         }
-        catch (Exception e)
-        {
-            System.out.println("Query exception - select medicine : " + e);
-            e.printStackTrace();
-        }
         return managermessage;
     }
 
-    public void updateErrorHandlingMedicine(int medicineID, int clientID, int employeeID, String date, String episode, int quantity)
+    public String updateErrorHandlingMedicine(int errorHandlingMedicineID, int medicineID, int clientID, int employeeID, String date, String episode, int quantity, String managerNo)
     {
-        IFDBErrorHandMed dbErHaMed = new DBErrorHandlingMedicine();
-        ErrorHandlingMedicine erHaMedObj = new ErrorHandlingMedicine();
-        erHaMedObj.setMedicineID(medicineID);
-        erHaMedObj.setClientID(clientID);
-        erHaMedObj.setEmployeeID(employeeID);
-        erHaMedObj.setDate(date);
-        erHaMedObj.setEpisode(episode);
-        erHaMedObj.setQuantity(quantity);
-        dbErHaMed.updateErrorHandlingMedicine(erHaMedObj);
+        String managermessage = null;
+        Medicine medi = new Medicine();
+        ErrorHandlingMedicine erHaMed = new ErrorHandlingMedicine();
+        erHaMed = findErrorHandlingMedicineByID(errorHandlingMedicineID);
+        medi = findMedicine(medicineID);
+        if(medi.getExternalContactID() != 0 || erHaMed.getQuantity() != quantity)
+        {
+             try
+            {
+                int newQuantity = medi.getQuantity() + quantity;
+                IFDBErrorHandMed dbErHaMed = new DBErrorHandlingMedicine();
+                ErrorHandlingMedicine erHaMedObj = new ErrorHandlingMedicine();
+                erHaMedObj.setMedicineID(medicineID);
+                erHaMedObj.setClientID(clientID);
+                erHaMedObj.setEmployeeID(employeeID);
+                erHaMedObj.setDate(date);
+                erHaMedObj.setEpisode(episode);
+                erHaMedObj.setQuantity(newQuantity);
+                dbErHaMed.updateErrorHandlingMedicine(erHaMedObj);
+                managermessage = sendEmailtoManager(findManager(managerNo)) + " om opdateringen.";
+            }
+            catch (Exception Ex)
+            {
+                System.out.println("Update exception in errorHandlingMedicine db: " + Ex);
+            }
+        }
+        else
+        {
+             try
+            {
+                IFDBErrorHandMed dbErHaMed = new DBErrorHandlingMedicine();
+                ErrorHandlingMedicine erHaMedObj = new ErrorHandlingMedicine();
+                erHaMedObj.setMedicineID(medicineID);
+                erHaMedObj.setClientID(clientID);
+                erHaMedObj.setEmployeeID(employeeID);
+                erHaMedObj.setDate(date);
+                erHaMedObj.setEpisode(episode);
+                erHaMedObj.setQuantity(quantity);
+                dbErHaMed.updateErrorHandlingMedicine(erHaMedObj);
+                managermessage = sendEmailtoManager(findManager(managerNo)) + " om opdateringen.";
+            }
+            catch (Exception Ex)
+            {
+                System.out.println("Update exception in errorHandlingMedicine db: " + Ex);
+            }
+        }
+        return managermessage;
     }
 
     public void deleteErrorHandlingMedicine(int ErrorHandlingMedicineID)

@@ -10,8 +10,7 @@ create table frequency
 	time_per_day		int			not null,
 	quantity_each_time	int			not null,
 	description_usage	varchar(200)not null,
-	date				date,
-	);
+	date				date,);
 
 create table car 
 	(car_id				int			PRIMARY KEY IDENTITY,

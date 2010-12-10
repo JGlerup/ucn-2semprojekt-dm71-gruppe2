@@ -97,7 +97,7 @@ public class CtrMedi
     public ArrayList<ErrorHandlingMedicine> getAllErrorHandlingMedicineByDate(String date)
     {
         IFDBErrorHandMed dbAllErHaMedDa = new DBErrorHandlingMedicine();
-        ArrayList allErHaMedDa = new ArrayList<Medicine>();
+        ArrayList<ErrorHandlingMedicine> allErHaMedDa = new ArrayList<ErrorHandlingMedicine>();
         allErHaMedDa = dbAllErHaMedDa.getAllErrorHandlingMedicinesByDate(date, false);
         return allErHaMedDa;
     }

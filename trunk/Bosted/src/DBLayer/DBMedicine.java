@@ -22,14 +22,14 @@ public class DBMedicine implements IFDBMedi
     public Medicine findMedicineByClientIDAndName(int clientID, String name, boolean retrieveAssociation)
     {
         Medicine mediObj = new Medicine();
-        mediObj = singleWhere("clientid = " + clientID + " AND name = '" + name + "'", false);
+        mediObj = singleWhere("client_id = " + clientID + " AND name = '" + name + "'", false);
         return mediObj;
     }
 
     public Medicine findMedicine(int medicineID, boolean retrieveAssociation)
     {
         Medicine mediObj = new Medicine();
-        mediObj = singleWhere("medicienid = " + medicineID , false);
+        mediObj = singleWhere("medicine_id = " + medicineID , false);
         return mediObj;
     }
 
@@ -42,14 +42,14 @@ public class DBMedicine implements IFDBMedi
     public int insertMedicine(Medicine medi)
     {  
         int rc = -1;
-        String query = "INSERT INTO medicine(name, description, date, quantity)  VALUES('"
+        String query = "INSERT INTO medicine(frequency_id, externalcontact_id, client_id, name, description, date, quantity)  VALUES("
                 + medi.getFrequencyID() + ","
                 + medi.getExternalContactID() + ","
                 + medi.getClientID() + ",'"
                 + medi.getName() + "','"
                 + medi.getDescription() + "','"
-                + medi.getDate() + "','"
-                + medi.getQuantity() + ",";
+                + medi.getDate() + "',"
+                + medi.getQuantity() + ")";
 
         System.out.println("insert : " + query);
         try
@@ -72,14 +72,14 @@ public class DBMedicine implements IFDBMedi
         int rc = -1;
 
         String query = "UPDATE medicine SET "
-                + "frequencyid = " + mediObj.getFrequencyID() + " "
-                + "externalcontactid = " + mediObj.getExternalContactID() + " "
-                + "clientid = " + mediObj.getClientID() + " "
+                + "frequency_id = " + mediObj.getFrequencyID() + " "
+                + "externalcontact_id = " + mediObj.getExternalContactID() + " "
+                + "client_id = " + mediObj.getClientID() + " "
                 + "name = '" + mediObj.getName() + "' "
                 + "description = '" + mediObj.getDescription() + "' "
                 + "date = '" + mediObj.getDate() + "' "
                 + "quantity = '" + mediObj.getQuantity() + "' "
-                + " WHERE medicineID = " + mediObj.getMedicineID();
+                + " WHERE medicine_id = " + mediObj.getMedicineID();
         System.out.println("Update query:" + query);
         try
         { // update medicine
@@ -101,7 +101,7 @@ public class DBMedicine implements IFDBMedi
         int rc = -1;
 
         String query = "DELETE FROM medicine "
-                + " WHERE medicine = '" + medicineID + "'";
+                + " WHERE medicine_id = " + medicineID;
         System.out.println("Update query:" + query);
         try
         { // update medicine

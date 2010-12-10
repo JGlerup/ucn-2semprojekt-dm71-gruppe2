@@ -5,6 +5,7 @@
 package ControlLayer;
 
 import ModelLayer.Location;
+import ExceptionsPack.NoSuchZipCodeException;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -61,8 +62,13 @@ public class CtrLocaTest {
         int zipCode = 9000;
         CtrLoca instance = new CtrLoca();
         String expResult = "Aalborg";
-        Location result = instance.findLocationByZipCode(zipCode);
-        assertEquals(expResult, result.getCity());
+        try {
+            Location result = instance.findLocationByZipCode(zipCode);
+            assertEquals(expResult, result.getCity());
+        } catch (NoSuchZipCodeException e) {
+            System.out.print(e.getMessage());
+        }
+
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
@@ -90,10 +96,15 @@ public class CtrLocaTest {
         String city = "Super secret city";
         CtrLoca instance = new CtrLoca();
         instance.insert(zipCode, city);
-        Location result = instance.findLocationByZipCode(zipCode);
-        assertEquals(zipCode, result.getZipCode());
-        assertEquals(city, result.getCity());
-        instance.deleteLoca(result.getLocationID());
+        try {
+            Location result = instance.findLocationByZipCode(zipCode);
+            assertEquals(zipCode, result.getZipCode());
+            assertEquals(city, result.getCity());
+            instance.deleteLoca(result.getLocationID());
+        } catch (NoSuchZipCodeException e) {
+            System.out.println(e.getMessage());
+        }
+
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
 
@@ -110,16 +121,19 @@ public class CtrLocaTest {
         int zipCode = 10002;
         String city = "Rapture";
         instance.insert(zipCode, city);
-        int zipCodeCurrent = instance.findLocationByZipCode(zipCode).getZipCode();
-
-        System.out.println("update location");
-        int zipCodeNew = 10003;
-        city = "Las Vegas";
-        instance.updateLoca(zipCodeCurrent, zipCodeNew, city);
-        Location result = instance.findLocationByZipCode(zipCodeNew);
-        assertEquals(zipCodeNew, result.getZipCode());
-        assertEquals(city, result.getCity());
-        instance.deleteLoca(result.getLocationID());
+        try {
+            int zipCodeCurrent = instance.findLocationByZipCode(zipCode).getZipCode();
+            System.out.println("update location");
+            int zipCodeNew = 10003;
+            city = "Las Vegas";
+            instance.updateLoca(zipCodeCurrent, zipCodeNew, city);
+            Location result = instance.findLocationByZipCode(zipCodeNew);
+            assertEquals(zipCodeNew, result.getZipCode());
+            assertEquals(city, result.getCity());
+            instance.deleteLoca(result.getLocationID());
+        } catch (NoSuchZipCodeException e) {
+            System.out.println(e.getMessage());
+        }
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }

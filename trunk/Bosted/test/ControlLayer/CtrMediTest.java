@@ -50,7 +50,70 @@ public class CtrMediTest
     }
 
     @Test
-    public void test
+    public void testFindErrorHandleMedicine()
+    {
+        
+    }
+
+    @Test
+    public void testFindMedicineByClientIDAndName()
+    {
+
+    }
+
+    @Test
+    public void testDeleteMedicine()
+    {
+
+    }
+
+    @Test
+    public void testDeleteErrorHandlingMedicine()
+    {
+
+    }
+
+    @Test
+    public void testGetAllMedicine()
+    {
+
+    }
+
+    @Test
+    public void testAllErrorHandlingMedicine()
+    {
+
+    }
+
+    @Test
+    public void testAllErrorHandlingMedicineByDate()
+    {
+
+    }
+
+    @Test
+    public void testInsertMedicine()
+    {
+
+    }
+
+    @Test
+    public void testInsertErrorHandleMedicine()
+    {
+
+    }
+
+    @Test
+    public void testUpdateMedicine()
+    {
+
+    }
+
+    @Test
+    public void testUpdateErrorHandleMedicine()
+    {
+
+    }
 
     // public void testInsertClient()
 //    {

@@ -92,8 +92,14 @@ public class CtrClientTest
         int locationID = 1;
         int phoneNo = 98163044;
         String email = "bananmand@junglen.dk";
+        String inUse = "Yes";
         CtrClient instance = new CtrClient();
-        instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email);
+        try{
+        instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, inUse);
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
         Client result = instance.findClientByClientNo("banan123456");
@@ -129,8 +135,14 @@ public class CtrClientTest
         int locationID = 1;
         int phoneNo = 98163044;
         String email = "bananmand@junglen.dk";
+        String inUse = "Yes";
         CtrClient instance = new CtrClient();
-        instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email);
+        try{
+        instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, inUse);
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
         String clientNoCurrent = "banan123456";
        
         System.out.println("updateClient");
@@ -184,8 +196,14 @@ public class CtrClientTest
         int locationID = 1;
         int phoneNo = 98163000;
         String email = "bananmand@junglen.dk";
+        String inUse = "Yes";
         CtrClient instance = new CtrClient();
-        instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email);
+        try{
+        instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, inUse);
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
         instance.deleteClient("banan123456");
         Client result = instance.findClientByClientNo("test123456");
         assertNull(null, result.getClientNo());

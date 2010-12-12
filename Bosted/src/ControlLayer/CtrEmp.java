@@ -30,8 +30,8 @@ public class CtrEmp
         return allEmp;
     }
 
-    public void insert(String managerNo, String jobTitle, String crudClient, String crudEmployee, String crudMedicine, String crudCar, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String password) throws NullValueException{
-        if(jobTitle != null && crudClient != null && crudEmployee != null && crudMedicine != null && crudCar != null && ssn.length() == 11 && ssn.substring(6, 7) == "-" && firstName != null && lastName != null && address != null && password != null) {
+    public void insert(String managerNo, String jobTitle, String crudClient, String crudEmployee, String crudMedicine, String crudCar, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String password, String inUse) throws NullValueException{
+        if(!jobTitle.trim().equals("") && !crudClient.trim().equals("") && !crudEmployee.trim().equals("") && !crudMedicine.trim().equals("") && !crudCar.trim().equals("") && ssn.trim().length() == 11 && ssn.substring(6, 7).equals("-") && !firstName.trim().equals("") && !lastName.trim().equals("") && !address.trim().equals("") && !password.trim().equals("") && !inUse.trim().equals("")) {
         IFDBEmp dbEmp = new DBEmployee();
         Employee empObj = new Employee();
         empObj.setManagerNo(managerNo);
@@ -51,12 +51,12 @@ public class CtrEmp
         empObj.setPassword(password);
         empObj.createEmployeeNo();
         empObj.setStartDate();
-        empObj.setInUse("Yes");
+        empObj.setInUse(inUse);
         empObj.setStopDate(null);
         dbEmp.insertEmployee(empObj);
         }
         else{
-            throw new NullValueException("Hej, nogle værdier er null min kære slutbruger.");
+            throw new NullValueException("Fejl: Tjek om følgende felter er udfyldt:");
         }
         
     }

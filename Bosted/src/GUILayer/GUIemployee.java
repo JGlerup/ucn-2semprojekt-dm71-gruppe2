@@ -366,7 +366,7 @@ public class GUIemployee extends javax.swing.JPanel {
         CtrLoca ctrLoca = new CtrLoca();
         try{
         int locationID = ctrLoca.findLocationByZipCode(zipCode).getLocationID();
-        ctrEmp.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
+        ctrEmp.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password, inUse);
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage());

@@ -53,7 +53,7 @@ public class DBMedicine implements IFDBMedi
 
         System.out.println("insert : " + query);
         try
-        { // insert new deptloyee
+        { // insert new medicine
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             rc = stmt.executeUpdate(query);
@@ -110,7 +110,7 @@ public class DBMedicine implements IFDBMedi
             rc = stmt.executeUpdate(query);
 
             stmt.close();
-        }//slut try
+        }//end try
         catch (Exception ex)
         {
             System.out.println("Delete exception in medicine db: " + ex);
@@ -118,7 +118,7 @@ public class DBMedicine implements IFDBMedi
         return (rc);
     }
 
-    //singlewhere is used when only one employee object is to be build
+    //singlewhere is used when only one medicine object is to be build
     private Medicine singleWhere(String wClause, boolean retrieveAssociation)
     {
         ResultSet results;

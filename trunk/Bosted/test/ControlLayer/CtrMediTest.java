@@ -152,7 +152,35 @@ public class CtrMediTest
     @Test
     public void testUpdateMedicine()
     {
-
+        System.out.println("insert");
+        int frequencyID = 1;
+        int externalContactID = 1;
+        int clientID = 1;
+        String name = "bananflue";
+        String description = "ØreMedicin";
+        int quantity = 40;
+        CtrMedi instance = new CtrMedi();
+        instance.insertMedicine(frequencyID, externalContactID, clientID, name, description, quantity);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+        System.out.println("UpdateMedicine");
+        int medID = (instance.findMedicineByClientIDAndName(1, "bananflue")).getMedicineID();
+        int frequencyIDNew = 1;
+        int externalContactIDNew = 1;
+        int clientIDNew = 1;
+        String nameNew = "fløde";
+        String descriptionNew = "ØreGas";
+        int quantityNew = 10;
+        String date = (instance.findMedicineByClientIDAndName(1, "bananflue")).getDate();
+        instance.updateMedicine(medID, frequencyIDNew, externalContactIDNew, clientIDNew, nameNew, descriptionNew, date, quantityNew);
+        Medicine result = instance.findMedicineByClientIDAndName(clientIDNew, nameNew);
+        assertEquals(1, result.getFrequencyID());
+        assertEquals(1, result.getExternalContactID());
+        assertEquals(1, result.getClientID());
+        assertEquals("bananflue", result.getName());
+        assertEquals("ØreMedicin", result.getDescription());
+        assertEquals(40, result.getQuantity());
+        instance.deleteMedicine(result.getMedicineID());
     }
 
     @Test

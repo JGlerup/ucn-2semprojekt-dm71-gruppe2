@@ -102,9 +102,9 @@ public class DBMedicine implements IFDBMedi
 
         String query = "DELETE FROM medicine "
                 + " WHERE medicine_id = " + medicineID;
-        System.out.println("Update query:" + query);
+        System.out.println("Delete query:" + query);
         try
-        { // update medicine
+        { // delete medicine
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             rc = stmt.executeUpdate(query);
@@ -124,7 +124,7 @@ public class DBMedicine implements IFDBMedi
         ResultSet results;
         Medicine mediObj = new Medicine();
         String query = buildQuery(wClause);
-        System.out.println("DbEmployee -singelWhere " + query);
+        System.out.println("DbMedicine -singelWhere " + query);
         try
         { // read from medicine
             Statement stmt = con.createStatement();

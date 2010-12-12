@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package DBLayer;
 import ModelLayer.*;
 import java.util.ArrayList;
@@ -14,21 +10,21 @@ public interface IFDBMedi
 {
 
     public Medicine findMedicineByClientIDAndName(int clientID, String name, boolean retrieveAssociation);
-    //find one medicine having the clientID and medicienName
+    //find one medicine having the clientID and medicineName
 
     public Medicine findMedicine(int medicineID, boolean retrieveAssociation);
-    //find one medicine having the medicienID
+    //find one medicine having the medicineID
 
     public ArrayList<Medicine> getAllMedicine(boolean retriveAssociation);
-    //find one medicine having the fname
+    //find all medicine
 
     public int insertMedicine(Medicine medi);
-    //update information about an medicine
+    //update information about a medicine
 
     public int updateMedicine(Medicine medi);
-    //update information about an employee
+    //update information about a medicine
 
     public int deleteMedicine(int medicineID);
-    //delete an employee
+    //delete a medicine
 
 }

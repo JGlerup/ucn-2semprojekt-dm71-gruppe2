@@ -25,13 +25,13 @@ public class DBFrequency implements IFDBFreq
         return freqObj;
     }
 
-    public Frequency findFrequency(int frequencyID, boolean retrieveAssociation)
+    public Frequency findFrequencyByID(int frequencyID, boolean retrieveAssociation)
     {
         Frequency freqObj = new Frequency();
         freqObj = singleWhere("frequency_id = " + frequencyID, false);
         return freqObj;
     }
-    public ArrayList<Frequency> getAllMedicine(boolean retriveAssociation)
+    public ArrayList<Frequency> getAllFrequency(boolean retriveAssociation)
     {
         return miscWhere("", retriveAssociation);
     }

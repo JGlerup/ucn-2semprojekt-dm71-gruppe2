@@ -1,6 +1,5 @@
 package ControlLayer;
 
-import java.util.Date;
 import ModelLayer.ErrorHandlingMedicine;
 import ModelLayer.Medicine;
 import org.junit.After;
@@ -45,9 +44,15 @@ public class CtrMediTest
     {
 
     }
-    
+
     @Test
-    public void testFindMedicine()
+    public void testFindMedicineByClientIDAndName()
+    {
+
+    }
+
+    @Test
+    public void testFindMedicineByID()
     {
 
     }
@@ -59,10 +64,12 @@ public class CtrMediTest
     }
 
     @Test
-    public void testFindMedicineByClientIDAndName()
+    public void testFindFrequencyByID()
     {
 
     }
+
+    
 
     @Test
     public void testDeleteMedicine()
@@ -121,29 +128,25 @@ public class CtrMediTest
     @Test
     public void testInsertErrorHandlingMedicine()
     {
-//
+
         System.out.println("insert");
         int medicineID = 1;
         int clientID = 1;
         int employeeID = 2;
-        String episode = "Hunden spiste den";
+        String episode = "TEST TEST Hunden spiste den";
         int quantity = 1;
         String managerNo = "1";
         CtrMedi instance = new CtrMedi();
         instance.insertErrorHandlingMedicine(medicineID, clientID, employeeID, episode, quantity, managerNo);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
-        Medicine result = instance.findMedicine(1);
-        result.setThisDate();
-        String date = result.getDate();
-//        Arraylist<ErrorHandlingMedicine> results = instance.getAllErrorHandlingMedicineByDate(date);
-//        assertEquals(1 , results.getFrequencyID());
-//        assertEquals(1, results.getExternalContactID());
-//        assertEquals(1, results.getClientID());
-//        assertEquals("bananflue", results.getName());
-//        assertEquals("ØreMedicin", results.getDescription());
-//        assertEquals(40, results.getQuantity());
-//        instance.deleteMedicine(result.getMedicineID());
+        ErrorHandlingMedicine result = instance.findErrorHandlingMedicineByEpisode(episode);
+        assertEquals(1 , result.getMedicineID());
+        assertEquals(1, result.getClientID());
+        assertEquals(2, result.getEmployeeID());
+        assertEquals("TEST TEST Hunden spiste den", result.getEpisode());
+        assertEquals(1, result.getQuantity());
+        instance.deleteErrorHandlingMedicine(result.getErrorHandlingMedicineID(),result.getMedicineID(), result.getQuantity());
     }
 
     @Test

@@ -26,7 +26,7 @@ public class DBMedicine implements IFDBMedi
         return mediObj;
     }
 
-    public Medicine findMedicine(int medicineID, boolean retrieveAssociation)
+    public Medicine findMedicineByID(int medicineID, boolean retrieveAssociation)
     {
         Medicine mediObj = new Medicine();
         mediObj = singleWhere("medicine_id = " + medicineID , false);
@@ -72,13 +72,13 @@ public class DBMedicine implements IFDBMedi
         int rc = -1;
 
         String query = "UPDATE medicine SET "
-                + "frequency_id = " + mediObj.getFrequencyID() + " "
-                + "externalcontact_id = " + mediObj.getExternalContactID() + " "
-                + "client_id = " + mediObj.getClientID() + " "
-                + "name = '" + mediObj.getName() + "' "
-                + "description = '" + mediObj.getDescription() + "' "
-                + "date = '" + mediObj.getDate() + "' "
-                + "quantity = '" + mediObj.getQuantity() + "' "
+                + "frequency_id = " + mediObj.getFrequencyID() + ","
+                + "externalcontact_id = " + mediObj.getExternalContactID() + ","
+                + "client_id = " + mediObj.getClientID() + ","
+                + "name = '" + mediObj.getName() + "',"
+                + "description = '" + mediObj.getDescription() + "',"
+                + "date = '" + mediObj.getDate() + "',"
+                + "quantity = " + mediObj.getQuantity()
                 + " WHERE medicine_id = " + mediObj.getMedicineID();
         System.out.println("Update query:" + query);
         try

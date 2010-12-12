@@ -12,10 +12,10 @@ public interface IFDBFreq
     public Frequency findFrequencyByTimesPerDayAndQuantityEachTime(int timesPerDay, int quantityEachTime, boolean retrieveAssociation);
     //find one frequency having the timesPerDay and quantityEachTime
 
-    public Frequency findFrequency(int frequencyID, boolean retrieveAssociation);
+    public Frequency findFrequencyByID(int frequencyID, boolean retrieveAssociation);
     //find one frequency having the frequencyID
 
-    public ArrayList<Frequency> getAllMedicine(boolean retriveAssociation);
+    public ArrayList<Frequency> getAllFrequency(boolean retriveAssociation);
     //find all frequency
 
     public int insertFrequency(Frequency freq);

@@ -14,8 +14,11 @@ import java.util.ArrayList;
  */
 public interface IFDBErrorHandMed
 {
-     public ErrorHandlingMedicine findErrorHandlingMedicine(int errorHandlingMedicineNo, boolean retrieveAssociation);
-    //find one errorHandlingMedicine having the errorHandlingMedicineNo
+     public ErrorHandlingMedicine findErrorHandlingMedicineByID(int errorHandlingMedicineID, boolean retrieveAssociation);
+    //find one errorHandlingMedicine having the errorHandlingMedicineID
+
+    public ErrorHandlingMedicine findErrorHandlingMedicineByEpisode(String episode, boolean retrieveAssociation);
+    //find one errorHandlingMedicine having the episode
 
     public ArrayList<ErrorHandlingMedicine> getAllErrorHandlingMedicines(boolean retriveAssociation);
     //find all errorHandlingMedicine

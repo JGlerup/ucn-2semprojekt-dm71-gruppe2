@@ -12,7 +12,7 @@ public interface IFDBMedi
     public Medicine findMedicineByClientIDAndName(int clientID, String name, boolean retrieveAssociation);
     //find one medicine having the clientID and medicineName
 
-    public Medicine findMedicine(int medicineID, boolean retrieveAssociation);
+    public Medicine findMedicineByID(int medicineID, boolean retrieveAssociation);
     //find one medicine having the medicineID
 
     public ArrayList<Medicine> getAllMedicine(boolean retriveAssociation);

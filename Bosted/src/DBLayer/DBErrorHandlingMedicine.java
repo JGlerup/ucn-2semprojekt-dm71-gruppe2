@@ -19,10 +19,17 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
         con = DbConnection1.getInstance().getDBcon();
     }
 
-    public ErrorHandlingMedicine findErrorHandlingMedicine(int errorHandlingMedicineID, boolean retrieveAssociation)
+    public ErrorHandlingMedicine findErrorHandlingMedicineByID(int errorHandlingMedicineID, boolean retrieveAssociation)
     {
         ErrorHandlingMedicine ehmObj = new ErrorHandlingMedicine();
-        ehmObj = singleWhere("errorhandlingmedicine_id = '" + errorHandlingMedicineID + "'", false);
+        ehmObj = singleWhere("errorhandlingmedicine_id = " + errorHandlingMedicineID, false);
+        return ehmObj;
+    }
+
+    public ErrorHandlingMedicine findErrorHandlingMedicineByEpisode(String episode, boolean retrieveAssociation)
+    {
+        ErrorHandlingMedicine ehmObj = new ErrorHandlingMedicine();
+        ehmObj = singleWhere("episode = '" + episode + "'", false);
         return ehmObj;
     }
 
@@ -39,13 +46,13 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
     public int insertErrorHandlingMedicine(ErrorHandlingMedicine ehm)
     {  
         int rc = -1;
-        String query = "INSERT INTO errorHandlingMedicine(medicin_id, client_id, employee_id, date, episode, quantity)  VALUES("
+        String query = "INSERT INTO errorHandlingMedicine(medicine_id, client_id, employee_id, date, episode, quantity)  VALUES("
                 + ehm.getMedicineID() + ","
                 + ehm.getClientID() + ","
-                + ehm.getEmployeeID() + ","
-                + ehm.getDate() + ",'"
+                + ehm.getEmployeeID() + ",'"
+                + ehm.getDate() + "','"
                 + ehm.getEpisode() + "',"
-                + ehm.getQuantity();
+                + ehm.getQuantity() + ")";
 
 
         System.out.println("insert : " + query);

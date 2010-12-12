@@ -98,8 +98,10 @@ public class CtrEmpTest
         int phoneNo = 98674033;
         String email = "Von@dannebrogsgade.dk";
         String password = "123456";
+        String inUse = "Yes";
         CtrEmp instance = new CtrEmp();
-        instance.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
+        try{
+        instance.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password, inUse);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
         Employee result = instance.findEmployee("Mjød123456");
@@ -119,6 +121,10 @@ public class CtrEmpTest
         assertEquals("Von@dannebrogsgade.dk", result.getEmail());
         assertEquals("123456", result.getPassword());
         instance.deleteEmp("Mjød123456");
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
         
     }
 
@@ -144,8 +150,14 @@ public class CtrEmpTest
         int phoneNo = 98674033;
         String email = "Von@dannebrogsgade.dk";
         String password = "123456";
+        String inUse = "Yes";
         CtrEmp instance = new CtrEmp();
-        instance.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
+        try{
+        instance.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password, inUse);
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
         System.out.println("updateEmp");
         String employeeNoNew = "uhiu8";
         managerNo = "2";
@@ -206,8 +218,14 @@ public class CtrEmpTest
         int phoneNo = 98674033;
         String email = "Von@dannebrogsgade.dk";
         String password = "123456";
+        String inUse = "Yes";
         CtrEmp instance = new CtrEmp();
-        instance.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
+        try{
+        instance.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password, inUse);
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
         System.out.println("deleteEmp");
         instance.deleteEmp("Mjød123456");
         Employee result = instance.findEmployee("Mjød123456");

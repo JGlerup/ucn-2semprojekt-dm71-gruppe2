@@ -1,5 +1,3 @@
-
-
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -10,10 +8,11 @@
  *
  * Created on 09-12-2010, 09:43:32
  */
-
 package GUILayer;
+
 import ControlLayer.CtrLoca;
 import ControlLayer.CtrClient;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -322,16 +321,20 @@ public class GUIclient extends javax.swing.JPanel {
         String city = txtClientCity.getText();
         int phoneNo = Integer.parseInt(txtClientPhoneNo.getText());
         String email = txtClientEmail.getText();
-        
+
         String inUse = "No";
-        if(CheckBoxInUse.isSelected()){
+        if (CheckBoxInUse.isSelected()) {
             inUse = "Yes";
         }
         CtrClient ctrCli = new CtrClient();
         CtrLoca ctrLoca = new CtrLoca();
-        int locationID = ctrLoca.findLocationByZipCode(zipCode).getLocationID();
-        ctrCli.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email);
-    
+        try {
+            int locationID = ctrLoca.findLocationByZipCode(zipCode).getLocationID();
+            ctrCli.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, inUse);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+
     }//GEN-LAST:event_btnCreateClientActionPerformed
 
     private void txtClientFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClientFirstNameActionPerformed
@@ -341,8 +344,6 @@ public class GUIclient extends javax.swing.JPanel {
     private void CheckBoxInUseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxInUseActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CheckBoxInUseActionPerformed
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox CheckBoxInUse;
     private javax.swing.JButton btnCreateClient;
@@ -382,5 +383,4 @@ public class GUIclient extends javax.swing.JPanel {
     private javax.swing.JTextField txtClientSsn;
     private javax.swing.JTextField txtClientZipCode;
     // End of variables declaration//GEN-END:variables
-
 }

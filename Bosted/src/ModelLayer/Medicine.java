@@ -4,7 +4,7 @@ package ModelLayer;
  * @author Gruppe 2 - DM71
  * December 2010
  */
-public final class Medicine
+public class Medicine
 {
     private int medicineID;
     private int frequencyID;

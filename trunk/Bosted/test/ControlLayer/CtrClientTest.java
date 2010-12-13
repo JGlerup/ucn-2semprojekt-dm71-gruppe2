@@ -13,36 +13,25 @@ import static org.junit.Assert.*;
  *
  * @author Erik
  */
-public class CtrClientTest
-{
+public class CtrClientTest {
 
-    public CtrClientTest() 
-    {
-
+    public CtrClientTest() {
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception 
-    {
-
+    public static void setUpClass() throws Exception {
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception 
-    {
-
+    public static void tearDownClass() throws Exception {
     }
 
     @Before
-    public void setUp() 
-    {
-
+    public void setUp() {
     }
 
     @After
-    public void tearDown() 
-    {
-
+    public void tearDown() {
     }
 
     /**
@@ -59,7 +48,6 @@ public class CtrClientTest
 //        // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
 //    }
-
     /**
      * Test of getAllClient method, of class CtrClient.
      */
@@ -73,13 +61,11 @@ public class CtrClientTest
 //        // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
 //    }
-
     /**
      * Test of insert method, of class CtrClient.
      */
     @Test
-    public void testInsertClient()
-    {
+    public void testInsertClient() {
         System.out.println("insert");
         String description = "jeg leger med aber";
         String interests = "jeg elsker bananer";
@@ -94,11 +80,10 @@ public class CtrClientTest
         String email = "bananmand@junglen.dk";
         String inUse = "Yes";
         CtrClient instance = new CtrClient();
-        try{
-        instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, inUse);
-        }
-        catch(Exception e){
-            System.out.println(e.getMessage());
+        try {
+            instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, inUse);
+        } catch (Exception e) {
+            fail("Exception:" + e.getMessage());
         }
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
@@ -121,8 +106,7 @@ public class CtrClientTest
      * Test of updateClient method, of class CtrClient.
      */
     @Test
-    public void testUpdateClient()
-    {
+    public void testUpdateClient() {
         System.out.println("insert");
         String description = "jeg leger med aber";
         String interests = "jeg elsker bananer";
@@ -137,14 +121,13 @@ public class CtrClientTest
         String email = "bananmand@junglen.dk";
         String inUse = "Yes";
         CtrClient instance = new CtrClient();
-        try{
-        instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, inUse);
-        }
-        catch(Exception e){
-            System.out.println(e.getMessage());
+        try {
+            instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, inUse);
+        } catch (Exception e) {
+            fail("Exception:" + e.getMessage());
         }
         String clientNoCurrent = "banan123456";
-       
+
         System.out.println("updateClient");
         String clientNoNew = "weotpk235";
         description = "wetoji";
@@ -158,7 +141,13 @@ public class CtrClientTest
         locationID = 1;
         phoneNo = 983252010;
         email = "sutmin@junglen.dk";
-        instance.updateClient(clientNoCurrent, clientNoNew, description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email);
+        inUse = "Yes";
+        try {
+            instance.updateClient(clientNoCurrent, clientNoNew, description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, inUse);
+
+        } catch (Exception e) {
+            fail("Exception:" + e.getMessage());
+        }
         Client result = instance.findClientByClientNo("weotpk235");
         assertEquals("weotpk235", result.getClientNo());
         assertEquals("wetoji", result.getDescription());
@@ -181,10 +170,9 @@ public class CtrClientTest
      * Test of deleteClient method, of class CtrClient.
      */
     @Test
-    public void testDeleteClient()
-    {
+    public void testDeleteClient() {
         System.out.println("deleteClient");
-                System.out.println("insert");
+        System.out.println("insert");
         String description = "jeg leger med aber";
         String interests = "jeg elsker bananer";
         String health = "???";
@@ -198,11 +186,10 @@ public class CtrClientTest
         String email = "bananmand@junglen.dk";
         String inUse = "Yes";
         CtrClient instance = new CtrClient();
-        try{
-        instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, inUse);
-        }
-        catch(Exception e){
-            System.out.println(e.getMessage());
+        try {
+            instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, inUse);
+        } catch (Exception e) {
+            fail("Exception:" + e.getMessage());
         }
         instance.deleteClient("banan123456");
         Client result = instance.findClientByClientNo("test123456");
@@ -210,5 +197,4 @@ public class CtrClientTest
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
-
 }

@@ -146,20 +146,28 @@ public class GUIemployee extends javax.swing.JPanel {
         });
 
         jButton1.setText("Slet");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Opdater");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(txtEmployeeFirstName, javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,7 +194,6 @@ public class GUIemployee extends javax.swing.JPanel {
                             .addComponent(jLabel12)
                             .addComponent(txtEmployeePhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtEmployeeAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
@@ -219,16 +226,14 @@ public class GUIemployee extends javax.swing.JPanel {
                             .addComponent(jLabel13)
                             .addComponent(txtEmployeeJobTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel15)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 914, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(btnCreateEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 914, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(btnCreateEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jButton2)
+                            .addGap(18, 18, 18)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -376,6 +381,60 @@ public class GUIemployee extends javax.swing.JPanel {
     private void txtEmployeeJobTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmployeeJobTitleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmployeeJobTitleActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        String employeeNoCurrent = null;
+        String employeeNoNew = null;
+        String password = txtEmployeePassword.getText();
+        String managerNo = txtEmployeeManagerNo.getText();
+        String address = txtEmployeeAddress.getText();
+        String city = txtEmployeeCity.getText();
+        String email = txtEmployeeEmail.getText();
+        String firstName = txtEmployeeFirstName.getText();
+        String middleName = txtEmployeeMiddleName.getText();
+        String lastName = txtEmployeeLastName.getText();
+        int phoneNo = Integer.parseInt(txtEmployeePhoneNo.getText());
+        String jobTitle = txtEmployeeJobTitle.getText();
+        String ssn = txtEmployeeSsn.getText();
+        int zipCode = Integer.parseInt(txtEmployeeZipCode.getText());
+        String crudEmployee = "No";
+        if(cbCrudEmployee.isSelected()){
+            crudEmployee = "Yes";
+        }
+        String crudClient = "No";
+        if(cbCrudClient.isSelected()){
+            crudClient = "Yes";
+        }
+        String crudMedicine = "No";
+        if(cbCrudMedicine.isSelected()){
+            crudMedicine = "Yes";
+        }
+        String crudCar = "No";
+        if(cbCrudCar.isSelected()){
+            crudCar = "Yes";
+        }
+        String inUse = "No";
+        if(cbInUse.isSelected()){
+            inUse = "Yes";
+        }
+        CtrEmp ctrEmp = new CtrEmp();
+        CtrLoca ctrLoca = new CtrLoca();
+        try{
+        int locationID = ctrLoca.findLocationByZipCode(zipCode).getLocationID();
+        ctrEmp.updateEmp(employeeNoCurrent, employeeNoNew, managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password, inUse);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String employeeNo = null;
+        CtrEmp ctrEmp = new CtrEmp();
+        ctrEmp.deleteEmp(employeeNo);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

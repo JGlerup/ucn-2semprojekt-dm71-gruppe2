@@ -52,7 +52,8 @@ public class CtrClient {
         }
     }
 
-    public void updateClient(String clientNoCurrent, String clientNoNew, String description, String interests, String health, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email) {
+    public void updateClient(String clientNoCurrent, String clientNoNew, String description, String interests, String health, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String inUse) throws NullValueException  {
+        if (!description.trim().equals("") && !interests.trim().equals("") && !health.trim().equals("") && ssn.trim().length() == 11 && ssn.substring(6, 7).equals("-") && !firstName.trim().equals("") && !lastName.trim().equals("") && !address.trim().equals("") && !inUse.trim().equals("")) {
         IFDBClient dbClient = new DBClient();
         Client cObj = new Client();
         int clientID = findClientByClientNo(clientNoCurrent).getClientID();
@@ -69,7 +70,12 @@ public class CtrClient {
         cObj.setLocationID(locationID);
         cObj.setPhoneNo(phoneNo);
         cObj.setEmail(email);
+        cObj.setInUse(inUse);
         dbClient.updateClient(cObj);
+                }
+        else{
+            throw new NullValueException("Fejl: Tjek om følgende felter er udfyldt:");
+        }
     }
 
     public void deleteClient(String clientNo) {

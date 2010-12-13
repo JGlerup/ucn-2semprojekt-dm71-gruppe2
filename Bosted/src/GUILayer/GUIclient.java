@@ -108,6 +108,12 @@ public class GUIclient extends javax.swing.JPanel {
 
         jLabel13.setText("By");
 
+        txtClientZipCode.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtClientZipCodeFocusLost(evt);
+            }
+        });
+
         txtClientCity.setEditable(false);
         txtClientCity.setEnabled(false);
 
@@ -126,8 +132,18 @@ public class GUIclient extends javax.swing.JPanel {
         jLabel6.setText("Hent klient");
 
         jButton2.setText("Slet");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Opdater");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         btnCreateClient.setText("Opret");
         btnCreateClient.addActionListener(new java.awt.event.ActionListener() {
@@ -334,7 +350,6 @@ public class GUIclient extends javax.swing.JPanel {
         String lastName = txtClientLastName.getText();
         String address = txtClientAddress.getText();
         int zipCode = Integer.parseInt(txtClientZipCode.getText());
-        String city = txtClientCity.getText();
         int phoneNo = Integer.parseInt(txtClientPhoneNo.getText());
         String email = txtClientEmail.getText();
 
@@ -360,6 +375,54 @@ public class GUIclient extends javax.swing.JPanel {
     private void CheckBoxInUseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxInUseActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CheckBoxInUseActionPerformed
+
+    private void txtClientZipCodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtClientZipCodeFocusLost
+        // TODO add your handling code here:
+        CtrLoca ctrLoca = new CtrLoca();
+        int zipCode = Integer.parseInt(txtClientZipCode.getText());
+        try {
+            txtClientCity.setText(ctrLoca.findLocationByZipCode(zipCode).getCity());
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_txtClientZipCodeFocusLost
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        String clientNoCurrent = null;
+        String clientNoNew = null;
+        String description = txtClientDescription.getText();
+        String interests = txtClientInterests.getText();
+        String health = txtClientHealth.getText();
+        String ssn = txtClientSsn.getText();
+        String firstName = txtClientFirstName.getText();
+        String middleName = txtClientMiddleName.getText();
+        String lastName = txtClientLastName.getText();
+        String address = txtClientAddress.getText();
+        int zipCode = Integer.parseInt(txtClientZipCode.getText());
+        int phoneNo = Integer.parseInt(txtClientPhoneNo.getText());
+        String email = txtClientEmail.getText();
+
+        String inUse = "No";
+        if (CheckBoxInUse.isSelected()) {
+            inUse = "Yes";
+        }
+        CtrClient ctrCli = new CtrClient();
+        CtrLoca ctrLoca = new CtrLoca();
+        try {
+            int locationID = ctrLoca.findLocationByZipCode(zipCode).getLocationID();
+            ctrCli.updateClient(clientNoCurrent, clientNoNew, description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, inUse);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        String clientNo = null;
+        CtrClient ctrCli = new CtrClient();
+        ctrCli.deleteClient(clientNo);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox CheckBoxInUse;
     private javax.swing.JButton btnCreateClient;

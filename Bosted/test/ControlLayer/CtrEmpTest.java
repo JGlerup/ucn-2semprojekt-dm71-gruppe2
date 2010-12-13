@@ -13,36 +13,25 @@ import static org.junit.Assert.*;
  * @author Gruppe 2 - DM71
  * December 2010
  */
-public class CtrEmpTest
-{
+public class CtrEmpTest {
 
-    public CtrEmpTest() 
-    {
-
+    public CtrEmpTest() {
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception
-    {
-
+    public static void setUpClass() throws Exception {
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception
-    {
-
+    public static void tearDownClass() throws Exception {
     }
 
     @Before
-    public void setUp() 
-    {
-
+    public void setUp() {
     }
 
     @After
-    public void tearDown() 
-    {
-
+    public void tearDown() {
     }
 
     /**
@@ -60,7 +49,6 @@ public class CtrEmpTest
 //        // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
 //    }
-
     /**
      * Test of getAllEmployee method, of class CtrEmp.
      */
@@ -75,13 +63,11 @@ public class CtrEmpTest
 //        // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
 //    }
-
     /**
      * Test of insert method, of class CtrEmp.
      */
     @Test
-    public void testInsert()
-    {
+    public void testInsert() {
         System.out.println("insert");
         String managerNo = "1";
         String jobTitle = "Direktør";
@@ -100,10 +86,14 @@ public class CtrEmpTest
         String password = "123456";
         String inUse = "Yes";
         CtrEmp instance = new CtrEmp();
-        try{
-        instance.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password, inUse);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        try {
+            instance.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password, inUse);
+            // TODO review the generated test code and remove the default call to fail.
+            //fail("The test case is a prototype.");
+
+        } catch (Exception e) {
+            fail("Exception:" + e.getMessage());
+        }
         Employee result = instance.findEmployee("Mjød123456");
         assertEquals("1", result.getManagerNo());
         assertEquals("Direktør", result.getJobTitle());
@@ -121,19 +111,14 @@ public class CtrEmpTest
         assertEquals("Von@dannebrogsgade.dk", result.getEmail());
         assertEquals("123456", result.getPassword());
         instance.deleteEmp("Mjød123456");
-        }
-        catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-        
+
     }
 
     /**
      * Test of updateEmp method, of class CtrEmp.
      */
     @Test
-    public void testUpdateEmp()
-    {
+    public void testUpdateEmp() {
         System.out.println("insert");
         String managerNo = "2";
         String jobTitle = "Direktør";
@@ -152,11 +137,10 @@ public class CtrEmpTest
         String password = "123456";
         String inUse = "Yes";
         CtrEmp instance = new CtrEmp();
-        try{
-        instance.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password, inUse);
-        }
-        catch(Exception e){
-            System.out.println(e.getMessage());
+        try {
+            instance.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password, inUse);
+        } catch (Exception e) {
+            fail("Exception:" + e.getMessage());
         }
         System.out.println("updateEmp");
         String employeeNoNew = "uhiu8";
@@ -175,7 +159,12 @@ public class CtrEmpTest
         phoneNo = 98765443;
         email = "Glerup9@gmail.com";
         password = "123456789";
-        instance.updateEmp("Karl123456", employeeNoNew,  managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password);
+        inUse = "Yes";
+        try {
+            instance.updateEmp("Karl123456", employeeNoNew, managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password, inUse);
+        } catch (Exception e) {
+            fail("Exception:" + e.getMessage());
+        }
         Employee result = instance.findEmployee("uhiu8");
         assertEquals("2", result.getManagerNo());
         assertEquals("Landstryger", result.getJobTitle());
@@ -201,8 +190,8 @@ public class CtrEmpTest
      * Test of deleteEmp method, of class CtrEmp.
      */
     @Test
-    public void testDeleteEmp()
-    {   System.out.println("insert");
+    public void testDeleteEmp() {
+        System.out.println("insert");
         String managerNo = "1";
         String jobTitle = "Direktør";
         String crudClient = "Yes";
@@ -220,11 +209,10 @@ public class CtrEmpTest
         String password = "123456";
         String inUse = "Yes";
         CtrEmp instance = new CtrEmp();
-        try{
-        instance.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password, inUse);
-        }
-        catch(Exception e){
-            System.out.println(e.getMessage());
+        try {
+            instance.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password, inUse);
+        } catch (Exception e) {
+            fail("Exception:" + e.getMessage());
         }
         System.out.println("deleteEmp");
         instance.deleteEmp("Mjød123456");
@@ -233,5 +221,4 @@ public class CtrEmpTest
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
-
 }

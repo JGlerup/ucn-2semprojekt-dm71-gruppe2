@@ -13,6 +13,7 @@ package GUILayer;
 import ControlLayer.CtrEmp;
 import ModelLayer.Employee;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -38,236 +39,254 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel3 = new javax.swing.JPanel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        tpGUI = new javax.swing.JTabbedPane();
+        pLogin = new javax.swing.JPanel();
+        pwfPassword = new javax.swing.JPasswordField();
+        txtBrugernavn = new javax.swing.JTextField();
+        lblBrugernavn = new javax.swing.JLabel();
+        lblPassword = new javax.swing.JLabel();
+        btnLogin = new javax.swing.JButton();
+        btnNulstilLogin = new javax.swing.JButton();
+        picKeyLogin = new javax.swing.JLabel();
+        pKlienter = new javax.swing.JPanel();
+        pBiler = new javax.swing.JPanel();
+        pMedarbejdere = new javax.swing.JPanel();
+        pHjælp = new javax.swing.JPanel();
+        spHjælp = new javax.swing.JScrollPane();
+        txtaHjælp = new javax.swing.JTextArea();
+        txtIndtastHjælp = new javax.swing.JTextField();
+        btnSøg = new javax.swing.JButton();
+        pLogud = new javax.swing.JPanel();
+        lblLogud = new javax.swing.JLabel();
+        btnLogud = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        jTabbedPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTabbedPane1.setEnabled(false);
-        jTabbedPane1.setPreferredSize(new java.awt.Dimension(800, 600));
+        tpGUI.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        tpGUI.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tpGUI.setEnabled(false);
+        tpGUI.setPreferredSize(new java.awt.Dimension(800, 600));
 
-        jPasswordField1.setText("....................");
-        jPasswordField1.setToolTipText("Skriv dit password her");
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        pwfPassword.setToolTipText("Skriv dit password her");
+        pwfPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                pwfPasswordActionPerformed(evt);
             }
         });
 
-        jTextField2.setToolTipText("Skriv dit brugernavn her");
+        txtBrugernavn.setToolTipText("Skriv dit brugernavn her");
 
-        jLabel1.setText("Brugernavn");
+        lblBrugernavn.setText("Brugernavn");
 
-        jLabel2.setText("Password");
+        lblPassword.setText("Password");
 
-        jButton2.setText("Login");
+        btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Nulstil");
+        btnNulstilLogin.setText("Nulstil");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Glerup\\Desktop\\login_welcome.jpg")); // NOI18N
+        picKeyLogin.setIcon(new javax.swing.ImageIcon("C:\\Users\\Glerup\\Desktop\\login_welcome.jpg")); // NOI18N
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout pLoginLayout = new javax.swing.GroupLayout(pLogin);
+        pLogin.setLayout(pLoginLayout);
+        pLoginLayout.setHorizontalGroup(
+            pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pLoginLayout.createSequentialGroup()
                 .addContainerGap(304, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pLoginLayout.createSequentialGroup()
+                        .addComponent(picKeyLogin)
                         .addGap(301, 301, 301))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.LEADING, 0, 0, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jButton2)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pLoginLayout.createSequentialGroup()
+                        .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtBrugernavn, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPassword, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblBrugernavn, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pwfPassword, javax.swing.GroupLayout.Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pLoginLayout.createSequentialGroup()
+                                .addComponent(btnLogin)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton3)))
+                                .addComponent(btnNulstilLogin)))
                         .addGap(270, 270, 270))))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        pLoginLayout.setVerticalGroup(
+            pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pLoginLayout.createSequentialGroup()
                 .addGap(102, 102, 102)
-                .addComponent(jLabel3)
+                .addComponent(picKeyLogin)
                 .addGap(59, 59, 59)
-                .addComponent(jLabel1)
+                .addComponent(lblBrugernavn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtBrugernavn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(lblPassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pwfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLogin)
+                    .addComponent(btnNulstilLogin))
                 .addContainerGap(198, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Login", null, jPanel3, "Her logger du ind");
+        tpGUI.addTab("Login", null, pLogin, "Her logger du ind");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pKlienterLayout = new javax.swing.GroupLayout(pKlienter);
+        pKlienter.setLayout(pKlienterLayout);
+        pKlienterLayout.setHorizontalGroup(
+            pKlienterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 702, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pKlienterLayout.setVerticalGroup(
+            pKlienterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 584, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Klienter", null, jPanel1, "Her ser du dine klienter");
+        tpGUI.addTab("Klienter", null, pKlienter, "Her ser du dine klienter");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pBilerLayout = new javax.swing.GroupLayout(pBiler);
+        pBiler.setLayout(pBilerLayout);
+        pBilerLayout.setHorizontalGroup(
+            pBilerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 702, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pBilerLayout.setVerticalGroup(
+            pBilerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 584, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Biler", null, jPanel2, "Her reserverer du biler");
+        tpGUI.addTab("Biler", null, pBiler, "Her reserverer du biler");
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pMedarbejdereLayout = new javax.swing.GroupLayout(pMedarbejdere);
+        pMedarbejdere.setLayout(pMedarbejdereLayout);
+        pMedarbejdereLayout.setHorizontalGroup(
+            pMedarbejdereLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 702, Short.MAX_VALUE)
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pMedarbejdereLayout.setVerticalGroup(
+            pMedarbejdereLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 584, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Medarbejdere", null, jPanel6, "Her håndterer du medarbejdere");
+        tpGUI.addTab("Medarbejdere", null, pMedarbejdere, "Her håndterer du medarbejdere");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setEditable(false);
-        jTextArea1.setFont(new java.awt.Font("Verdana", 0, 14));
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtaHjælp.setColumns(20);
+        txtaHjælp.setEditable(false);
+        txtaHjælp.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        txtaHjælp.setRows(5);
+        spHjælp.setViewportView(txtaHjælp);
 
-        jTextField1.setText("Indtast søgeord her");
-        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtIndtastHjælp.setText("Indtast søgeord her");
+        txtIndtastHjælp.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField1FocusGained(evt);
+                txtIndtastHjælpFocusGained(evt);
             }
         });
 
-        jButton1.setText("Søg");
+        btnSøg.setText("Søg");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout pHjælpLayout = new javax.swing.GroupLayout(pHjælp);
+        pHjælp.setLayout(pHjælpLayout);
+        pHjælpLayout.setHorizontalGroup(
+            pHjælpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pHjælpLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pHjælpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pHjælpLayout.createSequentialGroup()
+                        .addComponent(txtIndtastHjælp, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)
+                        .addComponent(btnSøg)
                         .addContainerGap())
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)))
+                    .addComponent(spHjælp, javax.swing.GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        pHjælpLayout.setVerticalGroup(
+            pHjælpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pHjælpLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pHjælpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSøg)
+                    .addComponent(txtIndtastHjælp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+                .addComponent(spHjælp, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Hjælp", null, jPanel4, "Her kan du se efter hjælp til brug af systemet");
+        tpGUI.addTab("Hjælp", null, pHjælp, "Her kan du se efter hjælp til brug af systemet");
 
-        jLabel4.setText("Er du sikker på du vil logge ud");
+        lblLogud.setText("Er du sikker på du vil logge ud");
 
-        jButton4.setText("Logud");
+        btnLogud.setText("Logud");
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout pLogudLayout = new javax.swing.GroupLayout(pLogud);
+        pLogud.setLayout(pLogudLayout);
+        pLogudLayout.setHorizontalGroup(
+            pLogudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pLogudLayout.createSequentialGroup()
                 .addContainerGap(290, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                .addGroup(pLogudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pLogudLayout.createSequentialGroup()
+                        .addComponent(lblLogud)
                         .addGap(270, 270, 270))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(jButton4)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pLogudLayout.createSequentialGroup()
+                        .addComponent(btnLogud)
                         .addGap(313, 313, 313))))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        pLogudLayout.setVerticalGroup(
+            pLogudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pLogudLayout.createSequentialGroup()
                 .addGap(252, 252, 252)
-                .addComponent(jLabel4)
+                .addComponent(lblLogud)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(btnLogud)
                 .addContainerGap(277, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Logud", null, jPanel5, "Her logger du ud");
+        tpGUI.addTab("Logud", null, pLogud, "Her logger du ud");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 790, Short.MAX_VALUE)
+                .addComponent(tpGUI, javax.swing.GroupLayout.DEFAULT_SIZE, 790, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
+                .addComponent(tpGUI, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+    private void txtIndtastHjælpFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIndtastHjælpFocusGained
         // TODO add your handling code here:
-        jTextField1.setText("");
-    }//GEN-LAST:event_jTextField1FocusGained
+        txtIndtastHjælp.setText("");
+    }//GEN-LAST:event_txtIndtastHjælpFocusGained
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void pwfPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwfPasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_pwfPasswordActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // TODO add your handling code here:
+        CtrEmp ctrEmp = new CtrEmp();
+        String user = txtBrugernavn.getSelectedText();
+        String pass = pwfPassword.getSelectedText();
+        if(user.equals(ctrEmp.findEmployee(user).getEmployeeNo()) && pass.equals(ctrEmp.findEmployee(user).getPassword())) {
+            tpGUI.setEnabled(true);
+            JOptionPane.showMessageDialog(pLogin, "Du er nu logget ind");
+        }
+        else {
+            JOptionPane.showMessageDialog(pLogin, "Du har indtastet brugernavn eller password forkert");
+        }
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -289,25 +308,25 @@ public class GUI extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnLogud;
+    private javax.swing.JButton btnNulstilLogin;
+    private javax.swing.JButton btnSøg;
+    private javax.swing.JLabel lblBrugernavn;
+    private javax.swing.JLabel lblLogud;
+    private javax.swing.JLabel lblPassword;
+    private javax.swing.JPanel pBiler;
+    private javax.swing.JPanel pHjælp;
+    private javax.swing.JPanel pKlienter;
+    private javax.swing.JPanel pLogin;
+    private javax.swing.JPanel pLogud;
+    private javax.swing.JPanel pMedarbejdere;
+    private javax.swing.JLabel picKeyLogin;
+    private javax.swing.JPasswordField pwfPassword;
+    private javax.swing.JScrollPane spHjælp;
+    private javax.swing.JTabbedPane tpGUI;
+    private javax.swing.JTextField txtBrugernavn;
+    private javax.swing.JTextField txtIndtastHjælp;
+    private javax.swing.JTextArea txtaHjælp;
     // End of variables declaration//GEN-END:variables
 }

@@ -14,6 +14,7 @@ import ControlLayer.CtrEmp;
 import ModelLayer.Employee;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -41,13 +42,13 @@ public class GUI extends javax.swing.JFrame {
 
         tpGUI = new javax.swing.JTabbedPane();
         pLogin = new javax.swing.JPanel();
-        pwfPassword = new javax.swing.JPasswordField();
         txtBrugernavn = new javax.swing.JTextField();
         lblBrugernavn = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
         btnNulstilLogin = new javax.swing.JButton();
         picKeyLogin = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JTextField();
         pKlienter = new javax.swing.JPanel();
         pBiler = new javax.swing.JPanel();
         pMedarbejdere = new javax.swing.JPanel();
@@ -67,13 +68,6 @@ public class GUI extends javax.swing.JFrame {
         tpGUI.setEnabled(false);
         tpGUI.setPreferredSize(new java.awt.Dimension(800, 600));
 
-        pwfPassword.setToolTipText("Skriv dit password her");
-        pwfPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pwfPasswordActionPerformed(evt);
-            }
-        });
-
         txtBrugernavn.setToolTipText("Skriv dit brugernavn her");
 
         lblBrugernavn.setText("Brugernavn");
@@ -88,15 +82,22 @@ public class GUI extends javax.swing.JFrame {
         });
 
         btnNulstilLogin.setText("Nulstil");
+        btnNulstilLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNulstilLoginActionPerformed(evt);
+            }
+        });
 
         picKeyLogin.setIcon(new javax.swing.ImageIcon("C:\\Users\\Glerup\\Desktop\\login_welcome.jpg")); // NOI18N
+
+        txtPassword.setFont(new java.awt.Font("Bookshelf Symbol 7", 0, 11)); // NOI18N
 
         javax.swing.GroupLayout pLoginLayout = new javax.swing.GroupLayout(pLogin);
         pLogin.setLayout(pLoginLayout);
         pLoginLayout.setHorizontalGroup(
             pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLoginLayout.createSequentialGroup()
-                .addContainerGap(304, Short.MAX_VALUE)
+                .addContainerGap(302, Short.MAX_VALUE)
                 .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pLoginLayout.createSequentialGroup()
                         .addComponent(picKeyLogin)
@@ -106,11 +107,12 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(txtBrugernavn, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblPassword, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblBrugernavn, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pwfPassword, javax.swing.GroupLayout.Alignment.LEADING, 0, 0, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pLoginLayout.createSequentialGroup()
+                                .addGap(2, 2, 2)
                                 .addComponent(btnLogin)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnNulstilLogin)))
+                                .addComponent(btnNulstilLogin))
+                            .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(270, 270, 270))))
         );
         pLoginLayout.setVerticalGroup(
@@ -124,13 +126,13 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(txtBrugernavn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblPassword)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pwfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(4, 4, 4)
+                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
                 .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLogin)
                     .addComponent(btnNulstilLogin))
-                .addContainerGap(198, Short.MAX_VALUE))
+                .addContainerGap(200, Short.MAX_VALUE))
         );
 
         tpGUI.addTab("Login", null, pLogin, "Her logger du ind");
@@ -176,7 +178,7 @@ public class GUI extends javax.swing.JFrame {
 
         txtaHjælp.setColumns(20);
         txtaHjælp.setEditable(false);
-        txtaHjælp.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        txtaHjælp.setFont(new java.awt.Font("Verdana", 0, 14));
         txtaHjælp.setRows(5);
         spHjælp.setViewportView(txtaHjælp);
 
@@ -220,6 +222,11 @@ public class GUI extends javax.swing.JFrame {
         lblLogud.setText("Er du sikker på du vil logge ud");
 
         btnLogud.setText("Logud");
+        btnLogud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogudActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pLogudLayout = new javax.swing.GroupLayout(pLogud);
         pLogud.setLayout(pLogudLayout);
@@ -270,23 +277,33 @@ public class GUI extends javax.swing.JFrame {
         txtIndtastHjælp.setText("");
     }//GEN-LAST:event_txtIndtastHjælpFocusGained
 
-    private void pwfPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwfPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pwfPasswordActionPerformed
-
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
         CtrEmp ctrEmp = new CtrEmp();
-        String user = txtBrugernavn.getSelectedText();
-        String pass = pwfPassword.getSelectedText();
+        String user = txtBrugernavn.getText();
+        String pass = txtPassword.getText();
         if(user.equals(ctrEmp.findEmployee(user).getEmployeeNo()) && pass.equals(ctrEmp.findEmployee(user).getPassword())) {
             tpGUI.setEnabled(true);
+            txtPassword.setText("");
             JOptionPane.showMessageDialog(pLogin, "Du er nu logget ind");
         }
         else {
+            txtPassword.setText("");
             JOptionPane.showMessageDialog(pLogin, "Du har indtastet brugernavn eller password forkert");
         }
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void btnNulstilLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNulstilLoginActionPerformed
+        // TODO add your handling code here:
+        txtBrugernavn.setText("");
+        txtPassword.setText("");
+    }//GEN-LAST:event_btnNulstilLoginActionPerformed
+
+    private void btnLogudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogudActionPerformed
+        // TODO add your handling code here:
+        tpGUI.setEnabled(false);
+        pLogin.setVisible(true);
+    }//GEN-LAST:event_btnLogudActionPerformed
 
     /**
      * @param args the command line arguments
@@ -322,11 +339,11 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel pLogud;
     private javax.swing.JPanel pMedarbejdere;
     private javax.swing.JLabel picKeyLogin;
-    private javax.swing.JPasswordField pwfPassword;
     private javax.swing.JScrollPane spHjælp;
     private javax.swing.JTabbedPane tpGUI;
     private javax.swing.JTextField txtBrugernavn;
     private javax.swing.JTextField txtIndtastHjælp;
+    private javax.swing.JTextField txtPassword;
     private javax.swing.JTextArea txtaHjælp;
     // End of variables declaration//GEN-END:variables
 }

@@ -90,8 +90,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        picKeyLogin.setIcon(new javax.swing.ImageIcon("C:\\Users\\Glerup\\Desktop\\login_welcome.jpg")); // NOI18N
-
         txtPassword.setFont(new java.awt.Font("Bookshelf Symbol 7", 0, 11));
 
         javax.swing.GroupLayout pLoginLayout = new javax.swing.GroupLayout(pLogin);
@@ -134,7 +132,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLogin)
                     .addComponent(btnNulstilLogin))
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(293, Short.MAX_VALUE))
         );
 
         tpGUI.addTab("Login", null, pLogin, "Her logger du ind");
@@ -180,8 +178,9 @@ public class GUI extends javax.swing.JFrame {
 
         txtaHjælp.setColumns(20);
         txtaHjælp.setEditable(false);
-        txtaHjælp.setFont(new java.awt.Font("Verdana", 0, 14));
+        txtaHjælp.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         txtaHjælp.setRows(5);
+        txtaHjælp.setText("Det første vindue man ser er login vinduet.\nI dette vindue kan man logge ind ved hjælp af et kendt Brugernavn og Password.\nHvis man succesfuldt logger ind, får man adgang til de 5 andre faner som er placeret ude i \nvenstre side");
         spHjælp.setViewportView(txtaHjælp);
 
         txtIndtastHjælp.setText("Indtast søgeord her");
@@ -284,6 +283,7 @@ public class GUI extends javax.swing.JFrame {
         CtrEmp ctrEmp = new CtrEmp();
         String user = txtBrugernavn.getText();
         String pass = txtPassword.getText();
+        String inUse = "yes";
         if(user.equals(ctrEmp.findEmployee(user).getEmployeeNo()) && pass.equals(ctrEmp.findEmployee(user).getPassword())) {
             for(int i = 1; i < tpGUI.getTabCount(); i++){
             tpGUI.setEnabledAt(i, true);

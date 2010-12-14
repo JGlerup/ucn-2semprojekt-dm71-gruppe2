@@ -90,7 +90,7 @@ public class GUI extends javax.swing.JFrame {
 
         picKeyLogin.setIcon(new javax.swing.ImageIcon("C:\\Users\\Glerup\\Desktop\\login_welcome.jpg")); // NOI18N
 
-        txtPassword.setFont(new java.awt.Font("Bookshelf Symbol 7", 0, 11)); // NOI18N
+        txtPassword.setFont(new java.awt.Font("Bookshelf Symbol 7", 0, 11));
 
         javax.swing.GroupLayout pLoginLayout = new javax.swing.GroupLayout(pLogin);
         pLogin.setLayout(pLoginLayout);
@@ -284,13 +284,12 @@ public class GUI extends javax.swing.JFrame {
         String pass = txtPassword.getText();
         if(user.equals(ctrEmp.findEmployee(user).getEmployeeNo()) && pass.equals(ctrEmp.findEmployee(user).getPassword())) {
             tpGUI.setEnabled(true);
-            txtPassword.setText("");
             JOptionPane.showMessageDialog(pLogin, "Du er nu logget ind");
         }
         else {
-            txtPassword.setText("");
             JOptionPane.showMessageDialog(pLogin, "Du har indtastet brugernavn eller password forkert");
         }
+        txtPassword.setText(null);
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnNulstilLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNulstilLoginActionPerformed

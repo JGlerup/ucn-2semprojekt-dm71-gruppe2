@@ -29,6 +29,9 @@ public class GUI extends javax.swing.JFrame {
     /** Creates new form GUI */
     public GUI() {
         initComponents();
+        for(int i = 1; i < tpGUI.getTabCount(); i++){
+            tpGUI.setEnabledAt(i, false);
+        }
     }
 
     /** This method is called from within the constructor to
@@ -65,7 +68,6 @@ public class GUI extends javax.swing.JFrame {
 
         tpGUI.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         tpGUI.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tpGUI.setEnabled(false);
         tpGUI.setPreferredSize(new java.awt.Dimension(800, 600));
 
         txtBrugernavn.setToolTipText("Skriv dit brugernavn her");
@@ -283,7 +285,9 @@ public class GUI extends javax.swing.JFrame {
         String user = txtBrugernavn.getText();
         String pass = txtPassword.getText();
         if(user.equals(ctrEmp.findEmployee(user).getEmployeeNo()) && pass.equals(ctrEmp.findEmployee(user).getPassword())) {
-            tpGUI.setEnabled(true);
+            for(int i = 1; i < tpGUI.getTabCount(); i++){
+            tpGUI.setEnabledAt(i, true);
+        }
             JOptionPane.showMessageDialog(pLogin, "Du er nu logget ind");
         }
         else {
@@ -300,8 +304,9 @@ public class GUI extends javax.swing.JFrame {
 
     private void btnLogudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogudActionPerformed
         // TODO add your handling code here:
-        tpGUI.setEnabled(false);
-        pLogin.setVisible(true);
+        for(int i = 1; i < tpGUI.getTabCount(); i++){
+            tpGUI.setEnabledAt(i, false);
+        }
     }//GEN-LAST:event_btnLogudActionPerformed
 
     /**
@@ -319,6 +324,7 @@ public class GUI extends javax.swing.JFrame {
                 }
 
                 new GUI().setVisible(true);
+
                 
             }
         });

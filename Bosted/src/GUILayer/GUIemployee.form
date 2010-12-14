@@ -27,7 +27,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTabbedPane2" pref="626" max="32767" attributes="0"/>
+              <Component id="jTabbedPane2" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -120,38 +120,40 @@
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtEmployeeAddress" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtEmployeeAddress" alignment="0" pref="127" max="32767" attributes="1"/>
                                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cbCrudClient" alignment="0" min="-2" pref="115" max="-2" attributes="0"/>
-                                      <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jTextField1" alignment="0" max="32767" attributes="1"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtEmployeeZipCode" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
-                                      <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cbCrudMedicine" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtEmployeeCity" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
-                                      <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cbCrudCar" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txtEmployeeZipCode" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                                              <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="cbCrudClient" min="-2" pref="115" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txtEmployeeCity" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                                              <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="cbCrudMedicine" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="txtEmployeeManagerNo" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
                                               <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="cbCrudCar" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="txtEmployeePassword" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
                                               <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="cbCrudEmployee" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Component id="cbCrudEmployee" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -221,16 +223,18 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="cbCrudClient" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbCrudMedicine" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbCrudCar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbCrudEmployee" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cbInUse" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbCrudEmployee" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbCrudCar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbCrudMedicine" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbCrudClient" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="290" max="-2" attributes="0"/>
@@ -352,27 +356,27 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel14">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Tilladelse til:"/>
+                    <Property name="text" type="java.lang.String" value="Tilladelse til (h&#xe5;ndtering):"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="cbCrudClient">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Klient h&#xe5;ndtering"/>
+                    <Property name="text" type="java.lang.String" value="Klient"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="cbCrudMedicine">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Medicin h&#xe5;ndtering"/>
+                    <Property name="text" type="java.lang.String" value="Medicin"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="cbCrudCar">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Bil h&#xe5;ndtering"/>
+                    <Property name="text" type="java.lang.String" value="Bil"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="cbCrudEmployee">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Medarbejder h&#xe5;ndtering"/>
+                    <Property name="text" type="java.lang.String" value="Medarbejder"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel15">
@@ -429,6 +433,13 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel16">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Brugernavn"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="jTextField1">
                 </Component>
               </SubComponents>
             </Container>

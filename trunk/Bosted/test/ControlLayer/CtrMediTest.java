@@ -61,9 +61,8 @@ public class CtrMediTest
         expResult.setName("fløde");
         expResult.setDescription("ØreGas");
         Medicine result = instance.findMedicineByClientIDAndName(clientID, name);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expResult.getName(), result.getName());
+        // TODO review the generated t/fail("The test case is a prototype.");
 
     }
 
@@ -90,6 +89,25 @@ public class CtrMediTest
     @Test
     public void testDeleteMedicine()
     {
+        System.out.println("insert");
+        int frequencyID = 1;
+        int externalContactID = 1;
+        int clientID = 1;
+        String name = "Test";
+        String description = "Test";
+        int quantity = 500;
+        CtrMedi instance = new CtrMedi();
+        instance.insertMedicine(frequencyID, externalContactID, clientID, name, description, quantity);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+        Medicine result = instance.findMedicineByClientIDAndName(1, "bananflue");
+        assertEquals(1, result.getFrequencyID());
+        assertEquals(1, result.getExternalContactID());
+        assertEquals(1, result.getClientID());
+        assertEquals("bananflue", result.getName());
+        assertEquals("ØreMedicin", result.getDescription());
+        assertEquals(40, result.getQuantity());
+        instance.deleteMedicine(result.getMedicineID());
 
     }
 
@@ -117,30 +135,30 @@ public class CtrMediTest
 
     }
 
-//    @Test
-//    public void testInsertMedicine()
-//    {
-//        System.out.println("insert");
-//        int frequencyID = 1;
-//        int externalContactID = 1;
-//        int clientID = 1;
-//        String name = "bananflue";
-//        String description = "ØreMedicin";
-//        int quantity = 40;
-//        CtrMedi instance = new CtrMedi();
-//        instance.insertMedicine(frequencyID, externalContactID, clientID, name, description, quantity);
-//        // TODO review the generated test code and remove the default call to fail.
-//        //fail("The test case is a prototype.");
-//        Medicine result = instance.findMedicineByClientIDAndName(1, "bananflue");
-//        assertEquals(1, result.getFrequencyID());
-//        assertEquals(1, result.getExternalContactID());
-//        assertEquals(1, result.getClientID());
-//        assertEquals("bananflue", result.getName());
-//        assertEquals("ØreMedicin", result.getDescription());
-//        assertEquals(40, result.getQuantity());
-//        instance.deleteMedicine(result.getMedicineID());
-//    }
-//
+    @Test
+    public void testInsertMedicine()
+    {
+        System.out.println("insert");
+        int frequencyID = 1;
+        int externalContactID = 1;
+        int clientID = 1;
+        String name = "bananflue";
+        String description = "ØreMedicin";
+        int quantity = 40;
+        CtrMedi instance = new CtrMedi();
+        instance.insertMedicine(frequencyID, externalContactID, clientID, name, description, quantity);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+        Medicine result = instance.findMedicineByClientIDAndName(1, "bananflue");
+        assertEquals(1, result.getFrequencyID());
+        assertEquals(1, result.getExternalContactID());
+        assertEquals(1, result.getClientID());
+        assertEquals("bananflue", result.getName());
+        assertEquals("ØreMedicin", result.getDescription());
+        assertEquals(40, result.getQuantity());
+        instance.deleteMedicine(result.getMedicineID());
+    }
+
 //    @Test
 //    public void testInsertErrorHandlingMedicine()
 //    {
@@ -164,10 +182,10 @@ public class CtrMediTest
 //        assertEquals(1, result.getQuantity());
 //        instance.deleteErrorHandlingMedicine(result.getErrorHandlingMedicineID(),result.getMedicineID(), result.getQuantity());
 //    }
-//
-//    @Test
-//    public void testUpdateMedicine()
-//    {
+
+    @Test
+    public void testUpdateMedicine()
+    {
 //        System.out.println("insert");
 //        int frequencyID = 1;
 //        int externalContactID = 1;
@@ -179,6 +197,7 @@ public class CtrMediTest
 //        instance.insertMedicine(frequencyID, externalContactID, clientID, name, description, quantity);
 //        // TODO review the generated test code and remove the default call to fail.
 //        //fail("The test case is a prototype.");
+//        String date = (instance.findMedicineByClientIDAndName(1, "bananflue")).getDate();
 //        System.out.println("UpdateMedicine");
 //        int medID = (instance.findMedicineByClientIDAndName(1, "bananflue")).getMedicineID();
 //        int frequencyIDNew = 1;
@@ -187,17 +206,17 @@ public class CtrMediTest
 //        String nameNew = "fløde";
 //        String descriptionNew = "ØreGas";
 //        int quantityNew = 10;
-//        String date = (instance.findMedicineByClientIDAndName(1, "bananflue")).getDate();
+//
 //        instance.updateMedicine(medID, frequencyIDNew, externalContactIDNew, clientIDNew, nameNew, descriptionNew, date, quantityNew);
 //        Medicine result = instance.findMedicineByClientIDAndName(clientIDNew, nameNew);
 //        assertEquals(1, result.getFrequencyID());
 //        assertEquals(1, result.getExternalContactID());
 //        assertEquals(1, result.getClientID());
-//        assertEquals("bananflue", result.getName());
-//        assertEquals("ØreMedicin", result.getDescription());
-//        assertEquals(40, result.getQuantity());
+//        assertEquals("fløde", result.getName());
+//        assertEquals("ØreGas", result.getDescription());
+//        assertEquals(10, result.getQuantity());
 //        instance.deleteMedicine(result.getMedicineID());
-//    }
+    }
 
     @Test
     public void testUpdateErrorHandleMedicine()

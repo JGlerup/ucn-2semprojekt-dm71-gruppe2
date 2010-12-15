@@ -53,8 +53,11 @@ public class GUI extends javax.swing.JFrame {
         picKeyLogin = new javax.swing.JLabel();
         txtPassword = new javax.swing.JTextField();
         pKlienter = new javax.swing.JPanel();
+        gUIclient1 = new GUILayer.GUIclient();
         pBiler = new javax.swing.JPanel();
+        gUIcar1 = new GUILayer.GUIcar();
         pMedarbejdere = new javax.swing.JPanel();
+        gUIemployee1 = new GUILayer.GUIemployee();
         pHjælp = new javax.swing.JPanel();
         spHjælp = new javax.swing.JScrollPane();
         txtaHjælp = new javax.swing.JTextArea();
@@ -97,7 +100,7 @@ public class GUI extends javax.swing.JFrame {
         pLoginLayout.setHorizontalGroup(
             pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLoginLayout.createSequentialGroup()
-                .addContainerGap(302, Short.MAX_VALUE)
+                .addContainerGap(597, Short.MAX_VALUE)
                 .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pLoginLayout.createSequentialGroup()
                         .addComponent(picKeyLogin)
@@ -132,7 +135,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLogin)
                     .addComponent(btnNulstilLogin))
-                .addContainerGap(293, Short.MAX_VALUE))
+                .addContainerGap(371, Short.MAX_VALUE))
         );
 
         tpGUI.addTab("Login", null, pLogin, "Her logger du ind");
@@ -141,11 +144,15 @@ public class GUI extends javax.swing.JFrame {
         pKlienter.setLayout(pKlienterLayout);
         pKlienterLayout.setHorizontalGroup(
             pKlienterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 702, Short.MAX_VALUE)
+            .addGroup(pKlienterLayout.createSequentialGroup()
+                .addComponent(gUIclient1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(300, Short.MAX_VALUE))
         );
         pKlienterLayout.setVerticalGroup(
             pKlienterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 584, Short.MAX_VALUE)
+            .addGroup(pKlienterLayout.createSequentialGroup()
+                .addComponent(gUIclient1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
         tpGUI.addTab("Klienter", null, pKlienter, "Her ser du dine klienter");
@@ -154,11 +161,15 @@ public class GUI extends javax.swing.JFrame {
         pBiler.setLayout(pBilerLayout);
         pBilerLayout.setHorizontalGroup(
             pBilerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 702, Short.MAX_VALUE)
+            .addGroup(pBilerLayout.createSequentialGroup()
+                .addComponent(gUIcar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(323, Short.MAX_VALUE))
         );
         pBilerLayout.setVerticalGroup(
             pBilerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 584, Short.MAX_VALUE)
+            .addGroup(pBilerLayout.createSequentialGroup()
+                .addComponent(gUIcar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(124, Short.MAX_VALUE))
         );
 
         tpGUI.addTab("Biler", null, pBiler, "Her reserverer du biler");
@@ -167,18 +178,22 @@ public class GUI extends javax.swing.JFrame {
         pMedarbejdere.setLayout(pMedarbejdereLayout);
         pMedarbejdereLayout.setHorizontalGroup(
             pMedarbejdereLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 702, Short.MAX_VALUE)
+            .addGroup(pMedarbejdereLayout.createSequentialGroup()
+                .addComponent(gUIemployee1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pMedarbejdereLayout.setVerticalGroup(
             pMedarbejdereLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 584, Short.MAX_VALUE)
+            .addGroup(pMedarbejdereLayout.createSequentialGroup()
+                .addComponent(gUIemployee1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tpGUI.addTab("Medarbejdere", null, pMedarbejdere, "Her håndterer du medarbejdere");
 
         txtaHjælp.setColumns(20);
         txtaHjælp.setEditable(false);
-        txtaHjælp.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        txtaHjælp.setFont(new java.awt.Font("Verdana", 0, 14));
         txtaHjælp.setRows(5);
         txtaHjælp.setText("Det første vindue man ser er login vinduet.\nI dette vindue kan man logge ind ved hjælp af et kendt Brugernavn og Password.\nHvis man succesfuldt logger ind, får man adgang til de 5 andre faner som er placeret ude i \nvenstre side");
         spHjælp.setViewportView(txtaHjælp);
@@ -204,7 +219,7 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnSøg)
                         .addContainerGap())
-                    .addComponent(spHjælp, javax.swing.GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)))
+                    .addComponent(spHjælp, javax.swing.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)))
         );
         pHjælpLayout.setVerticalGroup(
             pHjælpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,7 +229,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(btnSøg)
                     .addComponent(txtIndtastHjælp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(spHjælp, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+                .addComponent(spHjælp, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -234,7 +249,7 @@ public class GUI extends javax.swing.JFrame {
         pLogudLayout.setHorizontalGroup(
             pLogudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLogudLayout.createSequentialGroup()
-                .addContainerGap(290, Short.MAX_VALUE)
+                .addContainerGap(585, Short.MAX_VALUE)
                 .addGroup(pLogudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pLogudLayout.createSequentialGroup()
                         .addComponent(lblLogud)
@@ -250,7 +265,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(lblLogud)
                 .addGap(18, 18, 18)
                 .addComponent(btnLogud)
-                .addContainerGap(277, Short.MAX_VALUE))
+                .addContainerGap(355, Short.MAX_VALUE))
         );
 
         tpGUI.addTab("Logud", null, pLogud, "Her logger du ud");
@@ -260,13 +275,13 @@ public class GUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(tpGUI, javax.swing.GroupLayout.DEFAULT_SIZE, 790, Short.MAX_VALUE)
+                .addComponent(tpGUI, javax.swing.GroupLayout.DEFAULT_SIZE, 1085, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(tpGUI, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
+                .addComponent(tpGUI, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -334,6 +349,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton btnLogud;
     private javax.swing.JButton btnNulstilLogin;
     private javax.swing.JButton btnSøg;
+    private GUILayer.GUIcar gUIcar1;
+    private GUILayer.GUIclient gUIclient1;
+    private GUILayer.GUIemployee gUIemployee1;
     private javax.swing.JLabel lblBrugernavn;
     private javax.swing.JLabel lblLogud;
     private javax.swing.JLabel lblPassword;

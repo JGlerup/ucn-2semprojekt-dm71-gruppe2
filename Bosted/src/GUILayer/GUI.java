@@ -58,6 +58,8 @@ public class GUI extends javax.swing.JFrame {
         gUIcar1 = new GUILayer.GUIcar();
         pMedarbejdere = new javax.swing.JPanel();
         gUIemployee1 = new GUILayer.GUIemployee();
+        jPanel1 = new javax.swing.JPanel();
+        gUImedicin1 = new GUILayer.GUImedicin();
         pHjælp = new javax.swing.JPanel();
         spHjælp = new javax.swing.JScrollPane();
         txtaHjælp = new javax.swing.JTextArea();
@@ -190,6 +192,23 @@ public class GUI extends javax.swing.JFrame {
         );
 
         tpGUI.addTab("Medarbejdere", null, pMedarbejdere, "Her håndterer du medarbejdere");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(gUImedicin1, javax.swing.GroupLayout.PREFERRED_SIZE, 791, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(206, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(gUImedicin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(106, Short.MAX_VALUE))
+        );
+
+        tpGUI.addTab("Medicin", jPanel1);
 
         txtaHjælp.setColumns(20);
         txtaHjælp.setEditable(false);
@@ -352,6 +371,8 @@ public class GUI extends javax.swing.JFrame {
     private GUILayer.GUIcar gUIcar1;
     private GUILayer.GUIclient gUIclient1;
     private GUILayer.GUIemployee gUIemployee1;
+    private GUILayer.GUImedicin gUImedicin1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblBrugernavn;
     private javax.swing.JLabel lblLogud;
     private javax.swing.JLabel lblPassword;

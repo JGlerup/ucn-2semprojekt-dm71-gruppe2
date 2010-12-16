@@ -11,9 +11,11 @@ import java.util.ArrayList;
 public class CtrMedi
 {
 
+    private String managerMessage;
+
     public CtrMedi()
     {
-
+        managerMessage = null;
     }
 
     public Medicine findMedicineByClientIDAndName(int clientID, String name)
@@ -122,9 +124,8 @@ public class CtrMedi
         return allErHaMedDa;
     }
 
-    public String insertErrorHandlingMedicine(int medicineID, int clientID, int employeeID, String episode, int quantity, String managerNo)
+    public void insertErrorHandlingMedicine(int medicineID, int clientID, int employeeID, String episode, int quantity, String managerNo)
     {
-        String managermessage = null;
         Medicine medi = new Medicine();
         medi = findMedicineByID(medicineID);
         if(medi.getExternalContactID() != 0)
@@ -145,7 +146,8 @@ public class CtrMedi
                     erHaMedObj.setEpisode(episode);
                     erHaMedObj.setQuantity(quantity);
                     dbErHaMedDa.insertErrorHandlingMedicine(erHaMedObj);
-                    managermessage = sendEmailToManager(findManager(managerNo)) + " om hændelsen.";
+                    sendEmailToManager(findManager(managerNo));
+                    managerMessage = getManagerMessage() + " om hændelsen.";
                 }
                 catch (Exception Ex)
                 {
@@ -153,10 +155,10 @@ public class CtrMedi
                 }
             }
         }
-        return managermessage;
+        
     }
 
-    public String updateErrorHandlingMedicine(int errorHandlingMedicineID, int medicineID, int clientID, int employeeID, String date, String episode, int quantity, String managerNo)
+    public void updateErrorHandlingMedicine(int errorHandlingMedicineID, int medicineID, int clientID, int employeeID, String date, String episode, int quantity, String managerNo)
     {
         String managermessage = null;
         Medicine medi = new Medicine();
@@ -173,6 +175,7 @@ public class CtrMedi
                 dbMed.updateMedicine(medi);
                 IFDBErrorHandMed dbErHaMed = new DBErrorHandlingMedicine();
                 ErrorHandlingMedicine erHaMedObj = new ErrorHandlingMedicine();
+                erHaMedObj.setErrorHandlingMedicineID(errorHandlingMedicineID);
                 erHaMedObj.setMedicineID(medicineID);
                 erHaMedObj.setClientID(clientID);
                 erHaMedObj.setEmployeeID(employeeID);
@@ -180,7 +183,8 @@ public class CtrMedi
                 erHaMedObj.setEpisode(episode);
                 erHaMedObj.setQuantity(quantity);
                 dbErHaMed.updateErrorHandlingMedicine(erHaMedObj);
-                managermessage = sendEmailToManager(findManager(managerNo)) + " om opdateringen.";
+                sendEmailToManager(findManager(managerNo));
+                managerMessage = getManagerMessage() + " om opdateringen.";
             }
             catch (Exception Ex)
             {
@@ -193,6 +197,7 @@ public class CtrMedi
             {
                 IFDBErrorHandMed dbErHaMed = new DBErrorHandlingMedicine();
                 ErrorHandlingMedicine erHaMedObj = new ErrorHandlingMedicine();
+                erHaMedObj.setErrorHandlingMedicineID(errorHandlingMedicineID);
                 erHaMedObj.setMedicineID(medicineID);
                 erHaMedObj.setClientID(clientID);
                 erHaMedObj.setEmployeeID(employeeID);
@@ -200,14 +205,14 @@ public class CtrMedi
                 erHaMedObj.setEpisode(episode);
                 erHaMedObj.setQuantity(quantity);
                 dbErHaMed.updateErrorHandlingMedicine(erHaMedObj);
-                managermessage = sendEmailToManager(findManager(managerNo)) + " om opdateringen.";
+                sendEmailToManager(findManager(managerNo));
+                managerMessage = getManagerMessage() + " om opdateringen.";
             }
             catch (Exception Ex)
             {
                 System.out.println("Update exception in errorHandlingMedicine db: " + Ex);
             }
         }
-        return managermessage;
     }
 
     public void deleteErrorHandlingMedicine(int errorHandlingMedicineID, int medicineID, int quantity)
@@ -233,10 +238,20 @@ public class CtrMedi
         return manager;
     }
 
-    public String sendEmailToManager(Employee manager)
+    public void sendEmailToManager(Employee manager)
     {
         Employee m = manager;
-        return "Der er sendt besked til " + m.getFirstName() + " " + m.getMiddleName() + " " + m.getLastName();
+        managerMessage = "Der er sendt besked til " + m.getFirstName() + " " + m.getMiddleName() + " " + m.getLastName();
+    }
+
+    public String getManagerMessage()
+    {
+        return managerMessage;
+    }
+
+    public void setManagerMessage(String ManagerMessage)
+    {
+        this.managerMessage = ManagerMessage;
     }
 
     public Frequency findFrequencyByTimesPerDayAndQuantityEachTime(int timesPerDay, int quantityEachTime, boolean retrieveAssociation)

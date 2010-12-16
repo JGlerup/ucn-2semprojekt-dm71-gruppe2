@@ -2,37 +2,29 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ModelLayer;
-
-import java.util.Date;
 
 /**
  *
  * @author Kristian Byrialsen
  */
-public class Dailyreport {
+public class DailyReport {
 
-private int clientID;
-private int employeeID;
-private String text;
-private String date;
+    private int dailyReportID;
+    private int clientID;
+    private String date;
+    private int employeeID;
+    private String text;
 
+    public DailyReport() {
+    }
 
-
-public Dailyreport()
-{
-
-}
-
-
-public Dailyreport(int clientID, int employeeID, String text, String date)
-{
-    this.clientID = clientID;
-    this.employeeID = employeeID;
-    this.text = text;
-    this.date = date;
-}
+    public DailyReport(int clientID, String date, int employeeID, String text) {
+        this.clientID = clientID;
+        this.date = date;
+        this.employeeID = employeeID;
+        this.text = text;
+    }
 
     public int getClientID() {
         return clientID;
@@ -66,17 +58,12 @@ public Dailyreport(int clientID, int employeeID, String text, String date)
         this.text = text;
     }
 
+    public void setDate() {
+        ToDaysDate toDaysDate = new ToDaysDate();
+        date = toDaysDate.toString();
+    }
 
-
-
-
-
-
-
-
-
-
-
+    public void setNewDate(String newDate) {
+        date = newDate;
+    }
 }
-
-

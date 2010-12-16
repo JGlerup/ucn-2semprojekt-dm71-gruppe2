@@ -39,6 +39,11 @@ public class DBMedicine implements IFDBMedi
         return miscWhere("", retriveAssociation);
     }
 
+    public ArrayList<Medicine> getAllMedicineByClientID(int clientID, boolean retriveAssociation)
+    {
+        return miscWhere("client_id = " + clientID, retriveAssociation);
+    }
+
     public int insertMedicine(Medicine medi)
     {  
         int rc = -1;

@@ -107,7 +107,7 @@ public class DBMedicineTest
 
     @Test
     public void testFindMedicineByID()//(int medicineID, boolean retrieveAssociation)
-    {// Run testFindMedicineByID first to find MedicineID
+    {// Run testFindMedicineByClientIDAndName first to find MedicineID
         System.out.println("findMedicineByID");
         int frequencyID = 1;
         int externalContactID = 1;

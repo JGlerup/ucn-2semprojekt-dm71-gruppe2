@@ -66,6 +66,6 @@ public class ToDaysDate {
     }
     public String toString()
     {
-       return 20 + getYear() + getMonth() + getDay();
+       return 20 + getYear() + "-" + getMonth()+ "-" + getDay();
     }
 }

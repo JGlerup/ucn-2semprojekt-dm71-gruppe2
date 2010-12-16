@@ -167,7 +167,10 @@ public class CtrMedi
         {
              try
             {
-                int newQuantity = medi.getQuantity() + quantity;
+                int newQuantity = medi.getQuantity() + erHaMed.getQuantity() - quantity;
+                medi.setQuantity(newQuantity);
+                IFDBMedi dbMed = new DBMedicine();
+                dbMed.updateMedicine(medi);
                 IFDBErrorHandMed dbErHaMed = new DBErrorHandlingMedicine();
                 ErrorHandlingMedicine erHaMedObj = new ErrorHandlingMedicine();
                 erHaMedObj.setMedicineID(medicineID);
@@ -175,7 +178,7 @@ public class CtrMedi
                 erHaMedObj.setEmployeeID(employeeID);
                 erHaMedObj.setDate(date);
                 erHaMedObj.setEpisode(episode);
-                erHaMedObj.setQuantity(newQuantity);
+                erHaMedObj.setQuantity(quantity);
                 dbErHaMed.updateErrorHandlingMedicine(erHaMedObj);
                 managermessage = sendEmailToManager(findManager(managerNo)) + " om opdateringen.";
             }

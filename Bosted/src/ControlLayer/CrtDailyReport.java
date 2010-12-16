@@ -24,21 +24,21 @@ import java.util.Date;
 public class CrtDailyReport {
 
 
-public DailyReport findDailyReport(int clientID)
+public DailyReport findDailyReportByDailyReportID(int clientID)
     {
         IFDBDailyReport dbDailyReport = new DBDailyReport();
-        return dbDailyReport.findDailyReport(clientID, true);
+        return dbDailyReport.findDailyReportByClientID(clientID, true);
     }
 
     public ArrayList getAllDailyReports()
     {
         IFDBDailyReport dbDai = new DBDailyReport();
         ArrayList allDai = new ArrayList<DailyReport>();
-        allDai = dbDai.getAllDailyreports(false);
+        allDai = dbDai.getAllDailyReports(true);
         return allDai;
     }
 
-    public void insertDailyreport(int clientID, int employeeID, String text, Date date)
+    public void insertDailyreport(int clientID, int employeeID, String text, String date)
     {
         IFDBDailyReport dbDailyreport = new DBDailyReport();
         DailyReport dObj = new DailyReport();
@@ -48,31 +48,22 @@ public DailyReport findDailyReport(int clientID)
         dObj.setDate(date);
     }
 
-    public void updateDailyreport(String clientNoCurrent, String clientNoNew, String description, String interests, String health, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email)
+    public void updateDailyreport(int clientID, int employeeID, String text, String date)
     {
-        IFDBClient dbClient = new DBClient();
-        Client cObj = new Client();
-        int clientID = findClientByClientNo(clientNoCurrent).getClientID();
-        cObj.setClientID(clientID);
-        cObj.setClientNo(clientNoNew);
-        cObj.setDescription(description);
-        cObj.setInterests(interests);
-        cObj.setHealth(health);
-        cObj.setSsn(ssn);
-        cObj.setFirstName(firstName);
-        cObj.setMiddleName(middleName);
-        cObj.setLastName(lastName);
-        cObj.setAddress(address);
-        cObj.setLocationID(locationID);
-        cObj.setPhoneNo(phoneNo);
-        cObj.setEmail(email);
-        dbClient.updateClient(cObj);
+       IFDBDailyReport dbDailyReport = new DBDailyReport();
+        DailyReport dObj = new DailyReport();
+        int dailyReportID = dbDailyReport.findDailyReportByClientID(clientID, false).getClientID();
+        dObj.setClientID(clientID);
+        dObj.setEmployeeID(employeeID);
+        dObj.setText(text);
+        dObj.setDate(date);
+        dbDailyReport.updateDailyReport(dObj);
     }
 
     public void deleteDailyreport(int clientID)
     {
         IFDBDailyReport dbDailyReport = new DBDailyReport();
-        dbDailyReport.deleteDailyreport(clientID);
+        dbDailyReport.deleteDailyReport(clientID);
     }
 
     public ArrayList<Employee> findClientsEmployees(int clientID)

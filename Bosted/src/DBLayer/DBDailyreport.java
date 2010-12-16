@@ -30,7 +30,7 @@ public class DBDailyReport implements IFDBDailyReport {
         return drObj;
     }
 
-    public DailyReport findDailyReportByDailyClientID(int clientID, boolean retrieveAssociation) {
+    public DailyReport findDailyReportByClientID(int clientID, boolean retrieveAssociation) {
         DailyReport drObj = new DailyReport();
         drObj = singleWhere("clientid = '" + clientID + "'", false);
         return drObj;
@@ -42,11 +42,11 @@ public class DBDailyReport implements IFDBDailyReport {
         return drObj;
     }
 
-    public ArrayList<DailyReport> getAllDailyreports(boolean retriveAssociation) {
+    public ArrayList<DailyReport> getAllDailyReports(boolean retriveAssociation) {
         return miscWhere("", retriveAssociation);
     }
 
-    public int insertDailyreport(DailyReport daily) {
+    public int insertDailyReport(DailyReport daily) {
         int rc = -1;
         String query = "INSERT INTO dailyreport(clientID, employeeID, text, date)  VALUES('"
                 + daily.getClientID() + "','"
@@ -67,7 +67,7 @@ public class DBDailyReport implements IFDBDailyReport {
         return (rc);
     }
 
-    public int updateDailyreport(DailyReport daily) {
+    public int updateDailyReport(DailyReport daily) {
         DailyReport dailyObj = daily;
         int rc = -1;
 
@@ -91,7 +91,7 @@ public class DBDailyReport implements IFDBDailyReport {
         return (rc);
     }
 
-    public int deleteDailyreport(int clientID) {
+    public int deleteDailyReport(int clientID) {
         int rc = -1;
 
         String query = "DELETE FROM dailyreport "
@@ -172,7 +172,7 @@ public class DBDailyReport implements IFDBDailyReport {
             dailyObj.setClientID(results.getInt(1));
             dailyObj.setEmployeeID(results.getInt(2));
             dailyObj.setText(results.getString(3));
-            dailyObj.setDate(results.getDate(4));
+            dailyObj.setDate(results.getString(4));
             
         } catch (Exception e) {
             System.out.println("building dailyreport object");

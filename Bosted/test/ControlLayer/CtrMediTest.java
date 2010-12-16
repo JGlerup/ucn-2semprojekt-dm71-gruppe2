@@ -265,6 +265,7 @@ public class CtrMediTest
         String date = erHaMedObj.getDate();
         erHaMedObj = instance.findErrorHandlingMedicineByEpisode("TEST TEST Hunden spiste den");
         int errrorHandlingMedicineID = erHaMedObj.getErrorHandlingMedicineID();
+        System.out.println("mediID " + erHaMedObj.getMedicineID());
         int medicineID = erHaMedObj.getMedicineID();
         Medicine mediObj = new Medicine();
         mediObj = instance.findMedicineByID(medicineID);

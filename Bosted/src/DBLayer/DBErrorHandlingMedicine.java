@@ -76,13 +76,13 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
         int rc = -1;
 
         String query = "UPDATE errorHandlingMedicine SET "
-                + "medicine_id ='" + ehmObj.getMedicineID() + "', "
-                + "client_id ='" + ehmObj.getClientID() + "', "
-                + "employee_id ='" + ehmObj.getEmployeeID() + "', "
+                + "medicine_id = " + ehmObj.getMedicineID() + ", "
+                + "client_id = " + ehmObj.getClientID() + ", "
+                + "employee_id = " + ehmObj.getEmployeeID() + ", "
                 + "date ='" + ehmObj.getDate() + "', "
-                + "episode ='" + ehmObj.getEpisode() + "' "
-                + "quantity ='" + ehmObj.getQuantity() + "' "
-                + " WHERE errorHandlingMedicine_id = '" + ehmObj.getErrorHandlingMedicineID() + "'";
+                + "episode ='" + ehmObj.getEpisode() + "', "
+                + "quantity =" + ehmObj.getQuantity() + " "
+                + " WHERE errorhandlingmedicine_id = " + ehmObj.getErrorHandlingMedicineID();
         System.out.println("Update query:" + query);
         try
         { // update errorHandlingMedicine

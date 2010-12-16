@@ -12,6 +12,8 @@ package GUILayer;
 
 import ControlLayer.CtrLoca;
 import ControlLayer.CtrClient;
+import ModelLayer.Client;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -71,7 +73,7 @@ public class GUIclient extends javax.swing.JPanel {
         btnCreateClient = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         CheckBoxInUse = new javax.swing.JCheckBox();
-        jComboBox1 = new javax.swing.JComboBox();
+        cmbClient = new javax.swing.JComboBox();
         jLabel8 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
@@ -146,6 +148,11 @@ public class GUIclient extends javax.swing.JPanel {
         jButton8 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(697, 556));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         pHåndteringKlientIndhold.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -231,10 +238,15 @@ public class GUIclient extends javax.swing.JPanel {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cmbClient.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cmbClientActionPerformed(evt);
+            }
+        });
+        cmbClient.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cmbClientFocusGained(evt);
             }
         });
 
@@ -256,7 +268,7 @@ public class GUIclient extends javax.swing.JPanel {
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pHåndteringKlientIndholdLayout.createSequentialGroup()
                         .addGroup(pHåndteringKlientIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmbClient, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblFornavnKlient, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtClientFirstName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
                             .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,7 +314,7 @@ public class GUIclient extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmbClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(pHåndteringKlientIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pHåndteringKlientIndholdLayout.createSequentialGroup()
@@ -1017,10 +1029,11 @@ public class GUIclient extends javax.swing.JPanel {
         ctrCli.deleteClient(clientNo);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cmbClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClientActionPerformed
         // TODO add your handling code here:
+       
 
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cmbClientActionPerformed
 
     private void txtClientFirstName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClientFirstName1ActionPerformed
         // TODO add your handling code here:
@@ -1079,9 +1092,25 @@ public class GUIclient extends javax.swing.JPanel {
         guism.setVisible(true);
     }//GEN-LAST:event_jButton10ActionPerformed
 
+    private void cmbClientFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cmbClientFocusGained
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_cmbClientFocusGained
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+                CtrClient ctrClient = new CtrClient();
+        cmbClient.removeAllItems();
+        ArrayList<Client> clientList = ctrClient.getAllClients();
+        for(Client c : clientList){
+            cmbClient.addItem(c);
+        }
+    }//GEN-LAST:event_formComponentShown
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox CheckBoxInUse;
     private javax.swing.JButton btnCreateClient;
+    private javax.swing.JComboBox cmbClient;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
@@ -1092,7 +1121,6 @@ public class GUIclient extends javax.swing.JPanel {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

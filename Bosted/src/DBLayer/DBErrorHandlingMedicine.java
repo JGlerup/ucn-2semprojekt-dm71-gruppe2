@@ -186,8 +186,9 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
         ErrorHandlingMedicine ehmObj = new ErrorHandlingMedicine();
 
         try
-        {
+        {            
             ehmObj.setErrorHandlingMedicineID(results.getInt(1));
+            ehmObj.setMedicineID(results.getInt(2));
             ehmObj.setClientID(results.getInt(3));
             ehmObj.setEmployeeID(results.getInt(4));
             ehmObj.setDate(results.getString(5));

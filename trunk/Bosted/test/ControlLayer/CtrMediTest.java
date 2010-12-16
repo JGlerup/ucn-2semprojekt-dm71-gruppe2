@@ -60,7 +60,7 @@ public class CtrMediTest
         Medicine mediObj = new Medicine();
         mediObj.setThisDate();
         instance.insertMedicine(frequencyID, externalContactID, clientID, name, description, quantity);//(int frequencyID, int externalContactID, int clientID, String name, String description, int quantity)
-        // TODO review the generated test code and remove the default call to fail.
+        //TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
         Medicine result = instance.findMedicineByClientIDAndName(1, "TEST MedicinNavn");
         assertEquals(1, result.getFrequencyID());
@@ -86,7 +86,7 @@ public class CtrMediTest
         String date = mediObj.getDate();
         int quantity = 100;
         CtrMedi instance = new CtrMedi();
-        // TODO review the generated test code and remove the default call to fail.
+        //TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
         Medicine result = instance.findMedicineByClientIDAndName(1, "TEST MedicinNavn");
         System.out.println("MedicineID " + result.getMedicineID());
@@ -122,7 +122,7 @@ public class CtrMediTest
         CtrMedi instance = new CtrMedi();
         Medicine res = instance.findMedicineByClientIDAndName(clientID, name);
         int medicineID = res.getMedicineID();
-        // TODO review the generated test code and remove the default call to fail.
+        //TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
         Medicine result = instance.findMedicineByID(medicineID);
         assertEquals(medicineID, result.getMedicineID());
@@ -159,11 +159,11 @@ public class CtrMediTest
         }
         ArrayList<Medicine> result = instance.getAllMedicine();
         assertEquals(expResult.size(), result.size());
-        // TODO review the generated test code and remove the default call to fail.
+        //TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
 
-     @Test
+    @Test
     public void testUpdateMedicine()
     {
         System.out.println("findMedicineByNameAndClientID");
@@ -174,20 +174,20 @@ public class CtrMediTest
         int frequencyID = 1;
         int externalContactID = 1;
         int clientID = 1;
-        String name = "TEST MedicinNytNavnX";
+        String name = "TEST MedicinNytNavn";
         String description = "TEST MedicinNyBeskrivelse";
         String date = "2010-01-01";
         int quantity = 10;
         System.out.println("updateMedicine");
         instance.updateMedicine(medicineID, frequencyID, externalContactID, clientID, name, description, date, quantity);//(int medicineID, int frequencyID, int externalContactID, int clientID, String name, String description, String date, int quantity)
-        // TODO review the generated test code and remove the default call to fail.
+        //TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
-        Medicine result = instance.findMedicineByClientIDAndName(1, "TEST MedicinNytNavnX");
+        Medicine result = instance.findMedicineByClientIDAndName(1, "TEST MedicinNytNavn");
         assertEquals(medicineID, result.getMedicineID());
         assertEquals(1, result.getFrequencyID());
         assertEquals(1, result.getExternalContactID());
         assertEquals(1, result.getClientID());
-        assertEquals("TEST MedicinNytNavnX", result.getName());
+        assertEquals("TEST MedicinNytNavn", result.getName());
         assertEquals("TEST MedicinNyBeskrivelse", result.getDescription());
         assertEquals("2010-01-01",result.getDate());
         assertEquals(10, result.getQuantity());
@@ -199,29 +199,29 @@ public class CtrMediTest
         System.out.println("insert");
         CtrMedi instance = new CtrMedi();
         Medicine mediObj = new Medicine();
-        mediObj = instance.findMedicineByClientIDAndName(1, "TEST MedicinNytNavnX");
+        mediObj = instance.findMedicineByClientIDAndName(1, "TEST MedicinNytNavn");
         System.out.println(mediObj.getMedicineID());
         int medicineID = mediObj.getMedicineID();
         int oldQuantity = mediObj.getQuantity();
         int clientID = 1;
         int employeeID = 2;
-        String episode = "TEST TEST Hunden har spiste denX";
+        String episode = "TEST TEST Hunden spiste den";
         int quantity = 1;
         int newQuantity = oldQuantity - quantity;
         String managerNo = "1";
         instance.insertErrorHandlingMedicine(medicineID, clientID, employeeID, episode, quantity, managerNo);
-        // TODO review the generated test code and remove the default call to fail.
+        //TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
         ErrorHandlingMedicine eResult = instance.findErrorHandlingMedicineByEpisode(episode);
         Medicine mResult = instance.findMedicineByID(medicineID);
         assertEquals(medicineID , eResult.getMedicineID());
         assertEquals(1, eResult.getClientID());
         assertEquals(2, eResult.getEmployeeID());
-        assertEquals("TEST TEST Hunden har spiste denX", eResult.getEpisode());
+        assertEquals("TEST TEST Hunden spiste den", eResult.getEpisode());
         assertEquals(1, eResult.getQuantity());
         assertEquals(medicineID, mResult.getMedicineID());
         assertEquals(1, mResult.getClientID());
-        assertEquals("TEST MedicinNytNavnX", mResult.getName());
+        assertEquals("TEST MedicinNytNavn", mResult.getName());
         assertEquals(newQuantity, mResult.getQuantity());
     }
 
@@ -235,9 +235,9 @@ public class CtrMediTest
         int clientID = 1;
         int employeeID = 2;
         String date = erHaMedObj.getDate();
-        String episode = "TEST TEST Hunden har spiste denX";
+        String episode = "TEST TEST Hunden spiste den";
         int quantity = 1;
-        // TODO review the generated test code and remove the default call to fail.
+        //TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
         ErrorHandlingMedicine result = instance.findErrorHandlingMedicineByEpisode(episode);
         System.out.println("MedicineID " + result.getMedicineID());
@@ -263,7 +263,7 @@ public class CtrMediTest
         ErrorHandlingMedicine erHaMedObj = new ErrorHandlingMedicine();
         erHaMedObj.setThisDate();
         String date = erHaMedObj.getDate();
-        erHaMedObj = instance.findErrorHandlingMedicineByEpisode("TEST TEST Hunden har spiste denX");
+        erHaMedObj = instance.findErrorHandlingMedicineByEpisode("TEST TEST Hunden spiste den");
         int errrorHandlingMedicineID = erHaMedObj.getErrorHandlingMedicineID();
         int medicineID = erHaMedObj.getMedicineID();
         Medicine mediObj = new Medicine();
@@ -273,11 +273,11 @@ public class CtrMediTest
         int newQuantity = (oldQuantity + erHaMedObj.getQuantity()) - quantity;
         int clientID = 1;
         int employeeID = 2;
-        String episode = "TEST TEST Katten har spiste demX";
+        String episode = "TEST TEST Katten spiste dem";
         String managerNo = "1";
         System.out.println("updateErrorHandlingMedicine");
         instance.updateErrorHandlingMedicine(errrorHandlingMedicineID, medicineID, clientID, employeeID, date, episode, quantity, managerNo);
-        // TODO review the generated test code and remove the default call to fail.
+        //TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
         Medicine mResult = instance.findMedicineByID(medicineID);
         ErrorHandlingMedicine eResult = instance.findErrorHandlingMedicineByID(errrorHandlingMedicineID);
@@ -286,7 +286,7 @@ public class CtrMediTest
         assertEquals(medicineID, eResult.getMedicineID());
         assertEquals(1, eResult.getClientID());
         assertEquals(2, eResult.getEmployeeID());
-        assertEquals("TEST TEST Katten har spiste demX", eResult.getEpisode());
+        assertEquals("TEST TEST Katten spiste dem", eResult.getEpisode());
         assertEquals(date, eResult.getDate());
         assertEquals(5, eResult.getQuantity());
     }
@@ -298,7 +298,7 @@ public class CtrMediTest
         CtrMedi instance = new CtrMedi();
         System.out.println("findErrorHnadlingMedicineByEpisode");
         ErrorHandlingMedicine erHaMedObj = new ErrorHandlingMedicine();
-        erHaMedObj = instance.findErrorHandlingMedicineByEpisode("TEST TEST Katten har spiste demX");
+        erHaMedObj = instance.findErrorHandlingMedicineByEpisode("TEST TEST Katten spiste dem");
         int errorHandlingMedicineID = erHaMedObj.getErrorHandlingMedicineID();
         int medicineID = erHaMedObj.getMedicineID();
         int quantity = erHaMedObj.getQuantity();
@@ -311,7 +311,7 @@ public class CtrMediTest
         instance.deleteErrorHandlingMedicine(errorHandlingMedicineID, medicineID, quantity);
         Medicine mResult = new Medicine();
         mResult = instance.findMedicineByID(medicineID);
-        ErrorHandlingMedicine eResult = instance.findErrorHandlingMedicineByEpisode("TEST TEST Katten har spiste demX");
+        ErrorHandlingMedicine eResult = instance.findErrorHandlingMedicineByEpisode("TEST TEST Katten spiste dem");
         assertEquals(newQuantity, mResult.getQuantity());
         assertEquals(null, eResult.getEpisode());
 
@@ -323,12 +323,12 @@ public class CtrMediTest
         System.out.println("deleteMedicine");
         CtrMedi instance = new CtrMedi();
         Medicine mediObj = new Medicine();
-        mediObj = instance.findMedicineByClientIDAndName(1, "TEST MedicinNytNavnX");
+        mediObj = instance.findMedicineByClientIDAndName(1, "TEST MedicinNytNavn");
         int medicineID = mediObj.getMedicineID();
         System.out.println("Name " + mediObj.getName());
         instance.deleteMedicine(medicineID);
         Medicine mediObjResult = new Medicine();
-        mediObjResult = instance.findMedicineByClientIDAndName(1, "TEST MedicinNytNavnX");
+        mediObjResult = instance.findMedicineByClientIDAndName(1, "TEST MedicinNytNavn");
         System.out.println("Name " + mediObjResult.getName());
         assertEquals(null, mediObjResult.getName());
 

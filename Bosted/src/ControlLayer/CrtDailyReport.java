@@ -5,39 +5,50 @@
 
 package ControlLayer;
 
+import DBLayer.DBClient;
+import DBLayer.DBDailyReport;
+import DBLayer.DBEmployee;
+import DBLayer.IFDBClient;
+import DBLayer.IFDBDailyReport;
+import DBLayer.IFDBEmp;
+import ModelLayer.Client;
+import ModelLayer.DailyReport;
+import ModelLayer.Employee;
+import java.util.ArrayList;
+import java.util.Date;
+
 /**
  *
  * @author Kristian Byrialsen
  */
-public class CrtDaily {
+public class CrtDailyReport {
 
-}
 
-public Daily findDailyreport(int clientID)
+public DailyReport findDailyReport(int clientID)
     {
-        IFDBDaily dbDaily = new DBClient();
-        return dbDaily.findDailyreport(clientID, true);
+        IFDBDailyReport dbDailyReport = new DBDailyReport();
+        return dbDailyReport.findDailyReport(clientID, true);
     }
 
-    public ArrayList getAllDailyreports()
+    public ArrayList getAllDailyReports()
     {
-        IFDBDailyreport dbDai = new DBDailyreport();
-        ArrayList allDai = new ArrayList<Dailyreport>();
+        IFDBDailyReport dbDai = new DBDailyReport();
+        ArrayList allDai = new ArrayList<DailyReport>();
         allDai = dbDai.getAllDailyreports(false);
         return allDai;
     }
 
     public void insertDailyreport(int clientID, int employeeID, String text, Date date)
     {
-        IFDBDaily dbDailyreport = new DBDailyreport();
-        Dailyreport dObj = new Dailyreport();
+        IFDBDailyReport dbDailyreport = new DBDailyReport();
+        DailyReport dObj = new DailyReport();
         dObj.setClientID(clientID);
         dObj.setEmployeeID(employeeID);
         dObj.setText(text);
         dObj.setDate(date);
     }
 
-    public void updateClient(String clientNoCurrent, String clientNoNew, String description, String interests, String health, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email)
+    public void updateDailyreport(String clientNoCurrent, String clientNoNew, String description, String interests, String health, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email)
     {
         IFDBClient dbClient = new DBClient();
         Client cObj = new Client();
@@ -60,8 +71,8 @@ public Daily findDailyreport(int clientID)
 
     public void deleteDailyreport(int clientID)
     {
-        IFDBDaily dbDailyreport = new DBDailyreport();
-        dbDaily.deleteDailyreport(clientID);
+        IFDBDailyReport dbDailyReport = new DBDailyReport();
+        dbDailyReport.deleteDailyreport(clientID);
     }
 
     public ArrayList<Employee> findClientsEmployees(int clientID)

@@ -18,6 +18,9 @@ public interface IFDBMedi
     public ArrayList<Medicine> getAllMedicine(boolean retriveAssociation);
     //find all medicine
 
+    public ArrayList<Medicine> getAllMedicineByClientID(int clientID, boolean retriveAssociation);
+    //find all medicine with this clientID
+
     public int insertMedicine(Medicine medi);
     //update information about a medicine
 

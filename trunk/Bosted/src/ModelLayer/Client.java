@@ -190,4 +190,9 @@ public class Client {
     public void setStopDate(String stopDate) {
         this.stopDate = stopDate;
     }
+
+    public String toString()
+    {
+        return firstName + " " + middleName + " " + lastName;
+    }
 }

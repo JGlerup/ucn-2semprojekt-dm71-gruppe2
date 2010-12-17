@@ -243,9 +243,14 @@ public class Employee
         return startDate;
     }
 
-    public void setStartDate() {
+    public void setThisStartDate() {
         ToDaysDate toDaysDate = new ToDaysDate();
         startDate = toDaysDate.toString();
+    }
+
+    public void setNewStartDate(String startDate)
+    {
+        this.startDate = startDate;
     }
 
     public String getStopDate()
@@ -278,6 +283,11 @@ public class Employee
         
         setEmployeeNo(createdEmployeeNo);
         return createdEmployeeNo;
+    }
+
+    public String toString()
+    {
+        return firstName + " " + middleName + " " + lastName;
     }
 
 }

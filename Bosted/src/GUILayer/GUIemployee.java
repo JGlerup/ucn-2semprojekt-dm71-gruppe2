@@ -8,10 +8,14 @@
  *
  * Created on 09-12-2010, 09:43:32
  */
-
 package GUILayer;
+
 import ControlLayer.*;
+import ModelLayer.Employee;
+import java.util.ArrayList;
+import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -22,6 +26,7 @@ public class GUIemployee extends javax.swing.JPanel {
     /** Creates new form GUIclient */
     public GUIemployee() {
         initComponents();
+
     }
 
     /** This method is called from within the constructor to
@@ -75,13 +80,23 @@ public class GUIemployee extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtEmployeeEmployeeNo = new javax.swing.JTextField();
+
+        jTabbedPane2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTabbedPane2FocusGained(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setText("Hent medarbejder");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
+            }
+        });
 
         jLabel2.setText("Fornavn");
 
@@ -202,7 +217,7 @@ public class GUIemployee extends javax.swing.JPanel {
                             .addComponent(txtEmployeeAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
                             .addComponent(jLabel3)
                             .addComponent(jLabel16)
-                            .addComponent(jTextField1))
+                            .addComponent(txtEmployeeEmployeeNo))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -293,7 +308,7 @@ public class GUIemployee extends javax.swing.JPanel {
                     .addComponent(cbCrudCar)
                     .addComponent(cbCrudMedicine)
                     .addComponent(cbCrudClient)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEmployeeEmployeeNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -356,32 +371,31 @@ public class GUIemployee extends javax.swing.JPanel {
         String ssn = txtEmployeeSsn.getText();
         int zipCode = Integer.parseInt(txtEmployeeZipCode.getText());
         String crudEmployee = "No";
-        if(cbCrudEmployee.isSelected()){
+        if (cbCrudEmployee.isSelected()) {
             crudEmployee = "Yes";
         }
         String crudClient = "No";
-        if(cbCrudClient.isSelected()){
+        if (cbCrudClient.isSelected()) {
             crudClient = "Yes";
         }
         String crudMedicine = "No";
-        if(cbCrudMedicine.isSelected()){
+        if (cbCrudMedicine.isSelected()) {
             crudMedicine = "Yes";
         }
         String crudCar = "No";
-        if(cbCrudCar.isSelected()){
+        if (cbCrudCar.isSelected()) {
             crudCar = "Yes";
         }
         String inUse = "No";
-        if(cbInUse.isSelected()){
+        if (cbInUse.isSelected()) {
             inUse = "Yes";
         }
         CtrEmp ctrEmp = new CtrEmp();
         CtrLoca ctrLoca = new CtrLoca();
-        try{
-        int locationID = ctrLoca.findLocationByZipCode(zipCode).getLocationID();
-        ctrEmp.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password, inUse);
-        }
-        catch(Exception e){
+        try {
+            int locationID = ctrLoca.findLocationByZipCode(zipCode).getLocationID();
+            ctrEmp.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password, inUse);
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
 }//GEN-LAST:event_btnCreateEmployeeActionPerformed
@@ -392,8 +406,9 @@ public class GUIemployee extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        String employeeNoCurrent = null;
-        String employeeNoNew = null;
+        Employee emp = (Employee) jComboBox1.getSelectedItem();
+        String employeeNoCurrent = emp.getEmployeeNo();
+        String employeeNoNew = txtEmployeeEmployeeNo.getText();
         String password = txtEmployeePassword.getText();
         String managerNo = txtEmployeeManagerNo.getText();
         String address = txtEmployeeAddress.getText();
@@ -407,32 +422,31 @@ public class GUIemployee extends javax.swing.JPanel {
         String ssn = txtEmployeeSsn.getText();
         int zipCode = Integer.parseInt(txtEmployeeZipCode.getText());
         String crudEmployee = "No";
-        if(cbCrudEmployee.isSelected()){
+        if (cbCrudEmployee.isSelected()) {
             crudEmployee = "Yes";
         }
         String crudClient = "No";
-        if(cbCrudClient.isSelected()){
+        if (cbCrudClient.isSelected()) {
             crudClient = "Yes";
         }
         String crudMedicine = "No";
-        if(cbCrudMedicine.isSelected()){
+        if (cbCrudMedicine.isSelected()) {
             crudMedicine = "Yes";
         }
         String crudCar = "No";
-        if(cbCrudCar.isSelected()){
+        if (cbCrudCar.isSelected()) {
             crudCar = "Yes";
         }
         String inUse = "No";
-        if(cbInUse.isSelected()){
+        if (cbInUse.isSelected()) {
             inUse = "Yes";
         }
         CtrEmp ctrEmp = new CtrEmp();
         CtrLoca ctrLoca = new CtrLoca();
-        try{
-        int locationID = ctrLoca.findLocationByZipCode(zipCode).getLocationID();
-        ctrEmp.updateEmp(employeeNoCurrent, employeeNoNew, managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password, inUse);
-        }
-        catch(Exception e){
+        try {
+            int locationID = ctrLoca.findLocationByZipCode(zipCode).getLocationID();
+            ctrEmp.updateEmp(employeeNoCurrent, employeeNoNew, managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password, inUse);
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -441,10 +455,86 @@ public class GUIemployee extends javax.swing.JPanel {
         // TODO add your handling code here:
         String employeeNo = null;
         CtrEmp ctrEmp = new CtrEmp();
+        employeeNo = txtEmployeeEmployeeNo.getText();
         ctrEmp.deleteEmp(employeeNo);
+        JOptionPane.showMessageDialog(this, "Du har nu slettet medarbejderen med brugernavn: + employeeNo +");
     }//GEN-LAST:event_jButton1ActionPerformed
+    
+     public void resetCheckBoxes(JCheckBox[] cbList) {
+        for (JCheckBox cb : cbList) {
+            cb.setSelected(false);
+        }
+    }
+    public void resetTextFields(JTextField[] textFields) {
+        for (JTextField txtField : textFields) {
+            txtField.setText("");
+        }
+    }
 
+    private void jTabbedPane2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTabbedPane2FocusGained
+        // TODO add your handling code here:
 
+        CtrEmp ctrEmp = new CtrEmp();
+        ArrayList<Employee> employeeList = ctrEmp.getAllEmployee();
+        jComboBox1.removeAllItems();
+        jComboBox1.insertItemAt("Vælg her", 0);
+        for (Employee e : employeeList) {
+            jComboBox1.addItem(e);
+        }
+        jComboBox1.removeItem("Vælg her");
+        JTextField[] txtFieldList = {txtEmployeeAddress, txtEmployeeCity, txtEmployeeEmail, txtEmployeeEmployeeNo, txtEmployeeFirstName, txtEmployeeMiddleName, txtEmployeeLastName, txtEmployeeJobTitle, txtEmployeeManagerNo, txtEmployeePassword, txtEmployeePhoneNo, txtEmployeeSsn, txtEmployeeZipCode};
+        resetTextFields(txtFieldList);
+        JCheckBox[] cbList = {cbCrudCar, cbCrudClient, cbCrudEmployee, cbCrudMedicine, cbInUse};
+        resetCheckBoxes(cbList);
+    }//GEN-LAST:event_jTabbedPane2FocusGained
+
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        // TODO add your handling code here:
+        CtrLoca ctrLoca = new CtrLoca();
+        Employee em = (Employee) jComboBox1.getSelectedItem();
+        if (em != null) {
+            txtEmployeeFirstName.setText(em.getFirstName());
+            txtEmployeeMiddleName.setText(em.getMiddleName());
+            txtEmployeeLastName.setText(em.getLastName());
+            txtEmployeeSsn.setText(em.getSsn());
+            txtEmployeeEmail.setText(em.getEmail());
+            txtEmployeePhoneNo.setText(Integer.toString(em.getPhoneNo()));
+            txtEmployeeAddress.setText(em.getAddress());
+            txtEmployeeZipCode.setText(Integer.toString(ctrLoca.findLocation(em.getLocationID()).getZipCode()));
+            txtEmployeeCity.setText(ctrLoca.findLocation(em.getLocationID()).getCity());
+            txtEmployeeManagerNo.setText(em.getManagerNo());
+            txtEmployeePassword.setText(em.getPassword());
+            txtEmployeeJobTitle.setText(em.getJobTitle());
+            txtEmployeeEmployeeNo.setText(em.getEmployeeNo());
+            if (em.getCrudClient().matches("yes")) {
+                cbCrudClient.setSelected(true);
+            } else {
+                cbCrudClient.setSelected(false);
+            }
+            if (em.getCrudEmployee().matches("yes")) {
+                cbCrudEmployee.setSelected(true);
+            } else {
+                cbCrudEmployee.setSelected(false);
+            }
+            if (em.getCrudMedicine().matches("yes")) {
+                cbCrudMedicine.setSelected(true);
+            } else {
+                cbCrudMedicine.setSelected(false);
+            }
+            if (em.getCrudCar().matches("yes")) {
+                cbCrudCar.setSelected(true);
+            } else {
+                cbCrudCar.setSelected(false);
+            }
+            if (em.getInUse().matches("yes")) {
+                cbInUse.setSelected(true);
+            } else {
+                cbInUse.setSelected(false);
+            }
+        } else {
+            System.out.println("No employees to select from");
+        }
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateEmployee;
     private javax.swing.JCheckBox cbCrudCar;
@@ -476,10 +566,10 @@ public class GUIemployee extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField txtEmployeeAddress;
     private javax.swing.JTextField txtEmployeeCity;
     private javax.swing.JTextField txtEmployeeEmail;
+    private javax.swing.JTextField txtEmployeeEmployeeNo;
     private javax.swing.JTextField txtEmployeeFirstName;
     private javax.swing.JTextField txtEmployeeJobTitle;
     private javax.swing.JTextField txtEmployeeLastName;
@@ -490,5 +580,4 @@ public class GUIemployee extends javax.swing.JPanel {
     private javax.swing.JTextField txtEmployeeSsn;
     private javax.swing.JTextField txtEmployeeZipCode;
     // End of variables declaration//GEN-END:variables
-
 }

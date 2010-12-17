@@ -46,7 +46,7 @@ public class CtrEmp {
             empObj.setEmail(email);
             empObj.setPassword(password);
             empObj.createEmployeeNo();
-            empObj.setStartDate();
+            empObj.setThisStartDate();
             empObj.setInUse(inUse);
             empObj.setStopDate(null);
             dbEmp.insertEmployee(empObj);

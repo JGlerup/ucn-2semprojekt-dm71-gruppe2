@@ -102,7 +102,7 @@ public class GUI extends javax.swing.JFrame {
         pLoginLayout.setHorizontalGroup(
             pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLoginLayout.createSequentialGroup()
-                .addContainerGap(597, Short.MAX_VALUE)
+                .addContainerGap(607, Short.MAX_VALUE)
                 .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pLoginLayout.createSequentialGroup()
                         .addComponent(picKeyLogin)
@@ -148,7 +148,7 @@ public class GUI extends javax.swing.JFrame {
             pKlienterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pKlienterLayout.createSequentialGroup()
                 .addComponent(gUIclient1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(300, Short.MAX_VALUE))
+                .addContainerGap(310, Short.MAX_VALUE))
         );
         pKlienterLayout.setVerticalGroup(
             pKlienterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,7 +165,7 @@ public class GUI extends javax.swing.JFrame {
             pBilerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pBilerLayout.createSequentialGroup()
                 .addComponent(gUIcar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(323, Short.MAX_VALUE))
+                .addContainerGap(333, Short.MAX_VALUE))
         );
         pBilerLayout.setVerticalGroup(
             pBilerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,19 +176,31 @@ public class GUI extends javax.swing.JFrame {
 
         tpGUI.addTab("Biler", null, pBiler, "Her reserverer du biler");
 
+        pMedarbejdere.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                pMedarbejdereComponentShown(evt);
+            }
+        });
+
+        gUIemployee1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                gUIemployee1FocusGained(evt);
+            }
+        });
+
         javax.swing.GroupLayout pMedarbejdereLayout = new javax.swing.GroupLayout(pMedarbejdere);
         pMedarbejdere.setLayout(pMedarbejdereLayout);
         pMedarbejdereLayout.setHorizontalGroup(
             pMedarbejdereLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pMedarbejdereLayout.createSequentialGroup()
                 .addComponent(gUIemployee1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         pMedarbejdereLayout.setVerticalGroup(
             pMedarbejdereLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pMedarbejdereLayout.createSequentialGroup()
                 .addComponent(gUIemployee1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         tpGUI.addTab("Medarbejdere", null, pMedarbejdere, "Her håndterer du medarbejdere");
@@ -199,7 +211,7 @@ public class GUI extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(gUImedicin1, javax.swing.GroupLayout.PREFERRED_SIZE, 791, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addContainerGap(216, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,7 +250,7 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnSøg)
                         .addContainerGap())
-                    .addComponent(spHjælp, javax.swing.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)))
+                    .addComponent(spHjælp, javax.swing.GroupLayout.DEFAULT_SIZE, 997, Short.MAX_VALUE)))
         );
         pHjælpLayout.setVerticalGroup(
             pHjælpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,7 +280,7 @@ public class GUI extends javax.swing.JFrame {
         pLogudLayout.setHorizontalGroup(
             pLogudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLogudLayout.createSequentialGroup()
-                .addContainerGap(585, Short.MAX_VALUE)
+                .addContainerGap(595, Short.MAX_VALUE)
                 .addGroup(pLogudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pLogudLayout.createSequentialGroup()
                         .addComponent(lblLogud)
@@ -294,7 +306,7 @@ public class GUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(tpGUI, javax.swing.GroupLayout.DEFAULT_SIZE, 1085, Short.MAX_VALUE)
+                .addComponent(tpGUI, javax.swing.GroupLayout.DEFAULT_SIZE, 1095, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -317,7 +329,7 @@ public class GUI extends javax.swing.JFrame {
         CtrEmp ctrEmp = new CtrEmp();
         String user = txtBrugernavn.getText();
         String pass = txtPassword.getText();
-        String inUse = "yes";
+        String inUse = "Yes";
         if(user.equals(ctrEmp.findEmployee(user).getEmployeeNo()) && pass.equals(ctrEmp.findEmployee(user).getPassword())) {
             for(int i = 1; i < tpGUI.getTabCount(); i++){
             tpGUI.setEnabledAt(i, true);
@@ -342,6 +354,16 @@ public class GUI extends javax.swing.JFrame {
             tpGUI.setEnabledAt(i, false);
         }
     }//GEN-LAST:event_btnLogudActionPerformed
+
+    private void pMedarbejdereComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_pMedarbejdereComponentShown
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_pMedarbejdereComponentShown
+
+    private void gUIemployee1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_gUIemployee1FocusGained
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_gUIemployee1FocusGained
 
     /**
      * @param args the command line arguments

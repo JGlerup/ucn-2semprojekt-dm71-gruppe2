@@ -196,6 +196,9 @@ public class DBEmployee implements IFDBEmp {
             empObj.setLocationID(results.getInt(15));
             empObj.setPhoneNo(results.getInt(16));
             empObj.setEmail(results.getString(17));
+            empObj.setNewStartDate(results.getString(18));
+            empObj.setInUse(results.getString(19));
+            empObj.setStopDate(results.getString(20));
 
         } catch (Exception e) {
             System.out.println("building employee object");

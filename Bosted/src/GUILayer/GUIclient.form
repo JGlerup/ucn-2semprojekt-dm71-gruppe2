@@ -43,6 +43,9 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="tpKlient">
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tpKlientFocusGained"/>
+      </Events>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
@@ -96,9 +99,9 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="btnCreateClient" min="-2" pref="72" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton3" min="-2" pref="72" max="-2" attributes="0"/>
+                                  <Component id="btnUpdateClient" min="-2" pref="72" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton2" min="-2" pref="72" max="-2" attributes="0"/>
+                                  <Component id="btnDeleteClient" min="-2" pref="72" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -110,7 +113,7 @@
                                       <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtClientSsn" alignment="0" pref="122" max="32767" attributes="1"/>
                                       <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField1" alignment="0" max="32767" attributes="1"/>
+                                      <Component id="txtClientUserName" alignment="0" max="32767" attributes="1"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -135,7 +138,7 @@
                                               <Component id="txtClientCity" min="-2" pref="122" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Component id="CheckBoxInUse" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbClientInUse" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
@@ -231,8 +234,8 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnDeleteClient" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnUpdateClient" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnCreateClient" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -245,12 +248,12 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtClientUserName" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="CheckBoxInUse" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbClientInUse" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -398,20 +401,20 @@
                     <Property name="text" type="java.lang.String" value="Hent klient"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton2">
+                <Component class="javax.swing.JButton" name="btnDeleteClient">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Slet"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteClientActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton3">
+                <Component class="javax.swing.JButton" name="btnUpdateClient">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Opdater"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateClientActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnCreateClient">
@@ -427,12 +430,12 @@
                     <Property name="text" type="java.lang.String" value="Er klient nu"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="CheckBoxInUse">
+                <Component class="javax.swing.JCheckBox" name="cbClientInUse">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="(S&#xe6;t kryds hvis ja)"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CheckBoxInUseActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbClientInUseActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cmbClient">
@@ -447,8 +450,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbClientActionPerformed"/>
-                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="cmbClientFocusGained"/>
+                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbClientItemStateChanged"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel8">
@@ -456,7 +458,7 @@
                     <Property name="text" type="java.lang.String" value="Brugernavn"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField1">
+                <Component class="javax.swing.JTextField" name="txtClientUserName">
                 </Component>
               </SubComponents>
             </Container>

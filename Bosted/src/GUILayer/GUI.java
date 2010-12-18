@@ -329,15 +329,19 @@ public class GUI extends javax.swing.JFrame {
         CtrEmp ctrEmp = new CtrEmp();
         String user = txtBrugernavn.getText();
         String pass = txtPassword.getText();
-        String inUse = "Yes";
-        if(user.equals(ctrEmp.findEmployee(user).getEmployeeNo()) && pass.equals(ctrEmp.findEmployee(user).getPassword())) {
+        Employee emp = ctrEmp.findEmployee(user);
+        String empUser = emp.getEmployeeNo();
+        String empPassword = emp.getPassword();
+        String empInUse = emp.getInUse();
+        System.out.println(empInUse);
+        if(user.equals(empUser) && pass.equals(empPassword) && empInUse.equals("yes")) {
             for(int i = 1; i < tpGUI.getTabCount(); i++){
             tpGUI.setEnabledAt(i, true);
         }
             JOptionPane.showMessageDialog(pLogin, "Du er nu logget ind");
         }
         else {
-            JOptionPane.showMessageDialog(pLogin, "Du har indtastet brugernavn eller password forkert");
+            JOptionPane.showMessageDialog(pLogin, "Du har indtastet brugernavnet eller passwordet forkert");
         }
         txtPassword.setText(null);
     }//GEN-LAST:event_btnLoginActionPerformed

@@ -12,6 +12,7 @@ package GUILayer;
 
 import ControlLayer.CtrLoca;
 import ControlLayer.CtrClient;
+import GUILayer.GUIcar;
 import ModelLayer.Client;
 import ModelLayer.Location;
 import java.util.ArrayList;
@@ -1123,6 +1124,7 @@ public class GUIclient extends javax.swing.JPanel {
         for (Client c : clientList) {
             cmbClient.addItem(c);
         }
+        cmbClient.removeItemAt(0);
         JTextField[] txtFieldList = {
             txtClientAddress,
             txtClientUserName,
@@ -1134,7 +1136,8 @@ public class GUIclient extends javax.swing.JPanel {
             txtClientZipCode,
             txtClientCity,
             txtClientPhoneNo,
-            txtClientEmail};
+            txtClientEmail
+        };
 
         JTextArea[] txtAreaList = {
             txtClientDescription,
@@ -1149,6 +1152,7 @@ public class GUIclient extends javax.swing.JPanel {
         resetTextFields(txtFieldList);
         resetTextAreas(txtAreaList);
         resetCheckBoxes(checkBoxList);
+        tpKlient.addTab("lol", new GUIcar());
     }//GEN-LAST:event_tpKlientFocusGained
 
     private void cmbClientItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbClientItemStateChanged

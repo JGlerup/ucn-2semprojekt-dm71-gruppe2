@@ -205,7 +205,7 @@ public class DBClient implements IFDBClient {
     public ArrayList<Client> buildListOfClients(int employeeID) {
         ResultSet results;
         ArrayList<Client> list = new ArrayList<Client>();
-        String query = "SELCT * FROM client WHERE client_id in(SELECT client_id FROM employee_client WHERE employee_id =  " + employeeID + ")";
+        String query = "SELECT * FROM client WHERE client_id in(SELECT client_id FROM employee_client WHERE employee_id =  " + employeeID + ")";
         try { // read from employee
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);

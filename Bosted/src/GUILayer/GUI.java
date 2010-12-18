@@ -19,19 +19,21 @@ import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
 
-
 /**
  *
  * @author Anita
  */
 public class GUI extends javax.swing.JFrame {
 
+    private Employee loggedInEmployee;
+
     /** Creates new form GUI */
     public GUI() {
         initComponents();
-        for(int i = 1; i < tpGUI.getTabCount(); i++){
+        for (int i = 1; i < tpGUI.getTabCount(); i++) {
             tpGUI.setEnabledAt(i, false);
         }
+        loggedInEmployee = null;
     }
 
     /** This method is called from within the constructor to
@@ -334,13 +336,15 @@ public class GUI extends javax.swing.JFrame {
         String empPassword = emp.getPassword();
         String empInUse = emp.getInUse();
         System.out.println(empInUse);
-        if(user.equals(empUser) && pass.equals(empPassword) && empInUse.equals("yes")) {
-            for(int i = 1; i < tpGUI.getTabCount(); i++){
-            tpGUI.setEnabledAt(i, true);
-        }
+        if (user.equals(empUser) && pass.equals(empPassword) && empInUse.equals("yes")) {
+            for (int i = 1; i < tpGUI.getTabCount(); i++) {
+                tpGUI.setEnabledAt(i, true);
+                
+            }
             JOptionPane.showMessageDialog(pLogin, "Du er nu logget ind");
-        }
-        else {
+            loggedInEmployee = emp;
+            gUIclient1.setEmployee(loggedInEmployee);
+        } else {
             JOptionPane.showMessageDialog(pLogin, "Du har indtastet brugernavnet eller passwordet forkert");
         }
         txtPassword.setText(null);
@@ -354,19 +358,18 @@ public class GUI extends javax.swing.JFrame {
 
     private void btnLogudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogudActionPerformed
         // TODO add your handling code here:
-        for(int i = 1; i < tpGUI.getTabCount(); i++){
+        for (int i = 1; i < tpGUI.getTabCount(); i++) {
             tpGUI.setEnabledAt(i, false);
         }
+        loggedInEmployee = null;
     }//GEN-LAST:event_btnLogudActionPerformed
 
     private void pMedarbejdereComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_pMedarbejdereComponentShown
         // TODO add your handling code here:
-
     }//GEN-LAST:event_pMedarbejdereComponentShown
 
     private void gUIemployee1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_gUIemployee1FocusGained
         // TODO add your handling code here:
-        
     }//GEN-LAST:event_gUIemployee1FocusGained
 
     /**
@@ -376,16 +379,14 @@ public class GUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                try{
-                UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
-                }
-                catch(Exception e){
-
+                try {
+                    UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+                } catch (Exception e) {
                 }
 
                 new GUI().setVisible(true);
 
-                
+
             }
         });
     }

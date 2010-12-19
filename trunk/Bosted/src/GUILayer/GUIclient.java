@@ -86,11 +86,6 @@ public class GUIclient extends javax.swing.JPanel {
         txtClientUserName = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(697, 556));
-        addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                formComponentShown(evt);
-            }
-        });
 
         tpKlient.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -491,10 +486,6 @@ public class GUIclient extends javax.swing.JPanel {
         ctrCli.deleteClient(clientNo);
     }//GEN-LAST:event_btnDeleteClientActionPerformed
 
-    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        // TODO add your handling code here:
-    }//GEN-LAST:event_formComponentShown
-
     private void tpKlientFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tpKlientFocusGained
         // TODO add your handling code here:
         CtrClient ctrClient = new CtrClient();
@@ -593,6 +584,7 @@ public class GUIclient extends javax.swing.JPanel {
             cmbClient.removeItemAt(0);
         }
     }//GEN-LAST:event_cmbClientItemStateChanged
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateClient;
     private javax.swing.JButton btnDeleteClient;

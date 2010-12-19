@@ -115,6 +115,11 @@ public class Medicine
         ToDaysDate toDaysDate = new ToDaysDate();
         date = toDaysDate.toString();
     }
+
+    public String toString()
+    {
+        return name;
+    }
 }
 
 

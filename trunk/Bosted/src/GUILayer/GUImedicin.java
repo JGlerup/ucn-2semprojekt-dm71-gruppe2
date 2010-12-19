@@ -11,6 +11,12 @@
 
 package GUILayer;
 
+import ControlLayer.CtrMedi;
+import ModelLayer.Medicine;
+import java.util.ArrayList;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Glerup
@@ -78,6 +84,12 @@ public class GUImedicin extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(697, 556));
 
+        jTabbedPane2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTabbedPane2FocusGained(evt);
+            }
+        });
+
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jTextArea1.setColumns(20);
@@ -101,6 +113,11 @@ public class GUImedicin extends javax.swing.JPanel {
         jLabel7.setText("Læge");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
+            }
+        });
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -176,7 +193,7 @@ public class GUImedicin extends javax.swing.JPanel {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel9)
                                         .addGap(87, 87, 87))
-                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)))))
+                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)))))
                     .addComponent(jLabel8))
                 .addContainerGap())
         );
@@ -279,10 +296,10 @@ public class GUImedicin extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 390, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 279, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 292, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,7 +314,7 @@ public class GUImedicin extends javax.swing.JPanel {
                         .addGap(96, 96, 96))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 405, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 294, Short.MAX_VALUE)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel13)
@@ -381,7 +398,7 @@ public class GUImedicin extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 895, Short.MAX_VALUE)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 784, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -392,6 +409,47 @@ public class GUImedicin extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        // TODO add your handling code here:
+        Medicine m = (Medicine) jComboBox1.getSelectedItem();
+        if (m != null) {
+            jTextField1.setText(m.getName());
+            jTextField2.setText(Integer.toString(m.getQuantity()));
+            jTextArea3.setText(m.getDescription());
+        } else {
+            System.out.println("No employees to select from");
+        }
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
+
+    public void resetTextFields(JTextField[] textFields) {
+        for (JTextField txtField : textFields) {
+            txtField.setText("");
+        }
+    }
+
+    public void resetTextAreas(JTextArea[] textAreaList) {
+        for (JTextArea txtArea : textAreaList) {
+            txtArea.setText("");
+        }
+    }
+
+    private void jTabbedPane2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTabbedPane2FocusGained
+        // TODO add your handling code here:
+        CtrMedi ctrMedi = new CtrMedi();
+        ArrayList<Medicine> medicineList = ctrMedi.getAllMedicine();
+        jComboBox1.removeAllItems();
+        jComboBox1.insertItemAt("Vælg her", 0);
+        for (Medicine m : medicineList) {
+            jComboBox1.addItem(m);
+        }
+        jComboBox1.removeItem("Vælg her");
+
+        JTextField[] txtFieldList = {jTextField1, jTextField2};
+        resetTextFields(txtFieldList);
+        JTextArea[] txtAreaList = {jTextArea3};
+        resetTextAreas(txtAreaList);
+    }//GEN-LAST:event_jTabbedPane2FocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

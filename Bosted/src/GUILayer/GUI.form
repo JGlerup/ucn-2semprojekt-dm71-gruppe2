@@ -240,7 +240,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="gUIemployee1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="20" max="32767" attributes="0"/>
+                      <EmptySpace pref="16" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -346,12 +346,11 @@
                 <Component class="javax.swing.JTextArea" name="txtaHj&#xe6;lp">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Verdana" size="14" style="0"/>
                     </Property>
                     <Property name="rows" type="int" value="5"/>
-                    <Property name="text" type="java.lang.String" value="Det f&#xf8;rste vindue man ser er login vinduet.&#xa;I dette vindue kan man logge ind ved hj&#xe6;lp af et kendt Brugernavn og Password.&#xa;Hvis man succesfuldt logger ind, f&#xe5;r man adgang til de 5 andre faner som er placeret ude i &#xa;venstre side"/>
+                    <Property name="text" type="java.lang.String" value="Det f&#xf8;rste vindue man ser er login vinduet.&#xa;I dette vindue kan man logge ind ved hj&#xe6;lp af et kendt Brugernavn og Password.&#xa;Hvis man succesfuldt logger ind, f&#xe5;r man adgang til de 6 andre faner som er placeret ude i &#xa;venstre side af vinduet.&#xa;De 7 faner er som f&#xf8;lge:&#xa;&#x9;-Login&#xa;&#x9;-Klienter&#xa;&#x9;-Biler&#xa;&#x9;-Medarbejdere&#xa;&#x9;-Medicin&#xa;&#x9;-Hj&#xe6;lp&#xa;&#x9;-Logud&#xa;&#xa;I fanen &quot;Klienter&quot;, kan man oprette, opdatere og slette klienter hvis man har rettigheder til det.&#xa;Det er ogs&#xe5; i denne fane at man kan se de klienter, som er blevet tilknyttet en.&#xa;&#xa;"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -368,6 +367,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="S&#xf8;g"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnS&#xf8;gActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

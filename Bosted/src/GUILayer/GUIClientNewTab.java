@@ -14,6 +14,7 @@ package GUILayer;
 import ControlLayer.CtrEmp;
 import ControlLayer.CtrLoca;
 import ControlLayer.CtrMedi;
+import ExceptionsPack.NoManagerNumberErrorHandling;
 import ModelLayer.Client;
 import ModelLayer.Employee;
 import ModelLayer.Location;
@@ -1015,9 +1016,13 @@ public class GUIClientNewTab extends javax.swing.JPanel {
                 }
                 GUIErrorHandlingMedicine.setVisible(false);
                 }
-                catch(Exception e)
+                catch(NoManagerNumberErrorHandling e)
                 {
                     JOptionPane.showMessageDialog(GUIErrorHandlingMedicine, e.getMessage());
+                }
+                catch(Exception ex)
+                {
+                    JOptionPane.showMessageDialog(GUIErrorHandlingMedicine, ex.getMessage());
                 }
             }
         }

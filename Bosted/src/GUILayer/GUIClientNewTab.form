@@ -35,10 +35,13 @@
                                   <Component id="lblMedicine" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblDescription" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="cmbMedi" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
-                                  <Component id="txtQuantity" alignment="0" min="-2" pref="124" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="txtQuantity" min="-2" pref="124" max="-2" attributes="0"/>
+                                      <EmptySpace pref="44" max="32767" attributes="0"/>
+                                      <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <Component id="lblQuantity" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane1" alignment="0" pref="223" max="32767" attributes="1"/>
                           <Group type="102" alignment="1" attributes="0">
@@ -66,8 +69,11 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="lblQuantity" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtQuantity" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="76" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jCheckBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="74" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnOk" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnExit" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -137,6 +143,12 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExitActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+              <Properties>
+                <Property name="selected" type="boolean" value="true"/>
+                <Property name="text" type="java.lang.String" value="Tab"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>

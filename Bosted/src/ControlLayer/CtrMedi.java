@@ -350,16 +350,4 @@ public class CtrMedi
             System.out.println("Delete exception in frequency db: " + ex);
         }
     }
-
-    public void giveMedicine(int medicineID, int quantity)
-    {
-        Medicine md = findMedicineByID(medicineID);
-        md.setQuantity(md.getQuantity() - quantity);
-    }
-
-    public void updateStock(int medicineID, int quantity)
-    {
-        Medicine md = findMedicineByID(medicineID);
-        md.setQuantity(md.getQuantity() + quantity);
-    }
 }

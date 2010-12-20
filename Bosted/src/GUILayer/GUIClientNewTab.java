@@ -56,6 +56,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         txtQuantity = new javax.swing.JTextField();
         btnOk = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
         GUIGiveMedicine = new javax.swing.JFrame();
         jPanel8 = new javax.swing.JPanel();
         lblMedicine1 = new javax.swing.JLabel();
@@ -163,6 +164,9 @@ public class GUIClientNewTab extends javax.swing.JPanel {
             }
         });
 
+        jCheckBox1.setSelected(true);
+        jCheckBox1.setText("Tab");
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -175,9 +179,11 @@ public class GUIClientNewTab extends javax.swing.JPanel {
                             .addComponent(lblMedicine)
                             .addComponent(lblDescription)
                             .addComponent(cmbMedi, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblQuantity))
-                        .addGap(42, 42, 42))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                                .addComponent(jCheckBox1))
+                            .addComponent(lblQuantity)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                         .addContainerGap(55, Short.MAX_VALUE)
@@ -200,8 +206,10 @@ public class GUIClientNewTab extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(lblQuantity)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnOk)
                     .addComponent(btnExit))
@@ -965,21 +973,39 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         int choice = 0;
         CtrMedi ctrMedi = new CtrMedi();
         Medicine m = (Medicine) cmbMedi.getSelectedItem();
-        choice = JOptionPane.showConfirmDialog(this, "Er du sikker? \n\nMedicin: " + m.getName() + "\nBeskrivelse: " + txtaDescription.getText() + " \nAntal: " + txtQuantity.getText());
+        choice = JOptionPane.showConfirmDialog(GUIErrorHandlingMedicine, "Er du sikker? \n\nMedicin: " + m.getName() + "\nBeskrivelse: " + txtaDescription.getText() + " \nAntal: " + txtQuantity.getText());
         if(choice == 0)
         {
-            ctrMedi.insertErrorHandlingMedicine(m.getMedicineID(), client.getClientID(), loggedInEmployee.getEmployeeID(), txtaDescription.getText(), Integer.parseInt(txtQuantity.getText()), loggedInEmployee.getManagerNo());
-            JTextField[] txtFieldList = {txtQuantity};
-            resetTextFields(txtFieldList);
-            if(ctrMedi.getManagerMessage() != null) 
+            if(jCheckBox1.isSelected())
             {
-                JOptionPane.showMessageDialog(this, ctrMedi.getManagerMessage());
+                ctrMedi.insertErrorHandlingMedicine(m.getMedicineID(), client.getClientID(), loggedInEmployee.getEmployeeID(), txtaDescription.getText(), Integer.parseInt(txtQuantity.getText()), loggedInEmployee.getManagerNo());
+                JTextField[] txtFieldList = {txtQuantity};
+                resetTextFields(txtFieldList);
+                if(ctrMedi.getManagerMessage() != null)
+                {
+                    JOptionPane.showMessageDialog(this, ctrMedi.getManagerMessage());
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(this, "Hændelsen er gemt");
+                }
+                GUIErrorHandlingMedicine.setVisible(false);
             }
             else
             {
-                JOptionPane.showMessageDialog(this, "Hændelsen er gemt");
+                ctrMedi.insertErrorHandlingMedicine(m.getMedicineID(), client.getClientID(), loggedInEmployee.getEmployeeID(), txtaDescription.getText(), -(Integer.parseInt(txtQuantity.getText())), loggedInEmployee.getManagerNo());
+                JTextField[] txtFieldList = {txtQuantity};
+                resetTextFields(txtFieldList);
+                if(ctrMedi.getManagerMessage() != null)
+                {
+                    JOptionPane.showMessageDialog(this, ctrMedi.getManagerMessage());
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(this, "Hændelsen er gemt");
+                }
+                GUIErrorHandlingMedicine.setVisible(false);
             }
-            GUIErrorHandlingMedicine.setVisible(false);
         }
 }//GEN-LAST:event_btnOkActionPerformed
 
@@ -1011,7 +1037,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         // TODO add your handling code here:
         CtrMedi ctrMedi = new CtrMedi();
         Medicine m = (Medicine) cmbMedi.getSelectedItem();
-        ctrMedi.giveMedicine(m.getMedicineID(), Integer.parseInt(jTextField1.getText()));
+        ctrMedi.updateMedicine(m.getMedicineID(), m.getFrequencyID(), m.getExternalContactID(), m.getClientID(), m.getName(), m.getDescription(), m.getDate(), m.getQuantity()-Integer.parseInt(jTextField1.getText()));
         setVisible(false);
 }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -1033,6 +1059,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

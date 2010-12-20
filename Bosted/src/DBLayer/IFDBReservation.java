@@ -24,7 +24,7 @@ public interface IFDBReservation {
     public int updateReservation(Reservation r);
     //update information about an reservation
 
-    public int deleteCar(int carID, String reservationDate);
+    public int deleteReservation(int carID, String reservationDate);
     //delete a reservation
 
 }

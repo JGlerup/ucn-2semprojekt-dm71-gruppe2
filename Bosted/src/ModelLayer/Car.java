@@ -12,14 +12,14 @@ package ModelLayer;
 public class Car {
 
     private int carID;
-    private int regNo;
+    private String regNo;
     private String description;
 
     public Car() {
 
     }
 
-    public Car(int carID, int regNo, String description) {
+    public Car(int carID, String regNo, String description) {
         this.carID = carID;
         this.regNo = regNo;
         this.description = description;
@@ -41,11 +41,11 @@ public class Car {
         this.description = description;
     }
 
-    public int getRegNo() {
+    public String getRegNo() {
         return regNo;
     }
 
-    public void setRegNo(int regNr) {
+    public void setRegNo(String regNo) {
         this.regNo = regNo;
     }
 

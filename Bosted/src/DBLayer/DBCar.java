@@ -12,7 +12,7 @@ import ModelLayer.Car;
  *
  * @author Glerup
  */
-public class DBCar {
+public class DBCar implements IFDBCar {
 
     private Connection con;
 
@@ -45,12 +45,12 @@ public class DBCar {
         return (rc);
     }
 
-    public int updateClient(Car c) {
+    public int updateCar(Car c) {
         Car cObj = c;
         int rc = -1;
 
         String query = "UPDATE car SET "
-                + "clientno = '" + cObj.getRegNo() + "', "
+                + "registrationsno = '" + cObj.getRegNo() + "', "
                 + "description ='" + cObj.getDescription() + "', "
                 + " WHERE car_id ='" + cObj.getCarID() + "'";
         System.out.println("Update query:" + query);
@@ -116,7 +116,7 @@ public class DBCar {
 
     private ArrayList miscWhere(String wClause, boolean retrieveAssociation) {
         ResultSet results;
-        ArrayList list = new ArrayList();
+        ArrayList<Car> list = new ArrayList<Car>();
 
         String query = buildQuery(wClause);
         System.out.println("DbCar " + query);
@@ -146,7 +146,7 @@ public class DBCar {
 
         try {
             cObj.setCarID(results.getInt(1));
-            cObj.setRegNo(results.getInt(2));
+            cObj.setRegNo(results.getString(2));
             cObj.setDescription(results.getString(3));
         } catch (Exception e) {
             System.out.println("building car object");

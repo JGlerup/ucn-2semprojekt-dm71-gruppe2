@@ -147,7 +147,10 @@ public class CtrMedi
                     erHaMedObj.setQuantity(quantity);
                     dbErHaMedDa.insertErrorHandlingMedicine(erHaMedObj);
                     sendEmailToManager(findManager(managerNo));
-                    managerMessage = getManagerMessage() + " om hændelsen.";
+                    if(managerNo != null)
+                    {
+                        managerMessage = getManagerMessage() + " om hændelsen.";
+                    }
                 }
                 catch (Exception Ex)
                 {
@@ -184,7 +187,10 @@ public class CtrMedi
                 erHaMedObj.setQuantity(quantity);
                 dbErHaMed.updateErrorHandlingMedicine(erHaMedObj);
                 sendEmailToManager(findManager(managerNo));
-                managerMessage = getManagerMessage() + " om opdateringen.";
+                if(managerNo != null)
+                {
+                    managerMessage = getManagerMessage() + " om opdateringen.";
+                }
             }
             catch (Exception Ex)
             {
@@ -206,7 +212,10 @@ public class CtrMedi
                 erHaMedObj.setQuantity(quantity);
                 dbErHaMed.updateErrorHandlingMedicine(erHaMedObj);
                 sendEmailToManager(findManager(managerNo));
-                managerMessage = getManagerMessage() + " om opdateringen.";
+                if(managerNo != null)
+                {
+                    managerMessage = getManagerMessage() + " om opdateringen.";
+                }
             }
             catch (Exception Ex)
             {

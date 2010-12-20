@@ -9,7 +9,8 @@ package ExceptionsPack;
  *
  * @author Erik
  */
-public class NullValueException extends Exception {
+public class NullValueException extends Exception
+{
     
 	private String text;
 

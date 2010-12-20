@@ -61,7 +61,6 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         jPanel8 = new javax.swing.JPanel();
         lblMedicine1 = new javax.swing.JLabel();
         cmbMedi1 = new javax.swing.JComboBox();
-        jButton11 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
@@ -240,13 +239,6 @@ public class GUIClientNewTab extends javax.swing.JPanel {
 
         cmbMedi1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton11.setText("jButton3");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
-            }
-        });
-
         jLabel5.setText("Hvor mange er der blevet givet:");
 
         jTextField1.setText("Skriv antal");
@@ -282,11 +274,8 @@ public class GUIClientNewTab extends javax.swing.JPanel {
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblMedicine1)
-                                    .addGroup(jPanel8Layout.createSequentialGroup()
-                                        .addComponent(cmbMedi1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                                        .addComponent(jButton11)))
-                                .addGap(43, 43, 43))
+                                    .addComponent(cmbMedi1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE))
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)))
@@ -301,14 +290,12 @@ public class GUIClientNewTab extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(lblMedicine1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbMedi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton11))
+                .addComponent(cmbMedi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton13)
                     .addComponent(jButton2))
@@ -1144,18 +1131,6 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         GUIErrorHandlingMedicine.setVisible(false);
 }//GEN-LAST:event_btnExitActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
-        CtrMedi ctrMedi = new CtrMedi();
-        ArrayList<Medicine> medicineList = ctrMedi.getAllMedicine();
-        cmbMedi.removeAllItems();
-        cmbMedi.insertItemAt("", 0);
-        for (Medicine m : medicineList) {
-            cmbMedi.addItem(m);
-        }
-        cmbMedi.removeItemAt(0);
-}//GEN-LAST:event_jButton11ActionPerformed
-
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
         // TODO add your handling code here:
         jTextField1.setText("");
@@ -1204,7 +1179,6 @@ public class GUIClientNewTab extends javax.swing.JPanel {
     private javax.swing.JComboBox cmbMedi2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;

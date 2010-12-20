@@ -402,6 +402,11 @@ public class GUIclient extends javax.swing.JPanel {
         }
     }
 
+    public Employee getLoggedInEmployee()
+    {
+        return loggedInEmployee;
+    }
+
     private void btnCreateClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateClientActionPerformed
         // TODO add your handling code here:
         String description = txtClientDescription.getText();

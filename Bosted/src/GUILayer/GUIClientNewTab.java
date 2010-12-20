@@ -20,6 +20,7 @@ import ModelLayer.Location;
 import ModelLayer.Medicine;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -987,6 +988,12 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         }
     }
 
+    public void resetTextAreas(JTextArea[] textAreas) {
+        for (JTextArea txtArea : textAreas) {
+            txtArea.setText("");
+        }
+    }
+
     private void txtClientFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClientFirstNameActionPerformed
         // TODO add your handling code here:
 }//GEN-LAST:event_txtClientFirstNameActionPerformed
@@ -1080,6 +1087,8 @@ public class GUIClientNewTab extends javax.swing.JPanel {
                 ctrMedi.insertErrorHandlingMedicine(m.getMedicineID(), client.getClientID(), loggedInEmployee.getEmployeeID(), txtaDescription.getText(), Integer.parseInt(txtQuantity.getText()), loggedInEmployee.getManagerNo());
                 JTextField[] txtFieldList = {txtQuantity};
                 resetTextFields(txtFieldList);
+                JTextArea[] txtAreaList = {txtaDescription};
+                resetTextAreas(txtAreaList);
                 if(ctrMedi.getManagerMessage() != null)
                 {
                     JOptionPane.showMessageDialog(this, ctrMedi.getManagerMessage());
@@ -1102,6 +1111,8 @@ public class GUIClientNewTab extends javax.swing.JPanel {
                 ctrMedi.insertErrorHandlingMedicine(m.getMedicineID(), client.getClientID(), loggedInEmployee.getEmployeeID(), txtaDescription.getText(), -(Integer.parseInt(txtQuantity.getText())), loggedInEmployee.getManagerNo());
                 JTextField[] txtFieldList = {txtQuantity};
                 resetTextFields(txtFieldList);
+                JTextArea[] txtAreaList = {txtaDescription};
+                resetTextAreas(txtAreaList);
                 if(ctrMedi.getManagerMessage() != null)
                 {
                     JOptionPane.showMessageDialog(this, ctrMedi.getManagerMessage());

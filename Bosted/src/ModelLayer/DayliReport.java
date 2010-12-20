@@ -8,7 +8,8 @@ package ModelLayer;
  *
  * @author Kristian Byrialsen
  */
-public class DailyReport {
+public class DayliReport
+{
 
     private int dailyReportID;
     private int clientID;
@@ -16,10 +17,11 @@ public class DailyReport {
     private int employeeID;
     private String text;
 
-    public DailyReport() {
+    public DayliReport()
+    {
     }
 
-    public DailyReport(int clientID, String date, int employeeID, String text) {
+    public DayliReport(int clientID, String date, int employeeID, String text) {
         this.clientID = clientID;
         this.date = date;
         this.employeeID = employeeID;

@@ -9,24 +9,24 @@ import java.util.ArrayList;
  */
 public interface IFDBDailyReport {
 
-    public DailyReport findDailyReportByClientID(int clientID, boolean retrieveAssociation);
+    public DayliReport findDailyReportByClientID(int clientID, boolean retrieveAssociation);
     //find one daily report having the clientID
 
-    public DailyReport findDailyReportByEmployeeID(int employeeID, boolean retrieveAssociation);
+    public DayliReport findDailyReportByEmployeeID(int employeeID, boolean retrieveAssociation);
 
-    public DailyReport findDailyReportByDailyReportID(int dailyReportID, boolean retrieveAssociation);
+    public DayliReport findDailyReportByDailyReportID(int dailyReportID, boolean retrieveAssociation);
 
-    public ArrayList<DailyReport> getAllDailyReports(boolean retriveAssociation);
+    public ArrayList<DayliReport> getAllDailyReports(boolean retriveAssociation);
     //show all daily reports
 
-    public int insertDailyReport(DailyReport dr);
+    public int insertDailyReport(DayliReport dr);
     //insert an daily report into database
 
-    public int updateDailyReport(DailyReport dr);
+    public int updateDailyReport(DayliReport dr);
     //update information about a daily report
 
     public int deleteDailyReport(int dailyReportID);
     //delete an daily report
 
-    public ArrayList<DailyReport> buildListOfDailyreports(int clientID);
+    public ArrayList<DayliReport> buildListOfDailyreports(int clientID);
 }

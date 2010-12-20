@@ -11,9 +11,13 @@
 
 package GUILayer;
 
+import ControlLayer.CtrEmp;
 import ControlLayer.CtrLoca;
+import ControlLayer.CtrMedi;
 import ModelLayer.Client;
 import ModelLayer.Location;
+import ModelLayer.Medicine;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -38,6 +42,26 @@ public class GUIClientNewTab extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        GUIErrorHandlingMedicine = new javax.swing.JFrame();
+        jPanel7 = new javax.swing.JPanel();
+        lblMedicine = new javax.swing.JLabel();
+        cmbMedi = new javax.swing.JComboBox();
+        jButton3 = new javax.swing.JButton();
+        lblDescription = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtaDescription = new javax.swing.JTextArea();
+        lblQuantity = new javax.swing.JLabel();
+        txtQuantity = new javax.swing.JTextField();
+        btnOk = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
+        GUIGiveMedicine = new javax.swing.JFrame();
+        jPanel8 = new javax.swing.JPanel();
+        lblMedicine1 = new javax.swing.JLabel();
+        cmbMedi1 = new javax.swing.JComboBox();
+        jButton11 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
@@ -108,6 +132,180 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         jButton7 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+
+        lblMedicine.setText("Medicin");
+
+        cmbMedi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jButton3.setText("jButton3");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        lblDescription.setText("Hændelsen");
+
+        txtaDescription.setColumns(20);
+        txtaDescription.setRows(5);
+        jScrollPane1.setViewportView(txtaDescription);
+
+        lblQuantity.setText("Antal");
+
+        btnOk.setText("Ok");
+        btnOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOkActionPerformed(evt);
+            }
+        });
+
+        btnExit.setText("Annuller");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 263, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMedicine)
+                    .addComponent(lblDescription)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
+                            .addComponent(cmbMedi, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton3))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblQuantity)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(btnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnExit)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblMedicine)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbMedi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
+                .addGap(18, 18, 18)
+                .addComponent(lblDescription)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblQuantity)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnOk)
+                    .addComponent(btnExit))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout GUIErrorHandlingMedicineLayout = new javax.swing.GroupLayout(GUIErrorHandlingMedicine.getContentPane());
+        GUIErrorHandlingMedicine.getContentPane().setLayout(GUIErrorHandlingMedicineLayout);
+        GUIErrorHandlingMedicineLayout.setHorizontalGroup(
+            GUIErrorHandlingMedicineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        GUIErrorHandlingMedicineLayout.setVerticalGroup(
+            GUIErrorHandlingMedicineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        lblMedicine1.setText("Medicin");
+
+        cmbMedi1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jButton11.setText("jButton3");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Hvor mange er der blevet givet:");
+
+        jTextField1.setText("Skriv antal");
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField1FocusGained(evt);
+            }
+        });
+
+        jButton2.setText("Ok");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel8Layout.createSequentialGroup()
+                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblMedicine1)
+                                .addGroup(jPanel8Layout.createSequentialGroup()
+                                    .addComponent(cmbMedi1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                                    .addComponent(jButton11)))
+                            .addGap(132, 132, 132))
+                        .addGroup(jPanel8Layout.createSequentialGroup()
+                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel5)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addContainerGap(214, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblMedicine1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbMedi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton11))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout GUIGiveMedicineLayout = new javax.swing.GroupLayout(GUIGiveMedicine.getContentPane());
+        GUIGiveMedicine.getContentPane().setLayout(GUIGiveMedicineLayout);
+        GUIGiveMedicineLayout.setHorizontalGroup(
+            GUIGiveMedicineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        GUIGiveMedicineLayout.setVerticalGroup(
+            GUIGiveMedicineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -716,14 +914,14 @@ public class GUIClientNewTab extends javax.swing.JPanel {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        GUIErrorHandlingMedicine guiehm = new GUIErrorHandlingMedicine();
-        guiehm.setVisible(true);
+        //GUIErrorHandlingMedicine guiehm = new GUIErrorHandlingMedicine();
+        GUIErrorHandlingMedicine.setVisible(true);
 }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
-        GUIGiveMedicine guigm = new GUIGiveMedicine();
-        guigm.setVisible(true);
+        //GUIGiveMedicine guigm = new GUIGiveMedicine();
+        GUIGiveMedicine.setVisible(true);
 }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
@@ -751,10 +949,71 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         guidr.setVisible(true);
 }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        CtrMedi ctrMedi = new CtrMedi();
+        ArrayList<Medicine> medicineList = ctrMedi.getAllMedicine();
+        cmbMedi.removeAllItems();
+        cmbMedi.insertItemAt("", 0);
+        for (Medicine m : medicineList) {
+            cmbMedi.addItem(m);
+        }
+        cmbMedi.removeItemAt(0);
+}//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
+        // TODO add your handling code here:
+        CtrMedi ctrMedi = new CtrMedi();
+        CtrEmp ctrEmp = new CtrEmp();
+        GUIclient guiClient = new GUIclient();
+        Medicine m = (Medicine) cmbMedi.getSelectedItem();
+        ctrMedi.insertErrorHandlingMedicine(m.getMedicineID(), client.getClientID(), guiClient.getLoggedInEmployee().getEmployeeID(), txtaDescription.getText(), Integer.parseInt(txtQuantity.getText()), guiClient.getLoggedInEmployee().getManagerNo());
+        setVisible(false);
+}//GEN-LAST:event_btnOkActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+}//GEN-LAST:event_btnExitActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        // TODO add your handling code here:
+        CtrMedi ctrMedi = new CtrMedi();
+        ArrayList<Medicine> medicineList = ctrMedi.getAllMedicine();
+        cmbMedi.removeAllItems();
+        cmbMedi.insertItemAt("", 0);
+        for (Medicine m : medicineList) {
+            cmbMedi.addItem(m);
+        }
+        cmbMedi.removeItemAt(0);
+}//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        // TODO add your handling code here:
+        jTextField1.setText("");
+}//GEN-LAST:event_jTextField1FocusGained
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        CtrMedi ctrMedi = new CtrMedi();
+        Medicine m = (Medicine) cmbMedi.getSelectedItem();
+        ctrMedi.giveMedicine(m.getMedicineID(), Integer.parseInt(jTextField1.getText()));
+        setVisible(false);
+}//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFrame GUIErrorHandlingMedicine;
+    private javax.swing.JFrame GUIGiveMedicine;
+    private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnOk;
+    private javax.swing.JComboBox cmbMedi;
+    private javax.swing.JComboBox cmbMedi1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -782,6 +1041,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -789,6 +1049,9 @@ public class GUIClientNewTab extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
@@ -805,11 +1068,16 @@ public class GUIClientNewTab extends javax.swing.JPanel {
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea4;
     private javax.swing.JTextArea jTextArea5;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lblBeskrivelseKlient1;
+    private javax.swing.JLabel lblDescription;
     private javax.swing.JLabel lblEfternavnKlient1;
     private javax.swing.JLabel lblFornavnKlient1;
+    private javax.swing.JLabel lblMedicine;
+    private javax.swing.JLabel lblMedicine1;
     private javax.swing.JLabel lblMellemnavnKlient1;
+    private javax.swing.JLabel lblQuantity;
     private javax.swing.JTextField txtClientAddress;
     private javax.swing.JTextField txtClientCity;
     private javax.swing.JTextArea txtClientDescription;
@@ -823,6 +1091,8 @@ public class GUIClientNewTab extends javax.swing.JPanel {
     private javax.swing.JTextField txtClientSsn;
     private javax.swing.JTextField txtClientUsername;
     private javax.swing.JTextField txtClientZipCode;
+    private javax.swing.JTextField txtQuantity;
+    private javax.swing.JTextArea txtaDescription;
     // End of variables declaration//GEN-END:variables
 
 }

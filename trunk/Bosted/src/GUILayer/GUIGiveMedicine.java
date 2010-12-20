@@ -122,7 +122,7 @@ public class GUIGiveMedicine extends javax.swing.JFrame {
         // TODO add your handling code here:
         CtrMedi ctrMedi = new CtrMedi();
         Medicine m = (Medicine) cmbMedi.getSelectedItem();
-        ctrMedi.giveMedicine(m.getMedicineID(), Integer.parseInt(jTextField1.getText()));
+        ctrMedi.updateMedicine(m.getMedicineID(), m.getFrequencyID(), m.getExternalContactID(), m.getClientID(), m.getName(), m.getDescription(), m.getDate(), m.getQuantity()-Integer.parseInt(jTextField1.getText()));
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 

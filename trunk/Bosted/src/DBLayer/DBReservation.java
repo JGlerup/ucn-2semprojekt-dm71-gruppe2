@@ -12,7 +12,7 @@ import ModelLayer.Reservation;
  *
  * @author Glerup
  */
-public class DBReservation {
+public class DBReservation implements IFDBReservation{
     
     private Connection con;
 

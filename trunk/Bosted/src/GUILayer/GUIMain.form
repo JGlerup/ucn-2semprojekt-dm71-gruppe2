@@ -240,7 +240,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="gUIemployee1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="20" max="32767" attributes="0"/>
+                      <EmptySpace pref="16" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -350,7 +350,7 @@
                       <Font name="Verdana" size="14" style="0"/>
                     </Property>
                     <Property name="rows" type="int" value="5"/>
-                    <Property name="text" type="java.lang.String" value="Det f&#xf8;rste vindue man ser er login vinduet.&#xa;I dette vindue kan man logge ind ved hj&#xe6;lp af et kendt Brugernavn og Password.&#xa;Hvis man succesfuldt logger ind, f&#xe5;r man adgang til de 6 andre faner som er placeret ude i &#xa;venstre side af vinduet.&#xa;De 7 faner er som f&#xf8;lge:&#xa;&#x9;-Login&#xa;&#x9;-Klienter&#xa;&#x9;-Biler&#xa;&#x9;-Medarbejdere&#xa;&#x9;-Medicin&#xa;&#x9;-Hj&#xe6;lp&#xa;&#x9;-Logud&#xa;&#xa;I fanen &quot;Klienter&quot;, kan man oprette, opdatere og slette klienter hvis man har rettigheder til det.&#xa;Det er ogs&#xe5; i denne fane at man kan se de klienter, som er blevet tilknyttet en.&#xa;&#xa;"/>
+                    <Property name="text" type="java.lang.String" value="Det f&#xf8;rste vindue man ser er login vinduet.&#xa;I dette vindue kan man logge ind ved hj&#xe6;lp af et kendt Brugernavn og Password.&#xa;Hvis man succesfuldt logger ind, f&#xe5;r man adgang til de 6 andre faner som er placeret ude i &#xa;venstre side af vinduet.&#xa;De 7 faner er som f&#xf8;lge:&#xa;&#x9;-Login&#xa;&#x9;-Klienter&#xa;&#x9;-Biler&#xa;&#x9;-Medarbejdere&#xa;&#x9;-Medicin&#xa;&#x9;-Hj&#xe6;lp&#xa;&#x9;-Logud&#xa;&#xa;I fanen &quot;Klienter&quot; under &quot;H&#xe5;ndtering&quot;, kan man oprette, opdatere og slette klienter hvis man &#xa;har rettigheder til det. Det er ogs&#xe5; i denne fane at man kan se de klienter, som er blevet tilknyttet til&#xa;den medarbejder man er logget ind som.&#xa;Under hver klient, kan man se dennes generelle oplysninger, klientens nyeste dagsrapport, klientens 4 &#xa;nyeste delm&#xe5;l og hvorfor noget medicin denne klient tager.&#xa;Der er ogs&#xe5; en masse andre funktioner i dette vindue. Man kan hente, oprette og opdatere andre&#xa;dagsrapporter og delm&#xe5;l. Nederst p&#xe5; siden kan man opskrive lageret af medicin hvis man har&#xa;rettigheden til dette. Man kan angive at man har givet noget medicin til denne klient og man kan&#xa;rapportere en utilsigtet h&#xe6;ndelse.&#xa;Alle funktionerne &#xe5;bner et nyt vindue hvor man har nogle valgmuligheder alt efter hvad for en funktion&#xa;man har valgt.&#xa;"/>
                   </Properties>
                 </Component>
               </SubComponents>

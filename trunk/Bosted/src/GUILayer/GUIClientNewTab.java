@@ -975,6 +975,10 @@ public class GUIClientNewTab extends javax.swing.JPanel {
             {
                 JOptionPane.showMessageDialog(this, ctrMedi.getManagerMessage());
             }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Hændelsen er gemt");
+            }
             GUIErrorHandlingMedicine.setVisible(false);
         }
 }//GEN-LAST:event_btnOkActionPerformed

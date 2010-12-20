@@ -978,6 +978,8 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         {
             if(jCheckBox1.isSelected())
             {
+                try
+                {
                 ctrMedi.insertErrorHandlingMedicine(m.getMedicineID(), client.getClientID(), loggedInEmployee.getEmployeeID(), txtaDescription.getText(), Integer.parseInt(txtQuantity.getText()), loggedInEmployee.getManagerNo());
                 JTextField[] txtFieldList = {txtQuantity};
                 resetTextFields(txtFieldList);
@@ -990,9 +992,16 @@ public class GUIClientNewTab extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(this, "Hændelsen er gemt");
                 }
                 GUIErrorHandlingMedicine.setVisible(false);
+                }
+                catch(Exception e)
+                {
+                    JOptionPane.showMessageDialog(GUIErrorHandlingMedicine, e.getMessage());
+                }
             }
             else
             {
+                try
+                {
                 ctrMedi.insertErrorHandlingMedicine(m.getMedicineID(), client.getClientID(), loggedInEmployee.getEmployeeID(), txtaDescription.getText(), -(Integer.parseInt(txtQuantity.getText())), loggedInEmployee.getManagerNo());
                 JTextField[] txtFieldList = {txtQuantity};
                 resetTextFields(txtFieldList);
@@ -1005,6 +1014,11 @@ public class GUIClientNewTab extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(this, "Hændelsen er gemt");
                 }
                 GUIErrorHandlingMedicine.setVisible(false);
+                }
+                catch(Exception e)
+                {
+                    JOptionPane.showMessageDialog(GUIErrorHandlingMedicine, e.getMessage());
+                }
             }
         }
 }//GEN-LAST:event_btnOkActionPerformed

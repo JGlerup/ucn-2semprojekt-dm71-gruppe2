@@ -14,7 +14,7 @@ create table frequency
 
 create table car 
 	(car_id				int			PRIMARY KEY IDENTITY,
-	registrationsno		int			not null,
+	registrationsno		varchar(30)	not null,
 	description			varchar(30)	not null,
 	unique(registrationsno));
 

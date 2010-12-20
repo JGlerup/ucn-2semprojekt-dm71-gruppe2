@@ -15,7 +15,8 @@ import java.util.ArrayList;
  *
  * @author Kristian Byrialsen
  */
-public class DBDailyReport implements IFDBDailyReport {
+public class DBDailyReport implements IFDBDailyReport
+{
 
     private Connection con;
 

@@ -10,7 +10,8 @@
  */
 package GUILayer;
 
-import ControlLayer.*;
+import ControlLayer.CtrEmp;
+import ControlLayer.CtrLoca;
 import ModelLayer.Employee;
 import java.util.ArrayList;
 import javax.swing.JCheckBox;

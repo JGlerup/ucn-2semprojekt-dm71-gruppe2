@@ -1,8 +1,17 @@
 package ControlLayer;
 
-import ModelLayer.*;
-import DBLayer.*;
+
+import DBLayer.DBErrorHandlingMedicine;
+import DBLayer.DBFrequency;
+import DBLayer.DBMedicine;
+import DBLayer.IFDBErrorHandMed;
+import DBLayer.IFDBFreq;
+import DBLayer.IFDBMedi;
 import ExceptionsPack.NoManagerNumberErrorHandling;
+import ModelLayer.Employee;
+import ModelLayer.ErrorHandlingMedicine;
+import ModelLayer.Frequency;
+import ModelLayer.Medicine;
 import java.util.ArrayList;
 
 /**

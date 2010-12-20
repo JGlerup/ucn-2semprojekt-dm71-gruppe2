@@ -1,5 +1,6 @@
 package ControlLayer;
 
+import ExceptionsPack.NoManagerNumberErrorHandling;
 import ModelLayer.ErrorHandlingMedicine;
 import java.util.ArrayList;
 import ModelLayer.Medicine;
@@ -196,6 +197,7 @@ public class CtrMediTest
     @Test
     public void testInsertErrorHandlingMedicine()
     {
+        try{
         System.out.println("insert");
         CtrMedi instance = new CtrMedi();
         Medicine mediObj = new Medicine();
@@ -223,6 +225,13 @@ public class CtrMediTest
         assertEquals(1, mResult.getClientID());
         assertEquals("TEST MedicinNytNavn", mResult.getName());
         assertEquals(newQuantity, mResult.getQuantity());
+        }
+        catch(NoManagerNumberErrorHandling e){
+            fail("Exception:" + e.getMessage());
+        }
+        catch(Exception ex){
+            fail("Exception:" + ex.getMessage());
+        }
     }
 
     @Test

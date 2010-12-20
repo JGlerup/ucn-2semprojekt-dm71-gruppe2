@@ -1,7 +1,8 @@
 package ControlLayer;
 
-import ModelLayer.*;
-import DBLayer.*;
+import DBLayer.DBCar;
+import DBLayer.IFDBCar;
+import ModelLayer.Car;
 import java.util.ArrayList;
 
 /**

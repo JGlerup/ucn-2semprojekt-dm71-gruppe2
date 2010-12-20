@@ -12,12 +12,8 @@ package GUILayer;
 
 import ControlLayer.CtrEmp;
 import ModelLayer.Employee;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
 import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
-import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *

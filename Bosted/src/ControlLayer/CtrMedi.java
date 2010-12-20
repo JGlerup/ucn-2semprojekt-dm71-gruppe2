@@ -2,6 +2,7 @@ package ControlLayer;
 
 import ModelLayer.*;
 import DBLayer.*;
+import ExceptionsPack.NoManagerNumberErrorHandling;
 import java.util.ArrayList;
 
 /**
@@ -124,17 +125,16 @@ public class CtrMedi
         return allErHaMedDa;
     }
 
-    public void insertErrorHandlingMedicine(int medicineID, int clientID, int employeeID, String episode, int quantity, String managerNo)
+    public void insertErrorHandlingMedicine(int medicineID, int clientID, int employeeID, String episode, int quantity, String managerNo) throws NoManagerNumberErrorHandling
     {
         Medicine medi = new Medicine();
         medi = findMedicineByID(medicineID);
         if(medi.getExternalContactID() != 0)
         {
             int newQuantity = medi.getQuantity() - quantity;
-            if(medi.getQuantity() > 0 || newQuantity >= 0)
+            if(medi.getQuantity() > 0 && newQuantity >= 0)
             {
-                try
-                {
+                
                     IFDBErrorHandMed dbErHaMedDa = new DBErrorHandlingMedicine();
                     ErrorHandlingMedicine erHaMedObj = new ErrorHandlingMedicine();
                     medi.setQuantity(newQuantity);
@@ -151,15 +151,20 @@ public class CtrMedi
                         sendEmailToManager(findManager(managerNo));
                         managerMessage = getManagerMessage() + " om hændelsen.";
                     }
+                    else
+                    {
+                        throw new NoManagerNumberErrorHandling("Fejl i indtastning");
+                    }
                 }
-                catch (Exception Ex)
-                {
-                    System.out.println("Update exception in errorHandlingMedicine db: " + Ex);
-                }
+                
+            }
+            else
+            {
+                throw new NoManagerNumberErrorHandling("Fejl i indtastning");
             }
         }
         
-    }
+    
 
     public void updateErrorHandlingMedicine(int errorHandlingMedicineID, int medicineID, int clientID, int employeeID, String date, String episode, int quantity, String managerNo)
     {
@@ -168,7 +173,7 @@ public class CtrMedi
         ErrorHandlingMedicine erHaMed = new ErrorHandlingMedicine();
         erHaMed = findErrorHandlingMedicineByID(errorHandlingMedicineID);
         medi = findMedicineByID(medicineID);
-        if(medi.getExternalContactID() != 0 || erHaMed.getQuantity() != quantity)
+        if(medi.getExternalContactID() != 0 && erHaMed.getQuantity() != quantity)
         {
              try
             {

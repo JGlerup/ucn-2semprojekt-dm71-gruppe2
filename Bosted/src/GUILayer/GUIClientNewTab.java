@@ -15,10 +15,12 @@ import ControlLayer.CtrEmp;
 import ControlLayer.CtrLoca;
 import ControlLayer.CtrMedi;
 import ModelLayer.Client;
+import ModelLayer.Employee;
 import ModelLayer.Location;
 import ModelLayer.Medicine;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -27,6 +29,7 @@ import javax.swing.JOptionPane;
 public class GUIClientNewTab extends javax.swing.JPanel {
 
     private Client client;
+    private Employee loggedInEmployee;
 
     /** Creates new form GUIClientNewTab */
     public GUIClientNewTab() {
@@ -46,7 +49,6 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         jPanel7 = new javax.swing.JPanel();
         lblMedicine = new javax.swing.JLabel();
         cmbMedi = new javax.swing.JComboBox();
-        jButton3 = new javax.swing.JButton();
         lblDescription = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtaDescription = new javax.swing.JTextArea();
@@ -133,16 +135,11 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         jButton6 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
 
+        GUIErrorHandlingMedicine.setMinimumSize(new java.awt.Dimension(300, 400));
+
         lblMedicine.setText("Medicin");
 
         cmbMedi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jButton3.setText("jButton3");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
 
         lblDescription.setText("Hændelsen");
 
@@ -170,36 +167,32 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 263, Short.MAX_VALUE)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblMedicine)
-                    .addComponent(lblDescription)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblMedicine)
+                            .addComponent(lblDescription)
                             .addComponent(cmbMedi, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblQuantity)
+                            .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblQuantity))
+                        .addGap(42, 42, 42))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addContainerGap(55, Short.MAX_VALUE)
                         .addComponent(btnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnExit)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblMedicine)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbMedi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                .addComponent(cmbMedi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblDescription)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -208,7 +201,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
                 .addComponent(lblQuantity)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnOk)
                     .addComponent(btnExit))
@@ -219,7 +212,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         GUIErrorHandlingMedicine.getContentPane().setLayout(GUIErrorHandlingMedicineLayout);
         GUIErrorHandlingMedicineLayout.setHorizontalGroup(
             GUIErrorHandlingMedicineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         GUIErrorHandlingMedicineLayout.setVerticalGroup(
             GUIErrorHandlingMedicineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -892,6 +885,16 @@ public class GUIClientNewTab extends javax.swing.JPanel {
                 txtClientEmail.setText(email);
     }
 
+    public void setLoggedInEmployee(Employee loggedInEmployee) {
+        this.loggedInEmployee = loggedInEmployee;
+    }
+
+    public void resetTextFields(JTextField[] textFields) {
+        for (JTextField txtField : textFields) {
+            txtField.setText("");
+        }
+    }
+
     private void txtClientFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClientFirstNameActionPerformed
         // TODO add your handling code here:
 }//GEN-LAST:event_txtClientFirstNameActionPerformed
@@ -916,6 +919,14 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         // TODO add your handling code here:
         //GUIErrorHandlingMedicine guiehm = new GUIErrorHandlingMedicine();
         GUIErrorHandlingMedicine.setVisible(true);
+        CtrMedi ctrMedi = new CtrMedi();
+        ArrayList<Medicine> medicineList = ctrMedi.getAllMedicine();
+        cmbMedi.removeAllItems();
+        cmbMedi.insertItemAt("", 0);
+        for (Medicine m : medicineList) {
+            cmbMedi.addItem(m);
+        }
+        cmbMedi.removeItemAt(0);
 }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -949,31 +960,30 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         guidr.setVisible(true);
 }//GEN-LAST:event_jButton8ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        CtrMedi ctrMedi = new CtrMedi();
-        ArrayList<Medicine> medicineList = ctrMedi.getAllMedicine();
-        cmbMedi.removeAllItems();
-        cmbMedi.insertItemAt("", 0);
-        for (Medicine m : medicineList) {
-            cmbMedi.addItem(m);
-        }
-        cmbMedi.removeItemAt(0);
-}//GEN-LAST:event_jButton3ActionPerformed
-
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
         // TODO add your handling code here:
+        int choice = 0;
         CtrMedi ctrMedi = new CtrMedi();
-        CtrEmp ctrEmp = new CtrEmp();
-        GUIclient guiClient = new GUIclient();
         Medicine m = (Medicine) cmbMedi.getSelectedItem();
-        ctrMedi.insertErrorHandlingMedicine(m.getMedicineID(), client.getClientID(), guiClient.getLoggedInEmployee().getEmployeeID(), txtaDescription.getText(), Integer.parseInt(txtQuantity.getText()), guiClient.getLoggedInEmployee().getManagerNo());
-        setVisible(false);
+        choice = JOptionPane.showConfirmDialog(this, "Er du sikker? \n\nMedicin: " + m.getName() + "\nBeskrivelse: " + txtaDescription.getText() + " \nAntal: " + txtQuantity.getText());
+        if(choice == 0)
+        {
+            ctrMedi.insertErrorHandlingMedicine(m.getMedicineID(), client.getClientID(), loggedInEmployee.getEmployeeID(), txtaDescription.getText(), Integer.parseInt(txtQuantity.getText()), loggedInEmployee.getManagerNo());
+            JTextField[] txtFieldList = {txtQuantity};
+            resetTextFields(txtFieldList);
+            if(ctrMedi.getManagerMessage() != null) 
+            {
+                JOptionPane.showMessageDialog(this, ctrMedi.getManagerMessage());
+            }
+            GUIErrorHandlingMedicine.setVisible(false);
+        }
 }//GEN-LAST:event_btnOkActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
+        JTextField[] txtFieldList = {txtQuantity};
+        resetTextFields(txtFieldList);
+        GUIErrorHandlingMedicine.setVisible(false);
 }//GEN-LAST:event_btnExitActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
@@ -1013,7 +1023,6 @@ public class GUIClientNewTab extends javax.swing.JPanel {
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;

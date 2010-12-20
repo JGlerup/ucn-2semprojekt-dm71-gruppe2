@@ -399,6 +399,7 @@ public class GUIclient extends javax.swing.JPanel {
             tpKlient.addTab(c.getFirstName() + c.getLastName(), guiClientNewTab);
             guiClientNewTab.setClient(c);
             guiClientNewTab.setupClientInformation();
+            guiClientNewTab.setLoggedInEmployee(loggedInEmployee);
         }
     }
 

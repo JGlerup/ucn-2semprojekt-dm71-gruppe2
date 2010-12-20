@@ -146,9 +146,9 @@ public class CtrMedi
                     erHaMedObj.setEpisode(episode);
                     erHaMedObj.setQuantity(quantity);
                     dbErHaMedDa.insertErrorHandlingMedicine(erHaMedObj);
-                    sendEmailToManager(findManager(managerNo));
                     if(managerNo != null)
                     {
+                        sendEmailToManager(findManager(managerNo));
                         managerMessage = getManagerMessage() + " om hændelsen.";
                     }
                 }
@@ -186,9 +186,9 @@ public class CtrMedi
                 erHaMedObj.setEpisode(episode);
                 erHaMedObj.setQuantity(quantity);
                 dbErHaMed.updateErrorHandlingMedicine(erHaMedObj);
-                sendEmailToManager(findManager(managerNo));
                 if(managerNo != null)
                 {
+                    sendEmailToManager(findManager(managerNo));
                     managerMessage = getManagerMessage() + " om opdateringen.";
                 }
             }
@@ -211,9 +211,9 @@ public class CtrMedi
                 erHaMedObj.setEpisode(episode);
                 erHaMedObj.setQuantity(quantity);
                 dbErHaMed.updateErrorHandlingMedicine(erHaMedObj);
-                sendEmailToManager(findManager(managerNo));
                 if(managerNo != null)
                 {
+                    sendEmailToManager(findManager(managerNo));
                     managerMessage = getManagerMessage() + " om opdateringen.";
                 }
             }

@@ -11,7 +11,6 @@
 
 package GUILayer;
 
-import ControlLayer.CtrEmp;
 import ControlLayer.CtrLoca;
 import ControlLayer.CtrMedi;
 import ExceptionsPack.NoManagerNumberErrorHandling;

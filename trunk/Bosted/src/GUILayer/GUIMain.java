@@ -23,12 +23,12 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author Anita
  */
-public class GUI extends javax.swing.JFrame {
+public class GUIMain extends javax.swing.JFrame {
 
     private Employee loggedInEmployee;
 
     /** Creates new form GUI */
-    public GUI() {
+    public GUIMain() {
         initComponents();
         for (int i = 1; i < tpGUI.getTabCount(); i++) {
             tpGUI.setEnabledAt(i, false);
@@ -196,7 +196,7 @@ public class GUI extends javax.swing.JFrame {
             pMedarbejdereLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pMedarbejdereLayout.createSequentialGroup()
                 .addComponent(gUIemployee1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         pMedarbejdereLayout.setVerticalGroup(
             pMedarbejdereLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,7 +225,7 @@ public class GUI extends javax.swing.JFrame {
         tpGUI.addTab("Medicin", jPanel1);
 
         txtaHjælp.setColumns(20);
-        txtaHjælp.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        txtaHjælp.setFont(new java.awt.Font("Verdana", 0, 14));
         txtaHjælp.setRows(5);
         txtaHjælp.setText("Det første vindue man ser er login vinduet.\nI dette vindue kan man logge ind ved hjælp af et kendt Brugernavn og Password.\nHvis man succesfuldt logger ind, får man adgang til de 6 andre faner som er placeret ude i \nvenstre side af vinduet.\nDe 7 faner er som følge:\n\t-Login\n\t-Klienter\n\t-Biler\n\t-Medarbejdere\n\t-Medicin\n\t-Hjælp\n\t-Logud\n\nI fanen \"Klienter\", kan man oprette, opdatere og slette klienter hvis man har rettigheder til det.\nDet er også i denne fane at man kan se de klienter, som er blevet tilknyttet en.\n\n");
         spHjælp.setViewportView(txtaHjælp);
@@ -401,7 +401,7 @@ public class GUI extends javax.swing.JFrame {
                 } catch (Exception e) {
                 }
 
-                new GUI().setVisible(true);
+                new GUIMain().setVisible(true);
 
 
             }

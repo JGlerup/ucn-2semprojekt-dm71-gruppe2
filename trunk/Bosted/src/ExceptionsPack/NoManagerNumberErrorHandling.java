@@ -18,4 +18,9 @@ public class NoManagerNumberErrorHandling extends Exception {
         this.text = text;
     }
 
+    public String getMessage() {
+        return text;
+    }
+
+
 }

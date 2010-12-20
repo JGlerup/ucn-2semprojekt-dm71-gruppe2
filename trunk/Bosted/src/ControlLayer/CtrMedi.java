@@ -151,18 +151,16 @@ public class CtrMedi
                         sendEmailToManager(findManager(managerNo));
                         managerMessage = getManagerMessage() + " om hændelsen.";
                     }
-                    else
-                    {
-                        throw new NoManagerNumberErrorHandling("Fejl i indtastning");
-                    }
+                    
                 }
                 
-            }
+            
             else
             {
                 throw new NoManagerNumberErrorHandling("Fejl i indtastning");
             }
         }
+    }
         
     
 

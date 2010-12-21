@@ -163,6 +163,9 @@ public class CtrMedi
         return dbErHaMed.findErrorHandlingMedicineByEpisode(episode, true);
     }
 
+    /**
+     * @return an ArrayList of ErrorHandlingMedicine
+     */
     public ArrayList<ErrorHandlingMedicine> getAllErrorHandlingMedicine()
     {
         IFDBErrorHandMed dbAllErHaMed = new DBErrorHandlingMedicine();
@@ -171,6 +174,10 @@ public class CtrMedi
         return allErHaMed;
     }
 
+    /**
+     * @param date the date of the ErrorHandlingMedicine
+     * @return an ArrayList of ErrorHandlingMedicine
+     */
     public ArrayList<ErrorHandlingMedicine> getAllErrorHandlingMedicineByDate(String date)
     {
         IFDBErrorHandMed dbAllErHaMedDa = new DBErrorHandlingMedicine();
@@ -179,6 +186,14 @@ public class CtrMedi
         return allErHaMedDa;
     }
 
+    /**
+     * @param medicineID the ID of the Medicine
+     * @param clientID the ID of the Client
+     * @param employeeID the ID of the Employee
+     * @param episode the episode of the ErrorHandlingMedicine
+     * @param quantity the quantity of the Medicine
+     * @param managerNo the employeeNo the manager of the Employee
+     */
     public void insertErrorHandlingMedicine(int medicineID, int clientID, int employeeID, String episode, int quantity, String managerNo) throws NoManagerNumberErrorHandling
     {
         Medicine medi = new Medicine();
@@ -204,23 +219,27 @@ public class CtrMedi
                     {
                         sendEmailToManager(findManager(managerNo));
                         managerMessage = getManagerMessage() + " om hændelsen.";
-                    }
+                    }//end if
                     
-                }
-                
-            
-            else
-            {
-                throw new NoManagerNumberErrorHandling("Fejl i indtastning");
-            }
-        }
+                }//end if
+                else
+                {
+                    throw new NoManagerNumberErrorHandling("Fejl i indtastning");
+                }//end else
+        }//end if
     }
         
-    
-
+    /**
+     * @param errorHandlingMedicineID the ID of the Medicine
+     * @param medicineID the ID of the Medicine
+     * @param clientID the ID of the Client
+     * @param employeeID the ID of the Employee
+     * @param episode the episode of the ErrorHandlingMedicine
+     * @param quantity the quantity of the Medicine
+     * @param managerNo the employeeNo the manager of the Employee
+     */
     public void updateErrorHandlingMedicine(int errorHandlingMedicineID, int medicineID, int clientID, int employeeID, String date, String episode, int quantity, String managerNo)
     {
-        String managermessage = null;
         Medicine medi = new Medicine();
         ErrorHandlingMedicine erHaMed = new ErrorHandlingMedicine();
         erHaMed = findErrorHandlingMedicineByID(errorHandlingMedicineID);
@@ -228,7 +247,7 @@ public class CtrMedi
         if(medi.getExternalContactID() != 0 && erHaMed.getQuantity() != quantity)
         {
              try
-            {
+             {
                 int newQuantity = medi.getQuantity() + erHaMed.getQuantity() - quantity;
                 medi.setQuantity(newQuantity);
                 IFDBMedi dbMed = new DBMedicine();
@@ -247,13 +266,13 @@ public class CtrMedi
                 {
                     sendEmailToManager(findManager(managerNo));
                     managerMessage = getManagerMessage() + " om opdateringen.";
-                }
-            }
+                }//end if
+            }//end try
             catch (Exception Ex)
             {
                 System.out.println("Update exception in errorHandlingMedicine db: " + Ex);
-            }
-        }
+            }//end catch
+        }//end if
         else
         {
             try
@@ -272,15 +291,20 @@ public class CtrMedi
                 {
                     sendEmailToManager(findManager(managerNo));
                     managerMessage = getManagerMessage() + " om opdateringen.";
-                }
-            }
+                }//end if
+            }//end try
             catch (Exception Ex)
             {
                 System.out.println("Update exception in errorHandlingMedicine db: " + Ex);
-            }
-        }
+            }//end catch
+        }//end else
     }
 
+     /**
+     * @param errorHandlingMedicineID the ID of the Medicine
+     * @param medicineID the ID of the Medicine
+     * @param quantity the quantity of the Medicine
+     */
     public void deleteErrorHandlingMedicine(int errorHandlingMedicineID, int medicineID, int quantity)
     {
         try
@@ -289,13 +313,17 @@ public class CtrMedi
             Medicine medi = findMedicineByID(medicineID);
             updateMedicine(medicineID, medi.getFrequencyID(), medi.getExternalContactID(), medi.getClientID(), medi.getName(), medi.getDescription(), medi.getDate(), (medi.getQuantity()+ quantity));
             dbErHaMed.deleteErrorHandlingMedicine(errorHandlingMedicineID);
-        }
+        }//end try
         catch (Exception ex)
         {
             System.out.println("Delete exception in errorHandlingMedicine db: " + ex);
-        }
+        }//end catch
     }
 
+    /**
+     * @param managerNo the employeeNo the manager of the Employee
+     * @return an instance of an Employee
+     */
     public Employee findManager(String managerNo)
     {
         CtrEmp ctrEmpObj = new CtrEmp();
@@ -304,22 +332,40 @@ public class CtrMedi
         return manager;
     }
 
+    /**
+     * @param manager an object of Employee
+     */
     public void sendEmailToManager(Employee manager)
     {
         Employee m = manager;
         managerMessage = "Der er sendt besked til " + m.getFirstName() + " " + m.getMiddleName() + " " + m.getLastName();
     }
 
+    /**
+     * @return a String
+     */
     public String getManagerMessage()
     {
         return managerMessage;
     }
 
-    public void setManagerMessage(String ManagerMessage)
+    /**
+     * @param managerMessage a String
+     */
+    public void setManagerMessage(String managerMessage)
     {
-        this.managerMessage = ManagerMessage;
+        this.managerMessage = managerMessage;
     }
 
+    /**
+     * @param errorHandlingMedicineID the ID of the Medicine
+     * @param medicineID the ID of the Medicine
+     * @param clientID the ID of the Client
+     * @param employeeID the ID of the Employee
+     * @param episode the episode of the ErrorHandlingMedicine
+     * @param quantity the quantity of the Medicine
+     * @param managerNo the employeeNo the manager of the Employee
+     */
     public Frequency findFrequencyByTimesPerDayAndQuantityEachTime(int timesPerDay, int quantityEachTime, boolean retrieveAssociation)
     {
         Frequency freq = new Frequency();

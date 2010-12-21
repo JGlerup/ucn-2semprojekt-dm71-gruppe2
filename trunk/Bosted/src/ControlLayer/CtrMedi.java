@@ -23,10 +23,20 @@ public class CtrMedi
 
     private String managerMessage;
 
+    /**
+     * Constructor
+     */
+
     public CtrMedi()
     {
         managerMessage = null;
     }
+
+    /** 
+     * @param clientID the ID of the client
+     * @param name the name of the medicine
+     * @return an instance of Medicine
+     */
 
     public Medicine findMedicineByClientIDAndName(int clientID, String name)
     {
@@ -34,6 +44,10 @@ public class CtrMedi
         return dbMedi.findMedicineByClientIDAndName(clientID, name, true);
     }
 
+    /**
+     * @param medicineID the ID of the medicine
+     * @return an instance of Medicine
+     */
     public Medicine findMedicineByID(int medicineID)
     {
         Medicine medi = new Medicine();
@@ -41,14 +55,17 @@ public class CtrMedi
         {
             IFDBMedi dbMedi = new DBMedicine();
             medi = dbMedi.findMedicineByID(medicineID, true);
-        }
+        }//end try
         catch (Exception e)
         {
             System.out.println("Query exception - select medicine : " + e);
-        }
+        }//end catch
         return medi;
     }
 
+    /**
+     * @return an ArrayList of all Medicine
+     */
     public ArrayList<Medicine> getAllMedicine()
     {
         IFDBMedi dbMedi = new DBMedicine();
@@ -57,6 +74,14 @@ public class CtrMedi
         return allMedi;
     }
 
+    /**
+     * @param frequencyID the ID of the frequency
+     * @param externalContactID the ID of the externalContact
+     * @param clientID the ID of the client
+     * @param name the name of the medicine
+     * @param desciption the description of the medicine
+     * @param quantity the quantity of the medicine
+     */
     public void insertMedicine(int frequencyID, int externalContactID, int clientID, String name, String description, int quantity)
     {
         try
@@ -71,13 +96,22 @@ public class CtrMedi
             mediObj.setThisDate();
             mediObj.setQuantity(quantity);
             dbMedi.insertMedicine(mediObj);
-        }
+        }//end try
         catch (Exception ex)
         {
             System.out.println("Insert exception in medicine db: " + ex);
-        }
+        }//end catch
     }
 
+    /**
+     * @param medicineID the ID of the medicine
+     * @param frequencyID the ID of the frequency
+     * @param externalContactID the ID of the externalContact
+     * @param clientID the ID of the client
+     * @param name the name of the medicine
+     * @param desciption the description of the medicine
+     * @param quantity the quantity of the medicine
+     */
     public void updateMedicine(int medicineID, int frequencyID, int externalContactID, int clientID, String name, String description, String date, int quantity)
     {
         try
@@ -93,25 +127,36 @@ public class CtrMedi
             mediObj.setDate(date);
             mediObj.setQuantity(quantity);
             dbMedi.updateMedicine(mediObj);
-        }
+        }//end try
         catch (Exception Ex)
         {
             System.out.println("Update exception in medicine db: " + Ex);
-        }
+        }//end catch
     }
 
+     /**
+     * @param medicineID the ID of the medicine
+     */
     public void deleteMedicine(int medicineID)
     {
         IFDBMedi dbMedi = new DBMedicine();
         dbMedi.deleteMedicine(medicineID);
     }
 
+     /**
+     * @param errorHnadlingMedicineID the ID of the errorHandlingMedicine
+     * @return an instance of ErrorHandlingMedicine
+     */
     public ErrorHandlingMedicine findErrorHandlingMedicineByID(int errorHandlingMedicineID)
     {
         IFDBErrorHandMed dbErHaMed = new DBErrorHandlingMedicine();
         return dbErHaMed.findErrorHandlingMedicineByID(errorHandlingMedicineID, true);
     }
 
+     /**
+     * @param episode the episode of ErrorHandlingMedicien
+     * @return an instance of ErrorHandlingMedicine
+     */
     public ErrorHandlingMedicine findErrorHandlingMedicineByEpisode(String episode)
     {
         IFDBErrorHandMed dbErHaMed = new DBErrorHandlingMedicine();

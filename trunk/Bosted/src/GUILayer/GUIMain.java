@@ -93,6 +93,8 @@ public class GUIMain extends javax.swing.JFrame {
             }
         });
 
+        picKeyLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUILayer/login_welcome.jpg"))); // NOI18N
+
         txtPassword.setFont(new java.awt.Font("Bookshelf Symbol 7", 0, 11));
 
         javax.swing.GroupLayout pLoginLayout = new javax.swing.GroupLayout(pLogin);
@@ -135,7 +137,7 @@ public class GUIMain extends javax.swing.JFrame {
                 .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLogin)
                     .addComponent(btnNulstilLogin))
-                .addContainerGap(371, Short.MAX_VALUE))
+                .addContainerGap(278, Short.MAX_VALUE))
         );
 
         tpGUI.addTab("Login", null, pLogin, "Her logger du ind");
@@ -221,7 +223,7 @@ public class GUIMain extends javax.swing.JFrame {
         tpGUI.addTab("Medicin", jPanel1);
 
         txtaHjælp.setColumns(20);
-        txtaHjælp.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        txtaHjælp.setFont(new java.awt.Font("Verdana", 0, 14));
         txtaHjælp.setRows(5);
         txtaHjælp.setText("Det første vindue man ser er login vinduet.\nI dette vindue kan man logge ind ved hjælp af et kendt Brugernavn og Password.\nHvis man succesfuldt logger ind, får man adgang til de 6 andre faner som er placeret ude i \nvenstre side af vinduet.\nDe 7 faner er som følge:\n\t-Login\n\t-Klienter\n\t-Biler\n\t-Medarbejdere\n\t-Medicin\n\t-Hjælp\n\t-Logud\n\nI fanen \"Klienter\" under \"Håndtering\", kan man oprette, opdatere og slette klienter hvis man \nhar rettigheder til det. Det er også i denne fane at man kan se de klienter, som er blevet tilknyttet til\nden medarbejder man er logget ind som.\nUnder hver klient, kan man se dennes generelle oplysninger, klientens nyeste dagsrapport, klientens 4 \nnyeste delmål og hvorfor noget medicin denne klient tager.\nDer er også en masse andre funktioner i dette vindue. Man kan hente, oprette og opdatere andre\ndagsrapporter og delmål. Nederst på siden kan man opskrive lageret af medicin hvis man har\nrettigheden til dette. Man kan angive at man har givet noget medicin til denne klient og man kan\nrapportere en utilsigtet hændelse.\nAlle funktionerne åbner et nyt vindue hvor man har nogle valgmuligheder alt efter hvad for en funktion\nman har valgt.\n");
         spHjælp.setViewportView(txtaHjælp);

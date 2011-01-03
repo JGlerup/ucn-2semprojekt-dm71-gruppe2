@@ -1,32 +1,32 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package DBLayer;
 
 import java.sql.*;
 import java.util.ArrayList;
 import ModelLayer.Reservation;
+
 /**
- *
- * @author Glerup
+ * @author Gruppe 2 - DM71
+ * December 2010
  */
-public class DBReservation implements IFDBReservation{
+public class DBReservation implements IFDBReservation
+{
     
     private Connection con;
 
-    public Reservation findReservation(int carID, String reservationDate, boolean retrieveAssociation) {
+    public Reservation findReservation(int clientID, String reservationDate, boolean retrieveAssociation)
+    {
         Reservation rObj = new Reservation();
-        rObj = singleWhere("carID = '" + carID + "' AND reservationDate = '" + reservationDate + "'", false);
+        rObj = singleWhere("client_id = '" + clientID + "' AND reservationDate = '" + reservationDate + "'", false);
         return rObj;
     }
 
-    public ArrayList<Reservation> getAllReservations(boolean retriveAssociation) {
+    public ArrayList<Reservation> getAllReservations(boolean retriveAssociation)
+    {
         return miscWhere("", retriveAssociation);
     }
 
-    public int insertReservation(Reservation r) {
+    public int insertReservation(Reservation r)
+    {
         int rc = -1;
         String query = "INSERT INTO reservation(carID, employeeID, clientID, startDate, endDate, reservationDate)  VALUES('"
                 + r.getCarID() + "','"
@@ -37,19 +37,22 @@ public class DBReservation implements IFDBReservation{
                 + r.getReservationDate() + "',')";
 
         System.out.println("insert : " + query);
-        try {
+        try
+        {
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             rc = stmt.executeUpdate(query);
             stmt.close();
         }//end try
-        catch (Exception ex) {
+        catch (Exception ex)
+        {
             System.out.println("Insert exception in reservation db: " + ex);
         }
         return (rc);
     }
 
-    public int updateReservation(Reservation r) {
+    public int updateReservation(Reservation r)
+    {
         Reservation rObj = r;
         int rc = -1;
 
@@ -62,57 +65,66 @@ public class DBReservation implements IFDBReservation{
                 + "reservationDate ='" + rObj.getReservationDate() + "', "
                 + " WHERE reservation_id ='" + rObj.getReservationID() + "'";
         System.out.println("Update query:" + query);
-        try { // update cloyee
+        try 
+        { // update reservation
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             rc = stmt.executeUpdate(query);
 
             stmt.close();
-        }//slut try
-        catch (Exception ex) {
+        }//end try
+        catch (Exception ex)
+        {
             System.out.println("Update exception in reservation db: " + ex);
         }
         return (rc);
     }
 
-    public int deleteReservation(int carID, String reservationDate) {
+    public int deleteReservation(int reservationID)
+    {
         int rc = -1;
 
         String query = "DELETE FROM reservation "
-                + " WHERE carID = '" + carID + "' AND reservationDate = '" + reservationDate + "'";
+                + " WHERE reservation_id = '" + reservationID + "'";
         System.out.println("Delete query:" + query);
-        try {
+        try
+        {
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             rc = stmt.executeUpdate(query);
 
             stmt.close();
-        }//slut try
-        catch (Exception ex) {
+        }//end try
+        catch (Exception ex)
+        {
             System.out.println("Delete exception in reservation db: " + ex);
         }
         return (rc);
     }
 
     //singlewhere is used when only one employee object is to be build
-    private Reservation singleWhere(String wClause, boolean retrieveAssociation) {
+    private Reservation singleWhere(String wClause, boolean retrieveAssociation)
+    {
         ResultSet results;
         Reservation rObj = new Reservation();
         String query = buildQuery(wClause);
         System.out.println("DbReservation -singelWhere " + query);
-        try { // read from reservation
+        try
+        { // read from reservation
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             results = stmt.executeQuery(query);
             int snr = 0;
-            if (results.next()) {
+            if (results.next())
+            {
                 rObj = buildReservation(results);
                 //missing the test on retriveassociation
 
             }//end if
             stmt.close();
-        }//slut try
-        catch (Exception e) {
+        }//end try
+        catch (Exception e)
+        {
             System.out.println("Query exception - select reservation : " + e);
             e.printStackTrace();
         }
@@ -122,37 +134,43 @@ public class DBReservation implements IFDBReservation{
     }
     //miscWhere is used when more than one employee is selected and build
 
-    private ArrayList miscWhere(String wClause, boolean retrieveAssociation) {
+    private ArrayList miscWhere(String wClause, boolean retrieveAssociation)
+    {
         ResultSet results;
         ArrayList list = new ArrayList();
 
         String query = buildQuery(wClause);
         System.out.println("DbReservation " + query);
-        try { // read from reservation
+        try
+        { // read from reservation
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             results = stmt.executeQuery(query);
 
             int snr = 0;
-            while (results.next()) {
+            while (results.next())
+            {
                 Reservation rObj = new Reservation();
                 rObj = buildReservation(results);
                 list.add(rObj);
                 //missing tes on retriveAssociation
             }//end while
             stmt.close();
-        }//slut try
-        catch (Exception e) {
+        }//end try
+        catch (Exception e)
+        {
             System.out.println("Query exception - select reservation : " + e);
             e.printStackTrace();
         }
         return list;
     }
 
-    public Reservation buildReservation(ResultSet results) {
+    public Reservation buildReservation(ResultSet results)
+    {
         Reservation rObj = new Reservation();
 
-        try {
+        try
+        {
             rObj.setReservationID(results.getInt(1));
             rObj.setCarID(results.getInt(2));
             rObj.setEmployeeID(results.getInt(3));
@@ -160,7 +178,8 @@ public class DBReservation implements IFDBReservation{
             rObj.setStartDate(results.getString(5));
             rObj.setEndDate(results.getString(6));
             rObj.setReservationDate(results.getString(7));
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             System.out.println("building reservation object");
         }
 
@@ -169,10 +188,12 @@ public class DBReservation implements IFDBReservation{
     }
     //method to build the query
 
-    private String buildQuery(String wClause) {
+    private String buildQuery(String wClause)
+    {
         String query = "SELECT * FROM reservation";
 
-        if (wClause.length() > 0) {
+        if (wClause.length() > 0)
+        {
             query = query + " WHERE " + wClause;
         }
 

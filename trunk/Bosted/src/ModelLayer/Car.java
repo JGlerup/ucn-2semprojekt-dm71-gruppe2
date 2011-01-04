@@ -49,5 +49,9 @@ public class Car {
         this.regNo = regNo;
     }
 
+    public String toString()
+    {
+        return description;
+    }
 
 }

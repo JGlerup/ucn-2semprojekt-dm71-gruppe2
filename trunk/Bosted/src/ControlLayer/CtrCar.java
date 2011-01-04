@@ -19,9 +19,9 @@ public class CtrCar {
         return dbCar.findCar(regNo, true);
     }
 
-    public ArrayList<Car> getAllCars() {
+    public ArrayList getAllCars() {
         IFDBCar dbCar = new DBCar();
-        ArrayList<Car> allCar = new ArrayList<Car>();
+        ArrayList allCar = new ArrayList<Car>();
         allCar = dbCar.getAllCars(false);
         return allCar;
     }

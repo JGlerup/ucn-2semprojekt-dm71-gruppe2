@@ -434,7 +434,7 @@ public class GUIclient extends javax.swing.JPanel {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-
+        resetTabs();
     }//GEN-LAST:event_btnCreateClientActionPerformed
 
     private void txtClientFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClientFirstNameActionPerformed
@@ -483,6 +483,7 @@ public class GUIclient extends javax.swing.JPanel {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
+        resetTabs();
     }//GEN-LAST:event_btnUpdateClientActionPerformed
 
     private void btnDeleteClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteClientActionPerformed
@@ -490,6 +491,7 @@ public class GUIclient extends javax.swing.JPanel {
         String clientNo = null;
         CtrClient ctrCli = new CtrClient();
         ctrCli.deleteClient(clientNo);
+        resetTabs();
     }//GEN-LAST:event_btnDeleteClientActionPerformed
 
     private void tpKlientFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tpKlientFocusGained

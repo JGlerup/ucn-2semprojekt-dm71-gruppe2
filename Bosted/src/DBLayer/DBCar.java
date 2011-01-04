@@ -114,7 +114,7 @@ public class DBCar implements IFDBCar {
     }
     //miscWhere is used when more than one employee is selected and build
 
-    private ArrayList miscWhere(String wClause, boolean retrieveAssociation) {
+    private ArrayList<Car> miscWhere(String wClause, boolean retrieveAssociation) {
         ResultSet results;
         ArrayList<Car> list = new ArrayList<Car>();
 

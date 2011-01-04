@@ -11,6 +11,12 @@
 
 package GUILayer;
 
+import ControlLayer.CtrCar;
+import ModelLayer.Car;
+import java.util.ArrayList;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Glerup
@@ -36,18 +42,18 @@ public class GUIcar extends javax.swing.JPanel {
         pHåndtering = new javax.swing.JPanel();
         pHåndteringIndhold = new javax.swing.JPanel();
         lblHentBil = new javax.swing.JLabel();
-        lblBeskrivelse = new javax.swing.JLabel();
+        LBLbeskrivelse = new javax.swing.JLabel();
         spBeskrivelse = new javax.swing.JScrollPane();
-        txtaBeskrivelse = new javax.swing.JTextArea();
+        txtdescription = new javax.swing.JTextArea();
         lblListeAfBiler = new javax.swing.JLabel();
         spBiler = new javax.swing.JScrollPane();
         tblBiler = new javax.swing.JTable();
         btnOpret = new javax.swing.JButton();
         btnOpdater = new javax.swing.JButton();
         btnSlet = new javax.swing.JButton();
-        cbBiler = new javax.swing.JComboBox();
-        jLabel10 = new javax.swing.JLabel();
-        txtRegNo = new javax.swing.JTextField();
+        cmbbiler = new javax.swing.JComboBox();
+        LBLregno = new javax.swing.JLabel();
+        txtregno = new javax.swing.JTextField();
         pBooking = new javax.swing.JPanel();
         pBookingIndhold = new javax.swing.JPanel();
         lblHentReservation = new javax.swing.JLabel();
@@ -70,15 +76,21 @@ public class GUIcar extends javax.swing.JPanel {
 
         pCar.setPreferredSize(new java.awt.Dimension(697, 556));
 
+        tpCar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tpCarFocusGained(evt);
+            }
+        });
+
         pHåndteringIndhold.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lblHentBil.setText("Hent bil");
 
-        lblBeskrivelse.setText("Beskrivelse");
+        LBLbeskrivelse.setText("Beskrivelse");
 
-        txtaBeskrivelse.setColumns(20);
-        txtaBeskrivelse.setRows(5);
-        spBeskrivelse.setViewportView(txtaBeskrivelse);
+        txtdescription.setColumns(20);
+        txtdescription.setRows(5);
+        spBeskrivelse.setViewportView(txtdescription);
 
         lblListeAfBiler.setText("Liste af biler");
 
@@ -101,9 +113,25 @@ public class GUIcar extends javax.swing.JPanel {
 
         btnSlet.setText("Slet");
 
-        cbBiler.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbbiler.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbbiler.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbbilerItemStateChanged(evt);
+            }
+        });
+        cmbbiler.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbbilerActionPerformed(evt);
+            }
+        });
 
-        jLabel10.setText("Registreringsnummer");
+        LBLregno.setText("Registreringsnummer");
+
+        txtregno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtregnoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pHåndteringIndholdLayout = new javax.swing.GroupLayout(pHåndteringIndhold);
         pHåndteringIndhold.setLayout(pHåndteringIndholdLayout);
@@ -115,11 +143,11 @@ public class GUIcar extends javax.swing.JPanel {
                     .addGroup(pHåndteringIndholdLayout.createSequentialGroup()
                         .addGroup(pHåndteringIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblHentBil)
-                            .addComponent(jLabel10)
+                            .addComponent(LBLregno)
                             .addGroup(pHåndteringIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtRegNo, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(cbBiler, javax.swing.GroupLayout.Alignment.LEADING, 0, 121, Short.MAX_VALUE))
-                            .addComponent(lblBeskrivelse)
+                                .addComponent(txtregno, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cmbbiler, javax.swing.GroupLayout.Alignment.LEADING, 0, 121, Short.MAX_VALUE))
+                            .addComponent(LBLbeskrivelse)
                             .addComponent(spBeskrivelse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(60, 60, 60)
                         .addGroup(pHåndteringIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,13 +178,13 @@ public class GUIcar extends javax.swing.JPanel {
                             .addComponent(btnOpdater)
                             .addComponent(btnOpret)))
                     .addGroup(pHåndteringIndholdLayout.createSequentialGroup()
-                        .addComponent(cbBiler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbbiler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel10)
+                        .addComponent(LBLregno)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtRegNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtregno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(lblBeskrivelse)
+                        .addComponent(LBLbeskrivelse)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(spBeskrivelse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -357,19 +385,72 @@ public class GUIcar extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    private void cmbbilerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbilerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbbilerActionPerformed
+
+    private void txtregnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtregnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtregnoActionPerformed
+
+    private void tpCarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tpCarFocusGained
+        // TODO add your handling code here:
+        CtrCar ctrCar = new CtrCar();
+        ArrayList<Car> carList = new ArrayList<Car>();
+        carList = ctrCar.getAllCars();
+        cmbbiler.removeAllItems();
+        cmbbiler.insertItemAt("Vælg her", 0);
+        for (Car c : carList) {
+            cmbbiler.addItem(c);
+        }
+        cmbbiler.removeItem("Vælg her");
+
+        JTextField[] txtFieldList = {txtregno};
+        resetTextFields(txtFieldList);
+        JTextArea[] txtAreaList = {txtdescription};
+        resetTextAreas(txtAreaList);
+    
+
+    }//GEN-LAST:event_tpCarFocusGained
+
+    private void cmbbilerItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbbilerItemStateChanged
+        // TODO add your handling code here:
+        Car c = (Car) cmbbiler.getSelectedItem();
+        if (c != null) {
+            txtregno.setText(c.getRegNo());
+            txtdescription.setText(c.getDescription());
+        } else {
+            System.out.println("No cars to select from");
+        }
+    }
+
+    public void resetTextFields(JTextField[] textFields) {
+        for (JTextField txtField : textFields) {
+            txtField.setText("");
+        }
+    }
+
+    public void resetTextAreas(JTextArea[] textAreaList) {
+        for (JTextArea txtArea : textAreaList) {
+            txtArea.setText("");
+        }
+    
+    }//GEN-LAST:event_cmbbilerItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LBLbeskrivelse;
+    private javax.swing.JLabel LBLregno;
     private javax.swing.JButton btnOpdater;
     private javax.swing.JButton btnOpdaterBooking;
     private javax.swing.JButton btnOpret;
     private javax.swing.JButton btnOpretBooking;
     private javax.swing.JButton btnSlet;
     private javax.swing.JButton btnSletBooking;
-    private javax.swing.JComboBox cbBiler;
     private javax.swing.JComboBox cbHentReservationer;
     private javax.swing.JComboBox cbKlient;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel lblBeskrivelse;
+    private javax.swing.JComboBox cmbbiler;
     private javax.swing.JLabel lblHentBil;
     private javax.swing.JLabel lblHentReservation;
     private javax.swing.JLabel lblKlient;
@@ -391,10 +472,10 @@ public class GUIcar extends javax.swing.JPanel {
     private javax.swing.JTable tblListeAfBilerBooking;
     private javax.swing.JTable tblReservationer;
     private javax.swing.JTabbedPane tpCar;
-    private javax.swing.JTextField txtRegNo;
     private javax.swing.JTextField txtSlutDato;
     private javax.swing.JTextField txtStartDato;
-    private javax.swing.JTextArea txtaBeskrivelse;
+    private javax.swing.JTextArea txtdescription;
+    private javax.swing.JTextField txtregno;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -116,4 +116,9 @@ public class ExternalContact {
     public void setPhoneNo(int phoneNo) {
         this.phoneNo = phoneNo;
     }
+
+    public String toString()
+    {
+        return firstName + " " + middleName + " " + lastName;
+    }
 }

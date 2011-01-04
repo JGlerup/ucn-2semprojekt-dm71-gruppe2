@@ -12,8 +12,14 @@
 package GUILayer;
 
 import ControlLayer.CtrMedi;
+import ControlLayer.CtrClient;
+import ControlLayer.CtrExtCon;
+import ModelLayer.Client;
+import ModelLayer.ExternalContact;
+import ModelLayer.Frequency;
 import ModelLayer.Medicine;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -82,7 +88,7 @@ public class GUImedicin extends javax.swing.JPanel {
         jButton13 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(697, 556));
+        setPreferredSize(new java.awt.Dimension(1024, 800));
 
         jTabbedPane2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -143,6 +149,11 @@ public class GUImedicin extends javax.swing.JPanel {
         jLabel9.setText("Medicin liste");
 
         jButton8.setText("Opret");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jButton9.setText("Opdater");
 
@@ -193,7 +204,7 @@ public class GUImedicin extends javax.swing.JPanel {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel9)
                                         .addGap(87, 87, 87))
-                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)))))
+                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)))))
                     .addComponent(jLabel8))
                 .addContainerGap())
         );
@@ -233,17 +244,17 @@ public class GUImedicin extends javax.swing.JPanel {
                 .addComponent(jLabel8)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jButton10)
                                 .addComponent(jButton9)
                                 .addComponent(jButton8))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(206, 206, 206))
+                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -296,10 +307,10 @@ public class GUImedicin extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 279, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 479, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 381, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,7 +325,7 @@ public class GUImedicin extends javax.swing.JPanel {
                         .addGap(96, 96, 96))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 294, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 494, Short.MAX_VALUE)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel13)
@@ -328,7 +339,7 @@ public class GUImedicin extends javax.swing.JPanel {
                                 .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE))
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE))
                         .addContainerGap())))
         );
         jPanel3Layout.setVerticalGroup(
@@ -366,28 +377,28 @@ public class GUImedicin extends javax.swing.JPanel {
                             .addComponent(jButton13)
                             .addComponent(jButton12)
                             .addComponent(jButton11))))
-                .addGap(206, 206, 206))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(225, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Håndtering", null, jPanel1, "Her opretter, opdateres og slettes");
@@ -398,14 +409,14 @@ public class GUImedicin extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 784, Short.MAX_VALUE)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1183, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 824, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -417,6 +428,9 @@ public class GUImedicin extends javax.swing.JPanel {
             jTextField1.setText(m.getName());
             jTextField2.setText(Integer.toString(m.getQuantity()));
             jTextArea3.setText(m.getDescription());
+            jComboBox4.setSelectedIndex(m.getFrequencyID()-1);
+            jComboBox3.setSelectedIndex(m.getClientID()-1);
+            jComboBox2.setSelectedIndex(m.getExternalContactID()-1);
         } else {
             System.out.println("No employees to select from");
         }
@@ -437,19 +451,58 @@ public class GUImedicin extends javax.swing.JPanel {
     private void jTabbedPane2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTabbedPane2FocusGained
         // TODO add your handling code here:
         CtrMedi ctrMedi = new CtrMedi();
+        CtrClient ctrClient = new CtrClient();
+        CtrExtCon ctrExtCon = new CtrExtCon();
         ArrayList<Medicine> medicineList = ctrMedi.getAllMedicine();
+        ArrayList<Client> clientList = ctrClient.getAllClients() ;
+        ArrayList<ExternalContact> extConList = ctrExtCon.getAllExternalContacts();
+        ArrayList<Frequency> frequencyList = ctrMedi.getAllFrequency(true);
         jComboBox1.removeAllItems();
+        jComboBox3.removeAllItems();
+        jComboBox2.removeAllItems();
+        jComboBox4.removeAllItems();
         jComboBox1.insertItemAt("Vælg her", 0);
+        jComboBox3.insertItemAt("Vælg her", 0);
+        jComboBox2.insertItemAt("Vælg her", 0);
+        jComboBox4.insertItemAt("Vælg her", 0);
         for (Medicine m : medicineList) {
             jComboBox1.addItem(m);
         }
+        for (Client c : clientList) {
+            jComboBox3.addItem(c);
+        }
+        for (ExternalContact e : extConList) {
+            jComboBox2.addItem(e);
+        }
+        for (Frequency f : frequencyList) {
+            jComboBox4.addItem(f);
+        }
         jComboBox1.removeItem("Vælg her");
+        jComboBox3.removeItem("Vælg her");
+        jComboBox2.removeItem("Vælg her");
+        jComboBox4.removeItem("Vælg her");
 
         JTextField[] txtFieldList = {jTextField1, jTextField2};
         resetTextFields(txtFieldList);
         JTextArea[] txtAreaList = {jTextArea3};
         resetTextAreas(txtAreaList);
     }//GEN-LAST:event_jTabbedPane2FocusGained
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        String name = jTextField1.getText();
+        int quantity = Integer.parseInt(jTextField2.getText());
+        String description = jTextArea3.getText();
+        int frequency = jComboBox4.getSelectedIndex()+1;
+        int client = jComboBox3.getSelectedIndex()+1;
+        int extCon = jComboBox2.getSelectedIndex()+1;
+        CtrMedi ctrMedi = new CtrMedi();
+        try {
+            ctrMedi.insertMedicine(frequency, extCon, client, name, description, quantity);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_jButton8ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

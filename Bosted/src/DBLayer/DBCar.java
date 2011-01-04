@@ -16,6 +16,10 @@ public class DBCar implements IFDBCar {
 
     private Connection con;
 
+    public DBCar() {
+        con = DbConnection1.getInstance().getDBcon();
+    }
+
     public Car findCar(String regNo, boolean retrieveAssociation) {
         Car cObj = new Car();
         cObj = singleWhere("regNo = '" + regNo + "'", false);
@@ -114,9 +118,9 @@ public class DBCar implements IFDBCar {
     }
     //miscWhere is used when more than one employee is selected and build
 
-    private ArrayList<Car> miscWhere(String wClause, boolean retrieveAssociation) {
+    private ArrayList miscWhere(String wClause, boolean retrieveAssociation) {
         ResultSet results;
-        ArrayList<Car> list = new ArrayList<Car>();
+        ArrayList list = new ArrayList();
 
         String query = buildQuery(wClause);
         System.out.println("DbCar " + query);

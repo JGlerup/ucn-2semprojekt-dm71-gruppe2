@@ -69,6 +69,9 @@
       </Layout>
       <SubComponents>
         <Container class="javax.swing.JTabbedPane" name="tpCar">
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tpCarFocusGained"/>
+          </Events>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
           <SubComponents>
@@ -121,12 +124,12 @@
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="lblHentBil" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="LBLregno" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="txtRegNo" alignment="0" max="32767" attributes="1"/>
-                                              <Component id="cbBiler" alignment="0" pref="121" max="32767" attributes="1"/>
+                                              <Component id="txtregno" alignment="0" max="32767" attributes="1"/>
+                                              <Component id="cmbbiler" alignment="0" pref="121" max="32767" attributes="1"/>
                                           </Group>
-                                          <Component id="lblBeskrivelse" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="LBLbeskrivelse" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="spBeskrivelse" min="-2" max="-2" attributes="1"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
@@ -167,13 +170,13 @@
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="cbBiler" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cmbbiler" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LBLregno" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtRegNo" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtregno" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="lblBeskrivelse" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LBLbeskrivelse" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="spBeskrivelse" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -189,7 +192,7 @@
                         <Property name="text" type="java.lang.String" value="Hent bil"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblBeskrivelse">
+                    <Component class="javax.swing.JLabel" name="LBLbeskrivelse">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Beskrivelse"/>
                       </Properties>
@@ -201,7 +204,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTextArea" name="txtaBeskrivelse">
+                        <Component class="javax.swing.JTextArea" name="txtdescription">
                           <Properties>
                             <Property name="columns" type="int" value="20"/>
                             <Property name="rows" type="int" value="5"/>
@@ -250,7 +253,7 @@
                         <Property name="text" type="java.lang.String" value="Slet"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="cbBiler">
+                    <Component class="javax.swing.JComboBox" name="cmbbiler">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="4">
@@ -261,13 +264,20 @@
                           </StringArray>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbbilerItemStateChanged"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbbilerActionPerformed"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel10">
+                    <Component class="javax.swing.JLabel" name="LBLregno">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Registreringsnummer"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtRegNo">
+                    <Component class="javax.swing.JTextField" name="txtregno">
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtregnoActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>

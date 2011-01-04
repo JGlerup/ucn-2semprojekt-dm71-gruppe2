@@ -48,7 +48,6 @@ public class GUIMain extends javax.swing.JFrame {
         lblPassword = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
         btnNulstilLogin = new javax.swing.JButton();
-        picKeyLogin = new javax.swing.JLabel();
         txtPassword = new javax.swing.JTextField();
         pKlienter = new javax.swing.JPanel();
         gUIclient1 = new GUILayer.GUIclient();
@@ -93,8 +92,6 @@ public class GUIMain extends javax.swing.JFrame {
             }
         });
 
-        picKeyLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUILayer/login_welcome.jpg"))); // NOI18N
-
         txtPassword.setFont(new java.awt.Font("Bookshelf Symbol 7", 0, 11));
 
         javax.swing.GroupLayout pLoginLayout = new javax.swing.GroupLayout(pLogin);
@@ -103,29 +100,22 @@ public class GUIMain extends javax.swing.JFrame {
             pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLoginLayout.createSequentialGroup()
                 .addContainerGap(607, Short.MAX_VALUE)
-                .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pLoginLayout.createSequentialGroup()
-                        .addComponent(picKeyLogin)
-                        .addGap(301, 301, 301))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pLoginLayout.createSequentialGroup()
-                        .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtBrugernavn, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPassword, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblBrugernavn, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pLoginLayout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(btnLogin)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnNulstilLogin))
-                            .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(270, 270, 270))))
+                .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtBrugernavn, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPassword, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblBrugernavn, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pLoginLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(btnLogin)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnNulstilLogin))
+                    .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGap(270, 270, 270))
         );
         pLoginLayout.setVerticalGroup(
             pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLoginLayout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addComponent(picKeyLogin)
-                .addGap(59, 59, 59)
+                .addGap(254, 254, 254)
                 .addComponent(lblBrugernavn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtBrugernavn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -424,7 +414,6 @@ public class GUIMain extends javax.swing.JFrame {
     private javax.swing.JPanel pLogin;
     private javax.swing.JPanel pLogud;
     private javax.swing.JPanel pMedarbejdere;
-    private javax.swing.JLabel picKeyLogin;
     private javax.swing.JScrollPane spHjælp;
     private javax.swing.JTabbedPane tpGUI;
     private javax.swing.JTextField txtBrugernavn;

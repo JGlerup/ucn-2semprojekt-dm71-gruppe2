@@ -81,8 +81,8 @@ public class Frequency
         date = toDaysDate.toString();
     }
 
-
-
-
-
+    public String toString()
+    {
+        return Integer.toString(frequencyID);
+    }
 }

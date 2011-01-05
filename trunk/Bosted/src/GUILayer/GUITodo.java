@@ -70,6 +70,7 @@ public class GUITodo extends javax.swing.JPanel {
         });
 
         txtATodo.setColumns(20);
+        txtATodo.setLineWrap(true);
         txtATodo.setRows(5);
         jScrollPane1.setViewportView(txtATodo);
 
@@ -121,17 +122,18 @@ public class GUITodo extends javax.swing.JPanel {
                     .addComponent(cmbSelectDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblShowTodo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pTodoManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDeleteTodo)
                     .addComponent(btnUpdateTodo))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Aftaler", pTodoManagement);
 
         jDateChooser1.setDateFormatString("yyyy-MM-dd");
+        jDateChooser1.setFocusable(false);
         jDateChooser1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jDateChooser1PropertyChange(evt);
@@ -139,7 +141,14 @@ public class GUITodo extends javax.swing.JPanel {
         });
 
         txtACreateTodo.setColumns(20);
+        txtACreateTodo.setLineWrap(true);
         txtACreateTodo.setRows(5);
+        txtACreateTodo.setText("Skriv her");
+        txtACreateTodo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtACreateTodoFocusGained(evt);
+            }
+        });
         jScrollPane2.setViewportView(txtACreateTodo);
 
         lblTodo.setText("Todo");
@@ -151,6 +160,7 @@ public class GUITodo extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Dato (yyyy/mm/dd):");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -160,18 +170,14 @@ public class GUITodo extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblTodo)
-                        .addContainerGap(698, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 773, Short.MAX_VALUE)
+                    .addComponent(btnCreateTodo, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 669, Short.MAX_VALUE)
-                            .addComponent(btnCreateTodo)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)))
-                        .addGap(53, 53, 53))))
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblTodo))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,17 +185,18 @@ public class GUITodo extends javax.swing.JPanel {
                 .addGap(17, 17, 17)
                 .addComponent(lblTodo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(12, 12, 12)
-                .addComponent(btnCreateTodo)
-                .addContainerGap(70, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCreateTodo))
+                    .addComponent(jLabel1))
+                .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Håndtering", jPanel1);
+        jTabbedPane1.addTab("Oprettelse", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -318,6 +325,11 @@ public class GUITodo extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_btnUpdateTodoActionPerformed
+
+    private void txtACreateTodoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtACreateTodoFocusGained
+        // TODO add your handling code here:
+        txtACreateTodo.setText("");
+    }//GEN-LAST:event_txtACreateTodoFocusGained
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateTodo;

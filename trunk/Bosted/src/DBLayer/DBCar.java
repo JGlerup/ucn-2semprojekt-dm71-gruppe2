@@ -22,7 +22,7 @@ public class DBCar implements IFDBCar {
 
     public Car findCar(String regNo, boolean retrieveAssociation) {
         Car cObj = new Car();
-        cObj = singleWhere("regNo = '" + regNo + "'", false);
+        cObj = singleWhere("registrationsno = '" + regNo + "'", false);
         return cObj;
     }
 
@@ -32,9 +32,9 @@ public class DBCar implements IFDBCar {
 
     public int insertCar(Car c) {  //call to get the next ssn number
         int rc = -1;
-        String query = "INSERT INTO car(regNo, description)  VALUES('"
+        String query = "INSERT INTO car(registrationsno, description)  VALUES('"
                 + c.getRegNo() + "','"
-                + c.getDescription() + "',')";
+                + c.getDescription() + "')";
 
         System.out.println("insert : " + query);
         try { // insert new car
@@ -55,10 +55,10 @@ public class DBCar implements IFDBCar {
 
         String query = "UPDATE car SET "
                 + "registrationsno = '" + cObj.getRegNo() + "', "
-                + "description ='" + cObj.getDescription() + "', "
+                + "description ='" + cObj.getDescription() + "' "
                 + " WHERE car_id ='" + cObj.getCarID() + "'";
         System.out.println("Update query:" + query);
-        try { // update cloyee
+        try { // update car
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             rc = stmt.executeUpdate(query);
@@ -75,9 +75,9 @@ public class DBCar implements IFDBCar {
         int rc = -1;
 
         String query = "DELETE FROM car "
-                + " WHERE regNo = '" + regNo + "'";
+                + " WHERE registrationsno = '" + regNo + "'";
         System.out.println("Delete query:" + query);
-        try { // update employee
+        try { // update car
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             rc = stmt.executeUpdate(query);
@@ -96,7 +96,7 @@ public class DBCar implements IFDBCar {
         Car cObj = new Car();
         String query = buildQuery(wClause);
         System.out.println("DBCar -singelWhere " + query);
-        try { // read from client
+        try { // read from car
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             results = stmt.executeQuery(query);
@@ -124,7 +124,7 @@ public class DBCar implements IFDBCar {
 
         String query = buildQuery(wClause);
         System.out.println("DbCar " + query);
-        try { // read from client
+        try { // read from car
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             results = stmt.executeQuery(query);

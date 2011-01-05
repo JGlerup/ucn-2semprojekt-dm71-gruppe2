@@ -242,6 +242,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Opret"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOpretActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnopdater">
                       <Properties>
@@ -255,6 +258,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Slet"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSletActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="cmbbiler">
                       <Properties>

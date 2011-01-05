@@ -109,6 +109,11 @@ public class GUIcar extends javax.swing.JPanel {
         spBiler.setViewportView(tblBiler);
 
         btnOpret.setText("Opret");
+        btnOpret.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpretActionPerformed(evt);
+            }
+        });
 
         btnopdater.setText("Opdater");
         btnopdater.addActionListener(new java.awt.event.ActionListener() {
@@ -118,6 +123,11 @@ public class GUIcar extends javax.swing.JPanel {
         });
 
         btnSlet.setText("Slet");
+        btnSlet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSletActionPerformed(evt);
+            }
+        });
 
         cmbbiler.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbbiler.addItemListener(new java.awt.event.ItemListener() {
@@ -456,6 +466,28 @@ public class GUIcar extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, c.getMessage());
         }
     }//GEN-LAST:event_btnopdaterActionPerformed
+
+    private void btnSletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSletActionPerformed
+        // TODO add your handling code here:
+        Car car = (Car) cmbbiler.getSelectedItem();
+        String regNo = txtregno.getText();
+        CtrCar ctrCar = new CtrCar();
+        ctrCar.deleteCar(regNo);
+        JOptionPane.showMessageDialog(this, "Du har nu slettet bilen: " + regNo +"");
+    
+    }//GEN-LAST:event_btnSletActionPerformed
+
+    private void btnOpretActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpretActionPerformed
+        // TODO add your handling code here:
+        String regno = txtregno.getText();
+        String description = txtdescription.getText();
+        CtrCar ctrCar = new CtrCar();
+        try {
+            ctrCar.insertCar(regno, description);
+        } catch (Exception c) {
+            JOptionPane.showMessageDialog(this, c.getMessage());
+        }
+    }//GEN-LAST:event_btnOpretActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

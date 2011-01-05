@@ -128,6 +128,15 @@ create table milestone
 	successdate			date,
 	foreign key (client_id) references client(client_id));
 
+create table milestone_update_FORSLAG_FORSLAG_FORSLAG_FORSLAG_FORSLAG_FORSLAG_FORSLAG_FORSLAG_FORSLAG
+	(milestone_update_id int		PRIMARY KEY IDENTITY,
+	milestone_id		int			not null,
+	employee_id			int			not null,
+	text				varchar(max)not null,
+	date				date		not null,
+	foreign key (milestone_id) references milestone(milestone_id),
+	foreign key (employee_id) references employee(employee_id));
+
 create table errorhandlingmedicine
 	(errorhandlingmedicine_id int	PRIMARY KEY IDENTITY,
 	medicine_id			int			not null,

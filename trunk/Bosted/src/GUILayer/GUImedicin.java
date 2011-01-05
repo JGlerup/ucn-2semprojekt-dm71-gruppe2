@@ -48,17 +48,17 @@ public class GUImedicin extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
+        lblhentmedicin = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        txtADescription = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        cmbMedicine = new javax.swing.JComboBox();
+        txtName = new javax.swing.JTextField();
+        txtQuantity = new javax.swing.JTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         jComboBox2 = new javax.swing.JComboBox();
@@ -102,7 +102,7 @@ public class GUImedicin extends javax.swing.JPanel {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jLabel1.setText("Hent medicin");
+        lblhentmedicin.setText("Hent medicin");
 
         jLabel3.setText("Navn");
 
@@ -110,18 +110,18 @@ public class GUImedicin extends javax.swing.JPanel {
 
         jLabel5.setText("Beskrivelse");
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane3.setViewportView(jTextArea3);
+        txtADescription.setColumns(20);
+        txtADescription.setRows(5);
+        jScrollPane3.setViewportView(txtADescription);
 
         jLabel6.setText("Frekvens");
 
         jLabel7.setText("Læge");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+        cmbMedicine.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbMedicine.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBox1ItemStateChanged(evt);
+                cmbMedicineItemStateChanged(evt);
             }
         });
 
@@ -163,6 +163,11 @@ public class GUImedicin extends javax.swing.JPanel {
         });
 
         jButton10.setText("Slet");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -171,13 +176,13 @@ public class GUImedicin extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(lblhentmedicin)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmbMedicine, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3)
                             .addComponent(jLabel6)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                            .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
                             .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,7 +193,7 @@ public class GUImedicin extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel7)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                                    .addComponent(txtQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
                                     .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,12 +223,12 @@ public class GUImedicin extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(lblhentmedicin)
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbMedicine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
@@ -233,8 +238,8 @@ public class GUImedicin extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel6)
@@ -308,8 +313,18 @@ public class GUImedicin extends javax.swing.JPanel {
         });
 
         jButton12.setText("Opdater");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
 
         jButton13.setText("Slet");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
 
         jLabel13.setText("Frekvens liste");
 
@@ -436,21 +451,6 @@ public class GUImedicin extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
-        // TODO add your handling code here:
-        Medicine m = (Medicine) jComboBox1.getSelectedItem();
-        if (m != null) {
-            jTextField1.setText(m.getName());
-            jTextField2.setText(Integer.toString(m.getQuantity()));
-            jTextArea3.setText(m.getDescription());
-            jComboBox4.setSelectedIndex(m.getFrequencyID()-1);
-            jComboBox3.setSelectedIndex(m.getClientID()-1);
-            jComboBox2.setSelectedIndex(m.getExternalContactID()-1);
-        } else {
-            System.out.println("No employees to select from");
-        }
-    }//GEN-LAST:event_jComboBox1ItemStateChanged
-
     public void resetTextFields(JTextField[] textFields) {
         for (JTextField txtField : textFields) {
             txtField.setText("");
@@ -472,18 +472,18 @@ public class GUImedicin extends javax.swing.JPanel {
         ArrayList<Client> clientList = ctrClient.getAllClients() ;
         ArrayList<ExternalContact> extConList = ctrExtCon.getAllExternalContacts();
         ArrayList<Frequency> frequencyList = ctrMedi.getAllFrequency(true);
-        jComboBox1.removeAllItems();
+        cmbMedicine.removeAllItems();
         jComboBox3.removeAllItems();
         jComboBox2.removeAllItems();
         jComboBox4.removeAllItems();
         jComboBox5.removeAllItems();
-        jComboBox1.insertItemAt("Vælg her", 0);
+        cmbMedicine.insertItemAt("Vælg her", 0);
         jComboBox3.insertItemAt("Vælg her", 0);
         jComboBox2.insertItemAt("Vælg her", 0);
         jComboBox4.insertItemAt("Vælg her", 0);
         jComboBox5.insertItemAt("Vælg her", 0);
         for (Medicine m : medicineList) {
-            jComboBox1.addItem(m);
+            cmbMedicine.addItem(m);
         }
         for (Client c : clientList) {
             jComboBox3.addItem(c);
@@ -497,23 +497,23 @@ public class GUImedicin extends javax.swing.JPanel {
         for (Frequency fr : frequencyList) {
             jComboBox5.addItem(fr);
         }
-        jComboBox1.removeItem("Vælg her");
+        cmbMedicine.removeItem("Vælg her");
         jComboBox3.removeItem("Vælg her");
         jComboBox2.removeItem("Vælg her");
         jComboBox4.removeItem("Vælg her");
         jComboBox5.removeItem("Vælg her");
 
-        JTextField[] txtFieldList = {jTextField1, jTextField2};
+        JTextField[] txtFieldList = {txtName, txtQuantity};
         resetTextFields(txtFieldList);
-        JTextArea[] txtAreaList = {jTextArea3};
+        JTextArea[] txtAreaList = {txtADescription};
         resetTextAreas(txtAreaList);
     }//GEN-LAST:event_jTabbedPane2FocusGained
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-        String name = jTextField1.getText();
-        int quantity = Integer.parseInt(jTextField2.getText());
-        String description = jTextArea3.getText();
+        String name = txtName.getText();
+        int quantity = Integer.parseInt(txtQuantity.getText());
+        String description = txtADescription.getText();
         int frequency = jComboBox4.getSelectedIndex()+1;
         int client = jComboBox3.getSelectedIndex()+1;
         int extCon = jComboBox2.getSelectedIndex()+1;
@@ -552,10 +552,10 @@ public class GUImedicin extends javax.swing.JPanel {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
-        Medicine med = (Medicine) jComboBox1.getSelectedItem();
-        String name = jTextField1.getText();
-        int quantity = Integer.parseInt(jTextField2.getText());
-        String description = jTextArea3.getText();
+        Medicine med = (Medicine) cmbMedicine.getSelectedItem();
+        String name = txtName.getText();
+        int quantity = Integer.parseInt(txtQuantity.getText());
+        String description = txtADescription.getText();
         int frequency = jComboBox4.getSelectedIndex()+1;
         int client = jComboBox3.getSelectedIndex()+1;
         int extCon = jComboBox2.getSelectedIndex()+1;
@@ -567,20 +567,68 @@ public class GUImedicin extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+        Medicine medi = (Medicine) cmbMedicine.getSelectedItem();
+        int medicineID = 0;
+        CtrMedi ctrMedi = new CtrMedi();
+        medicineID = medi.getMedicineID();
+        ctrMedi.deleteMedicine(medicineID);
+        JOptionPane.showMessageDialog(this, "Du har nu slettet medicinen med navnet: " + medi.getName() +"");
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void cmbMedicineItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbMedicineItemStateChanged
+        // TODO add your handling code here:
+        Medicine m = (Medicine) cmbMedicine.getSelectedItem();
+        if (m != null) {
+            txtName.setText(m.getName());
+            txtQuantity.setText(Integer.toString(m.getQuantity()));
+            txtADescription.setText(m.getDescription());
+            jComboBox4.setSelectedIndex(m.getFrequencyID()-1);
+            jComboBox3.setSelectedIndex(m.getClientID()-1);
+            jComboBox2.setSelectedIndex(m.getExternalContactID()-1);
+        } else {
+            System.out.println("No employees to select from");
+        }
+    }//GEN-LAST:event_cmbMedicineItemStateChanged
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        // TODO add your handling code here:
+        Medicine m = (Medicine) jComboBox5.getSelectedItem();
+        int timesPrDay = Integer.parseInt(jTextField3.getText());
+        int numberOfItems = Integer.parseInt(jTextField4.getText());
+        String description = jTextArea4.getText();
+        CtrMedi ctrMedi = new CtrMedi();
+        try {
+            ctrMedi.updateFrequency(m.getFrequencyID(), timesPrDay, numberOfItems, description, m.getDate());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        // TODO add your handling code here:
+        Medicine medi = (Medicine) jComboBox5.getSelectedItem();
+        int frequencyID = 0;
+        CtrMedi ctrMedi = new CtrMedi();
+        frequencyID = medi.getFrequencyID();
+        ctrMedi.deleteFrequency(frequencyID);
+        JOptionPane.showMessageDialog(this, "Du har nu slettet frekvensen med ID: " + frequencyID +"");
+    }//GEN-LAST:event_jButton13ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox cmbMedicine;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
     private javax.swing.JComboBox jComboBox4;
     private javax.swing.JComboBox jComboBox5;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -607,12 +655,13 @@ public class GUImedicin extends javax.swing.JPanel {
     private javax.swing.JTable jTable3;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel lblhentmedicin;
+    private javax.swing.JTextArea txtADescription;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtQuantity;
     // End of variables declaration//GEN-END:variables
 
 }

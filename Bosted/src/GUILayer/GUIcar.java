@@ -14,6 +14,7 @@ package GUILayer;
 import ControlLayer.CtrCar;
 import ModelLayer.Car;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -49,7 +50,7 @@ public class GUIcar extends javax.swing.JPanel {
         spBiler = new javax.swing.JScrollPane();
         tblBiler = new javax.swing.JTable();
         btnOpret = new javax.swing.JButton();
-        btnOpdater = new javax.swing.JButton();
+        btnopdater = new javax.swing.JButton();
         btnSlet = new javax.swing.JButton();
         cmbbiler = new javax.swing.JComboBox();
         LBLregno = new javax.swing.JLabel();
@@ -109,7 +110,12 @@ public class GUIcar extends javax.swing.JPanel {
 
         btnOpret.setText("Opret");
 
-        btnOpdater.setText("Opdater");
+        btnopdater.setText("Opdater");
+        btnopdater.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnopdaterActionPerformed(evt);
+            }
+        });
 
         btnSlet.setText("Slet");
 
@@ -156,7 +162,7 @@ public class GUIcar extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pHåndteringIndholdLayout.createSequentialGroup()
                         .addComponent(btnOpret, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnOpdater, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnopdater, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnSlet, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -175,7 +181,7 @@ public class GUIcar extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                         .addGroup(pHåndteringIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSlet)
-                            .addComponent(btnOpdater)
+                            .addComponent(btnopdater)
                             .addComponent(btnOpret)))
                     .addGroup(pHåndteringIndholdLayout.createSequentialGroup()
                         .addComponent(cmbbiler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -438,16 +444,29 @@ public class GUIcar extends javax.swing.JPanel {
     
     }//GEN-LAST:event_cmbbilerItemStateChanged
 
+    private void btnopdaterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnopdaterActionPerformed
+        // TODO add your handling code here:
+        Car cars = (Car) cmbbiler.getSelectedItem();
+        String description = txtdescription.getText();
+        String regno = txtregno.getText();
+        CtrCar ctrCar = new CtrCar();
+        try {
+            ctrCar.updateCar(regno, description);
+        } catch (Exception c) {
+            JOptionPane.showMessageDialog(this, c.getMessage());
+        }
+    }//GEN-LAST:event_btnopdaterActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LBLbeskrivelse;
     private javax.swing.JLabel LBLregno;
-    private javax.swing.JButton btnOpdater;
     private javax.swing.JButton btnOpdaterBooking;
     private javax.swing.JButton btnOpret;
     private javax.swing.JButton btnOpretBooking;
     private javax.swing.JButton btnSlet;
     private javax.swing.JButton btnSletBooking;
+    private javax.swing.JButton btnopdater;
     private javax.swing.JComboBox cbHentReservationer;
     private javax.swing.JComboBox cbKlient;
     private javax.swing.JComboBox cmbbiler;

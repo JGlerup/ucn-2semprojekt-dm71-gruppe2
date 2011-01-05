@@ -141,7 +141,7 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="btnOpret" min="-2" pref="72" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnOpdater" min="-2" pref="72" max="-2" attributes="0"/>
+                                      <Component id="btnopdater" min="-2" pref="72" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="btnSlet" min="-2" pref="72" max="-2" attributes="0"/>
                                   </Group>
@@ -165,7 +165,7 @@
                                       <EmptySpace pref="68" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="btnSlet" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnOpdater" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnopdater" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="btnOpret" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -243,10 +243,13 @@
                         <Property name="text" type="java.lang.String" value="Opret"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btnOpdater">
+                    <Component class="javax.swing.JButton" name="btnopdater">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Opdater"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnopdaterActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnSlet">
                       <Properties>

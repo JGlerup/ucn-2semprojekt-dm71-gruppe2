@@ -484,6 +484,8 @@ public class GUIcar extends javax.swing.JPanel {
         CtrCar ctrCar = new CtrCar();
         try {
             ctrCar.insertCar(regno, description);
+            Car car = ctrCar.findCarByRegNo(regno);
+            cmbbiler.addItem(car);
         } catch (Exception c) {
             JOptionPane.showMessageDialog(this, c.getMessage());
         }

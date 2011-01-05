@@ -156,6 +156,11 @@ public class GUImedicin extends javax.swing.JPanel {
         });
 
         jButton9.setText("Opdater");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         jButton10.setText("Slet");
 
@@ -204,7 +209,7 @@ public class GUImedicin extends javax.swing.JPanel {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel9)
                                         .addGap(87, 87, 87))
-                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)))))
+                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)))))
                     .addComponent(jLabel8))
                 .addContainerGap())
         );
@@ -266,6 +271,11 @@ public class GUImedicin extends javax.swing.JPanel {
         jLabel2.setText("Hent frekvens");
 
         jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox5.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox5ItemStateChanged(evt);
+            }
+        });
 
         jLabel10.setText("Antal gange pr. dag");
 
@@ -291,6 +301,11 @@ public class GUImedicin extends javax.swing.JPanel {
         jScrollPane6.setViewportView(jTable1);
 
         jButton11.setText("Opret");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         jButton12.setText("Opdater");
 
@@ -307,10 +322,10 @@ public class GUImedicin extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 479, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 389, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 381, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 291, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -325,7 +340,7 @@ public class GUImedicin extends javax.swing.JPanel {
                         .addGap(96, 96, 96))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 494, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 404, Short.MAX_VALUE)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel13)
@@ -339,7 +354,7 @@ public class GUImedicin extends javax.swing.JPanel {
                                 .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE))
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE))
                         .addContainerGap())))
         );
         jPanel3Layout.setVerticalGroup(
@@ -398,7 +413,7 @@ public class GUImedicin extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Håndtering", null, jPanel1, "Her opretter, opdateres og slettes");
@@ -409,14 +424,14 @@ public class GUImedicin extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1183, Short.MAX_VALUE)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 824, Short.MAX_VALUE)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -461,10 +476,12 @@ public class GUImedicin extends javax.swing.JPanel {
         jComboBox3.removeAllItems();
         jComboBox2.removeAllItems();
         jComboBox4.removeAllItems();
+        jComboBox5.removeAllItems();
         jComboBox1.insertItemAt("Vælg her", 0);
         jComboBox3.insertItemAt("Vælg her", 0);
         jComboBox2.insertItemAt("Vælg her", 0);
         jComboBox4.insertItemAt("Vælg her", 0);
+        jComboBox5.insertItemAt("Vælg her", 0);
         for (Medicine m : medicineList) {
             jComboBox1.addItem(m);
         }
@@ -477,10 +494,14 @@ public class GUImedicin extends javax.swing.JPanel {
         for (Frequency f : frequencyList) {
             jComboBox4.addItem(f);
         }
+        for (Frequency fr : frequencyList) {
+            jComboBox5.addItem(fr);
+        }
         jComboBox1.removeItem("Vælg her");
         jComboBox3.removeItem("Vælg her");
         jComboBox2.removeItem("Vælg her");
         jComboBox4.removeItem("Vælg her");
+        jComboBox5.removeItem("Vælg her");
 
         JTextField[] txtFieldList = {jTextField1, jTextField2};
         resetTextFields(txtFieldList);
@@ -503,6 +524,48 @@ public class GUImedicin extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jComboBox5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox5ItemStateChanged
+        // TODO add your handling code here:
+        Frequency fre = (Frequency) jComboBox5.getSelectedItem();
+        if (fre != null) {
+            jTextField3.setText(Integer.toString(fre.getTimesPerDay()));
+            jTextField4.setText(Integer.toString(fre.getQuantityEachTime()));
+            jTextArea4.setText(fre.getDescriptionUsage());
+        } else {
+            System.out.println("No frequencies to select from");
+        }
+    }//GEN-LAST:event_jComboBox5ItemStateChanged
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        // TODO add your handling code here:
+        int timesPrDay = Integer.parseInt(jTextField3.getText());
+        int numberOfItems = Integer.parseInt(jTextField4.getText());
+        String description = jTextArea4.getText();
+        CtrMedi ctrMedi = new CtrMedi();
+        try {
+            ctrMedi.insertFrequency(timesPrDay, numberOfItems, description);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        Medicine med = (Medicine) jComboBox1.getSelectedItem();
+        String name = jTextField1.getText();
+        int quantity = Integer.parseInt(jTextField2.getText());
+        String description = jTextArea3.getText();
+        int frequency = jComboBox4.getSelectedIndex()+1;
+        int client = jComboBox3.getSelectedIndex()+1;
+        int extCon = jComboBox2.getSelectedIndex()+1;
+        CtrMedi ctrMedi = new CtrMedi();
+        try {
+            ctrMedi.updateMedicine(med.getMedicineID(), frequency, extCon, client, name, description, med.getDate(), quantity);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_jButton9ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

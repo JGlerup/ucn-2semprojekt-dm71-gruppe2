@@ -29,4 +29,6 @@ public interface IFDBTodo {
 
     public int deleteTodo(int todoID);
     //delete a Todo
+
+    public Todo findLatestTodo();
 }

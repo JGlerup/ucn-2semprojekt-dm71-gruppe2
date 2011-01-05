@@ -33,7 +33,7 @@ public class DBTodo implements IFDBTodo {
         String query = "INSERT INTO todo(employee_id, text, date)  VALUES('"
                 + t.getEmployeeID() + "','"
                 + t.getText() + "','"
-                + t.getDate() + ")";
+                + t.getDate() + "')";
 
         System.out.println("insert : " + query);
         try { // insert new deptloyee
@@ -54,7 +54,7 @@ public class DBTodo implements IFDBTodo {
 
         String query = "UPDATE todo SET "
                 + "employee_id = '" + tObj.getEmployeeID() + "', "
-                + "text = '" + tObj.getText() + "', "
+                + "text = '" + tObj.getText() + "'"
                 + " WHERE todo_id ='" + tObj.getTodoID() + "'";
         System.out.println("Update query:" + query);
         try { // update cloyee
@@ -94,7 +94,7 @@ public class DBTodo implements IFDBTodo {
         ResultSet results;
         Todo tObj = new Todo();
         String query = buildQuery(wClause);
-        System.out.println("DbClient -singelWhere " + query);
+        System.out.println("DBTodo -singelWhere " + query);
         try { // read from client
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
@@ -123,7 +123,7 @@ public class DBTodo implements IFDBTodo {
 
         String query = buildQuery(wClause);
         System.out.println("DBTodo " + query);
-        try { // read from client
+        try { // read from todo
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             results = stmt.executeQuery(query);
@@ -162,7 +162,7 @@ public class DBTodo implements IFDBTodo {
     //method to build the query
 
     private String buildQuery(String wClause) {
-        String query = "SELECT * FROM client";
+        String query = "SELECT * FROM todo";
 
         if (wClause.length() > 0) {
             query = query + " WHERE " + wClause;
@@ -171,36 +171,9 @@ public class DBTodo implements IFDBTodo {
         return query;
     }
 
-    public ArrayList<Todo> buildListOfClients(int employeeID) {
-        ResultSet results;
-        ArrayList<Todo> list = new ArrayList<Todo>();
-        String query = "SELECT * FROM client WHERE client_id in(SELECT client_id FROM employee_client WHERE employee_id =  " + employeeID + ")";
-        try { // read from employee
-            Statement stmt = con.createStatement();
-            stmt.setQueryTimeout(5);
-            results = stmt.executeQuery(query);
-
-            int snr = 0;
-            while (results.next()) {
-                Todo tObj = new Todo();
-                tObj = buildTodo(results);
-                list.add(tObj);
-                //missing tes on retriveAssociation
-            }//end while
-            stmt.close();
-        }//end try
-        catch (Exception e) {
-            System.out.println("Query exception - select client : " + e);
-            e.printStackTrace();
-        }
-        return list;
-    }
-
-    public ArrayList<Employee> findClientsEmployees(int clientID)
-    {
-        IFDBEmp dbEmp = new DBEmployee();
-        ArrayList<Employee> employeeList = new ArrayList<Employee>();
-        employeeList =  dbEmp.buildListOfEmployees(clientID);
-        return employeeList;
+    public Todo findLatestTodo() {
+        String query = "date = (SELECT MAX(date) FROM todo)";
+        Todo tObj = singleWhere(query, false);
+        return tObj;
     }
 }

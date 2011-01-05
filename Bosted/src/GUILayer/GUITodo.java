@@ -8,14 +8,24 @@
  *
  * Created on 04-01-2011, 11:44:17
  */
-
 package GUILayer;
+
+import ControlLayer.CtrTodo;
+import GUILayer.GUITodo;
+import ModelLayer.Employee;
+import ModelLayer.Todo;
+import java.util.ArrayList;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Erik M. Gravesen
  */
 public class GUITodo extends javax.swing.JPanel {
+
+    private Employee loggedInEmployee;
+    private String date;
 
     /** Creates new form GUIToDo */
     public GUITodo() {
@@ -31,52 +41,299 @@ public class GUITodo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        pTodoManagement = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtAToDo = new javax.swing.JTextArea();
+        txtATodo = new javax.swing.JTextArea();
         cmbSelectDate = new javax.swing.JComboBox();
+        lblShowTodo = new javax.swing.JLabel();
+        btnDeleteTodo = new javax.swing.JButton();
+        btnUpdateTodo = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtACreateTodo = new javax.swing.JTextArea();
+        lblTodo = new javax.swing.JLabel();
+        btnCreateTodo = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        txtAToDo.setColumns(20);
-        txtAToDo.setRows(5);
-        jScrollPane1.setViewportView(txtAToDo);
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
 
-        cmbSelectDate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jTabbedPane1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTabbedPane1FocusGained(evt);
+            }
+        });
+
+        txtATodo.setColumns(20);
+        txtATodo.setRows(5);
+        jScrollPane1.setViewportView(txtATodo);
+
         cmbSelectDate.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbSelectDateItemStateChanged(evt);
             }
         });
 
+        lblShowTodo.setText("Dato:");
+
+        btnDeleteTodo.setText("Slet");
+        btnDeleteTodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteTodoActionPerformed(evt);
+            }
+        });
+
+        btnUpdateTodo.setText("Opdater");
+        btnUpdateTodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateTodoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pTodoManagementLayout = new javax.swing.GroupLayout(pTodoManagement);
+        pTodoManagement.setLayout(pTodoManagementLayout);
+        pTodoManagementLayout.setHorizontalGroup(
+            pTodoManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pTodoManagementLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pTodoManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
+                    .addGroup(pTodoManagementLayout.createSequentialGroup()
+                        .addComponent(lblShowTodo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbSelectDate, 0, 681, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pTodoManagementLayout.createSequentialGroup()
+                        .addComponent(btnUpdateTodo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDeleteTodo)))
+                .addContainerGap())
+        );
+        pTodoManagementLayout.setVerticalGroup(
+            pTodoManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pTodoManagementLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pTodoManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbSelectDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblShowTodo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pTodoManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDeleteTodo)
+                    .addComponent(btnUpdateTodo))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Aftaler", pTodoManagement);
+
+        jDateChooser1.setDateFormatString("yyyy-MM-dd");
+        jDateChooser1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jDateChooser1PropertyChange(evt);
+            }
+        });
+
+        txtACreateTodo.setColumns(20);
+        txtACreateTodo.setRows(5);
+        jScrollPane2.setViewportView(txtACreateTodo);
+
+        lblTodo.setText("Todo");
+
+        btnCreateTodo.setText("Opret");
+        btnCreateTodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateTodoActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Dato (yyyy/mm/dd):");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblTodo)
+                        .addContainerGap(698, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 669, Short.MAX_VALUE)
+                            .addComponent(btnCreateTodo)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)))
+                        .addGap(53, 53, 53))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(lblTodo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(12, 12, 12)
+                .addComponent(btnCreateTodo)
+                .addContainerGap(70, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Håndtering", jPanel1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 717, Short.MAX_VALUE)
-                    .addComponent(cmbSelectDate, 0, 717, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 737, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cmbSelectDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public Employee getLoggedInEmployee() {
+        return loggedInEmployee;
+    }
+
+    public void setLoggedInEmployee(Employee loggedInEmployee) {
+        this.loggedInEmployee = loggedInEmployee;
+    }
+
+    public void updateCmbSelectDate() {
+                CtrTodo ctrTodo = new CtrTodo();
+        ArrayList<Todo> todoList = ctrTodo.getAllTodo();
+        cmbSelectDate.removeAllItems();
+        cmbSelectDate.insertItemAt("", 0);
+        for (Todo t : todoList) {
+            cmbSelectDate.addItem(t);
+        }
+        cmbSelectDate.removeItemAt(0);
+    }
+
     private void cmbSelectDateItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbSelectDateItemStateChanged
         // TODO add your handling code here:
+        Todo t = (Todo) cmbSelectDate.getSelectedItem();
+        if (t != null) {
+
+            txtATodo.setText(t.getText());
+        }
     }//GEN-LAST:event_cmbSelectDateItemStateChanged
 
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formFocusGained
+
+    private void jTabbedPane1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTabbedPane1FocusGained
+        // TODO add your handling code here:
+        CtrTodo ctrTodo = new CtrTodo();
+        updateCmbSelectDate();
+        Todo tObj = ctrTodo.findLatestTodo();
+        int todoID = tObj.getTodoID();
+        int index = 0;
+        boolean found = false;
+
+        while(index < cmbSelectDate.getItemCount() && !found) {
+            Todo tObjCompare = (Todo)cmbSelectDate.getItemAt(index);
+            int todoIDCompare = tObjCompare.getTodoID();
+            if(todoID == todoIDCompare) {
+                cmbSelectDate.setSelectedIndex(index);
+                txtATodo.setText(tObj.getText());
+                found = true;
+            }
+            index++;
+        }
+    }//GEN-LAST:event_jTabbedPane1FocusGained
+
+    private void jDateChooser1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDateChooser1PropertyChange
+        // TODO add your handling code here:
+        if (jDateChooser1.getDate() != null) {
+            Calendar calendar = jDateChooser1.getCalendar();
+            jDateChooser1.getDate();
+            String year = Integer.toString(calendar.get(Calendar.YEAR));
+            String month = Integer.toString(calendar.get(Calendar.MONTH) + 1);
+            if (calendar.get(Calendar.MONTH) + 1 < 10) {
+                month = "0" + month;
+            }
+            String day = Integer.toString(calendar.get(Calendar.DATE));
+            if (calendar.get(Calendar.DATE) + 1 < 10) {
+                day = "0" + day;
+            }
+            date = year + "-" + month + "-" + day;
+            //txtACreateTodo.setText(date1);
+        } else {
+        }
+    }//GEN-LAST:event_jDateChooser1PropertyChange
+
+    private void btnCreateTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateTodoActionPerformed
+        // TODO add your handling code here:
+
+        CtrTodo ctrTodo = new CtrTodo();
+        String text = txtACreateTodo.getText();
+        int employeeID = loggedInEmployee.getEmployeeID();
+        
+        try {
+            ctrTodo.insertTodo(employeeID, date, text);
+            updateCmbSelectDate();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_btnCreateTodoActionPerformed
+
+    private void btnDeleteTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteTodoActionPerformed
+        // TODO add your handling code here:
+        CtrTodo ctrTodo = new CtrTodo();
+        Todo tObj = (Todo) cmbSelectDate.getSelectedItem();
+        int index = cmbSelectDate.getSelectedIndex();
+        cmbSelectDate.removeItemAt(index);
+        txtATodo.setText("");
+        int todoID = tObj.getTodoID();
+        ctrTodo.deleteTodo(todoID);
+    }//GEN-LAST:event_btnDeleteTodoActionPerformed
+
+    private void btnUpdateTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateTodoActionPerformed
+        // TODO add your handling code here:
+        try{
+        CtrTodo ctrTodo = new CtrTodo();
+        Todo tObj = (Todo) cmbSelectDate.getSelectedItem();
+        int todoID = tObj.getTodoID();
+        int employeeID = loggedInEmployee.getEmployeeID();
+        String todoDate = tObj.getDate();
+        String text = txtATodo.getText();
+        ctrTodo.updateTodo(todoID, employeeID, todoDate, text);
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_btnUpdateTodoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCreateTodo;
+    private javax.swing.JButton btnDeleteTodo;
+    private javax.swing.JButton btnUpdateTodo;
     private javax.swing.JComboBox cmbSelectDate;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea txtAToDo;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lblShowTodo;
+    private javax.swing.JLabel lblTodo;
+    private javax.swing.JPanel pTodoManagement;
+    private javax.swing.JTextArea txtACreateTodo;
+    private javax.swing.JTextArea txtATodo;
     // End of variables declaration//GEN-END:variables
-
 }

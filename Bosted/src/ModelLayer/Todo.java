@@ -49,4 +49,13 @@ public class Todo {
     public void setTodoID(int todoID) {
         this.todoID = todoID;
     }
+
+    public void setThisDate() {
+        ToDaysDate todaysDate = new ToDaysDate();
+        date = todaysDate.toString();
+    }
+
+    public String toString() {
+        return date;
+    }
 }

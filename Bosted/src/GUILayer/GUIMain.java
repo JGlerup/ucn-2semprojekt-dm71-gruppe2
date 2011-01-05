@@ -62,6 +62,7 @@ public class GUIMain extends javax.swing.JFrame {
         txtaHjælp = new javax.swing.JTextArea();
         txtIndtastHjælp = new javax.swing.JTextField();
         btnSøg = new javax.swing.JButton();
+        gUITodo1 = new GUILayer.GUITodo();
         pLogud = new javax.swing.JPanel();
         lblLogud = new javax.swing.JLabel();
         btnLogud = new javax.swing.JButton();
@@ -166,18 +167,6 @@ public class GUIMain extends javax.swing.JFrame {
 
         tpGUI.addTab("Biler", null, pBiler, "Her reserverer du biler");
 
-        pMedarbejdere.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                pMedarbejdereComponentShown(evt);
-            }
-        });
-
-        gUIemployee1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                gUIemployee1FocusGained(evt);
-            }
-        });
-
         javax.swing.GroupLayout pMedarbejdereLayout = new javax.swing.GroupLayout(pMedarbejdere);
         pMedarbejdere.setLayout(pMedarbejdereLayout);
         pMedarbejdereLayout.setHorizontalGroup(
@@ -207,7 +196,7 @@ public class GUIMain extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(gUImedicin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tpGUI.addTab("Medicin", jPanel1);
@@ -259,6 +248,7 @@ public class GUIMain extends javax.swing.JFrame {
         );
 
         tpGUI.addTab("Hjælp", null, pHjælp, "Her kan du se efter hjælp til brug af systemet");
+        tpGUI.addTab("Todo", gUITodo1);
 
         lblLogud.setText("Er du sikker på du vil logge ud");
 
@@ -336,6 +326,7 @@ public class GUIMain extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(pLogin, "Du er nu logget ind");
             loggedInEmployee = emp;
             gUIclient1.setEmployee(loggedInEmployee);
+            gUITodo1.setLoggedInEmployee(loggedInEmployee);
         } else {
             JOptionPane.showMessageDialog(pLogin, "Du har indtastet brugernavnet eller passwordet forkert");
         }
@@ -355,14 +346,6 @@ public class GUIMain extends javax.swing.JFrame {
         }
         loggedInEmployee = null;
     }//GEN-LAST:event_btnLogudActionPerformed
-
-    private void pMedarbejdereComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_pMedarbejdereComponentShown
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pMedarbejdereComponentShown
-
-    private void gUIemployee1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_gUIemployee1FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_gUIemployee1FocusGained
 
     private void btnSøgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSøgActionPerformed
         // TODO add your handling code here:
@@ -400,6 +383,7 @@ public class GUIMain extends javax.swing.JFrame {
     private javax.swing.JButton btnLogud;
     private javax.swing.JButton btnNulstilLogin;
     private javax.swing.JButton btnSøg;
+    private GUILayer.GUITodo gUITodo1;
     private GUILayer.GUIcar gUIcar1;
     private GUILayer.GUIclient gUIclient1;
     private GUILayer.GUIemployee gUIemployee1;

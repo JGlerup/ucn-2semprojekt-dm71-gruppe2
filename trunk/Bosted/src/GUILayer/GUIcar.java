@@ -473,6 +473,10 @@ public class GUIcar extends javax.swing.JPanel {
         String regNo = txtregno.getText();
         CtrCar ctrCar = new CtrCar();
         ctrCar.deleteCar(regNo);
+        int index = cmbbiler.getSelectedIndex();
+        cmbbiler.removeItemAt(index);
+        txtregno.setText("");
+        txtdescription.setText("");
         JOptionPane.showMessageDialog(this, "Du har nu slettet bilen: " + regNo +"");
     
     }//GEN-LAST:event_btnSletActionPerformed

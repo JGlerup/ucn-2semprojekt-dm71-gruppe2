@@ -1,28 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
-        <file>file:/C:/Users/Kristian%20Byrialsen/Documents/skoleprojekter/2%20Semesterprojekt/dhdhhd/Bosted/src/GUILayer/GUIemployee.java</file>
-        <file>file:/C:/Users/Kristian%20Byrialsen/Documents/skoleprojekter/2%20Semesterprojekt/dhdhhd/Bosted/src/ControlLayer/CtrClient.java</file>
-        <file>file:/C:/Users/Kristian%20Byrialsen/Documents/skoleprojekter/2%20Semesterprojekt/dhdhhd/Bosted/src/ModelLayer/Client.java</file>
-        <file>file:/C:/Users/Kristian%20Byrialsen/Documents/skoleprojekter/2%20Semesterprojekt/dhdhhd/Bosted/src/ModelLayer/Milestone.java</file>
-        <file>file:/C:/Users/Kristian%20Byrialsen/Documents/skoleprojekter/2%20Semesterprojekt/dhdhhd/Bosted/src/ModelLayer/ExternalDocument.java</file>
-        <file>file:/C:/Users/Kristian%20Byrialsen/Documents/skoleprojekter/2%20Semesterprojekt/dhdhhd/Bosted/src/ModelLayer/ErrorHandlingMedicine.java</file>
-        <file>file:/C:/Users/Kristian%20Byrialsen/Documents/skoleprojekter/2%20Semesterprojekt/dhdhhd/Bosted/src/DBLayer/DBClient.java</file>
-        <file>file:/C:/Users/Kristian%20Byrialsen/Documents/skoleprojekter/2%20Semesterprojekt/dhdhhd/Bosted/src/DBLayer/DBEmployee.java</file>
-        <file>file:/C:/Users/Kristian%20Byrialsen/Documents/skoleprojekter/2%20Semesterprojekt/dhdhhd/Bosted/src/DBLayer/IFDBEmp.java</file>
-        <file>file:/C:/Users/Kristian%20Byrialsen/Documents/skoleprojekter/2%20Semesterprojekt/dhdhhd/Bosted/test/ControlLayer/CtrEmpTest.java</file>
-        <file>file:/C:/Users/Kristian%20Byrialsen/Documents/skoleprojekter/2%20Semesterprojekt/dhdhhd/Bosted/src/DBLayer/IFDBClient.java</file>
-        <file>file:/C:/Users/Kristian%20Byrialsen/Documents/skoleprojekter/2%20Semesterprojekt/dhdhhd/Bosted/src/ControlLayer/CrtDailyReport.java</file>
-        <file>file:/C:/Users/Kristian%20Byrialsen/Documents/skoleprojekter/2%20Semesterprojekt/dhdhhd/Bosted/src/ModelLayer/Car.java</file>
-        <file>file:/C:/Users/Kristian%20Byrialsen/Documents/skoleprojekter/2%20Semesterprojekt/dhdhhd/Bosted/src/DBLayer/IFDBCar.java</file>
-        <file>file:/C:/Users/Kristian%20Byrialsen/Documents/skoleprojekter/2%20Semesterprojekt/dhdhhd/Bosted/src/ControlLayer/CtrCar.java</file>
-        <file>file:/C:/Users/Kristian%20Byrialsen/Documents/skoleprojekter/2%20Semesterprojekt/dhdhhd/Bosted/src/ModelLayer/Medicine.java</file>
-        <file>file:/C:/Users/Kristian%20Byrialsen/Documents/skoleprojekter/2%20Semesterprojekt/dhdhhd/Bosted/src/ModelLayer/Reservation.java</file>
-        <file>file:/C:/Users/Kristian%20Byrialsen/Documents/skoleprojekter/2%20Semesterprojekt/dhdhhd/Bosted/src/DBLayer/DBCar.java</file>
-        <file>file:/C:/Users/Kristian%20Byrialsen/Documents/skoleprojekter/2%20Semesterprojekt/dhdhhd/Bosted/src/GUILayer/GUIcar.java</file>
-        <file>file:/C:/Users/Kristian%20Byrialsen/Documents/skoleprojekter/2%20Semesterprojekt/dhdhhd/Bosted/src/GUILayer/GUImedicin.java</file>
-        <file>file:/C:/Users/Kristian%20Byrialsen/Documents/skoleprojekter/2%20Semesterprojekt/dhdhhd/Bosted/src/ControlLayer/CtrEmp.java</file>
-        <file>file:/C:/Users/Kristian%20Byrialsen/Documents/skoleprojekter/2%20Semesterprojekt/dhdhhd/Bosted/src/GUILayer/GUIMain.java</file>
-    </open-files>
 </project-private>

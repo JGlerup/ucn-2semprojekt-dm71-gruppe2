@@ -8,7 +8,6 @@
  *
  * Created on 09-12-2010, 09:43:32
  */
-
 package GUILayer;
 
 import ControlLayer.CtrMedi;
@@ -469,7 +468,7 @@ public class GUImedicin extends javax.swing.JPanel {
         CtrClient ctrClient = new CtrClient();
         CtrExtCon ctrExtCon = new CtrExtCon();
         ArrayList<Medicine> medicineList = ctrMedi.getAllMedicine();
-        ArrayList<Client> clientList = ctrClient.getAllClients() ;
+        ArrayList<Client> clientList = ctrClient.getAllClients();
         ArrayList<ExternalContact> extConList = ctrExtCon.getAllExternalContacts();
         ArrayList<Frequency> frequencyList = ctrMedi.getAllFrequency(true);
         cmbMedicine.removeAllItems();
@@ -511,18 +510,27 @@ public class GUImedicin extends javax.swing.JPanel {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
+        Frequency f = (Frequency) jComboBox4.getSelectedItem();
+        Client c = (Client) jComboBox3.getSelectedItem();
+        ExternalContact ext = (ExternalContact) jComboBox2.getSelectedItem();
         String name = txtName.getText();
         int quantity = Integer.parseInt(txtQuantity.getText());
         String description = txtADescription.getText();
-        int frequency = jComboBox4.getSelectedIndex()+1;
-        int client = jComboBox3.getSelectedIndex()+1;
-        int extCon = jComboBox2.getSelectedIndex()+1;
         CtrMedi ctrMedi = new CtrMedi();
         try {
-            ctrMedi.insertMedicine(frequency, extCon, client, name, description, quantity);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
+            ctrMedi.insertMedicine(f.getFrequencyID(), ext.getExternalContactID(), c.getClientID(), name, description, quantity);
+            JOptionPane.showMessageDialog(this, "Du har nu oprettet medicinen med navnet: " + name + "\nTil: " + c.getFirstName() + " " + c.getMiddleName() + " " + c.getLastName() + "");
+            ArrayList<Medicine> medicineList = ctrMedi.getAllMedicine();
+            cmbMedicine.removeAllItems();
+            cmbMedicine.insertItemAt("Vælg her", 0);
+            for (Medicine m : medicineList) {
+                cmbMedicine.addItem(m);
+            }
+            cmbMedicine.removeItem("Vælg her");
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jComboBox5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox5ItemStateChanged
@@ -545,23 +553,46 @@ public class GUImedicin extends javax.swing.JPanel {
         CtrMedi ctrMedi = new CtrMedi();
         try {
             ctrMedi.insertFrequency(timesPrDay, numberOfItems, description);
-        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Du har oprettet frekvensen med oplysningerne: \nAntal gange pr. dag: " + timesPrDay + "\nAntal stk. pr. gang: " + numberOfItems + "");
+            ArrayList<Frequency> frequencyList = ctrMedi.getAllFrequency(true);
+            jComboBox4.removeAllItems();
+            jComboBox5.removeAllItems();
+            jComboBox4.insertItemAt("Vælg her", 0);
+            jComboBox5.insertItemAt("Vælg her", 0);
+            for (Frequency f : frequencyList) {
+                jComboBox4.addItem(f);
+            }
+            for (Frequency fr : frequencyList) {
+                jComboBox5.addItem(fr);
+            }
+            jComboBox4.removeItem("Vælg her");
+            jComboBox5.removeItem("Vælg her");
+
+            } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
-        }
+            }
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
         Medicine med = (Medicine) cmbMedicine.getSelectedItem();
+        Frequency f = (Frequency) jComboBox4.getSelectedItem();
+        Client c = (Client) jComboBox3.getSelectedItem();
+        ExternalContact ext = (ExternalContact) jComboBox2.getSelectedItem();
         String name = txtName.getText();
         int quantity = Integer.parseInt(txtQuantity.getText());
         String description = txtADescription.getText();
-        int frequency = jComboBox4.getSelectedIndex()+1;
-        int client = jComboBox3.getSelectedIndex()+1;
-        int extCon = jComboBox2.getSelectedIndex()+1;
         CtrMedi ctrMedi = new CtrMedi();
         try {
-            ctrMedi.updateMedicine(med.getMedicineID(), frequency, extCon, client, name, description, med.getDate(), quantity);
+            ctrMedi.updateMedicine(med.getMedicineID(), f.getFrequencyID(), ext.getExternalContactID(), c.getClientID(), name, description, med.getDate(), quantity);
+            JOptionPane.showMessageDialog(this, "Du har opdateret medicinen");
+            ArrayList<Medicine> medicineList = ctrMedi.getAllMedicine();
+            cmbMedicine.removeAllItems();
+            cmbMedicine.insertItemAt("Vælg her", 0);
+            for (Medicine m : medicineList) {
+                cmbMedicine.addItem(m);
+            }
+            cmbMedicine.removeItem("Vælg her");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -572,9 +603,20 @@ public class GUImedicin extends javax.swing.JPanel {
         Medicine medi = (Medicine) cmbMedicine.getSelectedItem();
         int medicineID = 0;
         CtrMedi ctrMedi = new CtrMedi();
-        medicineID = medi.getMedicineID();
-        ctrMedi.deleteMedicine(medicineID);
-        JOptionPane.showMessageDialog(this, "Du har nu slettet medicinen med navnet: " + medi.getName() +"");
+        try {
+            medicineID = medi.getMedicineID();
+            ctrMedi.deleteMedicine(medicineID);
+            JOptionPane.showMessageDialog(this, "Du har nu slettet medicinen med navnet: " + medi.getName() + "");
+            ArrayList<Medicine> medicineList = ctrMedi.getAllMedicine();
+            cmbMedicine.removeAllItems();
+            cmbMedicine.insertItemAt("Vælg her", 0);
+            for (Medicine m : medicineList) {
+                cmbMedicine.addItem(m);
+            }
+            cmbMedicine.removeItem("Vælg her");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void cmbMedicineItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbMedicineItemStateChanged
@@ -584,12 +626,54 @@ public class GUImedicin extends javax.swing.JPanel {
             txtName.setText(m.getName());
             txtQuantity.setText(Integer.toString(m.getQuantity()));
             txtADescription.setText(m.getDescription());
-            jComboBox4.setSelectedIndex(m.getFrequencyID()-1);
-            jComboBox3.setSelectedIndex(m.getClientID()-1);
-            jComboBox2.setSelectedIndex(m.getExternalContactID()-1);
-        } else {
-            System.out.println("No employees to select from");
+            CtrMedi ctrMedi = new CtrMedi();
+
+            Frequency fObj = ctrMedi.findFrequencyByID(m.getFrequencyID(), true);
+            int frequencyID = fObj.getFrequencyID();
+            int index = 0;
+            boolean found = false;
+
+            while (index < jComboBox4.getItemCount() && !found) {
+                Frequency fObjCompare = (Frequency) jComboBox4.getItemAt(index);
+                int frequencyIDCompare = fObjCompare.getFrequencyID();
+                if (frequencyID == frequencyIDCompare) {
+                    jComboBox4.setSelectedIndex(index);
+                    found = true;
+                }
+                index++;
+            }
+
+            Client cObj = ctrMedi.findClientByID(m.getClientID(), found);
+            int clientID = cObj.getClientID();
+            int index1 = 0;
+            boolean found1 = false;
+
+            while (index1 < jComboBox3.getItemCount() && !found1) {
+                Client cObjCompare = (Client) jComboBox3.getItemAt(index1);
+                int clientIDCompare = cObjCompare.getClientID();
+                if (clientID == clientIDCompare) {
+                    jComboBox3.setSelectedIndex(index1);
+                    found1 = true;
+                }
+                index1++;
+            }
+
+            ExternalContact eObj = ctrMedi.findExternalContact(m.getExternalContactID(), true);
+            int externalContactID = eObj.getExternalContactID();
+            int index2 = 0;
+            boolean found2 = false;
+
+            while (index2 < jComboBox2.getItemCount() && !found2) {
+                ExternalContact eObjCompare = (ExternalContact) jComboBox2.getItemAt(index2);
+                int externalContactIDCompare = eObjCompare.getExternalContactID();
+                if (externalContactID == externalContactIDCompare) {
+                    jComboBox2.setSelectedIndex(index2);
+                    found2 = true;
+                }
+                index2++;
+            }
         }
+
     }//GEN-LAST:event_cmbMedicineItemStateChanged
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
@@ -601,6 +685,21 @@ public class GUImedicin extends javax.swing.JPanel {
         CtrMedi ctrMedi = new CtrMedi();
         try {
             ctrMedi.updateFrequency(m.getFrequencyID(), timesPrDay, numberOfItems, description, m.getDate());
+            JOptionPane.showMessageDialog(this, "Du har opdateret frekvensen");
+            ArrayList<Frequency> frequencyList = ctrMedi.getAllFrequency(true);
+            jComboBox4.removeAllItems();
+            jComboBox5.removeAllItems();
+            jComboBox4.insertItemAt("Vælg her", 0);
+            jComboBox5.insertItemAt("Vælg her", 0);
+            for (Frequency f : frequencyList) {
+                jComboBox4.addItem(f);
+            }
+            for (Frequency fr : frequencyList) {
+                jComboBox5.addItem(fr);
+            }
+            jComboBox4.removeItem("Vælg her");
+            jComboBox5.removeItem("Vælg her");
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -611,12 +710,29 @@ public class GUImedicin extends javax.swing.JPanel {
         Medicine medi = (Medicine) jComboBox5.getSelectedItem();
         int frequencyID = 0;
         CtrMedi ctrMedi = new CtrMedi();
-        frequencyID = medi.getFrequencyID();
-        ctrMedi.deleteFrequency(frequencyID);
-        JOptionPane.showMessageDialog(this, "Du har nu slettet frekvensen med ID: " + frequencyID +"");
+        try {
+            frequencyID = medi.getFrequencyID();
+            ctrMedi.deleteFrequency(frequencyID);
+            JOptionPane.showMessageDialog(this, "Du har nu slettet frekvensen med ID: " + frequencyID + "");
+            ArrayList<Frequency> frequencyList = ctrMedi.getAllFrequency(true);
+            jComboBox4.removeAllItems();
+            jComboBox5.removeAllItems();
+            jComboBox4.insertItemAt("Vælg her", 0);
+            jComboBox5.insertItemAt("Vælg her", 0);
+            for (Frequency f : frequencyList) {
+                jComboBox4.addItem(f);
+            }
+            for (Frequency fr : frequencyList) {
+                jComboBox5.addItem(fr);
+            }
+            jComboBox4.removeItem("Vælg her");
+            jComboBox5.removeItem("Vælg her");
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+        
     }//GEN-LAST:event_jButton13ActionPerformed
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cmbMedicine;
     private javax.swing.JButton jButton10;
@@ -663,5 +779,4 @@ public class GUImedicin extends javax.swing.JPanel {
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtQuantity;
     // End of variables declaration//GEN-END:variables
-
 }

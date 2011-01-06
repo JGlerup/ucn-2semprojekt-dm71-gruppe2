@@ -12,6 +12,7 @@ package GUILayer;
 
 import ControlLayer.CtrEmp;
 import ModelLayer.Employee;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -74,6 +75,11 @@ public class GUIMain extends javax.swing.JFrame {
         tpGUI.setPreferredSize(new java.awt.Dimension(800, 600));
 
         txtBrugernavn.setToolTipText("Skriv dit brugernavn her");
+        txtBrugernavn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtBrugernavnKeyPressed(evt);
+            }
+        });
 
         lblBrugernavn.setText("Brugernavn");
 
@@ -93,7 +99,12 @@ public class GUIMain extends javax.swing.JFrame {
             }
         });
 
-        txtPassword.setFont(new java.awt.Font("Bookshelf Symbol 7", 0, 11));
+        txtPassword.setFont(new java.awt.Font("Bookshelf Symbol 7", 0, 11)); // NOI18N
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pLoginLayout = new javax.swing.GroupLayout(pLogin);
         pLogin.setLayout(pLoginLayout);
@@ -359,6 +370,22 @@ public class GUIMain extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnSøgActionPerformed
+
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
+        // TODO add your handling code here:
+        int key = evt.getKeyCode();
+           if (key == KeyEvent.VK_ENTER) {
+               btnLogin.doClick();
+              }
+    }//GEN-LAST:event_txtPasswordKeyPressed
+
+    private void txtBrugernavnKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBrugernavnKeyPressed
+        // TODO add your handling code here:
+        int key = evt.getKeyCode();
+           if (key == KeyEvent.VK_ENTER) {
+               btnLogin.doClick();
+              }
+    }//GEN-LAST:event_txtBrugernavnKeyPressed
 
     /**
      * @param args the command line arguments

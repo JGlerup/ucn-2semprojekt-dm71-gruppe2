@@ -245,7 +245,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="GUILayer.GUIemployee" name="gUIemployee1">
+            <Component class="GUILayer.GUIEmployee" name="gUIemployee1">
             </Component>
           </SubComponents>
         </Container>

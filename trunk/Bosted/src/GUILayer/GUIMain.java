@@ -55,7 +55,7 @@ public class GUIMain extends javax.swing.JFrame {
         pBiler = new javax.swing.JPanel();
         gUIcar1 = new GUILayer.GUIcar();
         pMedarbejdere = new javax.swing.JPanel();
-        gUIemployee1 = new GUILayer.GUIemployee();
+        gUIemployee1 = new GUILayer.GUIEmployee();
         jPanel1 = new javax.swing.JPanel();
         gUImedicin1 = new GUILayer.GUImedicin();
         pHjælp = new javax.swing.JPanel();
@@ -414,7 +414,7 @@ public class GUIMain extends javax.swing.JFrame {
     private GUILayer.GUITodo gUITodo1;
     private GUILayer.GUIcar gUIcar1;
     private GUILayer.GUIclient gUIclient1;
-    private GUILayer.GUIemployee gUIemployee1;
+    private GUILayer.GUIEmployee gUIemployee1;
     private GUILayer.GUImedicin gUImedicin1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblBrugernavn;

@@ -94,7 +94,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="btnResetEverything" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnResetAll" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnCreateClient" min="-2" pref="72" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -236,7 +236,7 @@
                                       <Component id="btnDeleteClient" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnUpdateClient" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnCreateClient" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnResetEverything" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnResetAll" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -455,12 +455,12 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtClientUserName">
                 </Component>
-                <Component class="javax.swing.JButton" name="btnResetEverything">
+                <Component class="javax.swing.JButton" name="btnResetAll">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Nulstil felter"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnResetEverythingActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnResetAllActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>

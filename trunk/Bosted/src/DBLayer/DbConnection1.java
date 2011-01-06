@@ -6,7 +6,7 @@ import java.util.*;
  * @Author Kis Boisen Hansen
  * @Version 2006.10.02 - revised marts 2009 FEN
  * @version 2010.10.07 - new connection 
- * This class is used to create the connection to the database
+////// * This class is used to create the connection to the database
  * It is implementet as a singelton. The constructor is private to encure that only
  * one object of the class is generated
  * String connectionUrl = "jdbc:sqlserver://localhost:1433;" +
@@ -20,6 +20,7 @@ public class DbConnection1
 {   //constans used to get access to the database
 	//SQL Server
    private static final String  driver = "jdbc:sqlserver://balder.ucn.dk";
+//  private static final String  driver = "jdbc:sqlserver://ANITA-LAPTOP\SQLEXPRESS";
     private static final String  databaseName = ";databaseName=dm71_2";
 //jdbc:sqlserver://localhost\SQLEXPRESS/Databases/EPS:1357;user=epsingall;password=welkom1;
     //SQL Server

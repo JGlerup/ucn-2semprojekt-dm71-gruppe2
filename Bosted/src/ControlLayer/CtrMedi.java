@@ -1,15 +1,21 @@
 package ControlLayer;
 
 
+import DBLayer.DBClient;
 import DBLayer.DBErrorHandlingMedicine;
+import DBLayer.DBExternalContact;
 import DBLayer.DBFrequency;
 import DBLayer.DBMedicine;
+import DBLayer.IFDBClient;
 import DBLayer.IFDBErrorHandMed;
+import DBLayer.IFDBExtCon;
 import DBLayer.IFDBFreq;
 import DBLayer.IFDBMedi;
 import ExceptionsPack.NoManagerNumberErrorHandling;
+import ModelLayer.Client;
 import ModelLayer.Employee;
 import ModelLayer.ErrorHandlingMedicine;
+import ModelLayer.ExternalContact;
 import ModelLayer.Frequency;
 import ModelLayer.Medicine;
 import java.util.ArrayList;
@@ -452,5 +458,35 @@ public class CtrMedi
         {
             System.out.println("Delete exception in frequency db: " + ex);
         }
+    }
+
+    public Client findClientByID(int clientID, boolean retrieveAssociation)
+    {
+        Client client = new Client();
+        try
+        {
+            IFDBClient dbClient = new DBClient();
+            client = dbClient.findClientByID(clientID, true);
+        }
+        catch (Exception e)
+        {
+            System.out.println("Query exception - select client : " + e);
+        }
+        return client;
+    }
+
+    public ExternalContact findExternalContact(int extConID, boolean retrieveAssociation)
+    {
+        ExternalContact extCon = new ExternalContact();
+        try
+        {
+            IFDBExtCon dbExternalContact = new DBExternalContact();
+            extCon = dbExternalContact.findExternalContact(extConID, true);
+        }
+        catch (Exception e)
+        {
+            System.out.println("Query exception - select externalContact : " + e);
+        }
+        return extCon;
     }
 }

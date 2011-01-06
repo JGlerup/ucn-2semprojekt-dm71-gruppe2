@@ -27,4 +27,7 @@ public interface IFDBClient {
     public ArrayList<Client> buildListOfClients(int employeeID);
 
     public ArrayList<Employee> findClientsEmployees(int clientID);
+
+    public Client findClientByID(int clientID, boolean retrieveAssociation);
+    //find one client having the clientNo
 }

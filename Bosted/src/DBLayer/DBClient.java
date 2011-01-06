@@ -24,6 +24,13 @@ public class DBClient implements IFDBClient {
         return cObj;
     }
 
+    public Client findClientByID(int clientID, boolean retrieveAssociation)
+    {
+        Client clientObj = new Client();
+        clientObj = singleWhere("client_id = " + clientID, false);
+        return clientObj;
+    }
+
     public ArrayList<Client> getAllClients(boolean retriveAssociation) {
         return miscWhere("", retriveAssociation);
     }

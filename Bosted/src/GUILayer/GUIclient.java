@@ -84,6 +84,7 @@ public class GUIclient extends javax.swing.JPanel {
         cmbClient = new javax.swing.JComboBox();
         jLabel8 = new javax.swing.JLabel();
         txtClientUserName = new javax.swing.JTextField();
+        btnResetEverything = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(697, 556));
 
@@ -177,7 +178,6 @@ public class GUIclient extends javax.swing.JPanel {
             }
         });
 
-        cmbClient.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbClient.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbClientItemStateChanged(evt);
@@ -185,6 +185,13 @@ public class GUIclient extends javax.swing.JPanel {
         });
 
         jLabel8.setText("Brugernavn");
+
+        btnResetEverything.setText("Nulstil felter");
+        btnResetEverything.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetEverythingActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pHåndteringKlientIndholdLayout = new javax.swing.GroupLayout(pHåndteringKlientIndhold);
         pHåndteringKlientIndhold.setLayout(pHåndteringKlientIndholdLayout);
@@ -195,6 +202,8 @@ public class GUIclient extends javax.swing.JPanel {
                 .addGroup(pHåndteringKlientIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pHåndteringKlientIndholdLayout.createSequentialGroup()
+                        .addComponent(btnResetEverything)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCreateClient, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnUpdateClient, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -305,7 +314,8 @@ public class GUIclient extends javax.swing.JPanel {
                         .addGroup(pHåndteringKlientIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnDeleteClient)
                             .addComponent(btnUpdateClient)
-                            .addComponent(btnCreateClient)))
+                            .addComponent(btnCreateClient)
+                            .addComponent(btnResetEverything)))
                     .addGroup(pHåndteringKlientIndholdLayout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -360,6 +370,46 @@ public class GUIclient extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void resetAllEmpoyeeManagement() {
+        CtrClient ctrClient = new CtrClient();
+        ArrayList<Client> clientList = ctrClient.getAllClients();
+        cmbClient.removeAllItems();
+        cmbClient.insertItemAt("", 0);
+        for (Client c : clientList) {
+            cmbClient.addItem(c);
+        }
+        cmbClient.removeItemAt(0);
+        JTextField[] txtFieldList = {
+            txtClientAddress,
+            txtClientUserName,
+            txtClientFirstName,
+            txtClientSsn,
+            txtClientMiddleName,
+            txtClientLastName,
+            txtClientAddress,
+            txtClientZipCode,
+            txtClientCity,
+            txtClientPhoneNo,
+            txtClientEmail
+        };
+
+        JTextArea[] txtAreaList = {
+            txtClientDescription,
+            txtClientInterests,
+            txtClientHealth,};
+
+        JCheckBox[] checkBoxList = {
+            cbClientInUse
+        };
+
+        resetTextFields(txtFieldList);
+        resetTextAreas(txtAreaList);
+        resetCheckBoxes(checkBoxList);
+
+        System.out.println(loggedInEmployee.getCrudEmployee());
+        addEmployeesClients();
+    }
+
     public void resetTextFields(JTextField[] textFields) {
         for (JTextField txtField : textFields) {
             txtField.setText("");
@@ -378,9 +428,9 @@ public class GUIclient extends javax.swing.JPanel {
         }
     }
 
-    public void resetTabs(){
+    public void resetTabs() {
         int index = 1; //Vi ønsker ikke at fjerne fanebladet "Håndtering" ergo er index altså 1
-        while(index < tpKlient.getTabCount()){
+        while (index < tpKlient.getTabCount()) {
             tpKlient.remove(index);
         }
     }
@@ -403,38 +453,40 @@ public class GUIclient extends javax.swing.JPanel {
         }
     }
 
-    public Employee getLoggedInEmployee()
-    {
+    public Employee getLoggedInEmployee() {
         return loggedInEmployee;
     }
 
     private void btnCreateClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateClientActionPerformed
         // TODO add your handling code here:
-        String description = txtClientDescription.getText();
-        String interests = txtClientInterests.getText();
-        String health = txtClientHealth.getText();
-        String ssn = txtClientSsn.getText();
-        String firstName = txtClientFirstName.getText();
-        String middleName = txtClientMiddleName.getText();
-        String lastName = txtClientLastName.getText();
-        String address = txtClientAddress.getText();
-        int zipCode = Integer.parseInt(txtClientZipCode.getText());
-        int phoneNo = Integer.parseInt(txtClientPhoneNo.getText());
-        String email = txtClientEmail.getText();
-
-        String inUse = "No";
-        if (cbClientInUse.isSelected()) {
-            inUse = "Yes";
-        }
-        CtrClient ctrCli = new CtrClient();
-        CtrLoca ctrLoca = new CtrLoca();
         try {
+            String description = txtClientDescription.getText();
+            String interests = txtClientInterests.getText();
+            String health = txtClientHealth.getText();
+            String ssn = txtClientSsn.getText();
+            String firstName = txtClientFirstName.getText();
+            String middleName = txtClientMiddleName.getText();
+            String lastName = txtClientLastName.getText();
+            String address = txtClientAddress.getText();
+            int zipCode = Integer.parseInt(txtClientZipCode.getText());
+            int phoneNo = Integer.parseInt(txtClientPhoneNo.getText());
+            String email = txtClientEmail.getText();
+
+            String inUse = "No";
+            if (cbClientInUse.isSelected()) {
+                inUse = "Yes";
+            }
+            CtrClient ctrCli = new CtrClient();
+            CtrLoca ctrLoca = new CtrLoca();
             int locationID = ctrLoca.findLocationByZipCode(zipCode).getLocationID();
             ctrCli.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, inUse);
+            resetTabs();
+        } catch (NumberFormatException nFE) {
+            JOptionPane.showMessageDialog(this, "Felterne telefonnr. og postnr. må kun indeholde tal");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-        resetTabs();
+
     }//GEN-LAST:event_btnCreateClientActionPerformed
 
     private void txtClientFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClientFirstNameActionPerformed
@@ -496,43 +548,7 @@ public class GUIclient extends javax.swing.JPanel {
 
     private void tpKlientFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tpKlientFocusGained
         // TODO add your handling code here:
-        CtrClient ctrClient = new CtrClient();
-        ArrayList<Client> clientList = ctrClient.getAllClients();
-        cmbClient.removeAllItems();
-        cmbClient.insertItemAt("", 0);
-        for (Client c : clientList) {
-            cmbClient.addItem(c);
-        }
-        cmbClient.removeItemAt(0);
-        JTextField[] txtFieldList = {
-            txtClientAddress,
-            txtClientUserName,
-            txtClientFirstName,
-            txtClientSsn,
-            txtClientMiddleName,
-            txtClientLastName,
-            txtClientAddress,
-            txtClientZipCode,
-            txtClientCity,
-            txtClientPhoneNo,
-            txtClientEmail
-        };
-
-        JTextArea[] txtAreaList = {
-            txtClientDescription,
-            txtClientInterests,
-            txtClientHealth,};
-
-        JCheckBox[] checkBoxList = {
-            cbClientInUse
-        };
-
-        resetTextFields(txtFieldList);
-        resetTextAreas(txtAreaList);
-        resetCheckBoxes(checkBoxList);
-
-        System.out.println(loggedInEmployee.getCrudEmployee());
-        addEmployeesClients();
+        resetAllEmpoyeeManagement();
     }//GEN-LAST:event_tpKlientFocusGained
 
     private void cmbClientItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbClientItemStateChanged
@@ -593,9 +609,14 @@ public class GUIclient extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_cmbClientItemStateChanged
 
+    private void btnResetEverythingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetEverythingActionPerformed
+        // TODO add your handling code here:
+        resetAllEmpoyeeManagement();
+    }//GEN-LAST:event_btnResetEverythingActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateClient;
     private javax.swing.JButton btnDeleteClient;
+    private javax.swing.JButton btnResetEverything;
     private javax.swing.JButton btnUpdateClient;
     private javax.swing.JCheckBox cbClientInUse;
     private javax.swing.JComboBox cmbClient;

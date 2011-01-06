@@ -1,7 +1,9 @@
 package ControlLayer;
 
 import DBLayer.DBEmployee;
+import DBLayer.DBEmployeeClient;
 import DBLayer.IFDBEmp;
+import DBLayer.IFDBEmployeeClient;
 import ExceptionsPack.NullValueException;
 import ModelLayer.Client;
 import ModelLayer.Employee;
@@ -98,5 +100,15 @@ public class CtrEmp {
         IFDBEmp dbEmp = new DBEmployee();
         clientList = dbEmp.findEmployeesClients(employeeID);
         return clientList;
+    }
+
+    public void associateClientToEmployee(int employeeID, int clientID) {
+        IFDBEmployeeClient dbEmpCli = new DBEmployeeClient();
+        dbEmpCli.associateClientToEmployee(employeeID, clientID);
+    }
+
+    public void disassociateClientFromEmployee(int employeeID, int clientID) {
+        IFDBEmployeeClient dbEmpCli = new DBEmployeeClient();
+        dbEmpCli.disassociateClientFromEmployee(employeeID, clientID);
     }
 }

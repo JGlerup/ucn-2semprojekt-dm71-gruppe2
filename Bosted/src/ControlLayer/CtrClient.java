@@ -53,7 +53,7 @@ public class CtrClient {
             dbClient.insertClient(cObj);
         }
         else{
-            throw new NullValueException("Fejl: Tjek om følgende felter er udfyldt:");
+            throw new NullValueException("Fejl: Udfyld venligst alle felter (e-mail-feltet må gerne være blankt)");
         }
     }
 

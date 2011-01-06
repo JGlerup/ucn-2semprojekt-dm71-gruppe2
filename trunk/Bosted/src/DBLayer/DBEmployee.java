@@ -48,8 +48,8 @@ public class DBEmployee implements IFDBEmp {
                 + emp.getPhoneNo() + "','"
                 + emp.getEmail() + "','"
                 + emp.getStartDate() + "','"
-                + emp.getInUse() + "',"
-                + emp.getStopDate() + ")";
+                + emp.getInUse() + "','"
+                + emp.getStopDate() + "')";
 
 
         System.out.println("insert : " + query);

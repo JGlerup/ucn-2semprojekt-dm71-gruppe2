@@ -12,11 +12,13 @@ package GUILayer;
 
 import ControlLayer.CtrEmp;
 import ControlLayer.CtrLoca;
+import ModelLayer.Client;
 import ModelLayer.Employee;
 import java.util.ArrayList;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -24,10 +26,35 @@ import javax.swing.JTextField;
  */
 public class GUIemployee extends javax.swing.JPanel {
 
+    private Employee loggedInEmployee;
+
     /** Creates new form GUIclient */
     public GUIemployee() {
         initComponents();
 
+    }
+
+    public Employee getLoggedInEmployee() {
+        return loggedInEmployee;
+    }
+
+    public void setLoggedInEmployee(Employee loggedInEmployee) {
+        this.loggedInEmployee = loggedInEmployee;
+    }
+
+    public void populateTblAssociatedClients() {
+        CtrEmp ctrEmp = new CtrEmp();
+        Employee e = (Employee) cmbEmployee.getSelectedItem();
+        int employeeID = e.getEmployeeID();
+        ArrayList<Client> clientList = ctrEmp.findEmployeesClient(employeeID);
+        DefaultTableModel model = new DefaultTableModel();
+        tblAssociatedClients.setEnabled(true);
+        tblAssociatedClients.setModel(model);
+        model.setColumnIdentifiers(new String[]{"Fornavn", "Mellemnavn", "Efternavn"});
+        // Populate the JTable (TableModel) with data from ArrayList
+        for (Client c : clientList) {
+            model.addRow(new String[]{c.getFirstName(), c.getMiddleName(), c.getLastName()});
+        }
     }
 
     /** This method is called from within the constructor to
@@ -43,7 +70,7 @@ public class GUIemployee extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        cmbEmployee = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         txtEmployeeFirstName = new javax.swing.JTextField();
         txtEmployeeLastName = new javax.swing.JTextField();
@@ -76,7 +103,7 @@ public class GUIemployee extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         cbInUse = new javax.swing.JCheckBox();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblAssociatedClients = new javax.swing.JTable();
         btnCreateEmployee = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -108,6 +135,7 @@ public class GUIemployee extends javax.swing.JPanel {
         txtEmployeeEmployeeNo1 = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         txtEmployeePhoneNo1 = new javax.swing.JTextField();
+        gUIClientAssociateEmployee1 = new GUILayer.GUIClientAssociateEmployee();
 
         jTabbedPane2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -119,9 +147,9 @@ public class GUIemployee extends javax.swing.JPanel {
 
         jLabel1.setText("Hent medarbejder");
 
-        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+        cmbEmployee.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBox1ItemStateChanged(evt);
+                cmbEmployeeItemStateChanged(evt);
             }
         });
 
@@ -169,18 +197,18 @@ public class GUIemployee extends javax.swing.JPanel {
 
         cbInUse.setText("(sæt kryds hvis ja)");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblAssociatedClients.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Fornavn", "Mellemnavn", "Efternavn"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblAssociatedClients);
 
         btnCreateEmployee.setText("Opret");
         btnCreateEmployee.addActionListener(new java.awt.event.ActionListener() {
@@ -217,7 +245,7 @@ public class GUIemployee extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(txtEmployeeFirstName, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, 127, Short.MAX_VALUE))
+                                .addComponent(cmbEmployee, javax.swing.GroupLayout.Alignment.LEADING, 0, 127, Short.MAX_VALUE))
                             .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,7 +318,7 @@ public class GUIemployee extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmbEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -539,6 +567,7 @@ public class GUIemployee extends javax.swing.JPanel {
         );
 
         jTabbedPane2.addTab("Medarbejderer", jPanel3);
+        jTabbedPane2.addTab("Medarbejdernes klienter", gUIClientAssociateEmployee1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -608,7 +637,7 @@ public class GUIemployee extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Employee emp = (Employee) jComboBox1.getSelectedItem();
+        Employee emp = (Employee) cmbEmployee.getSelectedItem();
         String employeeNoCurrent = emp.getEmployeeNo();
         String employeeNoNew = txtEmployeeEmployeeNo.getText();
         String password = txtEmployeePassword.getText();
@@ -661,12 +690,13 @@ public class GUIemployee extends javax.swing.JPanel {
         ctrEmp.deleteEmp(employeeNo);
         JOptionPane.showMessageDialog(this, "Du har nu slettet medarbejderen med brugernavn: + employeeNo +");
     }//GEN-LAST:event_jButton1ActionPerformed
-    
-     public void resetCheckBoxes(JCheckBox[] cbList) {
+
+    public void resetCheckBoxes(JCheckBox[] cbList) {
         for (JCheckBox cb : cbList) {
             cb.setSelected(false);
         }
     }
+
     public void resetTextFields(JTextField[] textFields) {
         for (JTextField txtField : textFields) {
             txtField.setText("");
@@ -678,12 +708,12 @@ public class GUIemployee extends javax.swing.JPanel {
 
         CtrEmp ctrEmp = new CtrEmp();
         ArrayList<Employee> employeeList = ctrEmp.getAllEmployee();
-        jComboBox1.removeAllItems();
-        jComboBox1.insertItemAt("Vælg her", 0);
+        cmbEmployee.removeAllItems();
+        cmbEmployee.insertItemAt("Vælg her", 0);
         for (Employee e : employeeList) {
-            jComboBox1.addItem(e);
+            cmbEmployee.addItem(e);
         }
-        jComboBox1.removeItem("Vælg her");
+        cmbEmployee.removeItem("Vælg her");
 
         ArrayList<Employee> employeeList1 = ctrEmp.getAllEmployee();
         jComboBox2.removeAllItems();
@@ -696,14 +726,15 @@ public class GUIemployee extends javax.swing.JPanel {
         resetTextFields(txtFieldList);
         JCheckBox[] cbList = {cbCrudCar, cbCrudClient, cbCrudEmployee, cbCrudMedicine, cbInUse};
         resetCheckBoxes(cbList);
-
+        gUIClientAssociateEmployee1.populateCmbClient();
+        gUIClientAssociateEmployee1.populateCmbEmployee();
 
     }//GEN-LAST:event_jTabbedPane2FocusGained
 
-    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+    private void cmbEmployeeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbEmployeeItemStateChanged
         // TODO add your handling code here:
         CtrLoca ctrLoca = new CtrLoca();
-        Employee em = (Employee) jComboBox1.getSelectedItem();
+        Employee em = (Employee) cmbEmployee.getSelectedItem();
         if (em != null) {
             txtEmployeeFirstName.setText(em.getFirstName());
             txtEmployeeMiddleName.setText(em.getMiddleName());
@@ -746,7 +777,8 @@ public class GUIemployee extends javax.swing.JPanel {
         } else {
             System.out.println("No employees to select from");
         }
-    }//GEN-LAST:event_jComboBox1ItemStateChanged
+        populateTblAssociatedClients();
+    }//GEN-LAST:event_cmbEmployeeItemStateChanged
 
     private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
         // TODO add your handling code here:
@@ -769,7 +801,6 @@ public class GUIemployee extends javax.swing.JPanel {
             System.out.println("No employees to select from");
         }
     }//GEN-LAST:event_jComboBox2ItemStateChanged
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateEmployee;
     private javax.swing.JCheckBox cbCrudCar;
@@ -777,9 +808,10 @@ public class GUIemployee extends javax.swing.JPanel {
     private javax.swing.JCheckBox cbCrudEmployee;
     private javax.swing.JCheckBox cbCrudMedicine;
     private javax.swing.JCheckBox cbInUse;
+    private javax.swing.JComboBox cmbEmployee;
+    private GUILayer.GUIClientAssociateEmployee gUIClientAssociateEmployee1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -815,7 +847,7 @@ public class GUIemployee extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblAssociatedClients;
     private javax.swing.JTextField txtEmployeeAddress;
     private javax.swing.JTextField txtEmployeeAddress1;
     private javax.swing.JTextField txtEmployeeCity;

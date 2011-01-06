@@ -20,7 +20,7 @@ public class DbConnection1
 {   //constans used to get access to the database
 	//SQL Server
    private static final String  driver = "jdbc:sqlserver://balder.ucn.dk";
-//  private static final String  driver = "jdbc:sqlserver://ANITA-LAPTOP\SQLEXPRESS";
+
     private static final String  databaseName = ";databaseName=dm71_2";
 //jdbc:sqlserver://localhost\SQLEXPRESS/Databases/EPS:1357;user=epsingall;password=welkom1;
     //SQL Server

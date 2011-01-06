@@ -13,11 +13,16 @@ public class DBReservation implements IFDBReservation
     
     private Connection con;
 
-    public Reservation findReservation(int clientID, String reservationDate, boolean retrieveAssociation)
+    public Reservation findReservation(int clientID, String startDate, boolean retrieveAssociation)
     {
         Reservation rObj = new Reservation();
-        rObj = singleWhere("client_id = '" + clientID + "' AND reservationDate = '" + reservationDate + "'", false);
+        rObj = singleWhere("client_id = " + clientID + " AND startdate = '" + startDate + "'", false);
         return rObj;
+    }
+
+    public ArrayList<Reservation> getAllReservationsByDate(String date, boolean retriveAssociation)
+    {
+        return miscWhere("date = '" + date + "'", retriveAssociation);
     }
 
     public ArrayList<Reservation> getAllReservations(boolean retriveAssociation)
@@ -28,13 +33,13 @@ public class DBReservation implements IFDBReservation
     public int insertReservation(Reservation r)
     {
         int rc = -1;
-        String query = "INSERT INTO reservation(carID, employeeID, clientID, startDate, endDate, reservationDate)  VALUES('"
-                + r.getCarID() + "','"
-                + r.getEmployeeID() + "','"
-                + r.getClientID() + "','"
-                + r.getStartDate() + "','"
-                + r.getEndDate() + "','"
-                + r.getReservationDate() + "',')";
+        String query = "INSERT INTO reservation(carID, employeeID, clientID, startDate, endDate, reservationDate)  VALUES("
+                + r.getCarID() + ", "
+                + r.getEmployeeID() + ", "
+                + r.getClientID() + ", '"
+                + r.getStartDate() + "', '"
+                + r.getEndDate() + "', '"
+                + r.getReservationDate() + "')";
 
         System.out.println("insert : " + query);
         try
@@ -47,7 +52,7 @@ public class DBReservation implements IFDBReservation
         catch (Exception ex)
         {
             System.out.println("Insert exception in reservation db: " + ex);
-        }
+        }//end catch
         return (rc);
     }
 
@@ -57,13 +62,13 @@ public class DBReservation implements IFDBReservation
         int rc = -1;
 
         String query = "UPDATE reservation SET "
-                + "carID = '" + rObj.getCarID() + "', "
-                + "employeeID ='" + rObj.getEmployeeID() + "', "
-                + "clientID ='" + rObj.getClientID() + "', "
-                + "startDate ='" + rObj.getStartDate() + "', "
-                + "endDate ='" + rObj.getEndDate() + "', "
-                + "reservationDate ='" + rObj.getReservationDate() + "', "
-                + " WHERE reservation_id ='" + rObj.getReservationID() + "'";
+                + "carID = " + rObj.getCarID() + ", "
+                + "employeeID = " + rObj.getEmployeeID() + ", "
+                + "clientID = " + rObj.getClientID() + ", "
+                + "startDate = '" + rObj.getStartDate() + "', "
+                + "endDate = '" + rObj.getEndDate() + "', "
+                + "reservationDate = '" + rObj.getReservationDate() + "', "
+                + " WHERE reservation_id = " + rObj.getReservationID();
         System.out.println("Update query:" + query);
         try 
         { // update reservation
@@ -76,7 +81,7 @@ public class DBReservation implements IFDBReservation
         catch (Exception ex)
         {
             System.out.println("Update exception in reservation db: " + ex);
-        }
+        }//end catch
         return (rc);
     }
 
@@ -85,7 +90,7 @@ public class DBReservation implements IFDBReservation
         int rc = -1;
 
         String query = "DELETE FROM reservation "
-                + " WHERE reservation_id = '" + reservationID + "'";
+                + " WHERE reservation_id = " + reservationID;
         System.out.println("Delete query:" + query);
         try
         {
@@ -98,11 +103,11 @@ public class DBReservation implements IFDBReservation
         catch (Exception ex)
         {
             System.out.println("Delete exception in reservation db: " + ex);
-        }
+        }//end catch
         return (rc);
     }
 
-    //singlewhere is used when only one employee object is to be build
+    //singlewhere is used when only one reservation object is to be build
     private Reservation singleWhere(String wClause, boolean retrieveAssociation)
     {
         ResultSet results;
@@ -126,14 +131,11 @@ public class DBReservation implements IFDBReservation
         catch (Exception e)
         {
             System.out.println("Query exception - select reservation : " + e);
-            e.printStackTrace();
-        }
+        }// end catch
         return rObj;
-
-
     }
-    //miscWhere is used when more than one employee is selected and build
 
+    //miscWhere is used when more than one reservation is selected and build
     private ArrayList miscWhere(String wClause, boolean retrieveAssociation)
     {
         ResultSet results;
@@ -160,8 +162,7 @@ public class DBReservation implements IFDBReservation
         catch (Exception e)
         {
             System.out.println("Query exception - select reservation : " + e);
-            e.printStackTrace();
-        }
+        }//end catch
         return list;
     }
 
@@ -178,16 +179,16 @@ public class DBReservation implements IFDBReservation
             rObj.setStartDate(results.getString(5));
             rObj.setEndDate(results.getString(6));
             rObj.setReservationDate(results.getString(7));
-        } catch (Exception e)
+        }//end try
+        catch (Exception e)
         {
             System.out.println("building reservation object");
-        }
+        }//end catch
 
         return rObj;
-
     }
-    //method to build the query
 
+    //method to build the query
     private String buildQuery(String wClause)
     {
         String query = "SELECT * FROM reservation";

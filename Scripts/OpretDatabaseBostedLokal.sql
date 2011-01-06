@@ -1,1 +1,1 @@
-create database bosted
+create database dm71_2

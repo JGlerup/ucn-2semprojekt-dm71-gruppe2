@@ -27,19 +27,19 @@ public class DBDailyReport implements IFDBDailyReport
 
     public DayliReport findDailyReportByDailyReportID(int dailyReportID, boolean retrieveAssociation) {
         DayliReport drObj = new DayliReport();
-        drObj = singleWhere("dailyreportid = '" + dailyReportID + "'", false);
+        drObj = singleWhere("dailyreport_id = '" + dailyReportID + "'", false);
         return drObj;
     }
 
     public DayliReport findDailyReportByClientID(int clientID, boolean retrieveAssociation) {
         DayliReport drObj = new DayliReport();
-        drObj = singleWhere("clientid = '" + clientID + "'", false);
+        drObj = singleWhere("client_id = '" + clientID + "'", false);
         return drObj;
     }
 
     public DayliReport findDailyReportByEmployeeID(int employeeID, boolean retrieveAssociation) {
         DayliReport drObj = new DayliReport();
-        drObj = singleWhere("employeeid = '" + employeeID + "'", false);
+        drObj = singleWhere("employee_id = '" + employeeID + "'", false);
         return drObj;
     }
 
@@ -49,7 +49,7 @@ public class DBDailyReport implements IFDBDailyReport
 
     public int insertDailyReport(DayliReport daily) {
         int rc = -1;
-        String query = "INSERT INTO dailyreport(clientID, employeeID, text, date)  VALUES('"
+        String query = "INSERT INTO dailyreport(client_id, employee_id, text, date)  VALUES('"
                 + daily.getClientID() + "','"
                 + daily.getEmployeeID() + "','"
                 + daily.getText() + "','"
@@ -73,8 +73,8 @@ public class DBDailyReport implements IFDBDailyReport
         int rc = -1;
 
         String query = "UPDATE dailyreport SET "
-                + "clientID ='" + dailyObj.getClientID() + "',"
-                + "employeeID ='" + dailyObj.getEmployeeID() + "',"
+                + "client_ID ='" + dailyObj.getClientID() + "',"
+                + "employee_ID ='" + dailyObj.getEmployeeID() + "',"
                 + "text ='" + dailyObj.getText() + "',"
                 + "date ='" + dailyObj.getDate() + "',"
                 + " WHERE client_id = '" + dailyObj.getClientID() + "'";
@@ -96,7 +96,7 @@ public class DBDailyReport implements IFDBDailyReport
         int rc = -1;
 
         String query = "DELETE FROM dailyreport "
-                + " WHERE clientID = '" + clientID + "'";
+                + " WHERE client_ID = '" + clientID + "'";
         System.out.println("Update query:" + query);
         try { // update dailyreport
             Statement stmt = con.createStatement();
@@ -170,10 +170,11 @@ public class DBDailyReport implements IFDBDailyReport
         DayliReport dailyObj = new DayliReport();
 
         try {
-            dailyObj.setClientID(results.getInt(1));
-            dailyObj.setEmployeeID(results.getInt(2));
-            dailyObj.setText(results.getString(3));
-            dailyObj.setDate(results.getString(4));
+            dailyObj.setDailyReportID(results.getInt(1));
+            dailyObj.setClientID(results.getInt(2));
+            dailyObj.setEmployeeID(results.getInt(3));
+            dailyObj.setText(results.getString(4));
+            dailyObj.setDate(results.getString(5));
             
         } catch (Exception e) {
             System.out.println("building dailyreport object");

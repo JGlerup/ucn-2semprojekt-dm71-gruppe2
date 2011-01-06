@@ -28,6 +28,14 @@ public class DayliReport
         this.text = text;
     }
 
+    public int getDailyReportID() {
+        return dailyReportID;
+    }
+
+    public void setDailyReportID(int dailyReportID) {
+        this.dailyReportID = dailyReportID;
+    }
+
     public int getClientID() {
         return clientID;
     }
@@ -60,12 +68,17 @@ public class DayliReport
         this.text = text;
     }
 
-    public void setDate() {
+    public void setThisDate() {
         ToDaysDate toDaysDate = new ToDaysDate();
         date = toDaysDate.toString();
     }
 
     public void setNewDate(String newDate) {
         date = newDate;
+    }
+
+    public String toString()
+    {
+        return text;
     }
 }

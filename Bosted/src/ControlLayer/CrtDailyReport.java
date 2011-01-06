@@ -24,7 +24,13 @@ import java.util.Date;
 public class CrtDailyReport {
 
 
-public DayliReport findDailyReportByDailyReportID(int clientID)
+    public DayliReport findDailyReportByDayliReportID(int dayliReportID)
+    {
+        IFDBDailyReport dbDailyReport = new DBDailyReport();
+        return dbDailyReport.findDailyReportByDailyReportID(dayliReportID, true);
+    }
+
+    public DayliReport findDailyReportByClientID(int clientID)
     {
         IFDBDailyReport dbDailyReport = new DBDailyReport();
         return dbDailyReport.findDailyReportByClientID(clientID, true);
@@ -38,14 +44,15 @@ public DayliReport findDailyReportByDailyReportID(int clientID)
         return allDai;
     }
 
-    public void insertDailyreport(int clientID, int employeeID, String text, String date)
+    public void insertDailyreport(int clientID, int employeeID, String text)
     {
         IFDBDailyReport dbDailyreport = new DBDailyReport();
         DayliReport dObj = new DayliReport();
         dObj.setClientID(clientID);
         dObj.setEmployeeID(employeeID);
         dObj.setText(text);
-        dObj.setDate(date);
+        dObj.setThisDate();
+        dbDailyreport.insertDailyReport(dObj);
     }
 
     public void updateDailyreport(int clientID, int employeeID, String text, String date)

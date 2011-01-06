@@ -24,12 +24,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Glerup
  */
-public class GUIemployee extends javax.swing.JPanel {
+public class GUIEmployee extends javax.swing.JPanel {
 
     private Employee loggedInEmployee;
 
     /** Creates new form GUIclient */
-    public GUIemployee() {
+    public GUIEmployee() {
         initComponents();
 
     }
@@ -42,18 +42,81 @@ public class GUIemployee extends javax.swing.JPanel {
         this.loggedInEmployee = loggedInEmployee;
     }
 
+    public void populateCmbEmployee() {
+        CtrEmp ctrEmp = new CtrEmp();
+        ArrayList<Employee> employeeList = ctrEmp.getAllEmployee();
+        cmbEmployee.removeAllItems();
+        cmbEmployee.insertItemAt("Vælg her", 0);
+        for (Employee e : employeeList) {
+            cmbEmployee.addItem(e);
+        }
+        cmbEmployee.removeItem("Vælg her");
+    }
+
     public void populateTblAssociatedClients() {
+        TableClient tblClient = new TableClient();
         CtrEmp ctrEmp = new CtrEmp();
         Employee e = (Employee) cmbEmployee.getSelectedItem();
         int employeeID = e.getEmployeeID();
         ArrayList<Client> clientList = ctrEmp.findEmployeesClient(employeeID);
-        DefaultTableModel model = new DefaultTableModel();
-        tblAssociatedClients.setEnabled(true);
-        tblAssociatedClients.setModel(model);
-        model.setColumnIdentifiers(new String[]{"Fornavn", "Mellemnavn", "Efternavn"});
-        // Populate the JTable (TableModel) with data from ArrayList
-        for (Client c : clientList) {
-            model.addRow(new String[]{c.getFirstName(), c.getMiddleName(), c.getLastName()});
+        tblClient.setData(clientList);
+        tblAssociatedClients.setModel(tblClient);
+        tblAssociatedClients.setAutoCreateRowSorter(true);
+    }
+
+    public void clearTblAssociatedClients() {
+        TableClient tblClient = new TableClient();
+        tblAssociatedClients.setModel(tblClient); //Metoden får en tom tabel som input/parameter
+    }
+
+    public void resetAllGuiElements() {
+        populateCmbEmployee();
+        JTextField[] txtFieldList = {
+            txtEmployeeAddress,
+            txtEmployeeAddress1,
+            txtEmployeeCity,
+            txtEmployeeCity1,
+            txtEmployeeEmail,
+            txtEmployeeEmail1,
+            txtEmployeeEmployeeNo,
+            txtEmployeeEmployeeNo1,
+            txtEmployeeFirstName,
+            txtEmployeeFirstName1,
+            txtEmployeeJobTitle,
+            txtEmployeeJobTitle1,
+            txtEmployeeLastName,
+            txtEmployeeLastName1,
+            txtEmployeeManagerNo,
+            txtEmployeeManagerNo1,
+            txtEmployeeMiddleName,
+            txtEmployeeMiddleName1,
+            txtEmployeePassword,
+            txtEmployeePhoneNo,
+            txtEmployeePhoneNo1,
+            txtEmployeeSsn,
+            txtEmployeeZipCode,
+            txtEmployeeZipCode1,};
+        JCheckBox[] checkBoxList = {
+            cbCrudCar,
+            cbCrudClient,
+            cbCrudEmployee,
+            cbCrudMedicine,
+            cbInUse,};
+
+        resetTextFields(txtFieldList);
+        resetCheckBoxes(checkBoxList);
+
+    }
+
+    public void resetTextFields(JTextField[] textFields) {
+        for (JTextField txtField : textFields) {
+            txtField.setText("");
+        }
+    }
+
+    public void resetCheckBoxes(JCheckBox[] cbList) {
+        for (JCheckBox cb : cbList) {
+            cb.setSelected(false);
         }
     }
 
@@ -66,49 +129,50 @@ public class GUIemployee extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane2 = new javax.swing.JTabbedPane();
+        tPEmployee = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblGetEmployee = new javax.swing.JLabel();
         cmbEmployee = new javax.swing.JComboBox();
-        jLabel2 = new javax.swing.JLabel();
+        lblFirstname = new javax.swing.JLabel();
         txtEmployeeFirstName = new javax.swing.JTextField();
         txtEmployeeLastName = new javax.swing.JTextField();
         txtEmployeeMiddleName = new javax.swing.JTextField();
         txtEmployeeSsn = new javax.swing.JTextField();
         txtEmployeeEmail = new javax.swing.JTextField();
         txtEmployeeAddress = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        lblAddress = new javax.swing.JLabel();
         txtEmployeeZipCode = new javax.swing.JTextField();
         txtEmployeeCity = new javax.swing.JTextField();
         txtEmployeeManagerNo = new javax.swing.JTextField();
         txtEmployeePassword = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lblMiddleName = new javax.swing.JLabel();
+        lblLastName = new javax.swing.JLabel();
+        lblSsn = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
+        lblZipCode = new javax.swing.JLabel();
+        lblCity = new javax.swing.JLabel();
+        lblManagerNo = new javax.swing.JLabel();
+        lblPassword = new javax.swing.JLabel();
         txtEmployeePhoneNo = new javax.swing.JTextField();
         txtEmployeeJobTitle = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        lblPhoneNo = new javax.swing.JLabel();
+        lblJobTitle = new javax.swing.JLabel();
+        lblUserPermissions = new javax.swing.JLabel();
         cbCrudClient = new javax.swing.JCheckBox();
         cbCrudMedicine = new javax.swing.JCheckBox();
         cbCrudCar = new javax.swing.JCheckBox();
         cbCrudEmployee = new javax.swing.JCheckBox();
-        jLabel15 = new javax.swing.JLabel();
+        lblEmployeed = new javax.swing.JLabel();
         cbInUse = new javax.swing.JCheckBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAssociatedClients = new javax.swing.JTable();
         btnCreateEmployee = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel16 = new javax.swing.JLabel();
+        btnDelete = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
+        lblUsername = new javax.swing.JLabel();
         txtEmployeeEmployeeNo = new javax.swing.JTextField();
+        btnResetAll = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
@@ -137,15 +201,15 @@ public class GUIemployee extends javax.swing.JPanel {
         txtEmployeePhoneNo1 = new javax.swing.JTextField();
         gUIClientAssociateEmployee1 = new GUILayer.GUIClientAssociateEmployee();
 
-        jTabbedPane2.addFocusListener(new java.awt.event.FocusAdapter() {
+        tPEmployee.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTabbedPane2FocusGained(evt);
+                tPEmployeeFocusGained(evt);
             }
         });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel1.setText("Hent medarbejder");
+        lblGetEmployee.setText("Hent medarbejder");
 
         cmbEmployee.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -153,37 +217,31 @@ public class GUIemployee extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setText("Fornavn");
+        lblFirstname.setText("Fornavn");
 
-        jLabel3.setText("Adresse");
+        lblAddress.setText("Adresse");
 
-        jLabel4.setText("Mellemnavn");
+        lblMiddleName.setText("Mellemnavn");
 
-        jLabel5.setText("Efternavn");
+        lblLastName.setText("Efternavn");
 
-        jLabel6.setText("Personnummer");
+        lblSsn.setText("Personnummer");
 
-        jLabel7.setText("E-mail");
+        lblEmail.setText("E-mail");
 
-        jLabel8.setText("Postnummer");
+        lblZipCode.setText("Postnummer");
 
-        jLabel9.setText("By");
+        lblCity.setText("By");
 
-        jLabel10.setText("Leder nummer");
+        lblManagerNo.setText("Leder nummer");
 
-        jLabel11.setText("Password");
+        lblPassword.setText("Password");
 
-        txtEmployeeJobTitle.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmployeeJobTitleActionPerformed(evt);
-            }
-        });
+        lblPhoneNo.setText("Telefonnummer");
 
-        jLabel12.setText("Telefonnummer");
+        lblJobTitle.setText("Job titel");
 
-        jLabel13.setText("Job titel");
-
-        jLabel14.setText("Tilladelse til (håndtering):");
+        lblUserPermissions.setText("Tilladelse til (håndtering):");
 
         cbCrudClient.setText("Klient");
 
@@ -193,16 +251,13 @@ public class GUIemployee extends javax.swing.JPanel {
 
         cbCrudEmployee.setText("Medarbejder");
 
-        jLabel15.setText("Er ansat nu");
+        lblEmployeed.setText("Er ansat nu");
 
         cbInUse.setText("(sæt kryds hvis ja)");
 
         tblAssociatedClients.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Fornavn", "Mellemnavn", "Efternavn"
@@ -217,21 +272,28 @@ public class GUIemployee extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Slet");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.setText("Slet");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Opdater");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdate.setText("Opdater");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnUpdateActionPerformed(evt);
             }
         });
 
-        jLabel16.setText("Brugernavn");
+        lblUsername.setText("Brugernavn");
+
+        btnResetAll.setText("Nulstil felter");
+        btnResetAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetAllActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -240,93 +302,95 @@ public class GUIemployee extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(lblGetEmployee)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(txtEmployeeFirstName, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(cmbEmployee, javax.swing.GroupLayout.Alignment.LEADING, 0, 127, Short.MAX_VALUE))
-                            .addComponent(jLabel2))
+                            .addComponent(lblFirstname))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtEmployeeMiddleName, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
+                            .addComponent(lblMiddleName))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtEmployeeLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
+                            .addComponent(lblLastName))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtEmployeeSsn, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
+                            .addComponent(lblSsn))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtEmployeeEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
+                            .addComponent(lblEmail))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12)
+                            .addComponent(lblPhoneNo)
                             .addComponent(txtEmployeePhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtEmployeeAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel16)
+                            .addComponent(lblAddress)
+                            .addComponent(lblUsername)
                             .addComponent(txtEmployeeEmployeeNo))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtEmployeeZipCode, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8)
+                                    .addComponent(lblZipCode)
                                     .addComponent(cbCrudClient, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtEmployeeCity, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9)
+                                    .addComponent(lblCity)
                                     .addComponent(cbCrudMedicine))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtEmployeeManagerNo, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel10)
+                                    .addComponent(lblManagerNo)
                                     .addComponent(cbCrudCar))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtEmployeePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel11)
+                                    .addComponent(lblPassword)
                                     .addComponent(cbCrudEmployee)))
-                            .addComponent(jLabel14))
+                            .addComponent(lblUserPermissions))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbInUse)
-                            .addComponent(jLabel13)
+                            .addComponent(lblJobTitle)
                             .addComponent(txtEmployeeJobTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel15)))
+                            .addComponent(lblEmployeed)))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 914, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(btnResetAll)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(btnCreateEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(jButton2)
+                            .addComponent(btnUpdate)
                             .addGap(18, 18, 18)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(lblGetEmployee)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cmbEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel12))
+                    .addComponent(lblFirstname)
+                    .addComponent(lblMiddleName)
+                    .addComponent(lblLastName)
+                    .addComponent(lblSsn)
+                    .addComponent(lblEmail)
+                    .addComponent(lblPhoneNo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtEmployeeFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -337,12 +401,12 @@ public class GUIemployee extends javax.swing.JPanel {
                     .addComponent(txtEmployeePhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel13))
+                    .addComponent(lblAddress)
+                    .addComponent(lblZipCode)
+                    .addComponent(lblCity)
+                    .addComponent(lblManagerNo)
+                    .addComponent(lblPassword)
+                    .addComponent(lblJobTitle))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtEmployeeAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -353,9 +417,9 @@ public class GUIemployee extends javax.swing.JPanel {
                     .addComponent(txtEmployeeJobTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel16))
+                    .addComponent(lblEmployeed)
+                    .addComponent(lblUserPermissions)
+                    .addComponent(lblUsername))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbInUse)
@@ -368,9 +432,10 @@ public class GUIemployee extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(btnCreateEmployee))
+                    .addComponent(btnDelete)
+                    .addComponent(btnUpdate)
+                    .addComponent(btnCreateEmployee)
+                    .addComponent(btnResetAll))
                 .addContainerGap())
         );
 
@@ -391,7 +456,7 @@ public class GUIemployee extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Håndtering", null, jPanel1, "Her opretter, opdateres og slettes");
+        tPEmployee.addTab("Håndtering", null, jPanel1, "Her opretter, opdateres og slettes");
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -566,8 +631,8 @@ public class GUIemployee extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTabbedPane2.addTab("Medarbejderer", jPanel3);
-        jTabbedPane2.addTab("Medarbejdernes klienter", gUIClientAssociateEmployee1);
+        tPEmployee.addTab("Medarbejderer", jPanel3);
+        tPEmployee.addTab("Medarbejdernes klienter", gUIClientAssociateEmployee1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -575,14 +640,14 @@ public class GUIemployee extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 967, Short.MAX_VALUE)
+                .addComponent(tPEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, 967, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
+                .addComponent(tPEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -631,11 +696,7 @@ public class GUIemployee extends javax.swing.JPanel {
         }
 }//GEN-LAST:event_btnCreateEmployeeActionPerformed
 
-    private void txtEmployeeJobTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmployeeJobTitleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmployeeJobTitleActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
         Employee emp = (Employee) cmbEmployee.getSelectedItem();
         String employeeNoCurrent = emp.getEmployeeNo();
@@ -680,56 +741,30 @@ public class GUIemployee extends javax.swing.JPanel {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         String employeeNo = null;
         CtrEmp ctrEmp = new CtrEmp();
         employeeNo = txtEmployeeEmployeeNo.getText();
         ctrEmp.deleteEmp(employeeNo);
         JOptionPane.showMessageDialog(this, "Du har nu slettet medarbejderen med brugernavn: + employeeNo +");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
-    public void resetCheckBoxes(JCheckBox[] cbList) {
-        for (JCheckBox cb : cbList) {
-            cb.setSelected(false);
-        }
-    }
-
-    public void resetTextFields(JTextField[] textFields) {
-        for (JTextField txtField : textFields) {
-            txtField.setText("");
-        }
-    }
-
-    private void jTabbedPane2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTabbedPane2FocusGained
+    private void tPEmployeeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tPEmployeeFocusGained
         // TODO add your handling code here:
 
-        CtrEmp ctrEmp = new CtrEmp();
-        ArrayList<Employee> employeeList = ctrEmp.getAllEmployee();
-        cmbEmployee.removeAllItems();
-        cmbEmployee.insertItemAt("Vælg her", 0);
-        for (Employee e : employeeList) {
-            cmbEmployee.addItem(e);
-        }
-        cmbEmployee.removeItem("Vælg her");
-
-        ArrayList<Employee> employeeList1 = ctrEmp.getAllEmployee();
-        jComboBox2.removeAllItems();
-        jComboBox2.insertItemAt("Vælg her", 0);
-        for (Employee empl : employeeList1) {
-            jComboBox2.addItem(empl);
-        }
-        jComboBox2.removeItem("Vælg her");
+        populateCmbEmployee();
         JTextField[] txtFieldList = {txtEmployeeAddress, txtEmployeeCity, txtEmployeeEmail, txtEmployeeEmployeeNo, txtEmployeeFirstName, txtEmployeeMiddleName, txtEmployeeLastName, txtEmployeeJobTitle, txtEmployeeManagerNo, txtEmployeePassword, txtEmployeePhoneNo, txtEmployeeSsn, txtEmployeeZipCode, txtEmployeeAddress1, txtEmployeeCity1, txtEmployeeEmail1, txtEmployeeEmployeeNo1, txtEmployeeFirstName1, txtEmployeeMiddleName1, txtEmployeeLastName1, txtEmployeeJobTitle1, txtEmployeeManagerNo1, txtEmployeePhoneNo1, txtEmployeeZipCode1};
         resetTextFields(txtFieldList);
         JCheckBox[] cbList = {cbCrudCar, cbCrudClient, cbCrudEmployee, cbCrudMedicine, cbInUse};
         resetCheckBoxes(cbList);
         gUIClientAssociateEmployee1.populateCmbClient();
         gUIClientAssociateEmployee1.populateCmbEmployee();
+        clearTblAssociatedClients();
 
-    }//GEN-LAST:event_jTabbedPane2FocusGained
+    }//GEN-LAST:event_tPEmployeeFocusGained
 
     private void cmbEmployeeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbEmployeeItemStateChanged
         // TODO add your handling code here:
@@ -774,10 +809,11 @@ public class GUIemployee extends javax.swing.JPanel {
             } else {
                 cbInUse.setSelected(false);
             }
+            populateTblAssociatedClients();
         } else {
             System.out.println("No employees to select from");
         }
-        populateTblAssociatedClients();
+
     }//GEN-LAST:event_cmbEmployeeItemStateChanged
 
     private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
@@ -801,8 +837,17 @@ public class GUIemployee extends javax.swing.JPanel {
             System.out.println("No employees to select from");
         }
     }//GEN-LAST:event_jComboBox2ItemStateChanged
+
+    private void btnResetAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetAllActionPerformed
+        // TODO add your handling code here:
+        resetAllGuiElements();
+        clearTblAssociatedClients();
+    }//GEN-LAST:event_btnResetAllActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateEmployee;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnResetAll;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JCheckBox cbCrudCar;
     private javax.swing.JCheckBox cbCrudClient;
     private javax.swing.JCheckBox cbCrudEmployee;
@@ -810,21 +855,10 @@ public class GUIemployee extends javax.swing.JPanel {
     private javax.swing.JCheckBox cbInUse;
     private javax.swing.JComboBox cmbEmployee;
     private GUILayer.GUIClientAssociateEmployee gUIClientAssociateEmployee1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -834,19 +868,28 @@ public class GUIemployee extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JLabel lblAddress;
+    private javax.swing.JLabel lblCity;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblEmployeed;
+    private javax.swing.JLabel lblFirstname;
+    private javax.swing.JLabel lblGetEmployee;
+    private javax.swing.JLabel lblJobTitle;
+    private javax.swing.JLabel lblLastName;
+    private javax.swing.JLabel lblManagerNo;
+    private javax.swing.JLabel lblMiddleName;
+    private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblPhoneNo;
+    private javax.swing.JLabel lblSsn;
+    private javax.swing.JLabel lblUserPermissions;
+    private javax.swing.JLabel lblUsername;
+    private javax.swing.JLabel lblZipCode;
+    private javax.swing.JTabbedPane tPEmployee;
     private javax.swing.JTable tblAssociatedClients;
     private javax.swing.JTextField txtEmployeeAddress;
     private javax.swing.JTextField txtEmployeeAddress1;

@@ -17,10 +17,10 @@ import java.util.Date;
  */
 public class CrtMile {
 
-    public Milestone findMilestoneByClientID(int clientID) {
-        IFDBMilestone dbMilestone = new DBMilestone();
-        return dbMilestone.findMilestoneByClientID(clientID, true);
-    }
+//    public Milestone findMilestoneByClientID(int clientID) {
+//        IFDBMilestone dbMilestone = new DBMilestone();
+//        return dbMilestone.findMilestoneByClientID(clientID, true);
+//    }
 
     public ArrayList getAllCMilestone() {
         IFDBMilestone dbMilestone = new DBMilestone();

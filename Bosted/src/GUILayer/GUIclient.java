@@ -84,7 +84,7 @@ public class GUIclient extends javax.swing.JPanel {
         cmbClient = new javax.swing.JComboBox();
         jLabel8 = new javax.swing.JLabel();
         txtClientUserName = new javax.swing.JTextField();
-        btnResetEverything = new javax.swing.JButton();
+        btnResetAll = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(697, 556));
 
@@ -186,10 +186,10 @@ public class GUIclient extends javax.swing.JPanel {
 
         jLabel8.setText("Brugernavn");
 
-        btnResetEverything.setText("Nulstil felter");
-        btnResetEverything.addActionListener(new java.awt.event.ActionListener() {
+        btnResetAll.setText("Nulstil felter");
+        btnResetAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnResetEverythingActionPerformed(evt);
+                btnResetAllActionPerformed(evt);
             }
         });
 
@@ -202,7 +202,7 @@ public class GUIclient extends javax.swing.JPanel {
                 .addGroup(pHåndteringKlientIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pHåndteringKlientIndholdLayout.createSequentialGroup()
-                        .addComponent(btnResetEverything)
+                        .addComponent(btnResetAll)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCreateClient, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -315,7 +315,7 @@ public class GUIclient extends javax.swing.JPanel {
                             .addComponent(btnDeleteClient)
                             .addComponent(btnUpdateClient)
                             .addComponent(btnCreateClient)
-                            .addComponent(btnResetEverything)))
+                            .addComponent(btnResetAll)))
                     .addGroup(pHåndteringKlientIndholdLayout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -370,7 +370,7 @@ public class GUIclient extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public void resetAllEmpoyeeManagement() {
+    public void resetAllGuiElements() {
         CtrClient ctrClient = new CtrClient();
         ArrayList<Client> clientList = ctrClient.getAllClients();
         cmbClient.removeAllItems();
@@ -548,7 +548,7 @@ public class GUIclient extends javax.swing.JPanel {
 
     private void tpKlientFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tpKlientFocusGained
         // TODO add your handling code here:
-        resetAllEmpoyeeManagement();
+        resetAllGuiElements();
     }//GEN-LAST:event_tpKlientFocusGained
 
     private void cmbClientItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbClientItemStateChanged
@@ -609,14 +609,14 @@ public class GUIclient extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_cmbClientItemStateChanged
 
-    private void btnResetEverythingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetEverythingActionPerformed
+    private void btnResetAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetAllActionPerformed
         // TODO add your handling code here:
-        resetAllEmpoyeeManagement();
-    }//GEN-LAST:event_btnResetEverythingActionPerformed
+        resetAllGuiElements();
+    }//GEN-LAST:event_btnResetAllActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateClient;
     private javax.swing.JButton btnDeleteClient;
-    private javax.swing.JButton btnResetEverything;
+    private javax.swing.JButton btnResetAll;
     private javax.swing.JButton btnUpdateClient;
     private javax.swing.JCheckBox cbClientInUse;
     private javax.swing.JComboBox cmbClient;

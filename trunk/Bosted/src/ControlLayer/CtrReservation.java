@@ -43,7 +43,7 @@ public class CtrReservation
      *
      * @return list of all reservations
      */
-    public ArrayList getAllreservation()
+    public ArrayList<Reservation> getAllreservation()
     {
         IFDBReservation dbReservation = new DBReservation();
         ArrayList allReservation = new ArrayList<Reservation>();

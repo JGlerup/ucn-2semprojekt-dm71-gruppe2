@@ -346,27 +346,27 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="jDateChooser1" pref="117" max="32767" attributes="1"/>
+                                          <Component id="cbKlient" alignment="1" pref="117" max="32767" attributes="1"/>
                                           <Component id="lblHentReservation" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblStartDato" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtStartDato" alignment="0" pref="122" max="32767" attributes="1"/>
-                                          <Component id="lblSlutDato" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtSlutDato" alignment="0" pref="122" max="32767" attributes="1"/>
-                                          <Component id="cbHentReservationer" alignment="0" max="32767" attributes="1"/>
+                                          <Component id="cbHentReservationer" alignment="0" pref="117" max="32767" attributes="1"/>
                                           <Component id="lblKlient" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="cbKlient" alignment="0" max="32767" attributes="1"/>
+                                          <Component id="lblAvailableCars" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbAvailableCars" alignment="0" pref="117" max="32767" attributes="0"/>
+                                          <Component id="lblStartDato" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="lblReservationer" min="-2" max="-2" attributes="0"/>
                                           <Component id="spReservationer" min="-2" pref="214" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="26" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="lblListeAfBilerBooking" min="-2" max="-2" attributes="0"/>
                                           <Component id="spListeAfBiler" min="-2" pref="214" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="14" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -385,18 +385,18 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="cbHentReservationer" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                      <Component id="lblStartDato" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtStartDato" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="lblSlutDato" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtSlutDato" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="lblKlient" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="cbKlient" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="lblAvailableCars" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cbAvailableCars" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="lblStartDato" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="spReservationer" alignment="0" pref="357" max="32767" attributes="1"/>
                                   <Component id="spListeAfBiler" alignment="0" min="0" pref="0" max="32767" attributes="1"/>
@@ -415,15 +415,13 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="lblHentReservation">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Hent reservation"/>
+                        <Property name="text" type="java.lang.String" value="Dine reservationer"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblStartDato">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Start dato"/>
+                        <Property name="text" type="java.lang.String" value="V&#xe6;lg dato"/>
                       </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="txtStartDato">
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblListeAfBilerBooking">
                       <Properties>
@@ -471,13 +469,6 @@
                         <Property name="text" type="java.lang.String" value="Slet"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtSlutDato">
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="lblSlutDato">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Slut dato"/>
-                      </Properties>
-                    </Component>
                     <Container class="javax.swing.JScrollPane" name="spListeAfBiler">
                       <AuxValues>
                         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -513,10 +504,29 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblKlient">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Klient"/>
+                        <Property name="text" type="java.lang.String" value="V&#xe6;lg klient"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="cbKlient">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="4">
+                            <StringItem index="0" value="Item 1"/>
+                            <StringItem index="1" value="Item 2"/>
+                            <StringItem index="2" value="Item 3"/>
+                            <StringItem index="3" value="Item 4"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblAvailableCars">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Ledige biler"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="cbAvailableCars">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="4">

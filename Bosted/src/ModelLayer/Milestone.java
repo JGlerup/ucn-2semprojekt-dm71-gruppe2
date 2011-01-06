@@ -17,16 +17,21 @@ public class Milestone {
     private int clientID;
     private String text;
     private String date;
-    private Date succesdate;
+    private Date succesDate;
+
+    public Milestone() {
+    }
 
 
-public Milestone(int milestoneID, int clientID, String text, String date, Date succesdate)
+    
+
+public Milestone(int milestoneID, int clientID, String text, String date, Date succesDate)
 {
     this.milestoneID = milestoneID;
     this.clientID = clientID;
     this.text = text;
     this.date = date;
-    this.succesdate = succesdate;
+    this.succesDate = succesDate;
 }
 
     public int getClientID() {
@@ -53,12 +58,12 @@ public Milestone(int milestoneID, int clientID, String text, String date, Date s
         this.milestoneID = milestoneID;
     }
 
-    public Date getSuccesdate() {
-        return succesdate;
+    public Date getSuccesDate() {
+        return succesDate;
     }
 
-    public void setSuccesdate(Date succesdate) {
-        this.succesdate = succesdate;
+    public void setSuccesDate(Date succesDate) {
+        this.succesDate = succesDate;
     }
 
     public String getText() {

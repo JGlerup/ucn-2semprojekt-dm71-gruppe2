@@ -11,10 +11,12 @@
 
 package GUILayer;
 
+import ControlLayer.CrtDailyReport;
 import ControlLayer.CtrLoca;
 import ControlLayer.CtrMedi;
 import ExceptionsPack.NoManagerNumberErrorHandling;
 import ModelLayer.Client;
+import ModelLayer.DayliReport;
 import ModelLayer.Employee;
 import ModelLayer.Location;
 import ModelLayer.Medicine;
@@ -74,6 +76,12 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         jTextField2 = new javax.swing.JTextField();
         jButton12 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        GUICreateDayliReport = new javax.swing.JFrame();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea6 = new javax.swing.JTextArea();
+        jButton11 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
@@ -393,6 +401,55 @@ public class GUIClientNewTab extends javax.swing.JPanel {
             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jLabel7.setText("Skriv tekst her");
+
+        jTextArea6.setColumns(20);
+        jTextArea6.setRows(5);
+        jScrollPane2.setViewportView(jTextArea6);
+
+        jButton11.setText("Annuller");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+
+        jButton14.setText("Opret");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout GUICreateDayliReportLayout = new javax.swing.GroupLayout(GUICreateDayliReport.getContentPane());
+        GUICreateDayliReport.getContentPane().setLayout(GUICreateDayliReportLayout);
+        GUICreateDayliReportLayout.setHorizontalGroup(
+            GUICreateDayliReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(GUICreateDayliReportLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(GUICreateDayliReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(jLabel7)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GUICreateDayliReportLayout.createSequentialGroup()
+                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton11)))
+                .addContainerGap())
+        );
+        GUICreateDayliReportLayout.setVerticalGroup(
+            GUICreateDayliReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(GUICreateDayliReportLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addGroup(GUICreateDayliReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton11)
+                    .addComponent(jButton14))
+                .addContainerGap())
+        );
+
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -449,22 +506,31 @@ public class GUIClientNewTab extends javax.swing.JPanel {
 
         lblBeskrivelseKlient1.setText("Beskrivelse");
 
+        jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
         txtClientDescription.setColumns(20);
         txtClientDescription.setEditable(false);
+        txtClientDescription.setLineWrap(true);
         txtClientDescription.setRows(5);
         jScrollPane4.setViewportView(txtClientDescription);
 
         jLabel9.setText("Helbred");
 
+        jScrollPane5.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
         txtClientHealth.setColumns(20);
         txtClientHealth.setEditable(false);
+        txtClientHealth.setLineWrap(true);
         txtClientHealth.setRows(5);
         jScrollPane5.setViewportView(txtClientHealth);
 
         jLabel21.setText("Interesser");
 
+        jScrollPane6.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
         txtClientInterests.setColumns(20);
         txtClientInterests.setEditable(false);
+        txtClientInterests.setLineWrap(true);
         txtClientInterests.setRows(5);
         jScrollPane6.setViewportView(txtClientInterests);
 
@@ -607,6 +673,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jTextArea1.setColumns(20);
+        jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
         jScrollPane8.setViewportView(jTextArea1);
 
@@ -753,10 +820,12 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         jLabel29.setText("Anden nyeste");
 
         jTextArea4.setColumns(20);
+        jTextArea4.setLineWrap(true);
         jTextArea4.setRows(5);
         jScrollPane12.setViewportView(jTextArea4);
 
         jTextArea2.setColumns(20);
+        jTextArea2.setLineWrap(true);
         jTextArea2.setRows(5);
         jScrollPane10.setViewportView(jTextArea2);
 
@@ -765,10 +834,12 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         jLabel31.setText("Fjerde nyeste");
 
         jTextArea3.setColumns(20);
+        jTextArea3.setLineWrap(true);
         jTextArea3.setRows(5);
         jScrollPane11.setViewportView(jTextArea3);
 
         jTextArea5.setColumns(20);
+        jTextArea5.setLineWrap(true);
         jTextArea5.setRows(5);
         jScrollPane13.setViewportView(jTextArea5);
 
@@ -1004,8 +1075,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        GUIWriteNewDR guiwdr = new GUIWriteNewDR();
-        guiwdr.setVisible(true);
+        GUICreateDayliReport.setVisible(true);
 }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -1178,8 +1248,22 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         GUIGiveMedicine.setVisible(false);
     }//GEN-LAST:event_jButton13ActionPerformed
 
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        // TODO add your handling code here:
+        GUICreateDayliReport.setVisible(false);
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        // TODO add your handling code here:
+        CrtDailyReport ctrDayliReport = new CrtDailyReport();
+        ctrDayliReport.insertDailyreport(client.getClientID(), loggedInEmployee.getEmployeeID(), jTextArea6.getText());
+        JOptionPane.showMessageDialog(this, "Der er oprettet en dagsrapport");
+        GUICreateDayliReport.setVisible(false);
+    }//GEN-LAST:event_jButton14ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFrame GUICreateDayliReport;
     private javax.swing.JFrame GUIErrorHandlingMedicine;
     private javax.swing.JFrame GUIGiveMedicine;
     private javax.swing.JFrame GUIStockMedicine;
@@ -1190,8 +1274,10 @@ public class GUIClientNewTab extends javax.swing.JPanel {
     private javax.swing.JComboBox cmbMedi2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1224,6 +1310,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -1239,6 +1326,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
@@ -1251,6 +1339,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea4;
     private javax.swing.JTextArea jTextArea5;
+    private javax.swing.JTextArea jTextArea6;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;

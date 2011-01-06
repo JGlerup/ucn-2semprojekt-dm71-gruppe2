@@ -8,6 +8,7 @@ drop table externaldocument
 drop table reservation
 drop table dailyreport
 drop table medicine
+drop table todo
 drop table employee
 drop table client
 drop table externalcontact

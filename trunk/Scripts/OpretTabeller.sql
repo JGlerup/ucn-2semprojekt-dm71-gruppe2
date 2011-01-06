@@ -77,6 +77,13 @@ create table employee
 	foreign key (managerno) references employee(employeeno),
 	foreign key (location_id) references location(location_id));
 	
+create table todo
+	(todo_id			int			PRIMARY KEY IDENTITY,
+	employee_id			int			not null,
+	text				varchar(max)not null,
+	date				date		not null,
+	foreign key (employee_id) references employee(employee_id));
+	
 create table medicine 
 	(medicine_id		int			PRIMARY KEY IDENTITY,
 	frequency_id		int			not null,
@@ -128,7 +135,7 @@ create table milestone
 	successdate			date,
 	foreign key (client_id) references client(client_id));
 
-create table milestone_update_FORSLAG_FORSLAG_FORSLAG_FORSLAG_FORSLAG_FORSLAG_FORSLAG_FORSLAG_FORSLAG
+create table milestone_update
 	(milestone_update_id int		PRIMARY KEY IDENTITY,
 	milestone_id		int			not null,
 	employee_id			int			not null,

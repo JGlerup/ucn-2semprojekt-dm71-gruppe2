@@ -136,10 +136,10 @@ public class DBReservation implements IFDBReservation
     }
 
     //miscWhere is used when more than one reservation is selected and build
-    private ArrayList miscWhere(String wClause, boolean retrieveAssociation)
+    private ArrayList<Reservation> miscWhere(String wClause, boolean retrieveAssociation)
     {
         ResultSet results;
-        ArrayList list = new ArrayList();
+        ArrayList<Reservation> list = new ArrayList();
 
         String query = buildQuery(wClause);
         System.out.println("DbReservation " + query);
@@ -196,7 +196,7 @@ public class DBReservation implements IFDBReservation
         if (wClause.length() > 0)
         {
             query = query + " WHERE " + wClause;
-        }
+        }//end if
 
         return query;
     }

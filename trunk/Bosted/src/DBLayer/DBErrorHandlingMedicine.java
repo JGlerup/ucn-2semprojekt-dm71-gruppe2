@@ -152,10 +152,10 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
     }
     //miscWhere is used when more than one errorHandlingMedicine is selected and build
 
-    private ArrayList miscWhere(String wClause, boolean retrieveAssociation)
+    private ArrayList<ErrorHandlingMedicine> miscWhere(String wClause, boolean retrieveAssociation)
     {
         ResultSet results;
-        ArrayList list = new ArrayList();
+        ArrayList<ErrorHandlingMedicine> list = new ArrayList();
 
         String query = buildQuery(wClause);
         System.out.println("DbErrorHandlingMedicine " + query);

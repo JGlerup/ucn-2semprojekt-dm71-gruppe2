@@ -60,7 +60,7 @@ public class CtrReservation
      */
     public void insertReservation(int carID, int employeeID, int clientID, String date)
     {
-        try
+        if(carID > 0 && employeeID > 0 )
         {
             IFDBReservation dbreservation = new DBReservation();
             Reservation cObj = new Reservation();
@@ -81,6 +81,7 @@ public class CtrReservation
 
     public void updateReservation(int reservationID, int carID, int employeeID, int clientID, String startDate, String endDate, String reservationDate)
     {
+
         {
             IFDBReservation dbreservation = new DBReservation();
             Reservation cObj = new Reservation();

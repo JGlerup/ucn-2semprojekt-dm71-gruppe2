@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * GUIcar.java
  *
  * Created on 09-12-2010, 10:10:50
@@ -12,21 +7,29 @@
 package GUILayer;
 
 import ControlLayer.CtrCar;
+import ControlLayer.CtrClient;
+import ControlLayer.CtrEmp;
 import ModelLayer.Car;
+import ModelLayer.Client;
+import ModelLayer.Employee;
 import java.util.ArrayList;
+import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
- *
- * @author Glerup
+ * @author Gruppe 2 - DM71
+ * December 2010
  */
-public class GUIcar extends javax.swing.JPanel {
+public class GUIcar extends javax.swing.JPanel
+{
 
     /** Creates new form GUIcar */
-    public GUIcar() {
+    public GUIcar()
+    {
         initComponents();
+        loggedInEmployee = null;
     }
 
     /** This method is called from within the constructor to
@@ -57,23 +60,24 @@ public class GUIcar extends javax.swing.JPanel {
         txtregno = new javax.swing.JTextField();
         pBooking = new javax.swing.JPanel();
         pBookingIndhold = new javax.swing.JPanel();
-        lblHentReservation = new javax.swing.JLabel();
-        lblStartDato = new javax.swing.JLabel();
-        lblListeAfBilerBooking = new javax.swing.JLabel();
-        lblReservationer = new javax.swing.JLabel();
+        lblYourReservation = new javax.swing.JLabel();
+        lbldateReservation = new javax.swing.JLabel();
+        lblListofCars = new javax.swing.JLabel();
+        lblReservations = new javax.swing.JLabel();
         spReservationer = new javax.swing.JScrollPane();
-        tblReservationer = new javax.swing.JTable();
+        tblReservations = new javax.swing.JTable();
         btnOpretBooking = new javax.swing.JButton();
         btnOpdaterBooking = new javax.swing.JButton();
         btnSletBooking = new javax.swing.JButton();
         spListeAfBiler = new javax.swing.JScrollPane();
-        tblListeAfBilerBooking = new javax.swing.JTable();
-        cbHentReservationer = new javax.swing.JComboBox();
-        lblKlient = new javax.swing.JLabel();
-        cbKlient = new javax.swing.JComboBox();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        tblListofCars = new javax.swing.JTable();
+        cbYourReservations = new javax.swing.JComboBox();
+        lblClient = new javax.swing.JLabel();
+        cmbClient = new javax.swing.JComboBox();
+        jDateChooserReservation = new com.toedter.calendar.JDateChooser();
         lblAvailableCars = new javax.swing.JLabel();
         cbAvailableCars = new javax.swing.JComboBox();
+        lblDateUsage = new javax.swing.JLabel();
 
         pCar.setPreferredSize(new java.awt.Dimension(697, 556));
 
@@ -157,18 +161,17 @@ public class GUIcar extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(pHåndteringIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pHåndteringIndholdLayout.createSequentialGroup()
-                        .addGroup(pHåndteringIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pHåndteringIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblHentBil)
                             .addComponent(LBLregno)
-                            .addGroup(pHåndteringIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtregno, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(cmbbiler, javax.swing.GroupLayout.Alignment.LEADING, 0, 121, Short.MAX_VALUE))
                             .addComponent(LBLbeskrivelse)
-                            .addComponent(spBeskrivelse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(60, 60, 60)
+                            .addComponent(spBeskrivelse, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                            .addComponent(txtregno)
+                            .addComponent(cmbbiler, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pHåndteringIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblListeAfBiler)
-                            .addComponent(spBiler, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(spBiler, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pHåndteringIndholdLayout.createSequentialGroup()
                         .addComponent(btnOpret, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -187,8 +190,8 @@ public class GUIcar extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pHåndteringIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pHåndteringIndholdLayout.createSequentialGroup()
-                        .addComponent(spBiler, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                        .addComponent(spBiler, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+                        .addGap(68, 68, 68)
                         .addGroup(pHåndteringIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSlet)
                             .addComponent(btnopdater)
@@ -202,7 +205,7 @@ public class GUIcar extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(LBLbeskrivelse)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(spBeskrivelse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(spBeskrivelse, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -227,15 +230,15 @@ public class GUIcar extends javax.swing.JPanel {
 
         pBookingIndhold.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        lblHentReservation.setText("Dine reservationer");
+        lblYourReservation.setText("Dine reservationer");
 
-        lblStartDato.setText("Vælg dato");
+        lbldateReservation.setText("Vælg dato");
 
-        lblListeAfBilerBooking.setText("Liste af biler");
+        lblListofCars.setText("Liste af biler");
 
-        lblReservationer.setText("Reservationer");
+        lblReservations.setText("Reservationer");
 
-        tblReservationer.setModel(new javax.swing.table.DefaultTableModel(
+        tblReservations.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -243,10 +246,31 @@ public class GUIcar extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Dato", "Medarbejder", "Klient", "Bil"
             }
-        ));
-        spReservationer.setViewportView(tblReservationer);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblReservations.setColumnSelectionAllowed(true);
+        spReservationer.setViewportView(tblReservations);
+        tblReservations.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        tblReservations.getColumnModel().getColumn(0).setResizable(false);
+        tblReservations.getColumnModel().getColumn(1).setResizable(false);
+        tblReservations.getColumnModel().getColumn(2).setResizable(false);
+        tblReservations.getColumnModel().getColumn(3).setResizable(false);
 
         btnOpretBooking.setText("Opret");
 
@@ -254,7 +278,7 @@ public class GUIcar extends javax.swing.JPanel {
 
         btnSletBooking.setText("Slet");
 
-        tblListeAfBilerBooking.setModel(new javax.swing.table.DefaultTableModel(
+        tblListofCars.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -265,17 +289,22 @@ public class GUIcar extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        spListeAfBiler.setViewportView(tblListeAfBilerBooking);
+        spListeAfBiler.setViewportView(tblListofCars);
 
-        cbHentReservationer.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbYourReservations.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        lblKlient.setText("Vælg klient");
+        lblClient.setText("Vælg klient");
 
-        cbKlient.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbClient.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jDateChooserReservation.setDateFormatString("yyyy-MM-dd");
+        jDateChooserReservation.setEnabled(false);
 
         lblAvailableCars.setText("Ledige biler");
 
         cbAvailableCars.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        lblDateUsage.setText("åååå-mm-dd");
 
         javax.swing.GroupLayout pBookingIndholdLayout = new javax.swing.GroupLayout(pBookingIndhold);
         pBookingIndhold.setLayout(pBookingIndholdLayout);
@@ -292,52 +321,58 @@ public class GUIcar extends javax.swing.JPanel {
                         .addComponent(btnSletBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(pBookingIndholdLayout.createSequentialGroup()
-                        .addGroup(pBookingIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
-                            .addComponent(cbKlient, 0, 117, Short.MAX_VALUE)
-                            .addComponent(lblHentReservation, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbHentReservationer, javax.swing.GroupLayout.Alignment.LEADING, 0, 117, Short.MAX_VALUE)
-                            .addComponent(lblKlient, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAvailableCars, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbAvailableCars, javax.swing.GroupLayout.Alignment.LEADING, 0, 117, Short.MAX_VALUE)
-                            .addComponent(lblStartDato, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGroup(pBookingIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDateChooserReservation, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                            .addComponent(cmbClient, javax.swing.GroupLayout.Alignment.TRAILING, 0, 114, Short.MAX_VALUE)
+                            .addComponent(lblYourReservation)
+                            .addComponent(cbYourReservations, 0, 114, Short.MAX_VALUE)
+                            .addComponent(lblClient)
+                            .addComponent(lblAvailableCars)
+                            .addComponent(cbAvailableCars, 0, 114, Short.MAX_VALUE)
+                            .addComponent(lbldateReservation)
+                            .addComponent(lblDateUsage))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pBookingIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblReservationer)
-                            .addComponent(spReservationer, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(42, 42, 42)
-                        .addGroup(pBookingIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblListeAfBilerBooking)
-                            .addComponent(spListeAfBiler, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(31, 31, 31))))
+                            .addComponent(lblReservations)
+                            .addComponent(spReservationer, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(pBookingIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pBookingIndholdLayout.createSequentialGroup()
+                                .addComponent(lblListofCars)
+                                .addContainerGap(197, Short.MAX_VALUE))
+                            .addGroup(pBookingIndholdLayout.createSequentialGroup()
+                                .addComponent(spListeAfBiler, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                                .addGap(31, 31, 31))))))
         );
         pBookingIndholdLayout.setVerticalGroup(
             pBookingIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pBookingIndholdLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pBookingIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblHentReservation)
-                    .addComponent(lblReservationer)
-                    .addComponent(lblListeAfBilerBooking))
+                    .addComponent(lblYourReservation)
+                    .addComponent(lblReservations)
+                    .addComponent(lblListofCars))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pBookingIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(pBookingIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(spListeAfBiler, 0, 0, Short.MAX_VALUE)
+                    .addComponent(spReservationer, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
                     .addGroup(pBookingIndholdLayout.createSequentialGroup()
-                        .addComponent(cbHentReservationer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbYourReservations, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(lblKlient)
+                        .addComponent(lblClient)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbKlient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(lblAvailableCars)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbAvailableCars, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(lblStartDato)
+                        .addComponent(lbldateReservation)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(spReservationer, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
-                    .addComponent(spListeAfBiler, 0, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addComponent(jDateChooserReservation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblDateUsage)))
+                .addGap(40, 40, 40)
                 .addGroup(pBookingIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSletBooking)
                     .addComponent(btnOpdaterBooking)
@@ -370,7 +405,7 @@ public class GUIcar extends javax.swing.JPanel {
             pCarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pCarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tpCar, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
+                .addComponent(tpCar, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pCarLayout.setVerticalGroup(
@@ -388,21 +423,137 @@ public class GUIcar extends javax.swing.JPanel {
             .addGap(0, 674, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(pCar, javax.swing.GroupLayout.PREFERRED_SIZE, 674, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 0, 0)
+                    .addComponent(pCar, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
+                    .addGap(0, 0, 0)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 538, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(pCar, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 0, 0)
+                    .addComponent(pCar, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
+                    .addGap(0, 0, 0)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * 
+     */
+//    public void resetAllEmpoyeeManagement()
+//    {
+//        CtrClient ctrClient = new CtrClient();
+//        ArrayList<Client> clientList = ctrClient.getAllClients();
+//        cmbClient.removeAllItems();
+//        cmbClient.insertItemAt("", 0);
+//
+//        for (Client c : clientList)
+//        {
+//            cmbClient.addItem(c);
+//        }//end for
+//
+//        cmbClient.removeItemAt(0);
+//        JTextField[] txtFieldList = { txtClientAddress, txtClientUserName, txtClientFirstName,
+//            txtClientSsn, txtClientMiddleName, txtClientLastName, txtClientAddress,
+//            txtClientZipCode, txtClientCity, txtClientPhoneNo, txtClientEmail};
+//
+//        JTextArea[] txtAreaList = { txtClientDescription, txtClientInterests, txtClientHealth,};
+//
+//        JCheckBox[] checkBoxList = { cbClientInUse };
+//
+//        resetTextFields(txtFieldList);
+//        resetTextAreas(txtAreaList);
+//        resetCheckBoxes(checkBoxList);
+//
+//        System.out.println(loggedInEmployee.getCrudEmployee());
+//        addEmployeesClients();
+//    }
+
+    /**
+     *
+     * @param textFields all textfields
+     */
+    public void resetTextFields(JTextField[] textFields)
+    {
+        for (JTextField txtField : textFields)
+        {
+            txtField.setText("");
+        }//end for
+    }
+
+    /**
+     *
+     * @param textAreaList all textAreaList
+     */
+    public void resetTextAreas(JTextArea[] textAreaList)
+    {
+        for (JTextArea txtArea : textAreaList)
+        {
+            txtArea.setText("");
+        }//end for
+    }
+
+    /**
+     *
+     * @param cbList all Checkboxes
+     */
+    public void resetCheckBoxes(JCheckBox[] cbList)
+    {
+        for (JCheckBox cb : cbList)
+        {
+            cb.setSelected(false);
+        }//end for
+    }
+
+    /**
+     *
+     */
+//    public void resetTabs()
+//    {
+//        int index = 1; //Vi ønsker ikke at fjerne fanebladet "Håndtering" ergo er index altså 1
+//        while (index < tpKlient.getTabCount())
+//        {
+//            tpKlient.remove(index);
+//        }//end while
+//    }
+
+    /**
+     *
+     * @param emp an object of employee
+     */
+    public void setEmployee(Employee emp)
+    {
+        loggedInEmployee = emp;
+    }
+
+    /**
+     *
+     */
+//    public void addEmployeesClients()
+//    {
+//        resetTabs();
+//        CtrEmp ctrEmp = new CtrEmp();
+//        int employeeID = loggedInEmployee.getEmployeeID();
+//        ArrayList<Client> clientList = ctrEmp.findEmployeesClient(employeeID);
+//        for (Client c : clientList)
+//        {
+//            GUIClientNewTab guiClientNewTab = new GUIClientNewTab();
+//            tpKlient.addTab(c.getFirstName() + c.getLastName(), guiClientNewTab);
+//            guiClientNewTab.setClient(c);
+//            guiClientNewTab.setupClientInformation();
+//            guiClientNewTab.setLoggedInEmployee(loggedInEmployee);
+//        }//end for
+//    }
+
+    /**
+     *
+     * @return the employee who is logged in
+     */
+    public Employee getLoggedInEmployee()
+    {
+        return loggedInEmployee;
+    }
     
     private void cmbbilerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbilerActionPerformed
         // TODO add your handling code here:
@@ -435,25 +586,16 @@ public class GUIcar extends javax.swing.JPanel {
     private void cmbbilerItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbbilerItemStateChanged
         // TODO add your handling code here:
         Car c = (Car) cmbbiler.getSelectedItem();
-        if (c != null) {
+        if (c != null)
+        {
             txtregno.setText(c.getRegNo());
             txtdescription.setText(c.getDescription());
-        } else {
+        }//end if
+        else
+        {
             System.out.println("No cars to select from");
-        }
-    }
-
-    public void resetTextFields(JTextField[] textFields) {
-        for (JTextField txtField : textFields) {
-            txtField.setText("");
-        }
-    }
-
-    public void resetTextAreas(JTextArea[] textAreaList) {
-        for (JTextArea txtArea : textAreaList) {
-            txtArea.setText("");
-        }
-    
+        }//end else
+        
     }//GEN-LAST:event_cmbbilerItemStateChanged
 
     private void btnopdaterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnopdaterActionPerformed
@@ -462,11 +604,14 @@ public class GUIcar extends javax.swing.JPanel {
         String description = txtdescription.getText();
         String regno = txtregno.getText();
         CtrCar ctrCar = new CtrCar();
-        try {
+        try
+        {
             ctrCar.updateCar(regno, description);
-        } catch (Exception c) {
+        }//end try
+        catch (Exception c)
+        {
             JOptionPane.showMessageDialog(this, c.getMessage());
-        }
+        }//end catch
     }//GEN-LAST:event_btnopdaterActionPerformed
 
     private void btnSletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSletActionPerformed
@@ -488,15 +633,17 @@ public class GUIcar extends javax.swing.JPanel {
         String regno = txtregno.getText();
         String description = txtdescription.getText();
         CtrCar ctrCar = new CtrCar();
-        try {
+        try
+        {
             ctrCar.insertCar(regno, description);
             Car car = ctrCar.findCarByRegNo(regno);
             cmbbiler.addItem(car);
-        } catch (Exception c) {
+        }//end try
+        catch (Exception c)
+        {
             JOptionPane.showMessageDialog(this, c.getMessage());
-        }
+        }//end catch
     }//GEN-LAST:event_btnOpretActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LBLbeskrivelse;
@@ -508,18 +655,19 @@ public class GUIcar extends javax.swing.JPanel {
     private javax.swing.JButton btnSletBooking;
     private javax.swing.JButton btnopdater;
     private javax.swing.JComboBox cbAvailableCars;
-    private javax.swing.JComboBox cbHentReservationer;
-    private javax.swing.JComboBox cbKlient;
+    private javax.swing.JComboBox cbYourReservations;
+    private javax.swing.JComboBox cmbClient;
     private javax.swing.JComboBox cmbbiler;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooserReservation;
     private javax.swing.JLabel lblAvailableCars;
+    private javax.swing.JLabel lblClient;
+    private javax.swing.JLabel lblDateUsage;
     private javax.swing.JLabel lblHentBil;
-    private javax.swing.JLabel lblHentReservation;
-    private javax.swing.JLabel lblKlient;
     private javax.swing.JLabel lblListeAfBiler;
-    private javax.swing.JLabel lblListeAfBilerBooking;
-    private javax.swing.JLabel lblReservationer;
-    private javax.swing.JLabel lblStartDato;
+    private javax.swing.JLabel lblListofCars;
+    private javax.swing.JLabel lblReservations;
+    private javax.swing.JLabel lblYourReservation;
+    private javax.swing.JLabel lbldateReservation;
     private javax.swing.JPanel pBooking;
     private javax.swing.JPanel pBookingIndhold;
     private javax.swing.JPanel pCar;
@@ -530,11 +678,11 @@ public class GUIcar extends javax.swing.JPanel {
     private javax.swing.JScrollPane spListeAfBiler;
     private javax.swing.JScrollPane spReservationer;
     private javax.swing.JTable tblBiler;
-    private javax.swing.JTable tblListeAfBilerBooking;
-    private javax.swing.JTable tblReservationer;
+    private javax.swing.JTable tblListofCars;
+    private javax.swing.JTable tblReservations;
     private javax.swing.JTabbedPane tpCar;
     private javax.swing.JTextArea txtdescription;
     private javax.swing.JTextField txtregno;
     // End of variables declaration//GEN-END:variables
-
+    private Employee loggedInEmployee;
 }

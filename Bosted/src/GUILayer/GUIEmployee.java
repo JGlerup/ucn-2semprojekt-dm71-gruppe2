@@ -42,6 +42,26 @@ public class GUIEmployee extends javax.swing.JPanel {
         this.loggedInEmployee = loggedInEmployee;
     }
 
+    public void disableEmployeeManagement() {
+        try {
+
+            tPEmployee.removeAll();
+            tPEmployee.addTab("Medarbejderer", jPanel3);
+        } catch (Exception e) {
+        }
+    }
+
+    public void enableEmployeeMangement() {
+        try {
+            tPEmployee.removeAll();
+            tPEmployee.addTab("Håndtering", null, jPanel1, "Her opretter, opdateres og slettes");
+            tPEmployee.addTab("Medarbejderer", jPanel3);
+            tPEmployee.addTab("Medarbejdernes klienter", gUIClientAssociateEmployee1);
+
+        } catch (Exception e) {
+        }
+    }
+
     public void populateCmbEmployee() {
         CtrEmp ctrEmp = new CtrEmp();
         ArrayList<Employee> employeeList = ctrEmp.getAllEmployee();

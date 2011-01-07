@@ -370,6 +370,21 @@ public class GUIclient extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void disableClientManagement() {
+        try {
+            tpKlient.removeAll();
+        } catch (Exception e) {
+        }
+    }
+
+    public void enableClientMangement() {
+        try {
+            tpKlient.removeAll();
+            tpKlient.addTab("Håndtering", null, pHåndteringKlient, "Her opretter, opdateres og slettes");
+        } catch (Exception e) {
+        }
+    }
+
     public void resetAllGuiElements() {
         CtrClient ctrClient = new CtrClient();
         ArrayList<Client> clientList = ctrClient.getAllClients();

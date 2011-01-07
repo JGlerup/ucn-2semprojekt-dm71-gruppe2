@@ -300,6 +300,27 @@ public class GUIMain extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void userPermissions() {
+        if (loggedInEmployee.getCrudClient().equals("No")) {
+            gUIclient1.disableClientManagement();
+        } else {
+            if (loggedInEmployee.getCrudClient().equals("Yes")) {
+                gUIclient1.enableClientMangement();
+            }
+        }
+        if (loggedInEmployee.getCrudEmployee().equals("No")) {
+            gUIemployee1.disableEmployeeManagement();
+        } else {
+            if (loggedInEmployee.getCrudEmployee().equals("Yes")) {
+                gUIemployee1.enableEmployeeMangement();
+            }
+        }
+//        if (loggedInEmployee.getCrudCar().equals("No")) {
+//        }
+//        if (loggedInEmployee.getCrudMedicine().equals("No")) {
+//        }
+    }
+
     private void txtIndtastHjælpFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIndtastHjælpFocusGained
         // TODO add your handling code here:
         txtIndtastHjælp.setText("");
@@ -318,13 +339,14 @@ public class GUIMain extends javax.swing.JFrame {
         if (user.equals(empUser) && pass.equals(empPassword) && empInUse.equals("Yes")) {
             for (int i = 1; i < tpGUI.getTabCount(); i++) {
                 tpGUI.setEnabledAt(i, true);
-                
+
             }
             JOptionPane.showMessageDialog(pLogin, "Du er nu logget ind");
             loggedInEmployee = emp;
             gUIclient1.setEmployee(loggedInEmployee);
             gUITodo1.setLoggedInEmployee(loggedInEmployee);
             gUIemployee1.setLoggedInEmployee(loggedInEmployee);
+            userPermissions();
         } else {
             JOptionPane.showMessageDialog(pLogin, "Du har indtastet brugernavnet eller passwordet forkert");
         }
@@ -350,10 +372,9 @@ public class GUIMain extends javax.swing.JFrame {
         String s = txtaHjælp.getText();
         String searchstr = txtIndtastHjælp.getText();
         int index = s.indexOf(searchstr);
-        if ( index != -1)
-        {
-        txtaHjælp.setSelectionStart(index);
-        txtaHjælp.setSelectionEnd(index + searchstr.length());
+        if (index != -1) {
+            txtaHjælp.setSelectionStart(index);
+            txtaHjælp.setSelectionEnd(index + searchstr.length());
         }
 
     }//GEN-LAST:event_btnSøgActionPerformed
@@ -361,17 +382,17 @@ public class GUIMain extends javax.swing.JFrame {
     private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
         // TODO add your handling code here:
         int key = evt.getKeyCode();
-           if (key == KeyEvent.VK_ENTER) {
-               btnLogin.doClick();
-              }
+        if (key == KeyEvent.VK_ENTER) {
+            btnLogin.doClick();
+        }
     }//GEN-LAST:event_txtPasswordKeyPressed
 
     private void txtBrugernavnKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBrugernavnKeyPressed
         // TODO add your handling code here:
         int key = evt.getKeyCode();
-           if (key == KeyEvent.VK_ENTER) {
-               btnLogin.doClick();
-              }
+        if (key == KeyEvent.VK_ENTER) {
+            btnLogin.doClick();
+        }
     }//GEN-LAST:event_txtBrugernavnKeyPressed
 
     /**

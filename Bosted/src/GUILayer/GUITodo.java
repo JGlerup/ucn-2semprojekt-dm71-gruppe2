@@ -289,14 +289,21 @@ public class GUITodo extends javax.swing.JPanel {
 
     private void btnCreateTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateTodoActionPerformed
         // TODO add your handling code here:
-
         CtrTodo ctrTodo = new CtrTodo();
         String text = txtACreateTodo.getText();
         int employeeID = loggedInEmployee.getEmployeeID();
         
         try {
+            if(!date.equals("")) {
             ctrTodo.insertTodo(employeeID, date, text);
+            txtATodo.setText("");
+            txtACreateTodo.setText("");
             updateCmbSelectDate();
+            JOptionPane.showMessageDialog(this, "Der blev oprettet en todo");
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Vælg venligst en dato");
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -323,6 +330,8 @@ public class GUITodo extends javax.swing.JPanel {
         String todoDate = tObj.getDate();
         String text = txtATodo.getText();
         ctrTodo.updateTodo(todoID, employeeID, todoDate, text);
+        tObj.setText(text);
+        JOptionPane.showMessageDialog(this, "Todo med datoen " + tObj.getDate() + " blev opdateret");
         }
         catch(Exception e) {
             System.out.println(e.getMessage());
@@ -332,7 +341,9 @@ public class GUITodo extends javax.swing.JPanel {
 
     private void txtACreateTodoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtACreateTodoFocusGained
         // TODO add your handling code here:
-        txtACreateTodo.setText("");
+        if(txtACreateTodo.getText().equals("Skriv her")) {
+            txtACreateTodo.setText("");
+        }
     }//GEN-LAST:event_txtACreateTodoFocusGained
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

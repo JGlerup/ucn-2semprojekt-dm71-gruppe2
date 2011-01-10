@@ -4,7 +4,8 @@ package ModelLayer;
  * @author Gruppe 2 - DM71
  * December 2010
  */
-public class Reservation {
+public class Reservation
+{
 
     private int reservationID;
     private int carID;
@@ -29,6 +30,7 @@ public class Reservation {
         this.endDate = endDate;
         this.reservationDate = reservationDate;
     }
+
 
     public int getCarID()
     {

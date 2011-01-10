@@ -155,7 +155,7 @@ public class DBReservation implements IFDBReservation
                 Reservation rObj = new Reservation();
                 rObj = buildReservation(results);
                 list.add(rObj);
-                //missing tes on retriveAssociation
+                //missing the test on retriveAssociation
             }//end while
             stmt.close();
         }//end try

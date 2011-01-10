@@ -27,14 +27,14 @@ public class CtrReservation
      */
     public Reservation findReservation(int carID, String startDate) throws NullValueException
     {
-        if(carID > 0 && !startDate.trim().equals(""))
+        if(carID != 0 && !startDate.trim().equals(""))
         {
             IFDBReservation dbReservation = new DBReservation();
             return dbReservation.findReservation(carID, startDate, true);
         }//end if
         else
         {
-            throw new NullValueException("Reservationen findes ikke");
+            throw new NullValueException("Reservationen findes ikke,\nda der mangler oplysninger.\nPrøv igen.");
         }//end else
 
     }
@@ -45,9 +45,17 @@ public class CtrReservation
      */
     public ArrayList<Reservation> getAllreservation()
     {
-        IFDBReservation dbReservation = new DBReservation();
         ArrayList allReservation = new ArrayList<Reservation>();
-        allReservation = dbReservation.getAllReservations(false);
+        try
+        {
+            IFDBReservation dbReservation = new DBReservation();
+            allReservation = dbReservation.getAllReservations(false);
+            return allReservation;
+        }//end try
+        catch(Exception e)
+        {
+            System.out.println("Query exception - select reservation : " + e);
+        }//end catch
         return allReservation;
     }
 
@@ -58,9 +66,9 @@ public class CtrReservation
      * @param clientID the id of client
      * @param date
      */
-    public void insertReservation(int carID, int employeeID, int clientID, String date)
+    public void insertReservation(int carID, int employeeID, int clientID, String date)throws NullValueException
     {
-        if(carID > 0 && employeeID > 0 )
+        if(carID != 0 && employeeID != 0 && clientID != 0 && !date.trim().equals(""))
         {
             IFDBReservation dbreservation = new DBReservation();
             Reservation cObj = new Reservation();
@@ -72,18 +80,18 @@ public class CtrReservation
 	    cObj.setThisReservationDate();
             dbreservation.insertReservation(cObj);
         }//end try
-        catch (Exception ex)
+        else
         {
-            System.out.println("Insert exception in reservation db: " + ex);
+            throw new NullValueException("Reservationen kan ikke gemmes,\nda der mangler oplysninger.\nPrøv igen.");
         }//end catch
             
     }
 
     public void updateReservation(int reservationID, int carID, int employeeID, int clientID, String startDate, String endDate, String reservationDate)
     {
-
-        {
+        
             IFDBReservation dbreservation = new DBReservation();
+
             Reservation cObj = new Reservation();
             cObj.setReservationID(reservationID);
 	    cObj.setCarID(carID);
@@ -93,7 +101,7 @@ public class CtrReservation
 	    cObj.setEndDate(endDate);
 	    cObj.setReservationDate(reservationDate);
             dbreservation.updateReservation(cObj);
-        }
+        
     }
 
     public void deleteReservation(int reservationID)

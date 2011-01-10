@@ -16,11 +16,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="674" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="697" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-                  <Component id="pCar" pref="674" max="32767" attributes="0"/>
+                  <Component id="pCar" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -28,11 +28,11 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="538" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="556" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-                  <Component id="pCar" pref="538" max="32767" attributes="0"/>
+                  <Component id="pCar" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -52,7 +52,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="tpCar" pref="654" max="32767" attributes="0"/>
+                  <Component id="tpCar" pref="677" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -61,7 +61,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="tpCar" pref="516" max="32767" attributes="0"/>
+                  <Component id="tpCar" pref="534" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -133,7 +133,7 @@
                                       <EmptySpace min="-2" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="lblListeAfBiler" min="-2" max="-2" attributes="0"/>
-                                          <Component id="spBiler" pref="379" max="32767" attributes="0"/>
+                                          <Component id="spBiler" pref="402" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
@@ -159,7 +159,7 @@
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="spBiler" pref="329" max="32767" attributes="0"/>
+                                      <Component id="spBiler" pref="347" max="32767" attributes="0"/>
                                       <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="btnSlet" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -345,32 +345,27 @@
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jDateChooserReservation" alignment="1" pref="114" max="32767" attributes="1"/>
-                                          <Component id="cmbClient" alignment="1" pref="114" max="32767" attributes="1"/>
+                                          <Component id="jDateChooserReservation" alignment="1" pref="123" max="32767" attributes="1"/>
+                                          <Component id="cmbClient" alignment="1" pref="123" max="32767" attributes="1"/>
                                           <Component id="lblYourReservation" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="cbYourReservations" alignment="0" pref="114" max="32767" attributes="1"/>
+                                          <Component id="cmbYourReservations" alignment="0" pref="123" max="32767" attributes="1"/>
                                           <Component id="lblClient" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="lblAvailableCars" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="cbAvailableCars" alignment="0" pref="114" max="32767" attributes="0"/>
+                                          <Component id="cbAvailableCars" alignment="0" pref="123" max="32767" attributes="0"/>
                                           <Component id="lbldateReservation" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="lblDateUsage" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="lblReservations" min="-2" max="-2" attributes="0"/>
-                                          <Component id="spReservationer" pref="222" max="32767" attributes="0"/>
+                                          <Component id="spReservationer" pref="237" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="lblListofCars" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace pref="197" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="spListeAfBiler" pref="224" max="32767" attributes="0"/>
-                                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                          </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblListofCars" min="-2" max="-2" attributes="0"/>
+                                          <Component id="spListeAfBiler" pref="238" max="32767" attributes="0"/>
                                       </Group>
+                                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -387,10 +382,10 @@
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="spListeAfBiler" min="0" pref="0" max="32767" attributes="2"/>
-                                  <Component id="spReservationer" pref="357" max="32767" attributes="2"/>
+                                  <Component id="spListeAfBiler" pref="375" max="32767" attributes="2"/>
+                                  <Component id="spReservationer" pref="375" max="32767" attributes="2"/>
                                   <Group type="102" attributes="0">
-                                      <Component id="cbYourReservations" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cmbYourReservations" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                                       <Component id="lblClient" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -449,7 +444,7 @@
                         <Component class="javax.swing.JTable" name="tblReservations">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="4" rowCount="4">
+                              <Table columnCount="4" rowCount="11">
                                 <Column editable="false" title="Dato" type="java.lang.String"/>
                                 <Column editable="false" title="Medarbejder" type="java.lang.Object"/>
                                 <Column editable="false" title="Klient" type="java.lang.Object"/>
@@ -458,22 +453,22 @@
                             </Property>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                               <TableColumnModel selectionModel="2">
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>
                                 </Column>
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>
                                 </Column>
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>
                                 </Column>
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>
@@ -513,18 +508,39 @@
                         <Component class="javax.swing.JTable" name="tblListofCars">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="4" rowCount="4">
-                                <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                              <Table columnCount="3" rowCount="11">
+                                <Column editable="false" title="Beskrivelse" type="java.lang.String"/>
+                                <Column editable="false" title="Registreringsnummer" type="java.lang.String"/>
+                                <Column editable="false" title="Ledig i dag" type="java.lang.String"/>
                               </Table>
+                            </Property>
+                            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                              <TableColumnModel selectionModel="0">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                              </TableColumnModel>
+                            </Property>
+                            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                             </Property>
                           </Properties>
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JComboBox" name="cbYourReservations">
+                    <Component class="javax.swing.JComboBox" name="cmbYourReservations">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="4">
@@ -535,6 +551,10 @@
                           </StringArray>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbYourReservationsActionPerformed"/>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tpReservationsFocusGained"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblClient">
                       <Properties>
@@ -556,7 +576,6 @@
                     <Component class="com.toedter.calendar.JDateChooser" name="jDateChooserReservation">
                       <Properties>
                         <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
-                        <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblAvailableCars">

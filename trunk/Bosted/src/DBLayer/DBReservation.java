@@ -20,9 +20,21 @@ public class DBReservation implements IFDBReservation
         return rObj;
     }
 
+    public Reservation findReservationByID(int reservationID, boolean retrieveAssociation)
+    {
+        Reservation rObj = new Reservation();
+        rObj = singleWhere("reservation_id = " + reservationID, false);
+        return rObj;
+    }
+
     public ArrayList<Reservation> getAllReservationsByDate(String date, boolean retriveAssociation)
     {
         return miscWhere("date = '" + date + "'", retriveAssociation);
+    }
+
+    public ArrayList<Reservation> getAllReservationsByEmployee(int employeeID, boolean retriveAssociation)
+    {
+        return miscWhere("employee_id = " + employeeID, retriveAssociation);
     }
 
     public ArrayList<Reservation> getAllReservations(boolean retriveAssociation)
@@ -148,8 +160,6 @@ public class DBReservation implements IFDBReservation
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             results = stmt.executeQuery(query);
-
-            int snr = 0;
             while (results.next())
             {
                 Reservation rObj = new Reservation();

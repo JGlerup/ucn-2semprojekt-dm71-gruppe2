@@ -24,6 +24,17 @@ public class CtrClient {
         return dbCli.findClient(clientNo, true);
     }
 
+    /**
+     *
+     * @param clientID the clientID
+     * @return an object of Client
+     */
+    public Client findClientByID(int clientID)
+    {
+        IFDBClient dbCli = new DBClient();
+        return dbCli.findClientByID(clientID, true);
+    }
+
     public ArrayList getAllClients() {
         IFDBClient dbCli = new DBClient();
         ArrayList allCli = new ArrayList<Client>();

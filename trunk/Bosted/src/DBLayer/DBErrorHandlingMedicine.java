@@ -13,7 +13,9 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
 
     private Connection con;
 
-    /** Creates a new instance of DBErrorHandlingMedicine */
+    /** 
+     * Creates a new instance of DBErrorHandlingMedicine
+     */
     public DBErrorHandlingMedicine()
     {
         con = DbConnection1.getInstance().getDBcon();

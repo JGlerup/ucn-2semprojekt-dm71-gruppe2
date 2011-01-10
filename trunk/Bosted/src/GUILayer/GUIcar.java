@@ -69,6 +69,28 @@ public class GUIcar extends javax.swing.JPanel
         cmbClient.removeItem("Vælg her");
     }
 
+    /**
+     * 
+     * @param clientID the client id
+     * @return the full name of the client
+     */
+    public String findClientName(int clientID)
+    {
+        String fullName = null;
+        Client c = new Client();
+        CtrClient ctrC = new CtrClient();
+        c = ctrC.findClientByID(clientID);
+        if(c.getMiddleName().equals(""))
+        {
+            fullName = c.getFirstName() + " " + c.getLastName();
+        }//end if
+        else
+        {
+            fullName = c.getFirstName() + " " + c.getMiddleName() + " " + c.getLastName();
+        }
+        return fullName;
+    }
+
 
     /**
      *
@@ -318,7 +340,7 @@ public class GUIcar extends javax.swing.JPanel
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pHåndteringIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblListeAfBiler)
-                            .addComponent(spBiler, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)))
+                            .addComponent(spBiler, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pHåndteringIndholdLayout.createSequentialGroup()
                         .addComponent(btnOpret, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -337,7 +359,7 @@ public class GUIcar extends javax.swing.JPanel
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pHåndteringIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pHåndteringIndholdLayout.createSequentialGroup()
-                        .addComponent(spBiler, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+                        .addComponent(spBiler, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
                         .addGap(68, 68, 68)
                         .addGroup(pHåndteringIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSlet)
@@ -464,14 +486,9 @@ public class GUIcar extends javax.swing.JPanel
         spListeAfBiler.setViewportView(tblListofCars);
 
         cmbYourReservations.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbYourReservations.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbYourReservationsActionPerformed(evt);
-            }
-        });
-        cmbYourReservations.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                tpReservationsFocusGained(evt);
+        cmbYourReservations.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbYourReservationItemStateChanged(evt);
             }
         });
 
@@ -503,23 +520,23 @@ public class GUIcar extends javax.swing.JPanel
                         .addContainerGap())
                     .addGroup(pBookingIndholdLayout.createSequentialGroup()
                         .addGroup(pBookingIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jDateChooserReservation, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
-                            .addComponent(cmbClient, javax.swing.GroupLayout.Alignment.TRAILING, 0, 114, Short.MAX_VALUE)
+                            .addComponent(jDateChooserReservation, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                            .addComponent(cmbClient, javax.swing.GroupLayout.Alignment.TRAILING, 0, 123, Short.MAX_VALUE)
                             .addComponent(lblYourReservation)
-                            .addComponent(cmbYourReservations, 0, 114, Short.MAX_VALUE)
+                            .addComponent(cmbYourReservations, 0, 123, Short.MAX_VALUE)
                             .addComponent(lblClient)
                             .addComponent(lblAvailableCars)
-                            .addComponent(cbAvailableCars, 0, 114, Short.MAX_VALUE)
+                            .addComponent(cbAvailableCars, 0, 123, Short.MAX_VALUE)
                             .addComponent(lbldateReservation)
                             .addComponent(lblDateUsage))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pBookingIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblReservations)
-                            .addComponent(spReservationer, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
+                            .addComponent(spReservationer, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(pBookingIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblListofCars)
-                            .addComponent(spListeAfBiler, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE))
+                            .addComponent(spListeAfBiler, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE))
                         .addGap(16, 16, 16))))
         );
         pBookingIndholdLayout.setVerticalGroup(
@@ -532,8 +549,8 @@ public class GUIcar extends javax.swing.JPanel
                     .addComponent(lblListofCars))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pBookingIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spListeAfBiler, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
-                    .addComponent(spReservationer, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+                    .addComponent(spListeAfBiler, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
+                    .addComponent(spReservationer, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
                     .addGroup(pBookingIndholdLayout.createSequentialGroup()
                         .addComponent(cmbYourReservations, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -583,14 +600,14 @@ public class GUIcar extends javax.swing.JPanel
             pCarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pCarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tpCar, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
+                .addComponent(tpCar, javax.swing.GroupLayout.DEFAULT_SIZE, 677, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pCarLayout.setVerticalGroup(
             pCarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pCarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tpCar, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
+                .addComponent(tpCar, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -598,20 +615,20 @@ public class GUIcar extends javax.swing.JPanel
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 674, Short.MAX_VALUE)
+            .addGap(0, 697, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, 0)
-                    .addComponent(pCar, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
+                    .addComponent(pCar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGap(0, 0, 0)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 538, Short.MAX_VALUE)
+            .addGap(0, 556, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, 0)
-                    .addComponent(pCar, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
+                    .addComponent(pCar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGap(0, 0, 0)))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -709,14 +726,68 @@ public class GUIcar extends javax.swing.JPanel
         }//end catch
     }//GEN-LAST:event_btnOpretActionPerformed
 
-    private void cmbYourReservationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbYourReservationsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbYourReservationsActionPerformed
-
-    private void tpReservationsFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tpReservationsFocusGained
-        populateCmbYourReservations();
-
-    }//GEN-LAST:event_tpReservationsFocusGained
+    private void cmbYourReservationItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbYourReservationItemStateChanged
+        if (cmbYourReservations.getSelectedItem() != "")
+        {
+            Reservation r = (Reservation) cmbYourReservations.getSelectedItem();
+            if (r != null)
+            {
+//                String clientNo = c.getClientNo();
+//                String address = c.getAddress();
+//                String description = c.getDescription();
+//                String interests = c.getInterests();
+//                String health = c.getHealth();
+//                String firstName = c.getFirstName();
+//                String middleName = c.getMiddleName();
+//                String lastName = c.getLastName();
+//                String phoneNo = Integer.toString(c.getPhoneNo());
+//                String email = c.getEmail();
+//                String ssn = c.getSsn();
+//                String inUse = c.getInUse();
+//                String zipCode = null;
+//                String city = null;
+//                int locationID = c.getLocationID();
+//
+//                CtrLoca ctrLoca = new CtrLoca();
+//                try {
+//                    Location l = ctrLoca.findLocation(locationID);
+//                    zipCode = Integer.toString(l.getZipCode());
+//                    city = l.getCity();
+//                } catch (Exception e) {
+//                    JOptionPane.showMessageDialog(this, e.getMessage());
+//                }
+//
+//                txtClientAddress.setText(address);
+//                txtClientUserName.setText(clientNo);
+//                txtClientFirstName.setText(firstName);
+//                txtClientDescription.setText(description);
+//                txtClientInterests.setText(interests);
+//                txtClientHealth.setText(health);
+//                txtClientSsn.setText(ssn);
+//                txtClientMiddleName.setText(middleName);
+//                txtClientLastName.setText(lastName);
+//                txtClientAddress.setText(address);
+//                txtClientZipCode.setText(zipCode);
+//                txtClientCity.setText(city);
+//                txtClientPhoneNo.setText(phoneNo);
+//                txtClientEmail.setText(email);
+//
+//                if (cbClientInUse.equals("Yes")) {
+//                    cbClientInUse.setSelected(true);
+//                } else {
+//                    cbClientInUse.setSelected(false);
+//                }
+            }//end if
+            else
+            {
+                System.out.println("No clients to select from");
+            }//end else
+        }//end if
+        else
+        {
+            cmbClient.removeItemAt(0);
+        }//end else
+    }//GEN-LAST:event_cmbYourReservationItemStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LBLbeskrivelse;

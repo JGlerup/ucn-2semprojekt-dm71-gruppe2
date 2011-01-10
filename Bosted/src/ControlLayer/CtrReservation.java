@@ -5,6 +5,7 @@ import DBLayer.DBReservation;
 import DBLayer.IFDBReservation;
 import ExceptionsPack.NullValueException;
 import ModelLayer.Reservation;
+import ModelLayer.ToDaysDate;
 import java.util.ArrayList;
 
 
@@ -36,7 +37,6 @@ public class CtrReservation
         {
             throw new NullValueException("Reservationen findes ikke,\nda der mangler oplysninger.\nPrøv igen.");
         }//end else
-
     }
 
     /**
@@ -45,18 +45,169 @@ public class CtrReservation
      */
     public ArrayList<Reservation> getAllreservation()
     {
-        ArrayList allReservation = new ArrayList<Reservation>();
+        ArrayList<Reservation> allReservation = new ArrayList<Reservation>();
         try
         {
             IFDBReservation dbReservation = new DBReservation();
             allReservation = dbReservation.getAllReservations(false);
-            return allReservation;
         }//end try
         catch(Exception e)
         {
             System.out.println("Query exception - select reservation : " + e);
         }//end catch
         return allReservation;
+    }
+
+    /**
+     *
+     * @return list of all reservations from this day forward
+     */
+    public ArrayList<Reservation> getAllreservationsFromThisDate()
+    {
+        ArrayList<Reservation> allReservation = new ArrayList<Reservation>();
+        ArrayList<Reservation> allReservationsFromThisDate = new ArrayList<Reservation>();
+        try
+        {
+            IFDBReservation dbReservation = new DBReservation();
+            allReservation = dbReservation.getAllReservations(false);
+        }//end try
+        catch(Exception e)
+        {
+            System.out.println("Query exception - select reservation : " + e);
+        }//end catch
+
+        String toDaysDate = findToDaysDate();
+        int year = setYearToInt(toDaysDate);
+        int month = setMonthToInt(toDaysDate);
+        int date = setDateToInt(toDaysDate);
+
+        if(!allReservation.isEmpty())
+        {
+            for(Reservation res : allReservation)
+            {
+                if(setYearToInt(res.getStartDate()) >= year)
+                {
+                    if(setMonthToInt(res.getStartDate()) >= month)
+                    {
+                        if(setDateToInt(res.getStartDate()) >= date)
+                        {
+                            allReservationsFromThisDate.add(res);
+                        }//end if
+                    }//end if
+                }//end if
+            }//end for
+        }//en if
+        return allReservationsFromThisDate;
+    }
+
+   /**
+    *  
+    * @param date a date
+    * @return list of all reservations on a specific date
+    */
+    public ArrayList<Reservation> getAllReservationsByDate(String date)
+    {
+        ArrayList<Reservation> allReservation = new ArrayList<Reservation>();
+        try
+        {
+            IFDBReservation dbReservation = new DBReservation();
+            allReservation = dbReservation.getAllReservationsByDate(date, false);
+        }//end try
+        catch(Exception e)
+        {
+            System.out.println("Query exception - select reservation : " + e);
+        }//end catch
+        return allReservation;
+    }
+
+   /**
+    *
+    * @param employeeID the employeeID of the employee logged in
+    * @return list of all reservations for the employee logged in from this day forward
+    */
+    public ArrayList<Reservation> getAllReservationsByEmployee(int employeeID)
+    {
+        ArrayList<Reservation> allReservation = new ArrayList<Reservation>();
+        ArrayList<Reservation> allReservationsEmployee = new ArrayList<Reservation>();
+        try
+        {
+            IFDBReservation dbReservation = new DBReservation();
+            allReservation = dbReservation.getAllReservationsByEmployee(employeeID, false);
+        }//end try
+        catch(Exception e)
+        {
+            System.out.println("Query exception - select reservation : " + e);
+        }//end catch
+
+        String toDaysDate = findToDaysDate();
+        int year = setYearToInt(toDaysDate);
+        int month = setMonthToInt(toDaysDate);
+        int date = setDateToInt(toDaysDate);
+
+        if(!allReservation.isEmpty())
+        {
+            for(Reservation res : allReservation)
+            {
+                if(setYearToInt(res.getStartDate()) >= year)
+                {
+                    if(setMonthToInt(res.getStartDate()) >= month)
+                    {
+                        if(setDateToInt(res.getStartDate()) >= date)
+                        {
+                            allReservationsEmployee.add(res);
+                        }//end if
+                    }//end if
+                }//end if
+            }//end for
+        }//en if
+        return allReservationsEmployee;
+    }
+
+    /**
+     *
+     * @return the date of today
+     */
+    public String findToDaysDate()
+    {
+        ToDaysDate tdd = new ToDaysDate();
+        String toDaysDate = tdd.toString();
+        return toDaysDate;
+    }
+
+    /**
+     *
+     * @param date a date
+     * @return year as an int
+     */
+    public int setYearToInt(String date)
+    {
+        String strYear = date.substring(0, 4);
+        int intYear = Integer.parseInt(strYear);
+        return intYear;
+    }
+
+    /**
+     *
+     * @param date a date
+     * @return month as an int
+     */
+    public int setMonthToInt(String date)
+    {
+        String strMonth = date.substring(5, 7);
+        int intMonth = Integer.parseInt(strMonth);
+        return intMonth;
+    }
+
+    /**
+     *
+     * @param date a date
+     * @return the date as an int
+     */
+    public int setDateToInt(String date)
+    {
+        String strDate = date.substring(8);
+        int intDate = Integer.parseInt(strDate);
+        return intDate;
     }
 
     /**

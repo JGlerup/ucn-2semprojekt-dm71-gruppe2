@@ -346,6 +346,7 @@ public class GUIMain extends javax.swing.JFrame {
             gUIclient1.setEmployee(loggedInEmployee);
             gUITodo1.setLoggedInEmployee(loggedInEmployee);
             gUIemployee1.setLoggedInEmployee(loggedInEmployee);
+            gUIcar1.setLoggedInEmployee(loggedInEmployee);
             userPermissions();
         } else {
             JOptionPane.showMessageDialog(pLogin, "Du har indtastet brugernavnet eller passwordet forkert");

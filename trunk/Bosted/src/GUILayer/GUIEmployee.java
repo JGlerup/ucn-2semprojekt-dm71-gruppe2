@@ -46,7 +46,7 @@ public class GUIEmployee extends javax.swing.JPanel {
         try {
 
             tPEmployee.removeAll();
-            tPEmployee.addTab("Medarbejderer", jPanel3);
+            tPEmployee.addTab("Medarbejderer", gUIGetEmployee1);
         } catch (Exception e) {
         }
     }
@@ -55,7 +55,7 @@ public class GUIEmployee extends javax.swing.JPanel {
         try {
             tPEmployee.removeAll();
             tPEmployee.addTab("Håndtering", null, jPanel1, "Her opretter, opdateres og slettes");
-            tPEmployee.addTab("Medarbejderer", jPanel3);
+            tPEmployee.addTab("Medarbejderer", gUIGetEmployee1);
             tPEmployee.addTab("Medarbejdernes klienter", gUIClientAssociateEmployee1);
 
         } catch (Exception e) {
@@ -93,35 +93,24 @@ public class GUIEmployee extends javax.swing.JPanel {
         populateCmbEmployee();
         JTextField[] txtFieldList = {
             txtEmployeeAddress,
-            txtEmployeeAddress1,
             txtEmployeeCity,
-            txtEmployeeCity1,
             txtEmployeeEmail,
-            txtEmployeeEmail1,
             txtEmployeeEmployeeNo,
-            txtEmployeeEmployeeNo1,
             txtEmployeeFirstName,
-            txtEmployeeFirstName1,
             txtEmployeeJobTitle,
-            txtEmployeeJobTitle1,
             txtEmployeeLastName,
-            txtEmployeeLastName1,
             txtEmployeeManagerNo,
-            txtEmployeeManagerNo1,
             txtEmployeeMiddleName,
-            txtEmployeeMiddleName1,
             txtEmployeePassword,
             txtEmployeePhoneNo,
-            txtEmployeePhoneNo1,
             txtEmployeeSsn,
-            txtEmployeeZipCode,
-            txtEmployeeZipCode1,};
+            txtEmployeeZipCode,};
         JCheckBox[] checkBoxList = {
             cbCrudCar,
             cbCrudClient,
             cbCrudEmployee,
             cbCrudMedicine,
-            cbInUse,};
+            cbInUse};
 
         resetTextFields(txtFieldList);
         resetCheckBoxes(checkBoxList);
@@ -193,32 +182,7 @@ public class GUIEmployee extends javax.swing.JPanel {
         lblUsername = new javax.swing.JLabel();
         txtEmployeeEmployeeNo = new javax.swing.JTextField();
         btnResetAll = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
-        jLabel18 = new javax.swing.JLabel();
-        txtEmployeeFirstName1 = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
-        txtEmployeeAddress1 = new javax.swing.JTextField();
-        jLabel21 = new javax.swing.JLabel();
-        txtEmployeeMiddleName1 = new javax.swing.JTextField();
-        jLabel22 = new javax.swing.JLabel();
-        txtEmployeeZipCode1 = new javax.swing.JTextField();
-        jLabel23 = new javax.swing.JLabel();
-        txtEmployeeLastName1 = new javax.swing.JTextField();
-        jLabel24 = new javax.swing.JLabel();
-        txtEmployeeCity1 = new javax.swing.JTextField();
-        jLabel25 = new javax.swing.JLabel();
-        txtEmployeeJobTitle1 = new javax.swing.JTextField();
-        jLabel26 = new javax.swing.JLabel();
-        txtEmployeeManagerNo1 = new javax.swing.JTextField();
-        jLabel27 = new javax.swing.JLabel();
-        txtEmployeeEmail1 = new javax.swing.JTextField();
-        jLabel20 = new javax.swing.JLabel();
-        txtEmployeeEmployeeNo1 = new javax.swing.JTextField();
-        jLabel29 = new javax.swing.JLabel();
-        txtEmployeePhoneNo1 = new javax.swing.JTextField();
+        gUIGetEmployee1 = new GUILayer.GUIGetEmployee();
         gUIClientAssociateEmployee1 = new GUILayer.GUIClientAssociateEmployee();
 
         tPEmployee.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -466,7 +430,7 @@ public class GUIEmployee extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -477,181 +441,7 @@ public class GUIEmployee extends javax.swing.JPanel {
         );
 
         tPEmployee.addTab("Håndtering", null, jPanel1, "Her opretter, opdateres og slettes");
-
-        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel17.setText("Hent medarbejder");
-
-        jComboBox2.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBox2ItemStateChanged(evt);
-            }
-        });
-
-        jLabel18.setText("Fornavn");
-
-        txtEmployeeFirstName1.setEditable(false);
-
-        jLabel19.setText("Adresse");
-
-        txtEmployeeAddress1.setEditable(false);
-
-        jLabel21.setText("Mellemnavn");
-
-        txtEmployeeMiddleName1.setEditable(false);
-
-        jLabel22.setText("Postnummer");
-
-        txtEmployeeZipCode1.setEditable(false);
-
-        jLabel23.setText("Efternavn");
-
-        txtEmployeeLastName1.setEditable(false);
-
-        jLabel24.setText("By");
-
-        txtEmployeeCity1.setEditable(false);
-
-        jLabel25.setText("Personnummer");
-
-        txtEmployeeJobTitle1.setEditable(false);
-
-        jLabel26.setText("Leder nummer");
-
-        txtEmployeeManagerNo1.setEditable(false);
-
-        jLabel27.setText("E-mail");
-
-        txtEmployeeEmail1.setEditable(false);
-
-        jLabel20.setText("Brugernavn");
-
-        txtEmployeeEmployeeNo1.setEditable(false);
-
-        jLabel29.setText("Telefonnummer");
-
-        txtEmployeePhoneNo1.setEditable(false);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel17)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtEmployeeAddress1, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                                    .addComponent(jLabel19))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEmployeeZipCode1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel22))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEmployeeCity1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel24))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEmployeeManagerNo1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel26))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEmployeeEmployeeNo1, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                                    .addComponent(jLabel20)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(txtEmployeeFirstName1, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel18))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEmployeeMiddleName1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel21))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEmployeeLastName1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel23))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEmployeeJobTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel25))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEmployeeEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel27))))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel29)
-                            .addComponent(txtEmployeePhoneNo1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(80, 80, 80))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(jLabel21)
-                    .addComponent(jLabel23)
-                    .addComponent(jLabel25)
-                    .addComponent(jLabel27)
-                    .addComponent(jLabel29))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEmployeeFirstName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmployeeMiddleName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmployeeLastName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmployeeJobTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmployeeEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmployeePhoneNo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel19)
-                            .addComponent(jLabel22)
-                            .addComponent(jLabel24)
-                            .addComponent(jLabel26))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtEmployeeAddress1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEmployeeZipCode1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEmployeeCity1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEmployeeManagerNo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtEmployeeEmployeeNo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(408, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        tPEmployee.addTab("Medarbejderer", jPanel3);
+        tPEmployee.addTab("Medarbejder", gUIGetEmployee1);
         tPEmployee.addTab("Medarbejdernes klienter", gUIClientAssociateEmployee1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -660,7 +450,7 @@ public class GUIEmployee extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tPEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, 967, Short.MAX_VALUE)
+                .addComponent(tPEmployee)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -672,49 +462,25 @@ public class GUIEmployee extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCreateEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateEmployeeActionPerformed
+    private void tPEmployeeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tPEmployeeFocusGained
         // TODO add your handling code here:
-        String password = txtEmployeePassword.getText();
-        String managerNo = txtEmployeeManagerNo.getText();
-        String address = txtEmployeeAddress.getText();
-        String city = txtEmployeeCity.getText();
-        String email = txtEmployeeEmail.getText();
-        String firstName = txtEmployeeFirstName.getText();
-        String middleName = txtEmployeeMiddleName.getText();
-        String lastName = txtEmployeeLastName.getText();
-        int phoneNo = Integer.parseInt(txtEmployeePhoneNo.getText());
-        String jobTitle = txtEmployeeJobTitle.getText();
-        String ssn = txtEmployeeSsn.getText();
-        int zipCode = Integer.parseInt(txtEmployeeZipCode.getText());
-        String crudEmployee = "No";
-        if (cbCrudEmployee.isSelected()) {
-            crudEmployee = "Yes";
-        }
-        String crudClient = "No";
-        if (cbCrudClient.isSelected()) {
-            crudClient = "Yes";
-        }
-        String crudMedicine = "No";
-        if (cbCrudMedicine.isSelected()) {
-            crudMedicine = "Yes";
-        }
-        String crudCar = "No";
-        if (cbCrudCar.isSelected()) {
-            crudCar = "Yes";
-        }
-        String inUse = "No";
-        if (cbInUse.isSelected()) {
-            inUse = "Yes";
-        }
-        CtrEmp ctrEmp = new CtrEmp();
-        CtrLoca ctrLoca = new CtrLoca();
-        try {
-            int locationID = ctrLoca.findLocationByZipCode(zipCode).getLocationID();
-            ctrEmp.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password, inUse);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
-}//GEN-LAST:event_btnCreateEmployeeActionPerformed
+
+        populateCmbEmployee();
+        JTextField[] txtFieldList = {txtEmployeeAddress, txtEmployeeCity, txtEmployeeEmail, txtEmployeeEmployeeNo, txtEmployeeFirstName, txtEmployeeMiddleName, txtEmployeeLastName, txtEmployeeJobTitle, txtEmployeeManagerNo, txtEmployeePassword, txtEmployeePhoneNo, txtEmployeeSsn, txtEmployeeZipCode};
+        resetTextFields(txtFieldList);
+        JCheckBox[] cbList = {cbCrudCar, cbCrudClient, cbCrudEmployee, cbCrudMedicine, cbInUse};
+        resetCheckBoxes(cbList);
+        gUIClientAssociateEmployee1.populateCmbClient();
+        gUIClientAssociateEmployee1.populateCmbEmployee();
+        gUIGetEmployee1.populateCmbEmployee();
+        clearTblAssociatedClients();
+    }//GEN-LAST:event_tPEmployeeFocusGained
+
+    private void btnResetAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetAllActionPerformed
+        // TODO add your handling code here:
+        resetAllGuiElements();
+        clearTblAssociatedClients();
+}//GEN-LAST:event_btnResetAllActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
@@ -761,30 +527,64 @@ public class GUIEmployee extends javax.swing.JPanel {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-    }//GEN-LAST:event_btnUpdateActionPerformed
+}//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        String employeeNo = null;
+        String employeeNo = txtEmployeeEmployeeNo.getText();
         CtrEmp ctrEmp = new CtrEmp();
-        employeeNo = txtEmployeeEmployeeNo.getText();
-        ctrEmp.deleteEmp(employeeNo);
-        JOptionPane.showMessageDialog(this, "Du har nu slettet medarbejderen med brugernavn: + employeeNo +");
-    }//GEN-LAST:event_btnDeleteActionPerformed
+        Employee e = ctrEmp.findEmployee(employeeNo);
+        if (e.getEmployeeNo() == null) {
+            JOptionPane.showMessageDialog(this, "Medarbejderen med brugernavnet " + employeeNo + " kunne ikke findes");
+        } else {
+            ctrEmp.deleteEmp(employeeNo);
+            JOptionPane.showMessageDialog(this, "Du har nu slettet medarbejderen med brugernavn: " + employeeNo);
+        }
+}//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void tPEmployeeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tPEmployeeFocusGained
+    private void btnCreateEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateEmployeeActionPerformed
         // TODO add your handling code here:
-
-        populateCmbEmployee();
-        JTextField[] txtFieldList = {txtEmployeeAddress, txtEmployeeCity, txtEmployeeEmail, txtEmployeeEmployeeNo, txtEmployeeFirstName, txtEmployeeMiddleName, txtEmployeeLastName, txtEmployeeJobTitle, txtEmployeeManagerNo, txtEmployeePassword, txtEmployeePhoneNo, txtEmployeeSsn, txtEmployeeZipCode, txtEmployeeAddress1, txtEmployeeCity1, txtEmployeeEmail1, txtEmployeeEmployeeNo1, txtEmployeeFirstName1, txtEmployeeMiddleName1, txtEmployeeLastName1, txtEmployeeJobTitle1, txtEmployeeManagerNo1, txtEmployeePhoneNo1, txtEmployeeZipCode1};
-        resetTextFields(txtFieldList);
-        JCheckBox[] cbList = {cbCrudCar, cbCrudClient, cbCrudEmployee, cbCrudMedicine, cbInUse};
-        resetCheckBoxes(cbList);
-        gUIClientAssociateEmployee1.populateCmbClient();
-        gUIClientAssociateEmployee1.populateCmbEmployee();
-        clearTblAssociatedClients();
-
-    }//GEN-LAST:event_tPEmployeeFocusGained
+        String password = txtEmployeePassword.getText();
+        String managerNo = txtEmployeeManagerNo.getText();
+        String address = txtEmployeeAddress.getText();
+        String city = txtEmployeeCity.getText();
+        String email = txtEmployeeEmail.getText();
+        String firstName = txtEmployeeFirstName.getText();
+        String middleName = txtEmployeeMiddleName.getText();
+        String lastName = txtEmployeeLastName.getText();
+        int phoneNo = Integer.parseInt(txtEmployeePhoneNo.getText());
+        String jobTitle = txtEmployeeJobTitle.getText();
+        String ssn = txtEmployeeSsn.getText();
+        int zipCode = Integer.parseInt(txtEmployeeZipCode.getText());
+        String crudEmployee = "No";
+        if (cbCrudEmployee.isSelected()) {
+            crudEmployee = "Yes";
+        }
+        String crudClient = "No";
+        if (cbCrudClient.isSelected()) {
+            crudClient = "Yes";
+        }
+        String crudMedicine = "No";
+        if (cbCrudMedicine.isSelected()) {
+            crudMedicine = "Yes";
+        }
+        String crudCar = "No";
+        if (cbCrudCar.isSelected()) {
+            crudCar = "Yes";
+        }
+        String inUse = "No";
+        if (cbInUse.isSelected()) {
+            inUse = "Yes";
+        }
+        CtrEmp ctrEmp = new CtrEmp();
+        CtrLoca ctrLoca = new CtrLoca();
+        try {
+            int locationID = ctrLoca.findLocationByZipCode(zipCode).getLocationID();
+            ctrEmp.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password, inUse);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+}//GEN-LAST:event_btnCreateEmployeeActionPerformed
 
     private void cmbEmployeeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbEmployeeItemStateChanged
         // TODO add your handling code here:
@@ -833,36 +633,8 @@ public class GUIEmployee extends javax.swing.JPanel {
         } else {
             System.out.println("No employees to select from");
         }
-
     }//GEN-LAST:event_cmbEmployeeItemStateChanged
 
-    private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
-        // TODO add your handling code here:
-        CtrLoca ctrLoca = new CtrLoca();
-        Employee emplo = (Employee) jComboBox2.getSelectedItem();
-        if (emplo != null) {
-            txtEmployeeFirstName1.setText(emplo.getFirstName());
-            txtEmployeeMiddleName1.setText(emplo.getMiddleName());
-            txtEmployeeLastName1.setText(emplo.getLastName());
-            txtEmployeeEmail1.setText(emplo.getEmail());
-            txtEmployeePhoneNo1.setText(Integer.toString(emplo.getPhoneNo()));
-            txtEmployeeAddress1.setText(emplo.getAddress());
-            txtEmployeeZipCode1.setText(Integer.toString(ctrLoca.findLocation(emplo.getLocationID()).getZipCode()));
-            txtEmployeeCity1.setText(ctrLoca.findLocation(emplo.getLocationID()).getCity());
-            txtEmployeeManagerNo1.setText(emplo.getManagerNo());
-            txtEmployeePassword.setText(emplo.getPassword());
-            txtEmployeeJobTitle1.setText(emplo.getJobTitle());
-            txtEmployeeEmployeeNo1.setText(emplo.getEmployeeNo());
-        } else {
-            System.out.println("No employees to select from");
-        }
-    }//GEN-LAST:event_jComboBox2ItemStateChanged
-
-    private void btnResetAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetAllActionPerformed
-        // TODO add your handling code here:
-        resetAllGuiElements();
-        clearTblAssociatedClients();
-    }//GEN-LAST:event_btnResetAllActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateEmployee;
     private javax.swing.JButton btnDelete;
@@ -875,23 +647,9 @@ public class GUIEmployee extends javax.swing.JPanel {
     private javax.swing.JCheckBox cbInUse;
     private javax.swing.JComboBox cmbEmployee;
     private GUILayer.GUIClientAssociateEmployee gUIClientAssociateEmployee1;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel29;
+    private GUILayer.GUIGetEmployee gUIGetEmployee1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblCity;
@@ -912,28 +670,17 @@ public class GUIEmployee extends javax.swing.JPanel {
     private javax.swing.JTabbedPane tPEmployee;
     private javax.swing.JTable tblAssociatedClients;
     private javax.swing.JTextField txtEmployeeAddress;
-    private javax.swing.JTextField txtEmployeeAddress1;
     private javax.swing.JTextField txtEmployeeCity;
-    private javax.swing.JTextField txtEmployeeCity1;
     private javax.swing.JTextField txtEmployeeEmail;
-    private javax.swing.JTextField txtEmployeeEmail1;
     private javax.swing.JTextField txtEmployeeEmployeeNo;
-    private javax.swing.JTextField txtEmployeeEmployeeNo1;
     private javax.swing.JTextField txtEmployeeFirstName;
-    private javax.swing.JTextField txtEmployeeFirstName1;
     private javax.swing.JTextField txtEmployeeJobTitle;
-    private javax.swing.JTextField txtEmployeeJobTitle1;
     private javax.swing.JTextField txtEmployeeLastName;
-    private javax.swing.JTextField txtEmployeeLastName1;
     private javax.swing.JTextField txtEmployeeManagerNo;
-    private javax.swing.JTextField txtEmployeeManagerNo1;
     private javax.swing.JTextField txtEmployeeMiddleName;
-    private javax.swing.JTextField txtEmployeeMiddleName1;
     private javax.swing.JTextField txtEmployeePassword;
     private javax.swing.JTextField txtEmployeePhoneNo;
-    private javax.swing.JTextField txtEmployeePhoneNo1;
     private javax.swing.JTextField txtEmployeeSsn;
     private javax.swing.JTextField txtEmployeeZipCode;
-    private javax.swing.JTextField txtEmployeeZipCode1;
     // End of variables declaration//GEN-END:variables
 }

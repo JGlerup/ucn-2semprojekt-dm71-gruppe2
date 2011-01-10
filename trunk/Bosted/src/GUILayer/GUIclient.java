@@ -555,9 +555,15 @@ public class GUIclient extends javax.swing.JPanel {
 
     private void btnDeleteClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteClientActionPerformed
         // TODO add your handling code here:
-        String clientNo = null;
+        String clientNo = txtClientUserName.getText();
         CtrClient ctrCli = new CtrClient();
-        ctrCli.deleteClient(clientNo);
+        Client c = ctrCli.findClientByClientNo(clientNo);
+        if (c.getClientNo() == null) {
+            JOptionPane.showMessageDialog(this, "Klienten med brugernavnet " + clientNo + " kunne ikke findes");
+        } else {
+            ctrCli.deleteClient(clientNo);
+            JOptionPane.showMessageDialog(this, "Du har nu slettet klienten med brugernavn: " + clientNo);
+        }
         resetTabs();
     }//GEN-LAST:event_btnDeleteClientActionPerformed
 

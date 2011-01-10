@@ -13,6 +13,21 @@ public class DBReservation implements IFDBReservation
     
     private Connection con;
 
+     /**
+     * Creates a new instance of DBReservation
+     */
+    public DBReservation()
+    {
+        con = DbConnection1.getInstance().getDBcon();
+    }
+
+    /**
+     *
+     * @param clientID the clientID
+     * @param startDate the startDate
+     * @param retrieveAssociation
+     * @return an object of Reservation
+     */
     public Reservation findReservation(int clientID, String startDate, boolean retrieveAssociation)
     {
         Reservation rObj = new Reservation();
@@ -20,6 +35,12 @@ public class DBReservation implements IFDBReservation
         return rObj;
     }
 
+    /**
+     *
+     * @param reservationID the reservationID
+     * @param retrieveAssociation
+     * @return an object of Reservation
+     */
     public Reservation findReservationByID(int reservationID, boolean retrieveAssociation)
     {
         Reservation rObj = new Reservation();
@@ -27,21 +48,44 @@ public class DBReservation implements IFDBReservation
         return rObj;
     }
 
+    /**
+     * Get a list of all reservations made on a specific date
+     * @param date the date
+     * @param retriveAssociation
+     * @return an ArrayList of ReservationObjects
+     */
     public ArrayList<Reservation> getAllReservationsByDate(String date, boolean retriveAssociation)
     {
         return miscWhere("date = '" + date + "'", retriveAssociation);
     }
 
+    /**
+     * Get a list of all reservations made by one employee
+     * @param employeeID the
+     * @param retriveAssociation
+     * @return an ArrayList of ReservationObjects
+     */
     public ArrayList<Reservation> getAllReservationsByEmployee(int employeeID, boolean retriveAssociation)
     {
         return miscWhere("employee_id = " + employeeID, retriveAssociation);
     }
 
+    /**
+     * Get a list of all reservations
+     * @param retriveAssociation
+     * @return an ArrayList of ReservationObjects
+     */
     public ArrayList<Reservation> getAllReservations(boolean retriveAssociation)
     {
         return miscWhere("", retriveAssociation);
     }
 
+    /**
+     * Try to insert an object of Reservation into the Database.
+     * Return a positiv number if succesfull
+     * @param r an object of Reservation
+     * @return an int
+     */
     public int insertReservation(Reservation r)
     {
         int rc = -1;
@@ -68,6 +112,12 @@ public class DBReservation implements IFDBReservation
         return (rc);
     }
 
+    /**
+     * Try to update a Reservation in the Database.
+     * Return a positiv number if succesfull
+     * @param r an object of Reservation
+     * @return an int
+     */
     public int updateReservation(Reservation r)
     {
         Reservation rObj = r;
@@ -97,6 +147,12 @@ public class DBReservation implements IFDBReservation
         return (rc);
     }
 
+    /**
+     * Try to delete a Reservation in the Database.
+     * Return a positiv number if succesfull
+     * @param reservationID the id of the reservation
+     * @return an int
+     */
     public int deleteReservation(int reservationID)
     {
         int rc = -1;
@@ -176,6 +232,11 @@ public class DBReservation implements IFDBReservation
         return list;
     }
 
+    /**
+     * Building an object of Reservation
+     * @param results a table of the result from the Database
+     * @return an object of reservation
+     */
     public Reservation buildReservation(ResultSet results)
     {
         Reservation rObj = new Reservation();

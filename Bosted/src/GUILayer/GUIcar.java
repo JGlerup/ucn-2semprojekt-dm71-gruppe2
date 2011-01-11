@@ -32,6 +32,8 @@ public class GUIcar extends javax.swing.JPanel
     {
         initComponents();
         loggedInEmployee = null;
+        tableRow = 0;
+        tableColumn = 0;
     }
 
     /**
@@ -130,6 +132,47 @@ public class GUIcar extends javax.swing.JPanel
         CtrCar ctrCr = new CtrCar();
         return ctrCr.findCarByID(carID);
     }
+    
+    public String getToDaysDate()
+    {
+        ToDaysDate tdd = new ToDaysDate();
+        String date = tdd.toString();
+        return date;
+    }
+
+    public void setTblReservations()
+    {
+        CtrReservation ctrRes = new CtrReservation();
+        ArrayList<Reservation> res =  ctrRes.getAllreservationsFromThisDate();
+        CtrEmp ctrEmp = new CtrEmp();
+        CtrClient ctrCli = new CtrClient();
+        CtrCar ctrCar = new CtrCar();
+        if(!res.isEmpty())
+        {
+            for(Reservation r : res)
+            {
+                String date = r.getStartDate();
+                String emp = ctrEmp.
+            double stkpris = s.getNewSalesLine().getProduct().getSalesPrice();
+            double stkprisD = round(stkpris,2);
+                        double moms = stkpris * 0.25;
+                        double momsD =round(moms,2);
+                        double ialt = s.getNewSalesLine().getSubTotal() * 1.25;
+                        double ialtD = round(ialt,2);
+                        getjTable1().setValueAt(antal, tableRow, tableColumn);
+                        tableColumn++;
+                        getjTable1().setValueAt(varenavn, tableRow, tableColumn);
+                        tableColumn++;
+                        getjTable1().setValueAt(stkprisD + setZeroes(getNumberOfDecimalPlace(stkprisD)), tableRow, tableColumn);
+                        tableColumn++;
+                        getjTable1().setValueAt(momsD + setZeroes(getNumberOfDecimalPlace(momsD)), tableRow, tableColumn);
+                        tableColumn++;
+                        getjTable1().setValueAt(ialtD + setZeroes(getNumberOfDecimalPlace(ialtD)), tableRow, tableColumn);
+                        tableColumn = 0;
+                        tableRow++;
+            }//end for
+        }//end if
+    }
 
     /**
      *
@@ -219,7 +262,6 @@ public class GUIcar extends javax.swing.JPanel
         jDateChooserReservation = new com.toedter.calendar.JDateChooser();
         lblAvailableCars = new javax.swing.JLabel();
         cmbAvailableCars = new javax.swing.JComboBox();
-        lblDateUsage = new javax.swing.JLabel();
 
         pCar.setPreferredSize(new java.awt.Dimension(697, 556));
 
@@ -374,7 +416,7 @@ public class GUIcar extends javax.swing.JPanel
 
         lblYourReservation.setText("Dine reservationer");
 
-        lbldateReservation.setText("Vælg dato");
+        lbldateReservation.setText("Vælg dato(åååå-mm-dd)");
 
         lblListofCars.setText("Liste af biler");
 
@@ -480,8 +522,6 @@ public class GUIcar extends javax.swing.JPanel
             }
         });
 
-        lblDateUsage.setText("åååå-mm-dd");
-
         javax.swing.GroupLayout pBookingIndholdLayout = new javax.swing.GroupLayout(pBookingIndhold);
         pBookingIndhold.setLayout(pBookingIndholdLayout);
         pBookingIndholdLayout.setHorizontalGroup(
@@ -505,8 +545,7 @@ public class GUIcar extends javax.swing.JPanel
                             .addComponent(lblClient)
                             .addComponent(lblAvailableCars)
                             .addComponent(cmbAvailableCars, 0, 123, Short.MAX_VALUE)
-                            .addComponent(lbldateReservation)
-                            .addComponent(lblDateUsage))
+                            .addComponent(lbldateReservation))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pBookingIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblReservations)
@@ -542,9 +581,7 @@ public class GUIcar extends javax.swing.JPanel
                         .addGap(18, 18, 18)
                         .addComponent(lbldateReservation)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooserReservation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblDateUsage)))
+                        .addComponent(jDateChooserReservation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40)
                 .addGroup(pBookingIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSletBooking)
@@ -640,11 +677,9 @@ public class GUIcar extends javax.swing.JPanel
         JTextArea[] txtAreaList = {txtdescription};
         resetTextAreas(txtAreaList);
 
-        ToDaysDate tdd = new ToDaysDate();
-        String date = tdd.toString();
         populateCmbYourReservations();
         populateCmbClient();
-        populateCmbAvailableCars(date);
+        populateCmbAvailableCars(getToDaysDate());
     
     }//GEN-LAST:event_tpCarFocusGained
 
@@ -778,7 +813,6 @@ public class GUIcar extends javax.swing.JPanel
     private com.toedter.calendar.JDateChooser jDateChooserReservation;
     private javax.swing.JLabel lblAvailableCars;
     private javax.swing.JLabel lblClient;
-    private javax.swing.JLabel lblDateUsage;
     private javax.swing.JLabel lblHentBil;
     private javax.swing.JLabel lblListeAfBiler;
     private javax.swing.JLabel lblListofCars;
@@ -802,4 +836,6 @@ public class GUIcar extends javax.swing.JPanel
     private javax.swing.JTextField txtregno;
     // End of variables declaration//GEN-END:variables
     private Employee loggedInEmployee;
+    private int tableRow;
+    private int tableColumn;
 }

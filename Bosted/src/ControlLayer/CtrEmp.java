@@ -14,17 +14,32 @@ import java.util.ArrayList;
  * @author Gruppe 2 - DM71
  * December 2010
  */
-public class CtrEmp {
+public class CtrEmp
+{
 
-    public CtrEmp() {
+    public CtrEmp()
+    {
     }
 
-    public Employee findEmployee(String employeeNo) {
+    public Employee findEmployee(String employeeNo)
+    {
         IFDBEmp dbEmp = new DBEmployee();
         return dbEmp.findEmployee(employeeNo, true);
     }
 
-    public ArrayList getAllEmployee() {
+    /**
+     *
+     * @param employeeID the employeeID
+     * @return an instance of Employee
+     */
+    public Employee findEmployeeByID(int employeeID)
+    {
+        IFDBEmp dbEmp = new DBEmployee();
+        return dbEmp.findEmployeeByID(employeeID, true);
+    }
+
+    public ArrayList getAllEmployee()
+    {
         IFDBEmp dbEmp = new DBEmployee();
         ArrayList allEmp = new ArrayList<Employee>();
         allEmp = dbEmp.getAllEmployees(false);

@@ -1,5 +1,10 @@
 package ModelLayer;
 
+import DBLayer.DBCar;
+import DBLayer.DBClient;
+import DBLayer.IFDBCar;
+import DBLayer.IFDBClient;
+
 /**
  * @author Gruppe 2 - DM71
  * December 2010
@@ -106,6 +111,17 @@ public class Reservation
     {
         ToDaysDate toDaysDate = new ToDaysDate();
         reservationDate = toDaysDate.toString();
+    }
+
+    public String toString()
+    {
+        Car car = new Car();
+        IFDBCar dbCar = new DBCar();
+        car = dbCar.findCarByID(carID, true);
+        Client cli = new Client();
+        IFDBClient dbCli = new DBClient();
+        cli = dbCli.findClientByID(clientID, true);
+        return startDate + ", " + cli.toString() + ", " + car.toString();
     }
 
 }

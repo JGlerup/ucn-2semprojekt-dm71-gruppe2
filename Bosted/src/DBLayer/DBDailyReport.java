@@ -43,6 +43,12 @@ public class DBDailyReport implements IFDBDailyReport
         return drObj;
     }
 
+    public DayliReport findLatestDayliReport(int clientID, boolean retrieveAssociation) {
+        DayliReport drObj = new DayliReport();
+        drObj = singleWhere ("date = (SELECT MAX(date) FROM dailyreport) and client_id = '" + clientID + "'", false);
+        return drObj;
+    }
+
     public ArrayList<DayliReport> getAllDailyReports(boolean retriveAssociation) {
         return miscWhere("", retriveAssociation);
     }
@@ -76,8 +82,8 @@ public class DBDailyReport implements IFDBDailyReport
                 + "client_ID ='" + dailyObj.getClientID() + "',"
                 + "employee_ID ='" + dailyObj.getEmployeeID() + "',"
                 + "text ='" + dailyObj.getText() + "',"
-                + "date ='" + dailyObj.getDate() + "',"
-                + " WHERE client_id = '" + dailyObj.getClientID() + "'";
+                + "date ='" + dailyObj.getDate() + "'"
+                + " WHERE dailyreport_id = '" + dailyObj.getDailyReportID() + "'";
         System.out.println("Update query:" + query);
         try { // update dailyreport
             Statement stmt = con.createStatement();
@@ -198,7 +204,7 @@ public class DBDailyReport implements IFDBDailyReport
     public ArrayList<DayliReport> buildListOfDailyreports(int clientID) {
         ResultSet results;
         ArrayList<DayliReport> list = new ArrayList<DayliReport>();
-        String query = "SELCT * FROM dailyreport WHERE client_id in(SELECT client_id FROM employee_client WHERE client_id =  " + clientID + ")";
+        String query = "SELECT * FROM dailyreport WHERE client_id =  '" + clientID + "'";
         try { // read from dailyreport
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);

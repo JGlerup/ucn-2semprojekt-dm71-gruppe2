@@ -36,6 +36,13 @@ public class CrtDailyReport {
         return dbDailyReport.findDailyReportByClientID(clientID, true);
     }
 
+    public DayliReport findLatestDayliReport(int clientID) {
+        IFDBDailyReport dbDayliReport = new DBDailyReport();
+        DayliReport drObj = new DayliReport();
+        drObj = dbDayliReport.findLatestDayliReport(clientID, true);
+        return drObj;
+    }
+
     public ArrayList getAllDailyReports()
     {
         IFDBDailyReport dbDai = new DBDailyReport();
@@ -55,15 +62,15 @@ public class CrtDailyReport {
         dbDailyreport.insertDailyReport(dObj);
     }
 
-    public void updateDailyreport(int clientID, int employeeID, String text, String date)
+    public void updateDailyreport(int dailyReportID, int clientID, int employeeID, String text)
     {
        IFDBDailyReport dbDailyReport = new DBDailyReport();
         DayliReport dObj = new DayliReport();
-        int dailyReportID = dbDailyReport.findDailyReportByClientID(clientID, false).getClientID();
+        dObj.setDailyReportID(dailyReportID);
         dObj.setClientID(clientID);
         dObj.setEmployeeID(employeeID);
         dObj.setText(text);
-        dObj.setDate(date);
+        dObj.setThisDate();
         dbDailyReport.updateDailyReport(dObj);
     }
 
@@ -87,5 +94,13 @@ public class CrtDailyReport {
         IFDBEmp dbEmp = new DBEmployee();
         clientList = dbEmp.findEmployeesClients(employeeID);
         return clientList;
+    }
+
+    public ArrayList<DayliReport> buildListOfDailyreports(int clientID)
+    {
+        IFDBDailyReport dbDai = new DBDailyReport();
+        ArrayList allDai = new ArrayList<DayliReport>();
+        allDai = dbDai.buildListOfDailyreports(clientID);
+        return allDai;
     }
 }

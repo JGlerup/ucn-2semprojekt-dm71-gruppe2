@@ -50,6 +50,7 @@ public class GUIMain extends javax.swing.JFrame {
         btnLogin = new javax.swing.JButton();
         btnNulstilLogin = new javax.swing.JButton();
         txtPassword = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         pKlienter = new javax.swing.JPanel();
         gUIclient1 = new GUILayer.GUIclient();
         pBiler = new javax.swing.JPanel();
@@ -107,28 +108,37 @@ public class GUIMain extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUILayer/login_welcome.jpg"))); // NOI18N
+
         javax.swing.GroupLayout pLoginLayout = new javax.swing.GroupLayout(pLogin);
         pLogin.setLayout(pLoginLayout);
         pLoginLayout.setHorizontalGroup(
             pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLoginLayout.createSequentialGroup()
                 .addContainerGap(312, Short.MAX_VALUE)
-                .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtBrugernavn, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPassword, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblBrugernavn, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pLoginLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(btnLogin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnNulstilLogin))
-                    .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(270, 270, 270))
+                .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pLoginLayout.createSequentialGroup()
+                        .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtBrugernavn, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPassword, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblBrugernavn, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pLoginLayout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(btnLogin)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnNulstilLogin))
+                            .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(270, 270, 270))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pLoginLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(299, 299, 299))))
         );
         pLoginLayout.setVerticalGroup(
             pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLoginLayout.createSequentialGroup()
-                .addGap(254, 254, 254)
+                .addGap(200, 200, 200)
+                .addComponent(jLabel1)
+                .addGap(40, 40, 40)
                 .addComponent(lblBrugernavn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtBrugernavn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -140,7 +150,7 @@ public class GUIMain extends javax.swing.JFrame {
                 .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLogin)
                     .addComponent(btnNulstilLogin))
-                .addContainerGap(211, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         tpGUI.addTab("Login", null, pLogin, "Her logger du ind");
@@ -424,6 +434,7 @@ public class GUIMain extends javax.swing.JFrame {
     private GUILayer.GUIclient gUIclient1;
     private GUILayer.GUIEmployee gUIemployee1;
     private GUILayer.GUImedicin gUImedicin1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblBrugernavn;
     private javax.swing.JLabel lblLogud;

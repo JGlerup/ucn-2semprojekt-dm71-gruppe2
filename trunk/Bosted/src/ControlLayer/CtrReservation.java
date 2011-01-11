@@ -66,17 +66,28 @@ public class CtrReservation
      */
     public ArrayList<Car> findListOfAvailableCarsByDate(String date)
     {
-        CtrCar ctrCar = new CtrCar();
-        ArrayList<Car> avaCarList = new ArrayList();
         ArrayList<Reservation> resList = new ArrayList();
         resList = getAllReservationsByDate(date);
+        CtrCar ctrCar = new CtrCar();
+        ArrayList<Car> carList = ctrCar.getAllCars();
+        ArrayList<Car> avaCarList = new ArrayList();
+        boolean inResList = false;
         if(!resList.isEmpty())
         {
-            for(Reservation res : resList)
+            for(Car c : carList)
             {
-                Car car = new Car();
-                car = ctrCar.findCarByID(res.getCarID());
-                avaCarList.add(car);
+                for(Reservation r : resList)
+                {
+                    if(r.getCarID() == c.getCarID());
+                    {
+                        inResList = true;
+                    }//end if
+                }//end for
+                if(inResList = false)
+                {
+                    avaCarList.add(c);
+                }//end if
+                inResList = false;
             }//end for
         }//end if
         else

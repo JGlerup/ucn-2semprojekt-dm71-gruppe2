@@ -2,7 +2,7 @@ use dm71_2
 drop table employee_client
 drop table client_externalcontact
 drop table errorhandlingmedicine
-	drop table milestone_update
+drop table milestone_update
 drop table milestone
 drop table externaldocument
 drop table reservation

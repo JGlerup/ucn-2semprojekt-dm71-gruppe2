@@ -56,7 +56,7 @@ public class DBReservation implements IFDBReservation
      */
     public ArrayList<Reservation> getAllReservationsByDate(String date, boolean retriveAssociation)
     {
-        return miscWhere("date = '" + date + "'", retriveAssociation);
+        return miscWhere("startdate = '" + date + "'", retriveAssociation);
     }
 
     /**

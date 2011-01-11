@@ -4,6 +4,7 @@ package ControlLayer;
 import DBLayer.DBReservation;
 import DBLayer.IFDBReservation;
 import ExceptionsPack.NullValueException;
+import ModelLayer.Car;
 import ModelLayer.Reservation;
 import ModelLayer.ToDaysDate;
 import java.util.ArrayList;
@@ -56,6 +57,33 @@ public class CtrReservation
             System.out.println("Query exception - select reservation : " + e);
         }//end catch
         return allReservation;
+    }
+
+    /**
+     *
+     * @param date a date
+     * @return a list of available cars on a specific date
+     */
+    public ArrayList<Car> findListOfAvailableCarsByDate(String date)
+    {
+        CtrCar ctrCar = new CtrCar();
+        ArrayList<Car> avaCarList = new ArrayList();
+        ArrayList<Reservation> resList = new ArrayList();
+        resList = getAllReservationsByDate(date);
+        if(!resList.isEmpty())
+        {
+            for(Reservation res : resList)
+            {
+                Car car = new Car();
+                car = ctrCar.findCarByID(res.getCarID());
+                avaCarList.add(car);
+            }//end for
+        }//end if
+        else
+        {
+            avaCarList = ctrCar.getAllCars();
+        }//end else
+        return avaCarList;
     }
 
     /**
@@ -238,6 +266,16 @@ public class CtrReservation
             
     }
 
+    /**
+     *
+     * @param reservationID the reservationID
+     * @param carID th carID
+     * @param employeeID the employeeID
+     * @param clientID the clientID
+     * @param startDate the date the reservation is wanted
+     * @param endDate the same date as startDate
+     * @param reservationDate the date the reservation was made
+     */
     public void updateReservation(int reservationID, int carID, int employeeID, int clientID, String startDate, String endDate, String reservationDate)
     {
         
@@ -255,6 +293,10 @@ public class CtrReservation
         
     }
 
+    /**
+     *
+     * @param reservationID the reservationID
+     */
     public void deleteReservation(int reservationID)
     {
         IFDBReservation dbReservation = new DBReservation();

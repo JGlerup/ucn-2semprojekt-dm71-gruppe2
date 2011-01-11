@@ -8,13 +8,14 @@ package GUILayer;
 
 import ControlLayer.CtrCar;
 import ControlLayer.CtrClient;
+import ControlLayer.CtrEmp;
 import ControlLayer.CtrReservation;
 import ModelLayer.Car;
 import ModelLayer.Client;
 import ModelLayer.Employee;
 import ModelLayer.Reservation;
+import ModelLayer.ToDaysDate;
 import java.util.ArrayList;
-import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -65,8 +66,24 @@ public class GUIcar extends javax.swing.JPanel
         {
             cmbClient.addItem(c);
         }
-        cmbClient.addItem("Ny reservation");
         cmbClient.removeItem("Vælg her");
+    }
+
+    /**
+     *
+     * populate combobox AvailableCars (cmbAvailableCars)
+     */
+    public void populateCmbAvailableCars(String date)
+    {
+        CtrReservation ctrRes = new CtrReservation();
+        ArrayList<Car> carList = ctrRes.findListOfAvailableCarsByDate(date);
+        cmbAvailableCars.removeAllItems();
+        cmbAvailableCars.insertItemAt("Vælg her", 0);
+        for (Car cr : carList)
+        {
+            cmbAvailableCars.addItem(cr);
+        }
+        cmbAvailableCars.removeItem("Vælg her");
     }
 
     /**
@@ -74,55 +91,45 @@ public class GUIcar extends javax.swing.JPanel
      * @param clientID the client id
      * @return the full name of the client
      */
-    public String findClientName(int clientID)
+    public Client findClient(int clientID)
     {
-        String fullName = null;
         Client c = new Client();
         CtrClient ctrC = new CtrClient();
         c = ctrC.findClientByID(clientID);
-        if(c.getMiddleName().equals(""))
-        {
-            fullName = c.getFirstName() + " " + c.getLastName();
-        }//end if
-        else
-        {
-            fullName = c.getFirstName() + " " + c.getMiddleName() + " " + c.getLastName();
-        }
-        return fullName;
+        return c;
     }
 
+    /**
+     * 
+     * @param employeeID the employeeID
+     * @return a list of clients of the employee
+     */
+    public ArrayList<Client> findEmployeesClients(int employeeID)
+    {
+        CtrEmp ctrE = new CtrEmp();
+        return ctrE.findEmployeesClient(employeeID);
+    }
+
+    /**
+     * 
+     * @return a list of all cars
+     */
+    public ArrayList<Car> getAllCars()
+    {
+        CtrCar ctrCr = new CtrCar();
+        return ctrCr.getAllCars();
+    }
 
     /**
      *
+     * @param carID the carID
+     * @return a car
      */
-//    public void resetAllEmpoyeeManagement()
-//    {
-//        CtrClient ctrClient = new CtrClient();
-//        ArrayList<Client> clientList = ctrClient.getAllClients();
-//        cmbClient.removeAllItems();
-//        cmbClient.insertItemAt("", 0);
-//
-//        for (Client c : clientList)
-//        {
-//            cmbClient.addItem(c);
-//        }//end for
-//
-//        cmbClient.removeItemAt(0);
-//        JTextField[] txtFieldList = { txtClientAddress, txtClientUserName, txtClientFirstName,
-//            txtClientSsn, txtClientMiddleName, txtClientLastName, txtClientAddress,
-//            txtClientZipCode, txtClientCity, txtClientPhoneNo, txtClientEmail};
-//
-//        JTextArea[] txtAreaList = { txtClientDescription, txtClientInterests, txtClientHealth,};
-//
-//        JCheckBox[] checkBoxList = { cbClientInUse };
-//
-//        resetTextFields(txtFieldList);
-//        resetTextAreas(txtAreaList);
-//        resetCheckBoxes(checkBoxList);
-//
-//        System.out.println(loggedInEmployee.getCrudEmployee());
-//        addEmployeesClients();
-//    }
+    public Car findCarByID(int carID)
+    {
+        CtrCar ctrCr = new CtrCar();
+        return ctrCr.findCarByID(carID);
+    }
 
     /**
      *
@@ -150,18 +157,6 @@ public class GUIcar extends javax.swing.JPanel
 
     /**
      *
-     * @param cbList all Checkboxes
-     */
-    public void resetCheckBoxes(JCheckBox[] cbList)
-    {
-        for (JCheckBox cb : cbList)
-        {
-            cb.setSelected(false);
-        }//end for
-    }
-
-    /**
-     *
      * @return the employee who is logged in
      */
     public Employee getLoggedInEmployee()
@@ -178,28 +173,6 @@ public class GUIcar extends javax.swing.JPanel
     {
         this.loggedInEmployee = loggedInEmployee;
     }
-
-
-    /**
-     *
-     */
-//    public void addEmployeesClients()
-//    {
-//        resetTabs();
-//        CtrEmp ctrEmp = new CtrEmp();
-//        int employeeID = loggedInEmployee.getEmployeeID();
-//        ArrayList<Client> clientList = ctrEmp.findEmployeesClient(employeeID);
-//        for (Client c : clientList)
-//        {
-//            GUIClientNewTab guiClientNewTab = new GUIClientNewTab();
-//            tpKlient.addTab(c.getFirstName() + c.getLastName(), guiClientNewTab);
-//            guiClientNewTab.setClient(c);
-//            guiClientNewTab.setupClientInformation();
-//            guiClientNewTab.setLoggedInEmployee(loggedInEmployee);
-//        }//end for
-//    }
-
-    
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -245,7 +218,7 @@ public class GUIcar extends javax.swing.JPanel
         cmbClient = new javax.swing.JComboBox();
         jDateChooserReservation = new com.toedter.calendar.JDateChooser();
         lblAvailableCars = new javax.swing.JLabel();
-        cbAvailableCars = new javax.swing.JComboBox();
+        cmbAvailableCars = new javax.swing.JComboBox();
         lblDateUsage = new javax.swing.JLabel();
 
         pCar.setPreferredSize(new java.awt.Dimension(697, 556));
@@ -500,7 +473,12 @@ public class GUIcar extends javax.swing.JPanel
 
         lblAvailableCars.setText("Ledige biler");
 
-        cbAvailableCars.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbAvailableCars.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbAvailableCars.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbAvailableCarsItemStatChanged(evt);
+            }
+        });
 
         lblDateUsage.setText("åååå-mm-dd");
 
@@ -526,7 +504,7 @@ public class GUIcar extends javax.swing.JPanel
                             .addComponent(cmbYourReservations, 0, 123, Short.MAX_VALUE)
                             .addComponent(lblClient)
                             .addComponent(lblAvailableCars)
-                            .addComponent(cbAvailableCars, 0, 123, Short.MAX_VALUE)
+                            .addComponent(cmbAvailableCars, 0, 123, Short.MAX_VALUE)
                             .addComponent(lbldateReservation)
                             .addComponent(lblDateUsage))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -560,7 +538,7 @@ public class GUIcar extends javax.swing.JPanel
                         .addGap(18, 18, 18)
                         .addComponent(lblAvailableCars)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbAvailableCars, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbAvailableCars, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(lbldateReservation)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -656,12 +634,18 @@ public class GUIcar extends javax.swing.JPanel
         }//end for
         cmbbiler.removeItem("Vælg her");
 
+
         JTextField[] txtFieldList = {txtregno};
         resetTextFields(txtFieldList);
         JTextArea[] txtAreaList = {txtdescription};
         resetTextAreas(txtAreaList);
-    
 
+        ToDaysDate tdd = new ToDaysDate();
+        String date = tdd.toString();
+        populateCmbYourReservations();
+        populateCmbClient();
+        populateCmbAvailableCars(date);
+    
     }//GEN-LAST:event_tpCarFocusGained
 
     private void cmbbilerItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbbilerItemStateChanged
@@ -730,32 +714,17 @@ public class GUIcar extends javax.swing.JPanel
         if (cmbYourReservations.getSelectedItem() != "")
         {
             Reservation r = (Reservation) cmbYourReservations.getSelectedItem();
+            Client c = new Client();
+            Car cr = new Car();
             if (r != null)
             {
-//                String clientNo = c.getClientNo();
-//                String address = c.getAddress();
-//                String description = c.getDescription();
-//                String interests = c.getInterests();
-//                String health = c.getHealth();
-//                String firstName = c.getFirstName();
-//                String middleName = c.getMiddleName();
-//                String lastName = c.getLastName();
-//                String phoneNo = Integer.toString(c.getPhoneNo());
-//                String email = c.getEmail();
-//                String ssn = c.getSsn();
-//                String inUse = c.getInUse();
-//                String zipCode = null;
-//                String city = null;
-//                int locationID = c.getLocationID();
-//
-//                CtrLoca ctrLoca = new CtrLoca();
-//                try {
-//                    Location l = ctrLoca.findLocation(locationID);
-//                    zipCode = Integer.toString(l.getZipCode());
-//                    city = l.getCity();
-//                } catch (Exception e) {
-//                    JOptionPane.showMessageDialog(this, e.getMessage());
-//                }
+                c = findClient(r.getClientID());
+                cr = findCarByID(r.getCarID());
+                String dateOfReservation = r.getStartDate();
+                String firstNameOfClient = c.getFirstName();
+                String lastNameOfClient = c.getLastName();
+                String carDescription = cr.getDescription();
+
 //
 //                txtClientAddress.setText(address);
 //                txtClientUserName.setText(clientNo);
@@ -789,6 +758,10 @@ public class GUIcar extends javax.swing.JPanel
         }//end else
     }//GEN-LAST:event_cmbYourReservationItemStateChanged
 
+    private void cmbAvailableCarsItemStatChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbAvailableCarsItemStatChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbAvailableCarsItemStatChanged
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LBLbeskrivelse;
     private javax.swing.JLabel LBLregno;
@@ -798,7 +771,7 @@ public class GUIcar extends javax.swing.JPanel
     private javax.swing.JButton btnSlet;
     private javax.swing.JButton btnSletBooking;
     private javax.swing.JButton btnopdater;
-    private javax.swing.JComboBox cbAvailableCars;
+    private javax.swing.JComboBox cmbAvailableCars;
     private javax.swing.JComboBox cmbClient;
     private javax.swing.JComboBox cmbYourReservations;
     private javax.swing.JComboBox cmbbiler;

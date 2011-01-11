@@ -351,7 +351,7 @@
                                           <Component id="cmbYourReservations" alignment="0" pref="123" max="32767" attributes="1"/>
                                           <Component id="lblClient" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="lblAvailableCars" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="cbAvailableCars" alignment="0" pref="123" max="32767" attributes="0"/>
+                                          <Component id="cmbAvailableCars" alignment="0" pref="123" max="32767" attributes="0"/>
                                           <Component id="lbldateReservation" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="lblDateUsage" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
@@ -393,7 +393,7 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="lblAvailableCars" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="cbAvailableCars" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cmbAvailableCars" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="lbldateReservation" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -582,7 +582,7 @@
                         <Property name="text" type="java.lang.String" value="Ledige biler"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="cbAvailableCars">
+                    <Component class="javax.swing.JComboBox" name="cmbAvailableCars">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="4">
@@ -593,6 +593,9 @@
                           </StringArray>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbAvailableCarsItemStatChanged"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblDateUsage">
                       <Properties>

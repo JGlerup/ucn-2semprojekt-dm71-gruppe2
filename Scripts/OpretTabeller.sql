@@ -169,11 +169,3 @@ create table employee_client
 	client_id			int			not null,
 	foreign key (employee_id) references employee(employee_id),
 	foreign key (client_id) references client(client_id));
-	
-create table todo
-	(todo_id int PRIMARY KEY IDENTITY,
-	employee_id int not null,
-	text varchar(MAX) not null,
-	date date not null,
-	foreign key (employee_id) references employee(employee_id)
-	);

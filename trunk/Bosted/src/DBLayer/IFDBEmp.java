@@ -7,10 +7,14 @@ import java.util.ArrayList;
  * @author Gruppe 2 - DM71
  * December 2010
  */
-public interface IFDBEmp {
+public interface IFDBEmp
+{
 
     public Employee findEmployee(String employeeNo, boolean retrieveAssociation);
     //find one employee having the employeeNo
+
+    public Employee findEmployeeByID(int employeeID, boolean retrieveAssociation);
+    //find one employee having the employeeID
 
     public ArrayList<Employee> getAllEmployees(boolean retriveAssociation);
     //show all employees

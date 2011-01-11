@@ -353,7 +353,6 @@
                                           <Component id="lblAvailableCars" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="cmbAvailableCars" alignment="0" pref="123" max="32767" attributes="0"/>
                                           <Component id="lbldateReservation" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblDateUsage" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -398,8 +397,6 @@
                                       <Component id="lbldateReservation" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jDateChooserReservation" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="lblDateUsage" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
@@ -421,7 +418,7 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="lbldateReservation">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="V&#xe6;lg dato"/>
+                        <Property name="text" type="java.lang.String" value="V&#xe6;lg dato(&#xe5;&#xe5;&#xe5;&#xe5;-mm-dd)"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblListofCars">
@@ -596,11 +593,6 @@
                       <Events>
                         <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbAvailableCarsItemStatChanged"/>
                       </Events>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="lblDateUsage">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="&#xe5;&#xe5;&#xe5;&#xe5;-mm-dd"/>
-                      </Properties>
                     </Component>
                   </SubComponents>
                 </Container>

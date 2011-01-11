@@ -9,21 +9,30 @@ import ModelLayer.Employee;
  * @author Gruppe 2 - DM71
  * December 2010
  */
-public class DBClient implements IFDBClient {
+public class DBClient implements IFDBClient
+{
 
     private Connection con;
 
     /** Creates a new instance of DBWorksOn */
-    public DBClient() {
+    public DBClient()
+    {
         con = DbConnection1.getInstance().getDBcon();
     }
 
-    public Client findClient(String clientNo, boolean retrieveAssociation) {
+    public Client findClient(String clientNo, boolean retrieveAssociation)
+    {
         Client cObj = new Client();
         cObj = singleWhere("clientno = '" + clientNo + "'", false);
         return cObj;
     }
 
+    /**
+     *
+     * @param clientID the clientID
+     * @param retrieveAssociation
+     * @return an instance of Client
+     */
     public Client findClientByID(int clientID, boolean retrieveAssociation)
     {
         Client clientObj = new Client();

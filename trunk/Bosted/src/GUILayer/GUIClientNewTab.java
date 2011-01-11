@@ -8,7 +8,6 @@
  *
  * Created on 18-12-2010, 13:21:10
  */
-
 package GUILayer;
 
 import ControlLayer.CrtDailyReport;
@@ -82,6 +81,12 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         jTextArea6 = new javax.swing.JTextArea();
         jButton11 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
+        GUIUpdateDailyReport = new javax.swing.JFrame();
+        jLabel8 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea7 = new javax.swing.JTextArea();
+        jButton15 = new javax.swing.JButton();
+        jButton16 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
@@ -401,6 +406,8 @@ public class GUIClientNewTab extends javax.swing.JPanel {
             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        GUICreateDayliReport.setMinimumSize(new java.awt.Dimension(400, 300));
+
         jLabel7.setText("Skriv tekst her");
 
         jTextArea6.setColumns(20);
@@ -447,6 +454,59 @@ public class GUIClientNewTab extends javax.swing.JPanel {
                 .addGroup(GUICreateDayliReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton11)
                     .addComponent(jButton14))
+                .addContainerGap())
+        );
+
+        GUIUpdateDailyReport.setMinimumSize(new java.awt.Dimension(400, 300));
+
+        jLabel8.setText("Skriv tekst her");
+
+        jTextArea7.setColumns(20);
+        jTextArea7.setRows(5);
+        jScrollPane3.setViewportView(jTextArea7);
+
+        jButton15.setText("Opdater");
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
+
+        jButton16.setText("Annuller");
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout GUIUpdateDailyReportLayout = new javax.swing.GroupLayout(GUIUpdateDailyReport.getContentPane());
+        GUIUpdateDailyReport.getContentPane().setLayout(GUIUpdateDailyReportLayout);
+        GUIUpdateDailyReportLayout.setHorizontalGroup(
+            GUIUpdateDailyReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(GUIUpdateDailyReportLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(GUIUpdateDailyReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(jLabel8)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GUIUpdateDailyReportLayout.createSequentialGroup()
+                        .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton16)))
+                .addContainerGap())
+        );
+        GUIUpdateDailyReportLayout.setVerticalGroup(
+            GUIUpdateDailyReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(GUIUpdateDailyReportLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addGroup(GUIUpdateDailyReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton16)
+                    .addComponent(jButton15))
                 .addContainerGap())
         );
 
@@ -671,6 +731,11 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         jLabel4.setText("Hent rapport");
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox2ItemStateChanged(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setLineWrap(true);
@@ -708,8 +773,9 @@ public class GUIClientNewTab extends javax.swing.JPanel {
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 364, Short.MAX_VALUE)
                         .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton4)
+                        .addGap(12, 12, 12))
                     .addComponent(jLabel4)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -728,8 +794,8 @@ public class GUIClientNewTab extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(jButton4))
                 .addContainerGap())
         );
 
@@ -1007,46 +1073,85 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         this.client = client;
     }
 
+    public void populateCmbDailyReport() {
+        CrtDailyReport ctrDailyReport = new CrtDailyReport();
+        ArrayList<DayliReport> daiRepList = ctrDailyReport.buildListOfDailyreports(client.getClientID());
+        jComboBox2.removeAllItems();
+        jComboBox2.insertItemAt("", 0);
+        for (DayliReport dr : daiRepList) {
+            jComboBox2.addItem(dr);
+        }
+        jComboBox2.removeItemAt(0);
+    }
+
+    public void setDailyReportText() {
+        CrtDailyReport ctrDaiRep = new CrtDailyReport();
+        DayliReport dr = ctrDaiRep.findLatestDayliReport(client.getClientID());
+
+        int drID = dr.getDailyReportID();
+        int index = 0;
+        boolean found = false;
+
+        while (index < jComboBox2.getItemCount() && !found) {
+            DayliReport drObjCompare = (DayliReport) jComboBox2.getItemAt(index);
+            int drIDCompare = drObjCompare.getDailyReportID();
+            if (drID == drIDCompare) {
+                jComboBox2.setSelectedIndex(index);
+                jTextArea1.setText(dr.getText());
+                found = true;
+            }
+            index++;
+        }
+    }
+
     public void setupClientInformation() {
-                        String clientNo = client.getClientNo();
-                String address = client.getAddress();
-                String description = client.getDescription();
-                String interests = client.getInterests();
-                String health = client.getHealth();
-                String firstName = client.getFirstName();
-                String middleName = client.getMiddleName();
-                String lastName = client.getLastName();
-                String phoneNo = Integer.toString(client.getPhoneNo());
-                String email = client.getEmail();
-                String ssn = client.getSsn();
-                String inUse = client.getInUse();
-                String zipCode = null;
-                String city = null;
-                int locationID = client.getLocationID();
+        String clientNo = client.getClientNo();
+        String address = client.getAddress();
+        String description = client.getDescription();
+        String interests = client.getInterests();
+        String health = client.getHealth();
+        String firstName = client.getFirstName();
+        String middleName = client.getMiddleName();
+        String lastName = client.getLastName();
+        String phoneNo = Integer.toString(client.getPhoneNo());
+        String email = client.getEmail();
+        String ssn = client.getSsn();
+        String inUse = client.getInUse();
+        String zipCode = null;
+        String city = null;
+        int locationID = client.getLocationID();
 
-                CtrLoca ctrLoca = new CtrLoca();
-                try {
-                    Location l = ctrLoca.findLocation(locationID);
-                    zipCode = Integer.toString(l.getZipCode());
-                    city = l.getCity();
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(this, e.getMessage());
-                }
+        CtrLoca ctrLoca = new CtrLoca();
+        try {
+            Location l = ctrLoca.findLocation(locationID);
+            zipCode = Integer.toString(l.getZipCode());
+            city = l.getCity();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
 
-                txtClientAddress.setText(address);
-                txtClientUsername.setText(clientNo);
-                txtClientFirstName.setText(firstName);
-                txtClientDescription.setText(description);
-                txtClientInterests.setText(interests);
-                txtClientHealth.setText(health);
-                txtClientSsn.setText(ssn);
-                txtClientMiddleName.setText(middleName);
-                txtClientLastName.setText(lastName);
-                txtClientAddress.setText(address);
-                txtClientZipCode.setText(zipCode);
-                txtClientCity.setText(city);
-                txtClientPhoneNo.setText(phoneNo);
-                txtClientEmail.setText(email);
+        txtClientAddress.setText(address);
+        txtClientUsername.setText(clientNo);
+        txtClientFirstName.setText(firstName);
+        txtClientDescription.setText(description);
+        txtClientInterests.setText(interests);
+        txtClientHealth.setText(health);
+        txtClientSsn.setText(ssn);
+        txtClientMiddleName.setText(middleName);
+        txtClientLastName.setText(lastName);
+        txtClientAddress.setText(address);
+        txtClientZipCode.setText(zipCode);
+        txtClientCity.setText(city);
+        txtClientPhoneNo.setText(phoneNo);
+        txtClientEmail.setText(email);
+
+        populateCmbDailyReport();
+
+        setDailyReportText();
+
+
+
+
     }
 
     public void setLoggedInEmployee(Employee loggedInEmployee) {
@@ -1075,52 +1180,78 @@ public class GUIClientNewTab extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        // This method opens the GUICreateDayliReport window
         GUICreateDayliReport.setVisible(true);
 }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        GUIUpdateDR guiudr = new GUIUpdateDR();
-        guiudr.setVisible(true);
+        // This method opens the GUIUpdateDailyReport window and adds the text
+        // from the previous selected daily report
+        GUIUpdateDailyReport.setVisible(true);
+        String text = jTextArea1.getText();
+        jTextArea7.setText(text);
 }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        GUIErrorHandlingMedicine.setVisible(true);
-        CtrMedi ctrMedi = new CtrMedi();
-        ArrayList<Medicine> medicineList = ctrMedi.getAllMedicine();
-        cmbMedi.removeAllItems();
-        cmbMedi.insertItemAt("", 0);
-        for (Medicine m : medicineList) {
-            cmbMedi.addItem(m);
+        // This method opens the GUIErrorHandlingMedicine window and adds to the
+        // combo box which is in the window
+        try {
+            GUIErrorHandlingMedicine.setVisible(true);
+            CtrMedi ctrMedi = new CtrMedi();
+            ArrayList<Medicine> medicineList = ctrMedi.getAllMedicine();
+            cmbMedi.removeAllItems();
+            cmbMedi.insertItemAt("", 0);
+            for (Medicine m : medicineList) {
+                cmbMedi.addItem(m);
+            }
+            cmbMedi.removeItemAt(0);
         }
-        cmbMedi.removeItemAt(0);
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
 }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
-        GUIGiveMedicine.setVisible(true);
-        CtrMedi ctrMedi = new CtrMedi();
-        ArrayList<Medicine> medicineList = ctrMedi.getAllMedicine();
-        cmbMedi1.removeAllItems();
-        cmbMedi1.insertItemAt("", 0);
-        for (Medicine m : medicineList) {
-            cmbMedi1.addItem(m);
+        // This method opens the GUIGiveMedicine window and adds to the 
+        // combo box which is in the window
+        try {
+            GUIGiveMedicine.setVisible(true);
+            CtrMedi ctrMedi = new CtrMedi();
+            ArrayList<Medicine> medicineList = ctrMedi.getAllMedicine();
+            cmbMedi1.removeAllItems();
+            cmbMedi1.insertItemAt("", 0);
+            for (Medicine m : medicineList) {
+                cmbMedi1.addItem(m);
+            }
+            cmbMedi1.removeItemAt(0);
         }
-        cmbMedi1.removeItemAt(0);
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
 }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
-        GUIStockMedicine.setVisible(true);
-        CtrMedi ctrMedi = new CtrMedi();
-        ArrayList<Medicine> medicineList = ctrMedi.getAllMedicine();
-        cmbMedi2.removeAllItems();
-        cmbMedi2.insertItemAt("", 0);
-        for (Medicine m : medicineList) {
-            cmbMedi2.addItem(m);
+        // This method opens the GUIStockMedicine window and adds to the 
+        // combo box which is in the window
+        try {
+            GUIStockMedicine.setVisible(true);
+            CtrMedi ctrMedi = new CtrMedi();
+            ArrayList<Medicine> medicineList = ctrMedi.getAllMedicine();
+            cmbMedi2.removeAllItems();
+            cmbMedi2.insertItemAt("", 0);
+            for (Medicine m : medicineList) {
+                cmbMedi2.addItem(m);
+            }
+            cmbMedi2.removeItemAt(0);
         }
-        cmbMedi2.removeItemAt(0);
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+        
 }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -1137,7 +1268,6 @@ public class GUIClientNewTab extends javax.swing.JPanel {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-        //JOptionPane.showInputDialog(btnCreateClient, evt, TOOL_TIP_TEXT_KEY, WIDTH, null, selectionValues, txtClientHealth)
         GUIOpenOlderMi guidr = new GUIOpenOlderMi();
         guidr.setVisible(true);
 }//GEN-LAST:event_jButton8ActionPerformed
@@ -1148,57 +1278,39 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         CtrMedi ctrMedi = new CtrMedi();
         Medicine m = (Medicine) cmbMedi.getSelectedItem();
         choice = JOptionPane.showConfirmDialog(GUIErrorHandlingMedicine, "Er du sikker? \n\nMedicin: " + m.getName() + "\nBeskrivelse: " + txtaDescription.getText() + " \nAntal: " + txtQuantity.getText());
-        if(choice == 0)
-        {
-            if(jCheckBox1.isSelected())
-            {
-                try
-                {
-                ctrMedi.insertErrorHandlingMedicine(m.getMedicineID(), client.getClientID(), loggedInEmployee.getEmployeeID(), txtaDescription.getText(), Integer.parseInt(txtQuantity.getText()), loggedInEmployee.getManagerNo());
-                JTextField[] txtFieldList = {txtQuantity};
-                resetTextFields(txtFieldList);
-                JTextArea[] txtAreaList = {txtaDescription};
-                resetTextAreas(txtAreaList);
-                if(ctrMedi.getManagerMessage() != null)
-                {
-                    JOptionPane.showMessageDialog(this, ctrMedi.getManagerMessage());
-                }
-                else
-                {
-                    JOptionPane.showMessageDialog(this, "Hændelsen er gemt");
-                }
-                GUIErrorHandlingMedicine.setVisible(false);
-                }
-                catch(Exception e)
-                {
+        if (choice == 0) {
+            if (jCheckBox1.isSelected()) {
+                try {
+                    ctrMedi.insertErrorHandlingMedicine(m.getMedicineID(), client.getClientID(), loggedInEmployee.getEmployeeID(), txtaDescription.getText(), Integer.parseInt(txtQuantity.getText()), loggedInEmployee.getManagerNo());
+                    JTextField[] txtFieldList = {txtQuantity};
+                    resetTextFields(txtFieldList);
+                    JTextArea[] txtAreaList = {txtaDescription};
+                    resetTextAreas(txtAreaList);
+                    if (ctrMedi.getManagerMessage() != null) {
+                        JOptionPane.showMessageDialog(this, ctrMedi.getManagerMessage());
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Hændelsen er gemt");
+                    }
+                    GUIErrorHandlingMedicine.setVisible(false);
+                } catch (Exception e) {
                     JOptionPane.showMessageDialog(GUIErrorHandlingMedicine, e.getMessage());
                 }
-            }
-            else
-            {
-                try
-                {
-                ctrMedi.insertErrorHandlingMedicine(m.getMedicineID(), client.getClientID(), loggedInEmployee.getEmployeeID(), txtaDescription.getText(), -(Integer.parseInt(txtQuantity.getText())), loggedInEmployee.getManagerNo());
-                JTextField[] txtFieldList = {txtQuantity};
-                resetTextFields(txtFieldList);
-                JTextArea[] txtAreaList = {txtaDescription};
-                resetTextAreas(txtAreaList);
-                if(ctrMedi.getManagerMessage() != null)
-                {
-                    JOptionPane.showMessageDialog(this, ctrMedi.getManagerMessage());
-                }
-                else
-                {
-                    JOptionPane.showMessageDialog(this, "Hændelsen er gemt");
-                }
-                GUIErrorHandlingMedicine.setVisible(false);
-                }
-                catch(NoManagerNumberErrorHandling e)
-                {
+            } else {
+                try {
+                    ctrMedi.insertErrorHandlingMedicine(m.getMedicineID(), client.getClientID(), loggedInEmployee.getEmployeeID(), txtaDescription.getText(), -(Integer.parseInt(txtQuantity.getText())), loggedInEmployee.getManagerNo());
+                    JTextField[] txtFieldList = {txtQuantity};
+                    resetTextFields(txtFieldList);
+                    JTextArea[] txtAreaList = {txtaDescription};
+                    resetTextAreas(txtAreaList);
+                    if (ctrMedi.getManagerMessage() != null) {
+                        JOptionPane.showMessageDialog(this, ctrMedi.getManagerMessage());
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Hændelsen er gemt");
+                    }
+                    GUIErrorHandlingMedicine.setVisible(false);
+                } catch (NoManagerNumberErrorHandling e) {
                     JOptionPane.showMessageDialog(GUIErrorHandlingMedicine, e.getMessage());
-                }
-                catch(Exception ex)
-                {
+                } catch (Exception ex) {
                     JOptionPane.showMessageDialog(GUIErrorHandlingMedicine, ex.getMessage());
                 }
             }
@@ -1207,6 +1319,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
+        // This method resets the text fields when you closes the window
         JTextField[] txtFieldList = {txtQuantity};
         resetTextFields(txtFieldList);
         GUIErrorHandlingMedicine.setVisible(false);
@@ -1214,59 +1327,122 @@ public class GUIClientNewTab extends javax.swing.JPanel {
 
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
         // TODO add your handling code here:
+        // This deletes what text the field contained when it gaines focus
         jTextField1.setText("");
 }//GEN-LAST:event_jTextField1FocusGained
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        CtrMedi ctrMedi = new CtrMedi();
-        Medicine m = (Medicine) cmbMedi.getSelectedItem();
-        ctrMedi.updateMedicine(m.getMedicineID(), m.getFrequencyID(), m.getExternalContactID(), m.getClientID(), m.getName(), m.getDescription(), m.getDate(), m.getQuantity()-Integer.parseInt(jTextField1.getText()));
-        setVisible(false);
+        // This method takes from the quantity of the medicine when a client
+        // is given some medicine and catches a exception if it doesn't succeed
+        try {
+            CtrMedi ctrMedi = new CtrMedi();
+            Medicine m = (Medicine) cmbMedi.getSelectedItem();
+            ctrMedi.updateMedicine(m.getMedicineID(), m.getFrequencyID(), m.getExternalContactID(), m.getClientID(), m.getName(), m.getDescription(), m.getDate(), m.getQuantity() - Integer.parseInt(jTextField1.getText()));
+            setVisible(false);
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
 }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
         // TODO add your handling code here:
+        // This deletes what text the field contained when it gaines focus
         jTextField1.setText("");
 }//GEN-LAST:event_jTextField2FocusGained
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         // TODO add your handling code here:
-        CtrMedi ctrMedi = new CtrMedi();
-        Medicine m = (Medicine) cmbMedi.getSelectedItem();
-        ctrMedi.updateMedicine(m.getMedicineID(), m.getFrequencyID(), m.getExternalContactID(), m.getClientID(), m.getName(), m.getDescription(), m.getDate(), m.getQuantity()+Integer.parseInt(jTextField1.getText()));
-        setVisible(false);
+        // This method adds to the quantity of a medicine when the stock is
+        // set and catches a exception if it doesn't succeed
+        try {
+            CtrMedi ctrMedi = new CtrMedi();
+            Medicine m = (Medicine) cmbMedi.getSelectedItem();
+            ctrMedi.updateMedicine(m.getMedicineID(), m.getFrequencyID(), m.getExternalContactID(), m.getClientID(), m.getName(), m.getDescription(), m.getDate(), m.getQuantity() + Integer.parseInt(jTextField1.getText()));
+            setVisible(false);
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
 }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        // This closes the GUIStockMedicine window
         GUIStockMedicine.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         // TODO add your handling code here:
+        // This closes the GUIGiveMedicine window
         GUIGiveMedicine.setVisible(false);
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
+        // This closes the GUICreateDayliReport window
         GUICreateDayliReport.setVisible(false);
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
-        CrtDailyReport ctrDayliReport = new CrtDailyReport();
-        ctrDayliReport.insertDailyreport(client.getClientID(), loggedInEmployee.getEmployeeID(), jTextArea6.getText());
-        JOptionPane.showMessageDialog(this, "Der er oprettet en dagsrapport");
-        GUICreateDayliReport.setVisible(false);
+        // This method creates a specific daily report but catches a exception
+        // if it doesn't succeed
+        try {
+            CrtDailyReport ctrDayliReport = new CrtDailyReport();
+            ctrDayliReport.insertDailyreport(client.getClientID(), loggedInEmployee.getEmployeeID(), jTextArea6.getText());
+            JOptionPane.showMessageDialog(this, "Der er oprettet en dagsrapport");
+            populateCmbDailyReport();
+            setDailyReportText();
+            GUICreateDayliReport.setVisible(false);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(GUICreateDayliReport, e.getMessage());
+        }
     }//GEN-LAST:event_jButton14ActionPerformed
 
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        // TODO add your handling code here:
+        // This method updates a specific daily report but catches a exception
+        // if it doesn't succeed
+        try {
+            CrtDailyReport ctrDailyReport = new CrtDailyReport();
+            DayliReport dr = (DayliReport) jComboBox2.getSelectedItem();
+            int dailyreportID = dr.getDailyReportID();
+            ctrDailyReport.updateDailyreport(dailyreportID, client.getClientID(), loggedInEmployee.getEmployeeID(), jTextArea7.getText());
+            JOptionPane.showMessageDialog(this, "Du har opdateret dagsrapporten");
+            populateCmbDailyReport();
+            setDailyReportText();
+            GUIUpdateDailyReport.setVisible(false);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(GUIUpdateDailyReport, e.getMessage());
+        }
+    }//GEN-LAST:event_jButton15ActionPerformed
 
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        // TODO add your handling code here:
+        // This closes the GUIUpdateDailyReport window
+        GUIUpdateDailyReport.setVisible(false);
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
+        // TODO add your handling code here:
+        // This method sets the text in the text area of a selected daily
+        // report in the combobox
+        if (jComboBox2.getSelectedItem() != "") {
+            DayliReport dr = (DayliReport) jComboBox2.getSelectedItem();
+            if (dr != null) {
+                String text = dr.getText();
+                jTextArea1.setText(text);
+            }//end if
+        }//end if
+    }//GEN-LAST:event_jComboBox2ItemStateChanged
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFrame GUICreateDayliReport;
     private javax.swing.JFrame GUIErrorHandlingMedicine;
     private javax.swing.JFrame GUIGiveMedicine;
     private javax.swing.JFrame GUIStockMedicine;
+    private javax.swing.JFrame GUIUpdateDailyReport;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnOk;
     private javax.swing.JComboBox cmbMedi;
@@ -1278,6 +1454,8 @@ public class GUIClientNewTab extends javax.swing.JPanel {
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1311,6 +1489,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -1327,6 +1506,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
@@ -1340,6 +1520,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
     private javax.swing.JTextArea jTextArea4;
     private javax.swing.JTextArea jTextArea5;
     private javax.swing.JTextArea jTextArea6;
+    private javax.swing.JTextArea jTextArea7;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -1368,5 +1549,4 @@ public class GUIClientNewTab extends javax.swing.JPanel {
     private javax.swing.JTextField txtQuantity;
     private javax.swing.JTextArea txtaDescription;
     // End of variables declaration//GEN-END:variables
-
 }

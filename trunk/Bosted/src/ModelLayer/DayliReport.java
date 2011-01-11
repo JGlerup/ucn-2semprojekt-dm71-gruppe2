@@ -79,6 +79,6 @@ public class DayliReport
 
     public String toString()
     {
-        return text;
+        return date;
     }
 }

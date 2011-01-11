@@ -17,6 +17,7 @@ import ModelLayer.Reservation;
 import ModelLayer.ToDaysDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -152,26 +153,85 @@ public class GUIcar extends javax.swing.JPanel
             for(Reservation r : res)
             {
                 String date = r.getStartDate();
-                String emp = ctrEmp.
-            double stkpris = s.getNewSalesLine().getProduct().getSalesPrice();
-            double stkprisD = round(stkpris,2);
-                        double moms = stkpris * 0.25;
-                        double momsD =round(moms,2);
-                        double ialt = s.getNewSalesLine().getSubTotal() * 1.25;
-                        double ialtD = round(ialt,2);
-                        getjTable1().setValueAt(antal, tableRow, tableColumn);
-                        tableColumn++;
-                        getjTable1().setValueAt(varenavn, tableRow, tableColumn);
-                        tableColumn++;
-                        getjTable1().setValueAt(stkprisD + setZeroes(getNumberOfDecimalPlace(stkprisD)), tableRow, tableColumn);
-                        tableColumn++;
-                        getjTable1().setValueAt(momsD + setZeroes(getNumberOfDecimalPlace(momsD)), tableRow, tableColumn);
-                        tableColumn++;
-                        getjTable1().setValueAt(ialtD + setZeroes(getNumberOfDecimalPlace(ialtD)), tableRow, tableColumn);
-                        tableColumn = 0;
-                        tableRow++;
+                String emp = ctrEmp.findEmployeeByID(r.getEmployeeID()).toString();
+                String cli = ctrCli.findClientByID(r.getClientID()).toString();
+                String car = ctrCar.findCarByID(r.getCarID()).toString();
+                getTblReservations().setValueAt(date, tableRow, tableColumn);
+                tableColumn++;
+                getTblReservations().setValueAt(emp, tableRow, tableColumn);
+                tableColumn++;
+                getTblReservations().setValueAt(cli, tableRow, tableColumn);
+                tableColumn++;
+                getTblReservations().setValueAt(car, tableRow, tableColumn);
+                tableColumn = 0;
+                tableRow++;
             }//end for
+            setTableColumn(0);
+            setTableRow(0);
         }//end if
+    }
+
+    public void setTblListOfCars(String date)
+    {
+        CtrCar ctrCar = new CtrCar();
+        ArrayList<Car> carList =  ctrCar.getAllCars();
+        CtrReservation ctrRes = new CtrReservation();
+        ArrayList<Car> carsAva = ctrRes.findListOfAvailableCarsByDate(date);
+        if(!carList.isEmpty())
+        {
+            for(Car c : carList)
+            {
+                String description = c.getDescription();
+                String regNo = c.getRegNo();
+                String available = "Nej";
+                for(Car cc : carsAva)
+                {
+                    if(cc.getCarID() == c.getCarID())
+                    {
+                        available = "Ja";
+                    }
+                }//end for
+                getTblListofCars().setValueAt(description, tableRow, tableColumn);
+                tableColumn++;
+                getTblListofCars().setValueAt(regNo, tableRow, tableColumn);
+                tableColumn++;
+                getTblListofCars().setValueAt(available, tableRow, tableColumn);
+                tableColumn = 0;
+                tableRow++;
+            }//end for
+            setTableColumn(0);
+            setTableRow(0);
+        }//end if
+    }
+
+    public void setTableColumn(int tableColumn)
+    {
+        this.tableColumn = tableColumn;
+    }
+
+    public void setTableRow(int tableRow)
+    {
+        this.tableRow = tableRow;
+    }
+
+    public int getTableColumn()
+    {
+        return tableColumn;
+    }
+
+    public int getTableRow()
+    {
+        return tableRow;
+    }
+
+    public JTable getTblListofCars()
+    {
+        return tblListofCars;
+    }
+
+    public JTable getTblReservations()
+    {
+        return tblReservations;
     }
 
     /**
@@ -440,24 +500,15 @@ public class GUIcar extends javax.swing.JPanel
                 "Dato", "Medarbejder", "Klient", "Bil"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
-            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tblReservations.setColumnSelectionAllowed(true);
         spReservationer.setViewportView(tblReservations);
-        tblReservations.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         btnOpretBooking.setText("Opret");
 
@@ -680,6 +731,8 @@ public class GUIcar extends javax.swing.JPanel
         populateCmbYourReservations();
         populateCmbClient();
         populateCmbAvailableCars(getToDaysDate());
+        setTblReservations();
+        setTblListOfCars(getToDaysDate());
     
     }//GEN-LAST:event_tpCarFocusGained
 

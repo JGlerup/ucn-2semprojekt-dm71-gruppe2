@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ModelLayer;
 
 import java.util.Date;
@@ -13,23 +12,24 @@ import java.util.Date;
  */
 public class ExternalDocument {
 
-private int externalDocumentID;
-private int clientID;
-private String text;
-private String date;
-private String source;
-private String author;
+    private int externalDocumentID;
+    private Client client;
+    private String text;
+    private String date;
+    private String source;
+    private String author;
 
+    public ExternalDocument() {
+    }
 
-public ExternalDocument(int externalDocument, int clientID, String text, String date, String source, String author)
-{
-    this.externalDocumentID = externalDocumentID;
-    this.clientID = clientID;
-    this.text = text;
-    this.date = date;
-    this.source = source;
-    this.author = author;
-}
+    public ExternalDocument(int externalDocumentID, Client client, String text, String date, String source, String author) {
+        this.externalDocumentID = externalDocumentID;
+        this.client = client;
+        this.text = text;
+        this.date = date;
+        this.source = source;
+        this.author = author;
+    }
 
     public String getAuthor() {
         return author;
@@ -39,12 +39,12 @@ public ExternalDocument(int externalDocument, int clientID, String text, String 
         this.author = author;
     }
 
-    public int getClientID() {
-        return clientID;
+    public Client getClient() {
+        return client;
     }
 
-    public void setClientID(int clientID) {
-        this.clientID = clientID;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public String getDate() {
@@ -78,11 +78,4 @@ public ExternalDocument(int externalDocument, int clientID, String text, String 
     public void setText(String text) {
         this.text = text;
     }
-
-
-
-
-
-
-
 }

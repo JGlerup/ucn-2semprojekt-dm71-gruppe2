@@ -1303,11 +1303,11 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         String inUse = client.getInUse();
         String zipCode = null;
         String city = null;
-        int locationID = client.getLocationID();
+        Location location = client.getLocation();
 
         CtrLoca ctrLoca = new CtrLoca();
         try {
-            Location l = ctrLoca.findLocation(locationID);
+            Location l = ctrLoca.findLocation(location.getLocationID());
             zipCode = Integer.toString(l.getZipCode());
             city = l.getCity();
         } catch (Exception e) {
@@ -1608,7 +1608,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         // if it doesn't succeed
         try {
             CrtDailyReport ctrDayliReport = new CrtDailyReport();
-            ctrDayliReport.insertDailyreport(client.getClientID(), loggedInEmployee.getEmployeeID(), jTextArea6.getText());
+            ctrDayliReport.insertDailyreport(client, loggedInEmployee, jTextArea6.getText());
             JOptionPane.showMessageDialog(this, "Der er oprettet en dagsrapport");
             populateCmbDailyReport();
             setDailyReportText();
@@ -1626,7 +1626,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
             CrtDailyReport ctrDailyReport = new CrtDailyReport();
             DailyReport dr = (DailyReport) jComboBox2.getSelectedItem();
             int dailyreportID = dr.getDailyReportID();
-            ctrDailyReport.updateDailyreport(dailyreportID, client.getClientID(), loggedInEmployee.getEmployeeID(), jTextArea7.getText());
+            ctrDailyReport.updateDailyreport(dailyreportID, client, loggedInEmployee, jTextArea7.getText());
             JOptionPane.showMessageDialog(this, "Du har opdateret dagsrapporten");
             populateCmbDailyReport();
             setDailyReportText();

@@ -20,7 +20,7 @@ public class DBTodo implements IFDBTodo {
 
     public Todo findTodo(int todoID, boolean retrieveAssociation) {
         Todo t = new Todo();
-        t = singleWhere("todo_id = '" + todoID + "'", false);
+        t = singleWhere("todo_id = '" + todoID + "'", retrieveAssociation);
         return t;
     }
 
@@ -31,7 +31,7 @@ public class DBTodo implements IFDBTodo {
     public int insertTodo(Todo t) {  //call to get the next ssn number
         int rc = -1;
         String query = "INSERT INTO todo(employee_id, text, date)  VALUES('"
-                + t.getEmployeeID() + "','"
+                + t.getEmployee().getEmployeeID() + "','"
                 + t.getText() + "','"
                 + t.getDate() + "')";
 
@@ -53,7 +53,7 @@ public class DBTodo implements IFDBTodo {
         int rc = -1;
 
         String query = "UPDATE todo SET "
-                + "employee_id = '" + tObj.getEmployeeID() + "', "
+                + "employee_id = '" + tObj.getEmployee().getEmployeeID() + "', "
                 + "text = '" + tObj.getText() + "'"
                 + " WHERE todo_id ='" + tObj.getTodoID() + "'";
         System.out.println("Update query:" + query);
@@ -102,8 +102,11 @@ public class DBTodo implements IFDBTodo {
             int snr = 0;
             if (results.next()) {
                 tObj = buildTodo(results);
-                //missing the test on retriveassociation
-
+                if(retrieveAssociation)
+                {
+                    IFDBEmp dbEmp = new DBEmployee();
+                    tObj.setEmployee(dbEmp.findEmployeeByID(tObj.getEmployee().getEmployeeID(), false));
+                }
             }//end if
             stmt.close();
         }//slut try
@@ -133,7 +136,11 @@ public class DBTodo implements IFDBTodo {
                 Todo tObj = new Todo();
                 tObj = buildTodo(results);
                 list.add(tObj);
-                //missing tes on retriveAssociation
+                if(retrieveAssociation)
+                {
+                    IFDBEmp dbEmp = new DBEmployee();
+                    tObj.setEmployee(dbEmp.findEmployeeByID(tObj.getEmployee().getEmployeeID(), false));
+                }
             }//end while
             stmt.close();
         }//slut try
@@ -149,7 +156,9 @@ public class DBTodo implements IFDBTodo {
 
         try {
             tObj.setTodoID(results.getInt(1));
-            tObj.setEmployeeID(results.getInt(2));
+            Employee emp = new Employee();
+            emp.setEmployeeID(results.getInt(2));
+            tObj.setEmployee(emp);
             tObj.setText(results.getString(3));
             tObj.setDate(results.getString(4));
         } catch (Exception e) {

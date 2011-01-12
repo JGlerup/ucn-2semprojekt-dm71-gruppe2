@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import ModelLayer.Client;
 import ModelLayer.Employee;
+import ModelLayer.Location;
 
 /**
  * @author Gruppe 2 - DM71
@@ -23,7 +24,7 @@ public class DBClient implements IFDBClient
     public Client findClient(String clientNo, boolean retrieveAssociation)
     {
         Client cObj = new Client();
-        cObj = singleWhere("clientno = '" + clientNo + "'", false);
+        cObj = singleWhere("clientno = '" + clientNo + "'", retrieveAssociation);
         return cObj;
     }
 
@@ -36,7 +37,7 @@ public class DBClient implements IFDBClient
     public Client findClientByID(int clientID, boolean retrieveAssociation)
     {
         Client clientObj = new Client();
-        clientObj = singleWhere("client_id = " + clientID, false);
+        clientObj = singleWhere("client_id = " + clientID, retrieveAssociation);
         return clientObj;
     }
 
@@ -56,7 +57,7 @@ public class DBClient implements IFDBClient
                 + c.getMiddleName() + "','"
                 + c.getLastName() + "','"
                 + c.getAddress() + "','"
-                + c.getLocationID() + "','"
+                + c.getLocation().getLocationID() + "','"
                 + c.getPhoneNo() + "','"
                 + c.getEmail() + "','"
                 + c.getStartDate() + "','"
@@ -90,7 +91,7 @@ public class DBClient implements IFDBClient
                 + "middlename ='" + cObj.getMiddleName() + "', "
                 + "lastname ='" + cObj.getLastName() + "', "
                 + "address ='" + cObj.getAddress() + "', "
-                + "location_id ='" + cObj.getLocationID() + "', "
+                + "location_id ='" + cObj.getLocation().getLocationID() + "', "
                 + "phoneno ='" + cObj.getPhoneNo() + "', "
                 + "email ='" + cObj.getEmail() + "' "
                 + " WHERE client_id ='" + cObj.getClientID() + "'";
@@ -140,8 +141,12 @@ public class DBClient implements IFDBClient
             int snr = 0;
             if (results.next()) {
                 cObj = buildClient(results);
-                //missing the test on retriveassociation
-
+                if(retrieveAssociation)
+                {
+                    IFDBLoca dbLoca = new DBLocation();
+                    cObj.setLocation(dbLoca.findLocation(cObj.getLocation().getLocationID(), false));
+                    cObj.setEmployeeList(findClientsEmployees(cObj.getClientID()));
+                }
             }//end if
             stmt.close();
         }//slut try
@@ -171,7 +176,12 @@ public class DBClient implements IFDBClient
                 Client cObj = new Client();
                 cObj = buildClient(results);
                 list.add(cObj);
-                //missing tes on retriveAssociation
+                if(retrieveAssociation)
+                {
+                    IFDBLoca dbLoca = new DBLocation();
+                    cObj.setLocation(dbLoca.findLocation(cObj.getLocation().getLocationID(), false));
+                    cObj.setEmployeeList(findClientsEmployees(cObj.getClientID()));
+                }
             }//end while
             stmt.close();
         }//slut try
@@ -196,7 +206,9 @@ public class DBClient implements IFDBClient
             cObj.setMiddleName(results.getString(8));
             cObj.setLastName(results.getString(9));
             cObj.setAddress(results.getString(10));
-            cObj.setLocationID(results.getInt(11));
+            Location loca = new Location();
+            loca.setLocationID(results.getInt(11));
+            cObj.setLocation(loca);
             cObj.setPhoneNo(results.getInt(12));
             cObj.setEmail(results.getString(13));
         } catch (Exception e) {

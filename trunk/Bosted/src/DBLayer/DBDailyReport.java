@@ -5,7 +5,9 @@
 
 package DBLayer;
 
+import ModelLayer.Client;
 import ModelLayer.DailyReport;
+import ModelLayer.Employee;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -27,25 +29,25 @@ public class DBDailyReport implements IFDBDailyReport
 
     public DailyReport findDailyReportByDailyReportID(int dailyReportID, boolean retrieveAssociation) {
         DailyReport drObj = new DailyReport();
-        drObj = singleWhere("dailyreport_id = '" + dailyReportID + "'", false);
+        drObj = singleWhere("dailyreport_id = '" + dailyReportID + "'", retrieveAssociation);
         return drObj;
     }
 
     public DailyReport findDailyReportByClientID(int clientID, boolean retrieveAssociation) {
         DailyReport drObj = new DailyReport();
-        drObj = singleWhere("client_id = '" + clientID + "'", false);
+        drObj = singleWhere("client_id = '" + clientID + "'", retrieveAssociation);
         return drObj;
     }
 
     public DailyReport findDailyReportByEmployeeID(int employeeID, boolean retrieveAssociation) {
         DailyReport drObj = new DailyReport();
-        drObj = singleWhere("employee_id = '" + employeeID + "'", false);
+        drObj = singleWhere("employee_id = '" + employeeID + "'", retrieveAssociation);
         return drObj;
     }
 
     public DailyReport findLatestDayliReport(int clientID, boolean retrieveAssociation) {
         DailyReport drObj = new DailyReport();
-        drObj = singleWhere ("date = (SELECT MAX(date) FROM dailyreport) and client_id = '" + clientID + "'", false);
+        drObj = singleWhere ("date = (SELECT MAX(date) FROM dailyreport) and client_id = '" + clientID + "'", retrieveAssociation);
         return drObj;
     }
 
@@ -55,9 +57,9 @@ public class DBDailyReport implements IFDBDailyReport
 
     public int insertDailyReport(DailyReport daily) {
         int rc = -1;
-        String query = "INSERT INTO dailyreport(client_id, employee_id, text, date)  VALUES('"
-                + daily.getClientID() + "','"
-                + daily.getEmployeeID() + "','"
+        String query = "INSERT INTO dailyreport(client_id, employee_id, text, date)  VALUES( "
+                + daily.getClient().getClientID() + ", "
+                + daily.getEmployee().getEmployeeID() + ",'"
                 + daily.getText() + "','"
                 + daily.getDate() + "')";
 
@@ -79,8 +81,8 @@ public class DBDailyReport implements IFDBDailyReport
         int rc = -1;
 
         String query = "UPDATE dailyreport SET "
-                + "client_ID ='" + dailyObj.getClientID() + "',"
-                + "employee_ID ='" + dailyObj.getEmployeeID() + "',"
+                + "client_ID = " + dailyObj.getClient().getClientID() + ","
+                + "employee_ID = " + dailyObj.getEmployee().getEmployeeID() + ","
                 + "text ='" + dailyObj.getText() + "',"
                 + "date ='" + dailyObj.getDate() + "'"
                 + " WHERE dailyreport_id = '" + dailyObj.getDailyReportID() + "'";
@@ -130,8 +132,13 @@ public class DBDailyReport implements IFDBDailyReport
             int snr = 0;
             if (results.next()) {
                 dailyObj = buildDailyreport(results);
-                //missing the test on retriveassociation
-
+                if(retrieveAssociation)
+                {
+                    IFDBEmp dbEmp = new DBEmployee();
+                    dailyObj.setEmployee(dbEmp.findEmployeeByID(dailyObj.getEmployee().getEmployeeID(), false));
+                    IFDBClient dbCli = new DBClient();
+                    dailyObj.setClient(dbCli.findClientByID(dailyObj.getClient().getClientID(), retrieveAssociation));
+                }
             }//end if
             stmt.close();
         }//end try
@@ -161,7 +168,13 @@ public class DBDailyReport implements IFDBDailyReport
                 DailyReport dailyObj = new DailyReport();
                 dailyObj = buildDailyreport(results);
                 list.add(dailyObj);
-                //missing tes on retriveAssociation
+                if(retrieveAssociation)
+                {
+                    IFDBEmp dbEmp = new DBEmployee();
+                    dailyObj.setEmployee(dbEmp.findEmployeeByID(dailyObj.getEmployee().getEmployeeID(), false));
+                    IFDBClient dbCli = new DBClient();
+                    dailyObj.setClient(dbCli.findClientByID(dailyObj.getClient().getClientID(), retrieveAssociation));
+                }
             }//end while
             stmt.close();
         }//end try
@@ -177,8 +190,12 @@ public class DBDailyReport implements IFDBDailyReport
 
         try {
             dailyObj.setDailyReportID(results.getInt(1));
-            dailyObj.setClientID(results.getInt(2));
-            dailyObj.setEmployeeID(results.getInt(3));
+            Client cli = new Client();
+            cli.setClientID(results.getInt(2));
+            dailyObj.setClient(cli);
+            Employee emp = new Employee();
+            emp.setEmployeeID(results.getInt(3));
+            dailyObj.setEmployee(emp);
             dailyObj.setText(results.getString(4));
             dailyObj.setDate(results.getString(5));
             

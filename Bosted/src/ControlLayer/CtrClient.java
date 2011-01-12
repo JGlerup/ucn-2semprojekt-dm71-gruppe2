@@ -43,7 +43,7 @@ public class CtrClient {
         return allCli;
     }
 
-    public void insertClient(String description, String interests, String health, String ssn, String firstName, String middleName, String lastName, String address, Location location, int phoneNo, String email, String inUse) throws NullValueException {
+    public void insertClient(String description, String interests, String health, String ssn, String firstName, String middleName, String lastName, String address, Location location, int phoneNo, String email, String startDate, String inUse, String stopDate) throws NullValueException {
         if (!description.trim().equals("") && !interests.trim().equals("") && !health.trim().equals("") && ssn.trim().length() == 11 && ssn.substring(6, 7).equals("-") && !firstName.trim().equals("") && !lastName.trim().equals("") && !address.trim().equals("") && !inUse.trim().equals("")) {
             IFDBClient dbClient = new DBClient();
             Client cObj = new Client();
@@ -58,9 +58,9 @@ public class CtrClient {
             cObj.setLocation(location);
             cObj.setPhoneNo(phoneNo);
             cObj.setEmail(email);
-            cObj.setStartDate();
+            cObj.setStartDate(startDate);
             cObj.setInUse(inUse);
-            cObj.setStopDate(null);
+            cObj.setStopDate(stopDate);
             cObj.createClientNo();
             dbClient.insertClient(cObj);
         }

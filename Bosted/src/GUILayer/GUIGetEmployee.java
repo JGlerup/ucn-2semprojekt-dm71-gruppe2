@@ -259,8 +259,8 @@ public class GUIGetEmployee extends javax.swing.JPanel {
             txtEmployeeEmail.setText(emplo.getEmail());
             txtEmployeePhoneNo.setText(Integer.toString(emplo.getPhoneNo()));
             txtEmployeeAddress.setText(emplo.getAddress());
-            txtEmployeeZipCode.setText(Integer.toString(ctrLoca.findLocation(emplo.getLocationID()).getZipCode()));
-            txtEmployeeCity.setText(ctrLoca.findLocation(emplo.getLocationID()).getCity());
+            txtEmployeeZipCode.setText(Integer.toString(ctrLoca.findLocation(emplo.getLocation().getLocationID()).getZipCode()));
+            txtEmployeeCity.setText(ctrLoca.findLocation(emplo.getLocation().getLocationID()).getCity());
             txtEmployeeManagerNo.setText(emplo.getManagerNo());
 //            txtEmployeePassword.setText(emplo.getPassword());
             txtEmployeeJobTitle.setText(emplo.getJobTitle());

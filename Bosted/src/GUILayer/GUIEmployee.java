@@ -14,11 +14,11 @@ import ControlLayer.CtrEmp;
 import ControlLayer.CtrLoca;
 import ModelLayer.Client;
 import ModelLayer.Employee;
+import ModelLayer.Location;
 import java.util.ArrayList;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -522,8 +522,8 @@ public class GUIEmployee extends javax.swing.JPanel {
         CtrEmp ctrEmp = new CtrEmp();
         CtrLoca ctrLoca = new CtrLoca();
         try {
-            int locationID = ctrLoca.findLocationByZipCode(zipCode).getLocationID();
-            ctrEmp.updateEmp(employeeNoCurrent, employeeNoNew, managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password, inUse);
+            Location location = ctrLoca.findLocationByZipCode(zipCode);
+            ctrEmp.updateEmp(employeeNoCurrent, employeeNoNew, managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, location, phoneNo, email, password, inUse);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -579,8 +579,8 @@ public class GUIEmployee extends javax.swing.JPanel {
         CtrEmp ctrEmp = new CtrEmp();
         CtrLoca ctrLoca = new CtrLoca();
         try {
-            int locationID = ctrLoca.findLocationByZipCode(zipCode).getLocationID();
-            ctrEmp.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password, inUse);
+            Location location = ctrLoca.findLocationByZipCode(zipCode);
+            ctrEmp.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, location, phoneNo, email, password, inUse);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -598,8 +598,8 @@ public class GUIEmployee extends javax.swing.JPanel {
             txtEmployeeEmail.setText(em.getEmail());
             txtEmployeePhoneNo.setText(Integer.toString(em.getPhoneNo()));
             txtEmployeeAddress.setText(em.getAddress());
-            txtEmployeeZipCode.setText(Integer.toString(ctrLoca.findLocation(em.getLocationID()).getZipCode()));
-            txtEmployeeCity.setText(ctrLoca.findLocation(em.getLocationID()).getCity());
+            txtEmployeeZipCode.setText(Integer.toString(ctrLoca.findLocation(em.getLocation().getLocationID()).getZipCode()));
+            txtEmployeeCity.setText(ctrLoca.findLocation(em.getLocation().getLocationID()).getCity());
             txtEmployeeManagerNo.setText(em.getManagerNo());
             txtEmployeePassword.setText(em.getPassword());
             txtEmployeeJobTitle.setText(em.getJobTitle());

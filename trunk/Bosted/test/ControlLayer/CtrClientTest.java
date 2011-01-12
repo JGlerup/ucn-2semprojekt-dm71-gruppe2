@@ -1,7 +1,7 @@
 package ControlLayer;
 
+import ModelLayer.Location;
 import ModelLayer.Client;
-import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -75,13 +75,22 @@ public class CtrClientTest {
         String middleName = "and";
         String lastName = "mand";
         String address = "banangade 14";
-        int locationID = 1;
+        Location location = new Location();
+        CtrLoca ctrLoca = new CtrLoca();
+        try
+        {
+            location = ctrLoca.findLocationByZipCode(9000);
+        }
+        catch (Exception e)
+        {
+            fail("Exception:" + e.getMessage());
+        }
         int phoneNo = 98163044;
         String email = "bananmand@junglen.dk";
         String inUse = "Yes";
         CtrClient instance = new CtrClient();
         try {
-            instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, inUse);
+            instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, location, phoneNo, email, inUse);
         } catch (Exception e) {
             fail("Exception:" + e.getMessage());
         }
@@ -96,7 +105,7 @@ public class CtrClientTest {
         assertEquals("and", result.getMiddleName());
         assertEquals("mand", result.getLastName());
         assertEquals("banangade 14", result.getAddress());
-        assertEquals(1, result.getLocationID());
+        assertEquals(9000, result.getLocation().getZipCode());
         assertEquals(98163044, result.getPhoneNo());
         assertEquals("bananmand@junglen.dk", result.getEmail());
         instance.deleteClient("banan123456");
@@ -116,13 +125,22 @@ public class CtrClientTest {
         String middleName = "and";
         String lastName = "mand";
         String address = "banangade 14";
-        int locationID = 1;
+        Location location = new Location();
+        CtrLoca ctrLoca = new CtrLoca();
+        try
+        {
+            location = ctrLoca.findLocationByZipCode(9000);
+        }
+        catch (Exception e)
+        {
+            fail("Exception:" + e.getMessage());
+        }
         int phoneNo = 98163044;
         String email = "bananmand@junglen.dk";
         String inUse = "Yes";
         CtrClient instance = new CtrClient();
         try {
-            instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, inUse);
+            instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, location, phoneNo, email, inUse);
         } catch (Exception e) {
             fail("Exception:" + e.getMessage());
         }
@@ -138,12 +156,20 @@ public class CtrClientTest {
         middleName = "98awytehph";
         lastName = "aiwhpt9";
         address = "atpijoew";
-        locationID = 1;
+        location = new Location();
+        try
+        {
+            location = ctrLoca.findLocationByZipCode(9000);
+        }
+        catch (Exception e)
+        {
+            fail("Exception:" + e.getMessage());
+        }
         phoneNo = 983252010;
         email = "sutmin@junglen.dk";
         inUse = "Yes";
         try {
-            instance.updateClient(clientNoCurrent, clientNoNew, description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, inUse);
+            instance.updateClient(clientNoCurrent, clientNoNew, description, interests, health, ssn, firstName, middleName, lastName, address, location, phoneNo, email, inUse);
 
         } catch (Exception e) {
             fail("Exception:" + e.getMessage());
@@ -158,7 +184,7 @@ public class CtrClientTest {
         assertEquals("98awytehph", result.getMiddleName());
         assertEquals("aiwhpt9", result.getLastName());
         assertEquals("atpijoew", result.getAddress());
-        assertEquals(1, result.getLocationID());
+        assertEquals(9000, result.getLocation().getZipCode());
         assertEquals(983252010, result.getPhoneNo());
         assertEquals("sutmin@junglen.dk", result.getEmail());
         instance.deleteClient(clientNoNew);
@@ -181,13 +207,22 @@ public class CtrClientTest {
         String middleName = "and";
         String lastName = "mand";
         String address = "banangade 14";
-        int locationID = 1;
+        Location location = new Location();
+        CtrLoca ctrLoca = new CtrLoca();
+        try
+        {
+            location = ctrLoca.findLocationByZipCode(9000);
+        }
+        catch (Exception e)
+        {
+            fail("Exception:" + e.getMessage());
+        }
         int phoneNo = 98163000;
         String email = "bananmand@junglen.dk";
         String inUse = "Yes";
         CtrClient instance = new CtrClient();
         try {
-            instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, inUse);
+            instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, location, phoneNo, email, inUse);
         } catch (Exception e) {
             fail("Exception:" + e.getMessage());
         }

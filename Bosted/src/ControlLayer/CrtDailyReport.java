@@ -15,7 +15,7 @@ import ModelLayer.Client;
 import ModelLayer.DailyReport;
 import ModelLayer.Employee;
 import java.util.ArrayList;
-import java.util.Date;
+
 
 /**
  *
@@ -51,24 +51,24 @@ public class CrtDailyReport {
         return allDai;
     }
 
-    public void insertDailyreport(int clientID, int employeeID, String text)
+    public void insertDailyreport(Client client, Employee employee, String text)
     {
         IFDBDailyReport dbDailyreport = new DBDailyReport();
         DailyReport dObj = new DailyReport();
-        dObj.setClientID(clientID);
-        dObj.setEmployeeID(employeeID);
+        dObj.setClient(client);
+        dObj.setEmployee(employee);
         dObj.setText(text);
         dObj.setThisDate();
         dbDailyreport.insertDailyReport(dObj);
     }
 
-    public void updateDailyreport(int dailyReportID, int clientID, int employeeID, String text)
+    public void updateDailyreport(int dailyReportID, Client client, Employee employee, String text)
     {
        IFDBDailyReport dbDailyReport = new DBDailyReport();
         DailyReport dObj = new DailyReport();
         dObj.setDailyReportID(dailyReportID);
-        dObj.setClientID(clientID);
-        dObj.setEmployeeID(employeeID);
+        dObj.setClient(client);
+        dObj.setEmployee(employee);
         dObj.setText(text);
         dObj.setThisDate();
         dbDailyReport.updateDailyReport(dObj);

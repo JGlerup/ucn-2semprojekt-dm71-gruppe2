@@ -35,11 +35,11 @@ public class CtrTodo {
         return todoList;
     }
 
-    public void insertTodo(int employeeID, String date, String text) throws NullValueException {
+    public void insertTodo(Employee employee, String date, String text) throws NullValueException {
         if (date != null && !text.trim().equals("")) {
             IFDBTodo dbTodo = new DBTodo();
             Todo tObj = new Todo();
-            tObj.setEmployeeID(employeeID);
+            tObj.setEmployee(employee);
             tObj.setDate(date);
             tObj.setText(text);
             dbTodo.insertTodo(tObj);
@@ -49,12 +49,12 @@ public class CtrTodo {
         }
     }
 
-    public void updateTodo(int todoID, int employeeID, String date, String text) throws NullValueException  {
+    public void updateTodo(int todoID, Employee employee, String date, String text) throws NullValueException  {
         if (!date.trim().equals("") && !text.trim().equals("")) {
             IFDBTodo dbTodo = new DBTodo();
             Todo tObj = new Todo();
             tObj.setTodoID(todoID);
-            tObj.setEmployeeID(employeeID);
+            tObj.setEmployee(employee);
             tObj.setDate(date);
             tObj.setText(text);
             dbTodo.updateTodo(tObj);

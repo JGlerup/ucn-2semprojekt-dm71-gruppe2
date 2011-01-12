@@ -5,6 +5,8 @@ import DBLayer.DBReservation;
 import DBLayer.IFDBReservation;
 import ExceptionsPack.NullValueException;
 import ModelLayer.Car;
+import ModelLayer.Client;
+import ModelLayer.Employee;
 import ModelLayer.Reservation;
 import ModelLayer.ToDaysDate;
 import java.util.ArrayList;
@@ -78,7 +80,7 @@ public class CtrReservation
             {
                 for(Reservation r : resList)
                 {
-                    if(r.getCarID() == c.getCarID());
+                    if(r.getCar().getCarID() == c.getCarID());
                     {
                         inResList = true;
                     }//end if
@@ -256,15 +258,15 @@ public class CtrReservation
      * @param clientID the id of client
      * @param date
      */
-    public void insertReservation(int carID, int employeeID, int clientID, String date)throws NullValueException
+    public void insertReservation(Car car, Employee employee, Client client, String date)throws NullValueException
     {
-        if(carID != 0 && employeeID != 0 && clientID != 0 && !date.trim().equals(""))
+        if(car.getCarID() != 0 && employee.getEmployeeID() != 0 && client.getClientID() != 0 && !date.trim().equals(""))
         {
             IFDBReservation dbreservation = new DBReservation();
             Reservation cObj = new Reservation();
-            cObj.setCarID(carID);
-	    cObj.setEmployeeID(employeeID);
-	    cObj.setClientID(clientID);
+            cObj.setCar(car);
+	    cObj.setEmployee(employee);
+	    cObj.setClient(client);
 	    cObj.setStartDate(date);
 	    cObj.setEndDate(date);
 	    cObj.setThisReservationDate();
@@ -287,16 +289,16 @@ public class CtrReservation
      * @param endDate the same date as startDate
      * @param reservationDate the date the reservation was made
      */
-    public void updateReservation(int reservationID, int carID, int employeeID, int clientID, String startDate, String endDate, String reservationDate)
+    public void updateReservation(int reservationID, Car car, Employee employee, Client client, String startDate, String endDate, String reservationDate)
     {
         
             IFDBReservation dbreservation = new DBReservation();
 
             Reservation cObj = new Reservation();
             cObj.setReservationID(reservationID);
-	    cObj.setCarID(carID);
-	    cObj.setEmployeeID(employeeID);
-	    cObj.setClientID(clientID);
+	    cObj.setCar(car);
+	    cObj.setEmployee(employee);
+	    cObj.setClient(client);
 	    cObj.setStartDate(startDate);
 	    cObj.setEndDate(endDate);
 	    cObj.setReservationDate(reservationDate);

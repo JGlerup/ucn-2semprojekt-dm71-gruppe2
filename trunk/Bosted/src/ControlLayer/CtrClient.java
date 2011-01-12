@@ -8,6 +8,7 @@ import DBLayer.IFDBEmp;
 import ExceptionsPack.NullValueException;
 import ModelLayer.Client;
 import ModelLayer.Employee;
+import ModelLayer.Location;
 import java.util.ArrayList;
 
 /**
@@ -42,7 +43,7 @@ public class CtrClient {
         return allCli;
     }
 
-    public void insertClient(String description, String interests, String health, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String inUse) throws NullValueException {
+    public void insertClient(String description, String interests, String health, String ssn, String firstName, String middleName, String lastName, String address, Location location, int phoneNo, String email, String inUse) throws NullValueException {
         if (!description.trim().equals("") && !interests.trim().equals("") && !health.trim().equals("") && ssn.trim().length() == 11 && ssn.substring(6, 7).equals("-") && !firstName.trim().equals("") && !lastName.trim().equals("") && !address.trim().equals("") && !inUse.trim().equals("")) {
             IFDBClient dbClient = new DBClient();
             Client cObj = new Client();
@@ -54,7 +55,7 @@ public class CtrClient {
             cObj.setMiddleName(middleName);
             cObj.setLastName(lastName);
             cObj.setAddress(address);
-            cObj.setLocationID(locationID);
+            cObj.setLocation(location);
             cObj.setPhoneNo(phoneNo);
             cObj.setEmail(email);
             cObj.setStartDate();
@@ -68,7 +69,7 @@ public class CtrClient {
         }
     }
 
-    public void updateClient(String clientNoCurrent, String clientNoNew, String description, String interests, String health, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String inUse) throws NullValueException  {
+    public void updateClient(String clientNoCurrent, String clientNoNew, String description, String interests, String health, String ssn, String firstName, String middleName, String lastName, String address, Location location, int phoneNo, String email, String inUse) throws NullValueException  {
         if (!description.trim().equals("") && !interests.trim().equals("") && !health.trim().equals("") && ssn.trim().length() == 11 && ssn.substring(6, 7).equals("-") && !firstName.trim().equals("") && !lastName.trim().equals("") && !address.trim().equals("") && !inUse.trim().equals("")) {
         IFDBClient dbClient = new DBClient();
         Client cObj = new Client();
@@ -83,7 +84,7 @@ public class CtrClient {
         cObj.setMiddleName(middleName);
         cObj.setLastName(lastName);
         cObj.setAddress(address);
-        cObj.setLocationID(locationID);
+        cObj.setLocation(location);
         cObj.setPhoneNo(phoneNo);
         cObj.setEmail(email);
         cObj.setInUse(inUse);

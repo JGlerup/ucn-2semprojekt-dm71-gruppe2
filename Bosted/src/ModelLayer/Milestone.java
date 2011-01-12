@@ -14,7 +14,7 @@ import java.util.Date;
 public class Milestone {
 
     private int milestoneID;
-    private int clientID;
+    private Client client;
     private String text;
     private String date;
     private Date succesDate;
@@ -25,21 +25,21 @@ public class Milestone {
 
     
 
-public Milestone(int milestoneID, int clientID, String text, String date, Date succesDate)
+public Milestone(int milestoneID, Client client, String text, String date, Date succesDate)
 {
     this.milestoneID = milestoneID;
-    this.clientID = clientID;
+    this.client = client;
     this.text = text;
     this.date = date;
     this.succesDate = succesDate;
 }
 
-    public int getClientID() {
-        return clientID;
+    public Client getClient() {
+        return client;
     }
 
-    public void setClientID(int clientID) {
-        this.clientID = clientID;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public String getDate() {
@@ -74,6 +74,11 @@ public Milestone(int milestoneID, int clientID, String text, String date, Date s
         this.text = text;
     }
 
+    public void setThisDate()
+    {
+        ToDaysDate todaysdate = new ToDaysDate();
+        date = todaysdate.toString();
+    }
 
 
 

@@ -20,6 +20,9 @@ public interface IFDBMilestone {
     public ArrayList<Milestone> getAllMilestones(boolean retriveAssociation);
     //find one car having the regNo
 
+    public ArrayList<Milestone> buildListOfMilestones(int clientID);
+    // find the milestones belonging to one client
+
     public int insertMilestone(Milestone m);
     //update information about an car
 

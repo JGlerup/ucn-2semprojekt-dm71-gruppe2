@@ -5,6 +5,7 @@
 
 package DBLayer;
 
+import ModelLayer.Client;
 import ModelLayer.Milestone;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -37,8 +38,8 @@ public class DBMilestone implements IFDBMilestone {
 
     public int insertMilestone(Milestone m) {  //call to get the next ssn number
         int rc = -1;
-        String query = "INSERT INTO car(clientid, text, date, successdate)  VALUES('"
-                + m.getClientID() + "','"
+        String query = "INSERT INTO milestone(client_id, text, date, successdate)  VALUES('"
+                + m.getClient().getClientID() + "','"
                 + m.getText() + "')"
                 + m.getDate() + "')"
                 + m.getSuccesDate() + "')";
@@ -62,7 +63,7 @@ public class DBMilestone implements IFDBMilestone {
         int rc = -1;
 
         String query = "UPDATE milestone SET "
-                + "clientid = '" + mObj.getClientID() + "', "
+                + "client = '" + mObj.getClient().getClientID() + "', "
                 + "text ='" + mObj.getText() + "' "
                 + "date ='" + mObj.getDate() + "' "
                 + "succesdate ='" + mObj.getSuccesDate() + "' "
@@ -114,6 +115,11 @@ public class DBMilestone implements IFDBMilestone {
             if (results.next()) {
                 mObj = buildMilestone(results);
                 //missing the test on retriveassociation
+                if(retrieveAssociation)
+                {
+                    IFDBClient dbClient = new DBClient();
+                    mObj.setClient(dbClient.findClientByID(mObj.getClient().getClientID(), false));
+                }
 
             }//end if
             stmt.close();
@@ -159,7 +165,9 @@ public class DBMilestone implements IFDBMilestone {
         Milestone mObj = new Milestone();
 
         try {
-            mObj.setClientID(results.getInt(1));
+            Client client = new Client();
+            client.setClientID(results.getInt(1));
+            mObj.setClient(client);
             mObj.setText(results.getString(2));
             mObj.setDate(results.getString(3));
             mObj.setSuccesDate(results.getDate(4));
@@ -180,4 +188,31 @@ public class DBMilestone implements IFDBMilestone {
         }
 
         return query;
-    }}
+    }
+    
+     public ArrayList<Milestone> buildListOfMilestones(int clientID) {
+        ResultSet results;
+        ArrayList<Milestone> list = new ArrayList<Milestone>();
+        String query = "SELECT * FROM milestone WHERE client_id =  '" + clientID + "'";
+        try { // read from milestone
+            Statement stmt = con.createStatement();
+            stmt.setQueryTimeout(5);
+            results = stmt.executeQuery(query);
+
+            int snr = 0;
+            while (results.next()) {
+                Milestone mileObj = new Milestone();
+                mileObj = buildMilestone(results);
+                list.add(mileObj);
+                //missing tes on retriveAssociation
+            }//end while
+            stmt.close();
+        }//end try
+        catch (Exception e) {
+            System.out.println("Query exception - select client : " + e);
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+}

@@ -5,7 +5,7 @@
 
 package DBLayer;
 
-import ModelLayer.DayliReport;
+import ModelLayer.DailyReport;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -25,35 +25,35 @@ public class DBDailyReport implements IFDBDailyReport
         con = DbConnection1.getInstance().getDBcon();
     }
 
-    public DayliReport findDailyReportByDailyReportID(int dailyReportID, boolean retrieveAssociation) {
-        DayliReport drObj = new DayliReport();
+    public DailyReport findDailyReportByDailyReportID(int dailyReportID, boolean retrieveAssociation) {
+        DailyReport drObj = new DailyReport();
         drObj = singleWhere("dailyreport_id = '" + dailyReportID + "'", false);
         return drObj;
     }
 
-    public DayliReport findDailyReportByClientID(int clientID, boolean retrieveAssociation) {
-        DayliReport drObj = new DayliReport();
+    public DailyReport findDailyReportByClientID(int clientID, boolean retrieveAssociation) {
+        DailyReport drObj = new DailyReport();
         drObj = singleWhere("client_id = '" + clientID + "'", false);
         return drObj;
     }
 
-    public DayliReport findDailyReportByEmployeeID(int employeeID, boolean retrieveAssociation) {
-        DayliReport drObj = new DayliReport();
+    public DailyReport findDailyReportByEmployeeID(int employeeID, boolean retrieveAssociation) {
+        DailyReport drObj = new DailyReport();
         drObj = singleWhere("employee_id = '" + employeeID + "'", false);
         return drObj;
     }
 
-    public DayliReport findLatestDayliReport(int clientID, boolean retrieveAssociation) {
-        DayliReport drObj = new DayliReport();
+    public DailyReport findLatestDayliReport(int clientID, boolean retrieveAssociation) {
+        DailyReport drObj = new DailyReport();
         drObj = singleWhere ("date = (SELECT MAX(date) FROM dailyreport) and client_id = '" + clientID + "'", false);
         return drObj;
     }
 
-    public ArrayList<DayliReport> getAllDailyReports(boolean retriveAssociation) {
+    public ArrayList<DailyReport> getAllDailyReports(boolean retriveAssociation) {
         return miscWhere("", retriveAssociation);
     }
 
-    public int insertDailyReport(DayliReport daily) {
+    public int insertDailyReport(DailyReport daily) {
         int rc = -1;
         String query = "INSERT INTO dailyreport(client_id, employee_id, text, date)  VALUES('"
                 + daily.getClientID() + "','"
@@ -74,8 +74,8 @@ public class DBDailyReport implements IFDBDailyReport
         return (rc);
     }
 
-    public int updateDailyReport(DayliReport daily) {
-        DayliReport dailyObj = daily;
+    public int updateDailyReport(DailyReport daily) {
+        DailyReport dailyObj = daily;
         int rc = -1;
 
         String query = "UPDATE dailyreport SET "
@@ -118,9 +118,9 @@ public class DBDailyReport implements IFDBDailyReport
     }
 
     //singlewhere is used when only one employee object is to be build
-    private DayliReport singleWhere(String wClause, boolean retrieveAssociation) {
+    private DailyReport singleWhere(String wClause, boolean retrieveAssociation) {
         ResultSet results;
-        DayliReport dailyObj = new DayliReport();
+        DailyReport dailyObj = new DailyReport();
         String query = buildQuery(wClause);
         System.out.println("DbDailyreport -singelWhere " + query);
         try { // read from dailyreport
@@ -158,7 +158,7 @@ public class DBDailyReport implements IFDBDailyReport
 
             int snr = 0;
             while (results.next()) {
-                DayliReport dailyObj = new DayliReport();
+                DailyReport dailyObj = new DailyReport();
                 dailyObj = buildDailyreport(results);
                 list.add(dailyObj);
                 //missing tes on retriveAssociation
@@ -172,8 +172,8 @@ public class DBDailyReport implements IFDBDailyReport
         return list;
     }
 
-    private DayliReport buildDailyreport(ResultSet results) {
-        DayliReport dailyObj = new DayliReport();
+    private DailyReport buildDailyreport(ResultSet results) {
+        DailyReport dailyObj = new DailyReport();
 
         try {
             dailyObj.setDailyReportID(results.getInt(1));
@@ -201,9 +201,9 @@ public class DBDailyReport implements IFDBDailyReport
         return query;
     }
 
-    public ArrayList<DayliReport> buildListOfDailyreports(int clientID) {
+    public ArrayList<DailyReport> buildListOfDailyreports(int clientID) {
         ResultSet results;
-        ArrayList<DayliReport> list = new ArrayList<DayliReport>();
+        ArrayList<DailyReport> list = new ArrayList<DailyReport>();
         String query = "SELECT * FROM dailyreport WHERE client_id =  '" + clientID + "'";
         try { // read from dailyreport
             Statement stmt = con.createStatement();
@@ -212,7 +212,7 @@ public class DBDailyReport implements IFDBDailyReport
 
             int snr = 0;
             while (results.next()) {
-                DayliReport dailyObj = new DayliReport();
+                DailyReport dailyObj = new DailyReport();
                 dailyObj = buildDailyreport(results);
                 list.add(dailyObj);
                 //missing tes on retriveAssociation

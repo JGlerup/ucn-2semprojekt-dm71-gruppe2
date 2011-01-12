@@ -15,7 +15,7 @@ import ControlLayer.CtrLoca;
 import ControlLayer.CtrMedi;
 import ExceptionsPack.NoManagerNumberErrorHandling;
 import ModelLayer.Client;
-import ModelLayer.DayliReport;
+import ModelLayer.DailyReport;
 import ModelLayer.Employee;
 import ModelLayer.Location;
 import ModelLayer.Medicine;
@@ -1075,10 +1075,10 @@ public class GUIClientNewTab extends javax.swing.JPanel {
 
     public void populateCmbDailyReport() {
         CrtDailyReport ctrDailyReport = new CrtDailyReport();
-        ArrayList<DayliReport> daiRepList = ctrDailyReport.buildListOfDailyreports(client.getClientID());
+        ArrayList<DailyReport> daiRepList = ctrDailyReport.buildListOfDailyreports(client.getClientID());
         jComboBox2.removeAllItems();
         jComboBox2.insertItemAt("", 0);
-        for (DayliReport dr : daiRepList) {
+        for (DailyReport dr : daiRepList) {
             jComboBox2.addItem(dr);
         }
         jComboBox2.removeItemAt(0);
@@ -1086,14 +1086,14 @@ public class GUIClientNewTab extends javax.swing.JPanel {
 
     public void setDailyReportText() {
         CrtDailyReport ctrDaiRep = new CrtDailyReport();
-        DayliReport dr = ctrDaiRep.findLatestDayliReport(client.getClientID());
+        DailyReport dr = ctrDaiRep.findLatestDayliReport(client.getClientID());
 
         int drID = dr.getDailyReportID();
         int index = 0;
         boolean found = false;
 
         while (index < jComboBox2.getItemCount() && !found) {
-            DayliReport drObjCompare = (DayliReport) jComboBox2.getItemAt(index);
+            DailyReport drObjCompare = (DailyReport) jComboBox2.getItemAt(index);
             int drIDCompare = drObjCompare.getDailyReportID();
             if (drID == drIDCompare) {
                 jComboBox2.setSelectedIndex(index);
@@ -1407,7 +1407,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         // if it doesn't succeed
         try {
             CrtDailyReport ctrDailyReport = new CrtDailyReport();
-            DayliReport dr = (DayliReport) jComboBox2.getSelectedItem();
+            DailyReport dr = (DailyReport) jComboBox2.getSelectedItem();
             int dailyreportID = dr.getDailyReportID();
             ctrDailyReport.updateDailyreport(dailyreportID, client.getClientID(), loggedInEmployee.getEmployeeID(), jTextArea7.getText());
             JOptionPane.showMessageDialog(this, "Du har opdateret dagsrapporten");
@@ -1430,7 +1430,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         // This method sets the text in the text area of a selected daily
         // report in the combobox
         if (jComboBox2.getSelectedItem() != "") {
-            DayliReport dr = (DayliReport) jComboBox2.getSelectedItem();
+            DailyReport dr = (DailyReport) jComboBox2.getSelectedItem();
             if (dr != null) {
                 String text = dr.getText();
                 jTextArea1.setText(text);

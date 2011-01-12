@@ -16,6 +16,7 @@ import ModelLayer.Employee;
 import ModelLayer.Reservation;
 import ModelLayer.ToDaysDate;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
@@ -511,6 +512,11 @@ public class GUIcar extends javax.swing.JPanel
         spReservationer.setViewportView(tblReservations);
 
         btnOpretBooking.setText("Opret");
+        btnOpretBooking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpretBookingActionPerformed(evt);
+            }
+        });
 
         btnOpdaterBooking.setText("Opdater");
 
@@ -849,6 +855,19 @@ public class GUIcar extends javax.swing.JPanel
     private void cmbAvailableCarsItemStatChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbAvailableCarsItemStatChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbAvailableCarsItemStatChanged
+
+    private void btnOpretBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpretBookingActionPerformed
+        Car cr = (Car) cmbAvailableCars.getSelectedItem();
+        Client cl = (Client) cmbClient.getSelectedItem();
+        Date d =  jDateChooserReservation.getDate();
+        String date = d.toString();
+        Employee e = loggedInEmployee;
+        if(cr != null && cl != null && date != null)
+        {
+            jOptionPane()
+        }
+    }//GEN-LAST:event_btnOpretBookingActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LBLbeskrivelse;

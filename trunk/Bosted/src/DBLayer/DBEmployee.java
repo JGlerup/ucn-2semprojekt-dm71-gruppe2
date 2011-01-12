@@ -4,6 +4,7 @@ import ModelLayer.Client;
 import java.sql.*;
 import java.util.ArrayList;
 import ModelLayer.Employee;
+import ModelLayer.Location;
 
 /**
  * @author Gruppe 2 - DM71
@@ -55,9 +56,9 @@ public class DBEmployee implements IFDBEmp {
                 + emp.getFirstName() + "','"
                 + emp.getMiddleName() + "','"
                 + emp.getLastName() + "','"
-                + emp.getAddress() + "','"
-                + emp.getLocationID() + "','"
-                + emp.getPhoneNo() + "','"
+                + emp.getAddress() + "',"
+                + emp.getLocation().getLocationID() + ", "
+                + emp.getPhoneNo() + ",'"
                 + emp.getEmail() + "','"
                 + emp.getStartDate() + "','"
                 + emp.getInUse() + "','"
@@ -95,10 +96,10 @@ public class DBEmployee implements IFDBEmp {
                 + "middlename ='" + empObj.getMiddleName() + "',"
                 + "lastname ='" + empObj.getLastName() + "',"
                 + "address ='" + empObj.getAddress() + "',"
-                + "location_id ='" + empObj.getLocationID() + "',"
-                + "phoneno ='" + empObj.getPhoneNo() + "',"
+                + "location_id =" + empObj.getLocation().getLocationID() + ","
+                + "phoneno =" + empObj.getPhoneNo() + ","
                 + "email ='" + empObj.getEmail() + "' "
-                + " WHERE employee_id = '" + empObj.getEmployeeID() + "'";
+                + " WHERE employee_id = " + empObj.getEmployeeID();
         System.out.println("Update query:" + query);
         try { // update employee
             Statement stmt = con.createStatement();
@@ -212,7 +213,9 @@ public class DBEmployee implements IFDBEmp {
             empObj.setMiddleName(results.getString(12));
             empObj.setLastName(results.getString(13));
             empObj.setAddress(results.getString(14));
-            empObj.setLocationID(results.getInt(15));
+            Location loca = new Location();
+            loca.setLocationID(results.getInt(15));
+            empObj.setLocation(loca);
             empObj.setPhoneNo(results.getInt(16));
             empObj.setEmail(results.getString(17));
             empObj.setNewStartDate(results.getString(18));

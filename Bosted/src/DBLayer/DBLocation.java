@@ -22,7 +22,7 @@ public class DBLocation implements IFDBLoca
     public Location findLocation(int locationID, boolean retrieveAssociation)
     {
         Location locaObj = new Location();
-        locaObj = singleWhere("location_id = '" + locationID + "'", false);
+        locaObj = singleWhere("location_id = " + locationID, false);
         return locaObj;
     }
 

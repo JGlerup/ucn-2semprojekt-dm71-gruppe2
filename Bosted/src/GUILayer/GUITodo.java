@@ -291,11 +291,10 @@ public class GUITodo extends javax.swing.JPanel {
         // TODO add your handling code here:
         CtrTodo ctrTodo = new CtrTodo();
         String text = txtACreateTodo.getText();
-        int employeeID = loggedInEmployee.getEmployeeID();
         
         try {
             if(!date.equals("")) {
-            ctrTodo.insertTodo(employeeID, date, text);
+            ctrTodo.insertTodo(loggedInEmployee, date, text);
             txtATodo.setText("");
             txtACreateTodo.setText("");
             updateCmbSelectDate();
@@ -326,10 +325,9 @@ public class GUITodo extends javax.swing.JPanel {
         CtrTodo ctrTodo = new CtrTodo();
         Todo tObj = (Todo) cmbSelectDate.getSelectedItem();
         int todoID = tObj.getTodoID();
-        int employeeID = loggedInEmployee.getEmployeeID();
         String todoDate = tObj.getDate();
         String text = txtATodo.getText();
-        ctrTodo.updateTodo(todoID, employeeID, todoDate, text);
+        ctrTodo.updateTodo(todoID, loggedInEmployee, todoDate, text);
         tObj.setText(text);
         JOptionPane.showMessageDialog(this, "Todo med datoen " + tObj.getDate() + " blev opdateret");
         }

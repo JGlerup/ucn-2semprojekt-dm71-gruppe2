@@ -108,10 +108,10 @@ public class GUIcar extends javax.swing.JPanel
      * @param employeeID the employeeID
      * @return a list of clients of the employee
      */
-    public ArrayList<Client> findEmployeesClients(int employeeID)
+    public ArrayList<Client> findEmployeesClients()
     {
         CtrEmp ctrE = new CtrEmp();
-        return ctrE.findEmployeesClient(employeeID);
+        return ctrE.findEmployee(loggedInEmployee.getEmployeeNo(), true).getClientList();
     }
 
     /**
@@ -154,9 +154,9 @@ public class GUIcar extends javax.swing.JPanel
             for(Reservation r : res)
             {
                 String date = r.getStartDate();
-                String emp = ctrEmp.findEmployeeByID(r.getEmployeeID()).toString();
-                String cli = ctrCli.findClientByID(r.getClientID()).toString();
-                String car = ctrCar.findCarByID(r.getCarID()).toString();
+                String emp = ctrEmp.findEmployeeByID(r.getEmployee().getEmployeeID()).toString();
+                String cli = ctrCli.findClientByID(r.getClient().getClientID()).toString();
+                String car = ctrCar.findCarByID(r.getCar().getCarID()).toString();
                 getTblReservations().setValueAt(date, tableRow, tableColumn);
                 tableColumn++;
                 getTblReservations().setValueAt(emp, tableRow, tableColumn);
@@ -812,8 +812,8 @@ public class GUIcar extends javax.swing.JPanel
             Car cr = new Car();
             if (r != null)
             {
-                c = findClient(r.getClientID());
-                cr = findCarByID(r.getCarID());
+                c = findClient(r.getClient().getClientID());
+                cr = findCarByID(r.getCar().getCarID());
                 String dateOfReservation = r.getStartDate();
                 String firstNameOfClient = c.getFirstName();
                 String lastNameOfClient = c.getLastName();

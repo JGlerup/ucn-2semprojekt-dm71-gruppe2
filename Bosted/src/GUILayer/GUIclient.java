@@ -493,8 +493,8 @@ public class GUIclient extends javax.swing.JPanel {
             }
             CtrClient ctrCli = new CtrClient();
             CtrLoca ctrLoca = new CtrLoca();
-            int locationID = ctrLoca.findLocationByZipCode(zipCode).getLocationID();
-            ctrCli.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, inUse);
+            Location location = ctrLoca.findLocation(zipCode);
+            ctrCli.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, location, phoneNo, email, inUse);
             resetTabs();
         } catch (NumberFormatException nFE) {
             JOptionPane.showMessageDialog(this, "Felterne telefonnr. og postnr. må kun indeholde tal");
@@ -545,8 +545,8 @@ public class GUIclient extends javax.swing.JPanel {
         CtrClient ctrCli = new CtrClient();
         CtrLoca ctrLoca = new CtrLoca();
         try {
-            int locationID = ctrLoca.findLocationByZipCode(zipCode).getLocationID();
-            ctrCli.updateClient(clientNoCurrent, clientNoNew, description, interests, health, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, inUse);
+            Location location = ctrLoca.findLocationByZipCode(zipCode);
+            ctrCli.updateClient(clientNoCurrent, clientNoNew, description, interests, health, ssn, firstName, middleName, lastName, address, location, phoneNo, email, inUse);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -591,7 +591,7 @@ public class GUIclient extends javax.swing.JPanel {
                 String inUse = c.getInUse();
                 String zipCode = null;
                 String city = null;
-                int locationID = c.getLocationID();
+                int locationID = c.getLocation().getLocationID();
 
                 CtrLoca ctrLoca = new CtrLoca();
                 try {

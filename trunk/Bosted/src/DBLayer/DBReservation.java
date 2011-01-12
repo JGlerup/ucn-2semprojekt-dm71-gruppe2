@@ -1,5 +1,6 @@
 package DBLayer;
 
+import ModelLayer.Car;
 import java.sql.*;
 import java.util.ArrayList;
 import ModelLayer.Reservation;
@@ -31,7 +32,7 @@ public class DBReservation implements IFDBReservation
     public Reservation findReservation(int clientID, String startDate, boolean retrieveAssociation)
     {
         Reservation rObj = new Reservation();
-        rObj = singleWhere("client_id = " + clientID + " AND startdate = '" + startDate + "'", false);
+        rObj = singleWhere("client_id = " + clientID + " AND startdate = '" + startDate + "'", true);
         return rObj;
     }
 
@@ -44,7 +45,7 @@ public class DBReservation implements IFDBReservation
     public Reservation findReservationByID(int reservationID, boolean retrieveAssociation)
     {
         Reservation rObj = new Reservation();
-        rObj = singleWhere("reservation_id = " + reservationID, false);
+        rObj = singleWhere("reservation_id = " + reservationID, retrieveAssociation);
         return rObj;
     }
 
@@ -90,7 +91,7 @@ public class DBReservation implements IFDBReservation
     {
         int rc = -1;
         String query = "INSERT INTO reservation(carID, employeeID, clientID, startDate, endDate, reservationDate)  VALUES("
-                + r.getCarID() + ", "
+                + r.getCar().getCarID() + ", "
                 + r.getEmployeeID() + ", "
                 + r.getClientID() + ", '"
                 + r.getStartDate() + "', '"
@@ -124,7 +125,7 @@ public class DBReservation implements IFDBReservation
         int rc = -1;
 
         String query = "UPDATE reservation SET "
-                + "carID = " + rObj.getCarID() + ", "
+                + "carID = " + rObj.getCar().getCarID() + ", "
                 + "employeeID = " + rObj.getEmployeeID() + ", "
                 + "clientID = " + rObj.getClientID() + ", "
                 + "startDate = '" + rObj.getStartDate() + "', "
@@ -192,7 +193,11 @@ public class DBReservation implements IFDBReservation
             {
                 rObj = buildReservation(results);
                 //missing the test on retriveassociation
-
+                if(retrieveAssociation)
+                {
+                    IFDBCar dbCar = new DBCar();
+                    rObj.setCar(dbCar.findCarByID(rObj.getCar().getCarID(), false));
+                }
             }//end if
             stmt.close();
         }//end try
@@ -244,7 +249,9 @@ public class DBReservation implements IFDBReservation
         try
         {
             rObj.setReservationID(results.getInt(1));
-            rObj.setCarID(results.getInt(2));
+            Car car = new Car();
+            car.setCarID(results.getInt(2));
+            rObj.setCar(car);
             rObj.setEmployeeID(results.getInt(3));
             rObj.setClientID(results.getInt(4));
             rObj.setStartDate(results.getString(5));

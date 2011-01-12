@@ -864,7 +864,7 @@ public class GUIcar extends javax.swing.JPanel
         Employee e = loggedInEmployee;
         if(cr != null && cl != null && date != null)
         {
-            jOptionPane()
+            
         }
     }//GEN-LAST:event_btnOpretBookingActionPerformed
 

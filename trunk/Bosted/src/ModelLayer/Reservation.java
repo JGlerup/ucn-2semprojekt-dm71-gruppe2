@@ -13,7 +13,7 @@ public class Reservation
 {
 
     private int reservationID;
-    private int carID;
+    private Car car;
     private int employeeID;
     private int clientID;
     private String startDate;
@@ -25,10 +25,10 @@ public class Reservation
 
     }
 
-    public Reservation(int reservationID, int carID, int employeeID, int clientID, String startDate, String endDate, String reservationDate)
+    public Reservation(int reservationID, Car car, int employeeID, int clientID, String startDate, String endDate, String reservationDate)
     {
         this.reservationID = reservationID;
-        this.carID = carID;
+        this.car = car;
         this.employeeID = employeeID;
         this.clientID = clientID;
         this.startDate = startDate;
@@ -37,14 +37,14 @@ public class Reservation
     }
 
 
-    public int getCarID()
+    public Car getCar()
     {
-        return carID;
+        return car;
     }
 
-    public void setCarID(int carID)
+    public void setCar(Car car)
     {
-        this.carID = carID;
+        this.car = car;
     }
 
     public int getClientID()
@@ -117,7 +117,7 @@ public class Reservation
     {
         Car car = new Car();
         IFDBCar dbCar = new DBCar();
-        car = dbCar.findCarByID(carID, true);
+        car = dbCar.findCarByID(car.getCarID(), true);
         Client cli = new Client();
         IFDBClient dbCli = new DBClient();
         cli = dbCli.findClientByID(clientID, true);

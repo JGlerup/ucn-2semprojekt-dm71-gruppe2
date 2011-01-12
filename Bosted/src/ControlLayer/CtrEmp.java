@@ -5,8 +5,8 @@ import DBLayer.DBEmployeeClient;
 import DBLayer.IFDBEmp;
 import DBLayer.IFDBEmployeeClient;
 import ExceptionsPack.NullValueException;
-import ModelLayer.Client;
 import ModelLayer.Employee;
+import ModelLayer.Location;
 import java.util.ArrayList;
 
 
@@ -46,7 +46,7 @@ public class CtrEmp
         return allEmp;
     }
 
-    public void insert(String managerNo, String jobTitle, String crudClient, String crudEmployee, String crudMedicine, String crudCar, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String password, String inUse) throws NullValueException {
+    public void insert(String managerNo, String jobTitle, String crudClient, String crudEmployee, String crudMedicine, String crudCar, String ssn, String firstName, String middleName, String lastName, String address, Location location, int phoneNo, String email, String password, String inUse) throws NullValueException {
         if (!jobTitle.trim().equals("") && !crudClient.trim().equals("") && !crudEmployee.trim().equals("") && !crudMedicine.trim().equals("") && !crudCar.trim().equals("") && ssn.trim().length() == 11 && ssn.substring(6, 7).equals("-") && !firstName.trim().equals("") && !lastName.trim().equals("") && !address.trim().equals("") && !password.trim().equals("") && !inUse.trim().equals("")) {
             IFDBEmp dbEmp = new DBEmployee();
             Employee empObj = new Employee();
@@ -61,7 +61,7 @@ public class CtrEmp
             empObj.setMiddleName(middleName);
             empObj.setLastName(lastName);
             empObj.setAddress(address);
-            empObj.setLocationID(locationID);
+            empObj.setLocation(location);
             empObj.setPhoneNo(phoneNo);
             empObj.setEmail(email);
             empObj.setPassword(password);
@@ -76,7 +76,7 @@ public class CtrEmp
 
     }
 
-    public void updateEmp(String employeeNoCurrent, String employeeNoNew, String managerNo, String jobTitle, String crudClient, String crudEmployee, String crudMedicine, String crudCar, String ssn, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String password, String inUse) throws NullValueException {
+    public void updateEmp(String employeeNoCurrent, String employeeNoNew, String managerNo, String jobTitle, String crudClient, String crudEmployee, String crudMedicine, String crudCar, String ssn, String firstName, String middleName, String lastName, String address, Location location, int phoneNo, String email, String password, String inUse) throws NullValueException {
         if (!jobTitle.trim().equals("") && !crudClient.trim().equals("") && !crudEmployee.trim().equals("") && !crudMedicine.trim().equals("") && !crudCar.trim().equals("") && ssn.trim().length() == 11 && ssn.substring(6, 7).equals("-") && !firstName.trim().equals("") && !lastName.trim().equals("") && !address.trim().equals("") && !password.trim().equals("") && !inUse.trim().equals("")) {
             IFDBEmp dbEmp = new DBEmployee();
             Employee empObj = new Employee();
@@ -94,7 +94,7 @@ public class CtrEmp
             empObj.setMiddleName(middleName);
             empObj.setLastName(lastName);
             empObj.setAddress(address);
-            empObj.setLocationID(locationID);
+            empObj.setLocation(location);
             empObj.setPhoneNo(phoneNo);
             empObj.setEmail(email);
             empObj.setPassword(password);

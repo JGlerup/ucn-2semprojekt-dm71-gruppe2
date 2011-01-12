@@ -25,7 +25,7 @@ public class Employee
     private String middleName;
     private String lastName;
     private String address;
-    private int locationID;
+    private Location location;
     private int phoneNo;
     private String email;
     private String ssn;
@@ -38,7 +38,7 @@ public class Employee
      
     }
 
-    public Employee(int employeeID, ArrayList<Client> clientList, String password, String managerNo, String jobTitle, String crud_Client, String crud_Employee, String crud_Medicine, String crud_Car, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String ssn)
+    public Employee(int employeeID, ArrayList<Client> clientList, String password, String managerNo, String jobTitle, String crud_Client, String crud_Employee, String crud_Medicine, String crud_Car, String firstName, String middleName, String lastName, String address, Location location, int phoneNo, String email, String ssn)
     {
         this.clientList = clientList;
         this.employeeID = employeeID;
@@ -54,7 +54,7 @@ public class Employee
         this.middleName = middleName;
         this.lastName = lastName;
         this.address = address;
-        this.locationID = locationID;
+        this.location = location;
         this.phoneNo = phoneNo;
         this.email = email;
         this.ssn = ssn;
@@ -189,14 +189,12 @@ public class Employee
         this.lastName = lastName;
     }
 
-    public int getLocationID()
-    {
-        return locationID;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setLocationID(int locationID)
-    {
-        this.locationID = locationID;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public String getManagerNo()

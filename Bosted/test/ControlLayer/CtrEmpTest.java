@@ -1,7 +1,9 @@
 package ControlLayer;
 
+import DBLayer.DBLocation;
+import DBLayer.IFDBLoca;
+import ModelLayer.Location;
 import ModelLayer.Employee;
-import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -80,14 +82,16 @@ public class CtrEmpTest {
         String middleName = "Von";
         String lastName = "Hansen";
         String address = "Dannebrogsgade 63";
-        int locationID = 1;
+        Location location = new Location();
+        IFDBLoca dbLoca = new DBLocation();
+        location = dbLoca.findLocation(1118, true);
         int phoneNo = 98674033;
         String email = "Von@dannebrogsgade.dk";
         String password = "123456";
         String inUse = "Yes";
         CtrEmp instance = new CtrEmp();
         try {
-            instance.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password, inUse);
+            instance.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, location, phoneNo, email, password, inUse);
             // TODO review the generated test code and remove the default call to fail.
             //fail("The test case is a prototype.");
 
@@ -106,7 +110,7 @@ public class CtrEmpTest {
         assertEquals("Von", result.getMiddleName());
         assertEquals("Hansen", result.getLastName());
         assertEquals("Dannebrogsgade 63", result.getAddress());
-        assertEquals(1, result.getLocationID());
+        assertEquals(1118, result.getLocation().getLocationID());
         assertEquals(98674033, result.getPhoneNo());
         assertEquals("Von@dannebrogsgade.dk", result.getEmail());
         assertEquals("123456", result.getPassword());
@@ -131,14 +135,16 @@ public class CtrEmpTest {
         String middleName = "Von";
         String lastName = "Hansen";
         String address = "Dannebrogsgade 63";
-        int locationID = 1;
+        Location location = new Location();
+        IFDBLoca dbLoca = new DBLocation();
+        location = dbLoca.findLocation(1118, true);
         int phoneNo = 98674033;
         String email = "Von@dannebrogsgade.dk";
         String password = "123456";
         String inUse = "Yes";
         CtrEmp instance = new CtrEmp();
         try {
-            instance.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password, inUse);
+            instance.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, location, phoneNo, email, password, inUse);
         } catch (Exception e) {
             fail("Exception:" + e.getMessage());
         }
@@ -155,13 +161,13 @@ public class CtrEmpTest {
         middleName = "Jul";
         lastName = "Glerup";
         address = "Lærkevej 9";
-        locationID = 1;
+        location = dbLoca.findLocation(1117, true);
         phoneNo = 98765443;
         email = "Glerup9@gmail.com";
         password = "123456789";
         inUse = "Yes";
         try {
-            instance.updateEmp("Karl123456", employeeNoNew, managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password, inUse);
+            instance.updateEmp("Karl123456", employeeNoNew, managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, location, phoneNo, email, password, inUse);
         } catch (Exception e) {
             fail("Exception:" + e.getMessage());
         }
@@ -177,7 +183,7 @@ public class CtrEmpTest {
         assertEquals("Jul", result.getMiddleName());
         assertEquals("Glerup", result.getLastName());
         assertEquals("Lærkevej 9", result.getAddress());
-        assertEquals(1, result.getLocationID());
+        assertEquals(1117, result.getLocation().getLocationID());
         assertEquals(98765443, result.getPhoneNo());
         assertEquals("Glerup9@gmail.com", result.getEmail());
         assertEquals("123456789", result.getPassword());
@@ -203,14 +209,16 @@ public class CtrEmpTest {
         String middleName = "Von";
         String lastName = "Hansen";
         String address = "Dannebrogsgade 63";
-        int locationID = 1;
+        Location location = new Location();
+        IFDBLoca dbLoca = new DBLocation();
+        location = dbLoca.findLocation(1118, true);
         int phoneNo = 98674033;
         String email = "Von@dannebrogsgade.dk";
         String password = "123456";
         String inUse = "Yes";
         CtrEmp instance = new CtrEmp();
         try {
-            instance.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, locationID, phoneNo, email, password, inUse);
+            instance.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, location, phoneNo, email, password, inUse);
         } catch (Exception e) {
             fail("Exception:" + e.getMessage());
         }

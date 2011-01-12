@@ -209,6 +209,7 @@ public class DBClient implements IFDBClient
             Location loca = new Location();
             loca.setLocationID(results.getInt(11));
             cObj.setLocation(loca);
+            cObj.setLocation(loca);
             cObj.setPhoneNo(results.getInt(12));
             cObj.setEmail(results.getString(13));
         } catch (Exception e) {

@@ -34,7 +34,7 @@ public class DBReservation implements IFDBReservation
     public Reservation findReservation(int clientID, String startDate, boolean retrieveAssociation)
     {
         Reservation rObj = new Reservation();
-        rObj = singleWhere("client_id = " + clientID + " AND startdate = '" + startDate + "'", true);
+        rObj = singleWhere("client_id = " + clientID + " AND startdate = '" + startDate + "'", retrieveAssociation);
         return rObj;
     }
 

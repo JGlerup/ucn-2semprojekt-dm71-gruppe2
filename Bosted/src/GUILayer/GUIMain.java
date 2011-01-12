@@ -346,7 +346,7 @@ public class GUIMain extends javax.swing.JFrame {
         String empPassword = emp.getPassword();
         String empInUse = emp.getInUse();
         System.out.println(empInUse);
-        if (user.equals(empUser) && pass.equals(empPassword) && empInUse.equals("Yes")) {
+        if (user.equals(empUser) && pass.equals(empPassword) && empInUse.equals("yes")) {
             for (int i = 1; i < tpGUI.getTabCount(); i++) {
                 tpGUI.setEnabledAt(i, true);
 

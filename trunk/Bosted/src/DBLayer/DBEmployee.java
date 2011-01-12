@@ -150,8 +150,6 @@ public class DBEmployee implements IFDBEmp {
                     ArrayList<Client> clientList = findEmployeesClients(employeeID);
                     empObj.setClientList(clientList);
                 }
-                //missing the test on retriveassociation
-
             }//end if
             stmt.close();
         }//end try
@@ -181,7 +179,11 @@ public class DBEmployee implements IFDBEmp {
                 Employee empObj = new Employee();
                 empObj = buildEmployee(results);
                 list.add(empObj);
-                //missing tes on retriveAssociation
+                if (retrieveAssociation == true) {
+                    int employeeID = empObj.getEmployeeID();
+                    ArrayList<Client> clientList = findEmployeesClients(employeeID);
+                    empObj.setClientList(clientList);
+                }
             }//end while
             stmt.close();
         }//end try

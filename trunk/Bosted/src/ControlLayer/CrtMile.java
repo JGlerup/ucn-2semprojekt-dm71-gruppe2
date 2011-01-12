@@ -7,6 +7,7 @@ package ControlLayer;
 
 import DBLayer.DBMilestone;
 import DBLayer.IFDBMilestone;
+import ModelLayer.Client;
 import ModelLayer.Milestone;
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,24 +30,22 @@ public class CrtMile {
         return milestones;
     }
 
-    public void insertMilestone(int clientID, String text, String date, Date succesDate) {
+    public void insertMilestone(Client client, String text, Date succesDate) {
             IFDBMilestone dbMilestone = new DBMilestone();
             Milestone mObj = new Milestone();
-            mObj.setClientID(clientID);
+            mObj.setClient(client);
             mObj.setText(text);
-            mObj.setDate(date);
             mObj.setSuccesDate(succesDate);
             dbMilestone.insertMilestone(mObj);
 
     }
 
-    public void updateMilestone(int clientID, String text, String date, Date succesDate) {
+    public void updateMilestone(Client client, String text, Date succesDate) {
 
             IFDBMilestone dbMilestone = new DBMilestone();
             Milestone mObj = new Milestone();
-            mObj.setClientID(clientID);
+            mObj.setClient(client);
             mObj.setText(text);
-            mObj.setDate(date);
             mObj.setSuccesDate(succesDate);
             dbMilestone.updateMilestone(mObj);
     }
@@ -54,6 +53,14 @@ public class CrtMile {
     public void deleteMilestone(int clientID) {
         IFDBMilestone dbMilestone = new DBMilestone();
         dbMilestone.deleteMilestone(clientID);
+    }
+
+        public ArrayList<Milestone> buildListOfMilestones(int clientID)
+    {
+        IFDBMilestone dbMile = new DBMilestone();
+        ArrayList mileList = new ArrayList<Milestone>();
+        mileList = dbMile.buildListOfMilestones(clientID);
+        return mileList;
     }
 }
 

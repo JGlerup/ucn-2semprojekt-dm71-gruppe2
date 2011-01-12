@@ -11,6 +11,7 @@
 package GUILayer;
 
 import ControlLayer.CrtDailyReport;
+import ControlLayer.CrtMile;
 import ControlLayer.CtrLoca;
 import ControlLayer.CtrMedi;
 import ExceptionsPack.NoManagerNumberErrorHandling;
@@ -19,6 +20,7 @@ import ModelLayer.DailyReport;
 import ModelLayer.Employee;
 import ModelLayer.Location;
 import ModelLayer.Medicine;
+import ModelLayer.Milestone;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
@@ -87,6 +89,25 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         jTextArea7 = new javax.swing.JTextArea();
         jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
+        newMilestone = new javax.swing.JFrame();
+        jLabel11 = new javax.swing.JLabel();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        txtaNewMilstone = new javax.swing.JTextArea();
+        jButton17 = new javax.swing.JButton();
+        jButton18 = new javax.swing.JButton();
+        update = new javax.swing.JFrame();
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane15 = new javax.swing.JScrollPane();
+        txtaUpdateMilestone = new javax.swing.JTextArea();
+        jButton19 = new javax.swing.JButton();
+        btnAnnullerUpdateMilestone = new javax.swing.JButton();
+        cmbUpdateMilestone = new javax.swing.JComboBox();
+        getMilestone = new javax.swing.JFrame();
+        jLabel13 = new javax.swing.JLabel();
+        jScrollPane16 = new javax.swing.JScrollPane();
+        txtaGetMilestone = new javax.swing.JTextArea();
+        btnClose = new javax.swing.JButton();
+        cmbGetMilestone = new javax.swing.JComboBox();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
@@ -142,21 +163,21 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         jLabel25 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
+        lblnewest = new javax.swing.JLabel();
+        lbl2rd = new javax.swing.JLabel();
         jScrollPane12 = new javax.swing.JScrollPane();
         jTextArea4 = new javax.swing.JTextArea();
         jScrollPane10 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
+        lbl3rd = new javax.swing.JLabel();
+        lbl4rd = new javax.swing.JLabel();
         jScrollPane11 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
         jScrollPane13 = new javax.swing.JScrollPane();
         jTextArea5 = new javax.swing.JTextArea();
-        jButton7 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        jbnewMilestone = new javax.swing.JButton();
+        jbupdate = new javax.swing.JButton();
+        btnGetMilestone = new javax.swing.JButton();
 
         GUIErrorHandlingMedicine.setMinimumSize(new java.awt.Dimension(300, 400));
 
@@ -507,6 +528,169 @@ public class GUIClientNewTab extends javax.swing.JPanel {
                 .addGroup(GUIUpdateDailyReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton16)
                     .addComponent(jButton15))
+                .addContainerGap())
+        );
+
+        jLabel11.setText("Skriv tekst her");
+
+        txtaNewMilstone.setColumns(20);
+        txtaNewMilstone.setRows(5);
+        jScrollPane14.setViewportView(txtaNewMilstone);
+
+        jButton17.setText("Opret");
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
+
+        jButton18.setText("Annuller");
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout newMilestoneLayout = new javax.swing.GroupLayout(newMilestone.getContentPane());
+        newMilestone.getContentPane().setLayout(newMilestoneLayout);
+        newMilestoneLayout.setHorizontalGroup(
+            newMilestoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(newMilestoneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(newMilestoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(jLabel11)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newMilestoneLayout.createSequentialGroup()
+                        .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton18)))
+                .addContainerGap())
+        );
+        newMilestoneLayout.setVerticalGroup(
+            newMilestoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(newMilestoneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addGroup(newMilestoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton18)
+                    .addComponent(jButton17))
+                .addContainerGap())
+        );
+
+        jLabel12.setText("Skriv tekst her");
+
+        txtaUpdateMilestone.setColumns(20);
+        txtaUpdateMilestone.setRows(5);
+        jScrollPane15.setViewportView(txtaUpdateMilestone);
+
+        jButton19.setText("Ok");
+        jButton19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton19ActionPerformed(evt);
+            }
+        });
+
+        btnAnnullerUpdateMilestone.setText("Annuller");
+        btnAnnullerUpdateMilestone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnnullerUpdateMilestoneActionPerformed(evt);
+            }
+        });
+
+        cmbUpdateMilestone.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbUpdateMilestone.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbUpdateMilestoneItemStateChanged(evt);
+            }
+        });
+        cmbUpdateMilestone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbUpdateMilestoneActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout updateLayout = new javax.swing.GroupLayout(update.getContentPane());
+        update.getContentPane().setLayout(updateLayout);
+        updateLayout.setHorizontalGroup(
+            updateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(updateLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(updateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(updateLayout.createSequentialGroup()
+                        .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAnnullerUpdateMilestone))
+                    .addComponent(cmbUpdateMilestone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(jLabel12))
+                .addContainerGap())
+        );
+        updateLayout.setVerticalGroup(
+            updateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updateLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cmbUpdateMilestone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(updateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAnnullerUpdateMilestone)
+                    .addComponent(jButton19))
+                .addContainerGap())
+        );
+
+        jLabel13.setText("Skriv tekst her");
+
+        txtaGetMilestone.setColumns(20);
+        txtaGetMilestone.setEditable(false);
+        txtaGetMilestone.setRows(5);
+        jScrollPane16.setViewportView(txtaGetMilestone);
+
+        btnClose.setText("Luk");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
+
+        cmbGetMilestone.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbGetMilestone.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbGetMilestoneItemStateChanged(evt);
+            }
+        });
+
+        javax.swing.GroupLayout getMilestoneLayout = new javax.swing.GroupLayout(getMilestone.getContentPane());
+        getMilestone.getContentPane().setLayout(getMilestoneLayout);
+        getMilestoneLayout.setHorizontalGroup(
+            getMilestoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(getMilestoneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(getMilestoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane16, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(jLabel13)
+                    .addComponent(cmbGetMilestone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnClose))
+                .addContainerGap())
+        );
+        getMilestoneLayout.setVerticalGroup(
+            getMilestoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, getMilestoneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cmbGetMilestone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnClose)
                 .addContainerGap())
         );
 
@@ -881,9 +1065,9 @@ public class GUIClientNewTab extends javax.swing.JPanel {
 
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel28.setText("Nyeste");
+        lblnewest.setText("Nyeste");
 
-        jLabel29.setText("Anden nyeste");
+        lbl2rd.setText("Anden nyeste");
 
         jTextArea4.setColumns(20);
         jTextArea4.setLineWrap(true);
@@ -895,9 +1079,9 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         jTextArea2.setRows(5);
         jScrollPane10.setViewportView(jTextArea2);
 
-        jLabel30.setText("Tredje nyeste");
+        lbl3rd.setText("Tredje nyeste");
 
-        jLabel31.setText("Fjerde nyeste");
+        lbl4rd.setText("Fjerde nyeste");
 
         jTextArea3.setColumns(20);
         jTextArea3.setLineWrap(true);
@@ -909,24 +1093,24 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         jTextArea5.setRows(5);
         jScrollPane13.setViewportView(jTextArea5);
 
-        jButton7.setText("Skriv ny");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jbnewMilestone.setText("Skriv ny");
+        jbnewMilestone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                jbnewMilestoneActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Opdater");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jbupdate.setText("Opdater");
+        jbupdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jbupdateActionPerformed(evt);
             }
         });
 
-        jButton8.setText("Hent ældre");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        btnGetMilestone.setText("Hent ældre");
+        btnGetMilestone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                btnGetMilestoneActionPerformed(evt);
             }
         });
 
@@ -938,28 +1122,28 @@ public class GUIClientNewTab extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel28)
+                        .addComponent(lblnewest)
                         .addGap(266, 266, 266)
-                        .addComponent(jLabel29))
+                        .addComponent(lbl2rd))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22)
                         .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel30)
+                        .addComponent(lbl3rd)
                         .addGap(233, 233, 233)
-                        .addComponent(jLabel31))
+                        .addComponent(lbl4rd))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22)
                         .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(220, 220, 220)
-                        .addComponent(jButton7)
+                        .addComponent(jbnewMilestone)
                         .addGap(19, 19, 19)
-                        .addComponent(jButton6)
+                        .addComponent(jbupdate)
                         .addGap(17, 17, 17)
-                        .addComponent(jButton8)))
+                        .addComponent(btnGetMilestone)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -967,25 +1151,25 @@ public class GUIClientNewTab extends javax.swing.JPanel {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel28)
-                    .addComponent(jLabel29))
+                    .addComponent(lblnewest)
+                    .addComponent(lbl2rd))
                 .addGap(6, 6, 6)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel30)
-                    .addComponent(jLabel31))
+                    .addComponent(lbl3rd)
+                    .addComponent(lbl4rd))
                 .addGap(6, 6, 6)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton7)
-                    .addComponent(jButton6)
-                    .addComponent(jButton8))
+                    .addComponent(jbnewMilestone)
+                    .addComponent(jbupdate)
+                    .addComponent(btnGetMilestone))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1254,23 +1438,56 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         
 }//GEN-LAST:event_jButton10ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void jbnewMilestoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnewMilestoneActionPerformed
         // TODO add your handling code here:
-        GUIWriteNewMi guiwmi = new GUIWriteNewMi();
-        guiwmi.setVisible(true);
-}//GEN-LAST:event_jButton7ActionPerformed
+        newMilestone.setVisible(true);
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-        GUIUpdateMi guiumi = new GUIUpdateMi();
-        guiumi.setVisible(true);
-}//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        
+
+}//GEN-LAST:event_jbnewMilestoneActionPerformed
+
+    private void jbupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbupdateActionPerformed
         // TODO add your handling code here:
-        GUIOpenOlderMi guidr = new GUIOpenOlderMi();
-        guidr.setVisible(true);
-}//GEN-LAST:event_jButton8ActionPerformed
+        try {
+        update.setVisible(true);
+        CrtMile ctrMile = new CrtMile();
+        ArrayList<Milestone> mileList = ctrMile.buildListOfMilestones(client.getClientID());
+        cmbUpdateMilestone.removeAllItems();
+        cmbUpdateMilestone.insertItemAt("", 0);
+        for (Milestone m : mileList) {
+            cmbUpdateMilestone.addItem(m);
+        }
+        cmbUpdateMilestone.removeItemAt(0);
+        }
+
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+
+        
+}//GEN-LAST:event_jbupdateActionPerformed
+
+    private void btnGetMilestoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetMilestoneActionPerformed
+        // TODO add your handling code here:
+
+
+        try {
+        getMilestone.setVisible(true);
+        CrtMile ctrMile = new CrtMile();
+        ArrayList<Milestone> mileList = ctrMile.buildListOfMilestones(client.getClientID());
+        cmbGetMilestone.removeAllItems();
+        cmbGetMilestone.insertItemAt("", 0);
+        for (Milestone m : mileList) {
+            cmbGetMilestone.addItem(m);
+        }
+        cmbGetMilestone.removeItemAt(0);
+        }
+
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+}//GEN-LAST:event_btnGetMilestoneActionPerformed
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
         // TODO add your handling code here:
@@ -1437,17 +1654,93 @@ public class GUIClientNewTab extends javax.swing.JPanel {
             }//end if
         }//end if
     }//GEN-LAST:event_jComboBox2ItemStateChanged
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        // TODO add your handling code here:
+        try {
+            CrtMile ctrMile = new CrtMile();
+            ctrMile.insertMilestone(client, txtaNewMilstone.getText(), null);
+            JOptionPane.showMessageDialog(this, "Der er nu oprettet et delmål");
+            newMilestone.setVisible(false);
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(newMilestone, e.getMessage());
+        }
+
+    }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton18ActionPerformed
+
+    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+        // TODO add your handling code here:
+        try {
+        CrtMile ctrMile = new CrtMile();
+        ctrMile.updateMilestone(client,txtaUpdateMilestone.getText(), null);
+        JOptionPane.showMessageDialog(update, "Delmål er nu opdateret");
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(update, e.getMessage());
+        }
+
+
+    }//GEN-LAST:event_jButton19ActionPerformed
+
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        // TODO add your handling code here:
+        getMilestone.setVisible(false);
+    }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void cmbUpdateMilestoneItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbUpdateMilestoneItemStateChanged
+        // TODO add your handling code here:
+        if (cmbUpdateMilestone.getSelectedItem() != "") {
+            Milestone m = (Milestone) cmbUpdateMilestone.getSelectedItem();
+            if (m != null) {
+                String text = m.getText();
+                txtaUpdateMilestone.setText(text);
+            }//end if
+        }//end if
+    }//GEN-LAST:event_cmbUpdateMilestoneItemStateChanged
+
+    private void btnAnnullerUpdateMilestoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnnullerUpdateMilestoneActionPerformed
+        // TODO add your handling code here:
+        update.setVisible(false);
+        
+    }//GEN-LAST:event_btnAnnullerUpdateMilestoneActionPerformed
+
+    private void cmbUpdateMilestoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbUpdateMilestoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbUpdateMilestoneActionPerformed
+
+    private void cmbGetMilestoneItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbGetMilestoneItemStateChanged
+        // TODO add your handling code here:
+        if (cmbGetMilestone.getSelectedItem() != "") {
+            Milestone m = (Milestone) cmbGetMilestone.getSelectedItem();
+            if (m != null) {
+                String text = m.getText();
+                txtaGetMilestone.setText(text);
+            }//end if
+        }//end if
+    }//GEN-LAST:event_cmbGetMilestoneItemStateChanged
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFrame GUICreateDayliReport;
     private javax.swing.JFrame GUIErrorHandlingMedicine;
     private javax.swing.JFrame GUIGiveMedicine;
     private javax.swing.JFrame GUIStockMedicine;
     private javax.swing.JFrame GUIUpdateDailyReport;
+    private javax.swing.JButton btnAnnullerUpdateMilestone;
+    private javax.swing.JButton btnClose;
     private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnGetMilestone;
     private javax.swing.JButton btnOk;
+    private javax.swing.JComboBox cmbGetMilestone;
     private javax.swing.JComboBox cmbMedi;
     private javax.swing.JComboBox cmbMedi1;
     private javax.swing.JComboBox cmbMedi2;
+    private javax.swing.JComboBox cmbUpdateMilestone;
+    private javax.swing.JFrame getMilestone;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -1456,18 +1749,21 @@ public class GUIClientNewTab extends javax.swing.JPanel {
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -1479,11 +1775,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1505,6 +1797,9 @@ public class GUIClientNewTab extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
+    private javax.swing.JScrollPane jScrollPane15;
+    private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1524,6 +1819,11 @@ public class GUIClientNewTab extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JButton jbnewMilestone;
+    private javax.swing.JButton jbupdate;
+    private javax.swing.JLabel lbl2rd;
+    private javax.swing.JLabel lbl3rd;
+    private javax.swing.JLabel lbl4rd;
     private javax.swing.JLabel lblBeskrivelseKlient1;
     private javax.swing.JLabel lblDescription;
     private javax.swing.JLabel lblEfternavnKlient1;
@@ -1533,6 +1833,8 @@ public class GUIClientNewTab extends javax.swing.JPanel {
     private javax.swing.JLabel lblMedicine2;
     private javax.swing.JLabel lblMellemnavnKlient1;
     private javax.swing.JLabel lblQuantity;
+    private javax.swing.JLabel lblnewest;
+    private javax.swing.JFrame newMilestone;
     private javax.swing.JTextField txtClientAddress;
     private javax.swing.JTextField txtClientCity;
     private javax.swing.JTextArea txtClientDescription;
@@ -1548,5 +1850,9 @@ public class GUIClientNewTab extends javax.swing.JPanel {
     private javax.swing.JTextField txtClientZipCode;
     private javax.swing.JTextField txtQuantity;
     private javax.swing.JTextArea txtaDescription;
+    private javax.swing.JTextArea txtaGetMilestone;
+    private javax.swing.JTextArea txtaNewMilstone;
+    private javax.swing.JTextArea txtaUpdateMilestone;
+    private javax.swing.JFrame update;
     // End of variables declaration//GEN-END:variables
 }

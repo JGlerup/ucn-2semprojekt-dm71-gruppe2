@@ -499,25 +499,25 @@ public class GUIEmployee extends javax.swing.JPanel {
         String jobTitle = txtEmployeeJobTitle.getText();
         String ssn = txtEmployeeSsn.getText();
         int zipCode = Integer.parseInt(txtEmployeeZipCode.getText());
-        String crudEmployee = "No";
+        String crudEmployee = "no";
         if (cbCrudEmployee.isSelected()) {
-            crudEmployee = "Yes";
+            crudEmployee = "yes";
         }
-        String crudClient = "No";
+        String crudClient = "no";
         if (cbCrudClient.isSelected()) {
-            crudClient = "Yes";
+            crudClient = "yes";
         }
-        String crudMedicine = "No";
+        String crudMedicine = "no";
         if (cbCrudMedicine.isSelected()) {
-            crudMedicine = "Yes";
+            crudMedicine = "yes";
         }
-        String crudCar = "No";
+        String crudCar = "no";
         if (cbCrudCar.isSelected()) {
-            crudCar = "Yes";
+            crudCar = "yes";
         }
-        String inUse = "No";
+        String inUse = "no";
         if (cbInUse.isSelected()) {
-            inUse = "Yes";
+            inUse = "yes";
         }
         CtrEmp ctrEmp = new CtrEmp();
         CtrLoca ctrLoca = new CtrLoca();
@@ -556,25 +556,25 @@ public class GUIEmployee extends javax.swing.JPanel {
         String jobTitle = txtEmployeeJobTitle.getText();
         String ssn = txtEmployeeSsn.getText();
         int zipCode = Integer.parseInt(txtEmployeeZipCode.getText());
-        String crudEmployee = "No";
+        String crudEmployee = "no";
         if (cbCrudEmployee.isSelected()) {
-            crudEmployee = "Yes";
+            crudEmployee = "yes";
         }
-        String crudClient = "No";
+        String crudClient = "no";
         if (cbCrudClient.isSelected()) {
-            crudClient = "Yes";
+            crudClient = "yes";
         }
-        String crudMedicine = "No";
+        String crudMedicine = "no";
         if (cbCrudMedicine.isSelected()) {
-            crudMedicine = "Yes";
+            crudMedicine = "yes";
         }
-        String crudCar = "No";
+        String crudCar = "no";
         if (cbCrudCar.isSelected()) {
-            crudCar = "Yes";
+            crudCar = "yes";
         }
-        String inUse = "No";
+        String inUse = "no";
         if (cbInUse.isSelected()) {
-            inUse = "Yes";
+            inUse = "yes";
         }
         CtrEmp ctrEmp = new CtrEmp();
         CtrLoca ctrLoca = new CtrLoca();

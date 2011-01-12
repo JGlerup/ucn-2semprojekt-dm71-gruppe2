@@ -1,5 +1,7 @@
 package ModelLayer;
 
+import java.util.ArrayList;
+
 
 
 /**
@@ -10,6 +12,7 @@ public class Employee
 {
 
     private int employeeID;
+    private ArrayList<Client> clientList;
     private String employeeNo;
     private String password;
     private String managerNo;
@@ -35,9 +38,9 @@ public class Employee
      
     }
 
-
-    public Employee(int employeeID, String password, String managerNo, String jobTitle, String crud_Client, String crud_Employee, String crud_Medicine, String crud_Car, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String ssn)
+    public Employee(int employeeID, ArrayList<Client> clientList, String password, String managerNo, String jobTitle, String crud_Client, String crud_Employee, String crud_Medicine, String crud_Car, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email, String ssn)
     {
+        this.clientList = clientList;
         this.employeeID = employeeID;
         this.employeeNo = null;
         this.password = password;
@@ -58,6 +61,14 @@ public class Employee
         createEmployeeNo();
     }
 
+    public ArrayList<Client> getClientList() {
+        return clientList;
+    }
+
+    public void setClientList(ArrayList<Client> clientList) {
+        this.clientList = clientList;
+    }
+    
     public String getAddress()
     {
         return address;

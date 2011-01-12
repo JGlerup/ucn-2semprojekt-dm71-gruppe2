@@ -77,8 +77,8 @@ public class GUIEmployee extends javax.swing.JPanel {
         TableClient tblClient = new TableClient();
         CtrEmp ctrEmp = new CtrEmp();
         Employee e = (Employee) cmbEmployee.getSelectedItem();
-        int employeeID = e.getEmployeeID();
-        ArrayList<Client> clientList = ctrEmp.findEmployeesClient(employeeID);
+        String employeeNo = e.getEmployeeNo();
+        ArrayList<Client> clientList = ctrEmp.findEmployee(employeeNo, true).getClientList();
         tblClient.setData(clientList);
         tblAssociatedClients.setModel(tblClient);
         tblAssociatedClients.setAutoCreateRowSorter(true);
@@ -533,7 +533,7 @@ public class GUIEmployee extends javax.swing.JPanel {
         // TODO add your handling code here:
         String employeeNo = txtEmployeeEmployeeNo.getText();
         CtrEmp ctrEmp = new CtrEmp();
-        Employee e = ctrEmp.findEmployee(employeeNo);
+        Employee e = ctrEmp.findEmployee(employeeNo, false);
         if (e.getEmployeeNo() == null) {
             JOptionPane.showMessageDialog(this, "Medarbejderen med brugernavnet " + employeeNo + " kunne ikke findes");
         } else {

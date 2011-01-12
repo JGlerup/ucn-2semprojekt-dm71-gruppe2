@@ -94,7 +94,7 @@ public class CtrEmpTest {
         } catch (Exception e) {
             fail("Exception:" + e.getMessage());
         }
-        Employee result = instance.findEmployee("Mjød123456");
+        Employee result = instance.findEmployee("Mjød123456", false);
         assertEquals("1", result.getManagerNo());
         assertEquals("Direktør", result.getJobTitle());
         assertEquals("Yes", result.getCrudClient());
@@ -165,7 +165,7 @@ public class CtrEmpTest {
         } catch (Exception e) {
             fail("Exception:" + e.getMessage());
         }
-        Employee result = instance.findEmployee("uhiu8");
+        Employee result = instance.findEmployee("uhiu8", false);
         assertEquals("2", result.getManagerNo());
         assertEquals("Landstryger", result.getJobTitle());
         assertEquals("No", result.getCrudClient());
@@ -216,7 +216,7 @@ public class CtrEmpTest {
         }
         System.out.println("deleteEmp");
         instance.deleteEmp("Mjød123456");
-        Employee result = instance.findEmployee("Mjød123456");
+        Employee result = instance.findEmployee("Mjød123456", false);
         assertNull(null, result.getEmployeeNo());
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");

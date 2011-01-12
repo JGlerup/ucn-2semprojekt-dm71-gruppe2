@@ -341,7 +341,7 @@ public class GUIMain extends javax.swing.JFrame {
         CtrEmp ctrEmp = new CtrEmp();
         String user = txtBrugernavn.getText();
         String pass = txtPassword.getText();
-        Employee emp = ctrEmp.findEmployee(user);
+        Employee emp = ctrEmp.findEmployee(user, false);
         String empUser = emp.getEmployeeNo();
         String empPassword = emp.getPassword();
         String empInUse = emp.getInUse();

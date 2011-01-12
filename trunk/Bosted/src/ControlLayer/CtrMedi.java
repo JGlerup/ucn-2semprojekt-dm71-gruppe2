@@ -334,7 +334,7 @@ public class CtrMedi
     {
         CtrEmp ctrEmpObj = new CtrEmp();
         Employee manager = new Employee();
-        manager = ctrEmpObj.findEmployee(managerNo);
+        manager = ctrEmpObj.findEmployee(managerNo, false);
         return manager;
     }
 

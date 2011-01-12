@@ -457,8 +457,8 @@ public class GUIclient extends javax.swing.JPanel {
     public void addEmployeesClients() {
         resetTabs();
         CtrEmp ctrEmp = new CtrEmp();
-        int employeeID = loggedInEmployee.getEmployeeID();
-        ArrayList<Client> clientList = ctrEmp.findEmployeesClient(employeeID);
+        String employeeNo = loggedInEmployee.getEmployeeNo();
+        ArrayList<Client> clientList = ctrEmp.findEmployee(employeeNo, true).getClientList();
         for (Client c : clientList) {
             GUIClientNewTab guiClientNewTab = new GUIClientNewTab();
             tpKlient.addTab(c.getFirstName() + c.getLastName(), guiClientNewTab);
@@ -487,9 +487,9 @@ public class GUIclient extends javax.swing.JPanel {
             int phoneNo = Integer.parseInt(txtClientPhoneNo.getText());
             String email = txtClientEmail.getText();
 
-            String inUse = "No";
+            String inUse = "no";
             if (cbClientInUse.isSelected()) {
-                inUse = "Yes";
+                inUse = "yes";
             }
             CtrClient ctrCli = new CtrClient();
             CtrLoca ctrLoca = new CtrLoca();
@@ -538,9 +538,9 @@ public class GUIclient extends javax.swing.JPanel {
         int phoneNo = Integer.parseInt(txtClientPhoneNo.getText());
         String email = txtClientEmail.getText();
 
-        String inUse = "No";
+        String inUse = "no";
         if (cbClientInUse.isSelected()) {
-            inUse = "Yes";
+            inUse = "yes";
         }
         CtrClient ctrCli = new CtrClient();
         CtrLoca ctrLoca = new CtrLoca();

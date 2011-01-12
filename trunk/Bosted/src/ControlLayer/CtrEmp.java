@@ -21,10 +21,10 @@ public class CtrEmp
     {
     }
 
-    public Employee findEmployee(String employeeNo)
+    public Employee findEmployee(String employeeNo, boolean retrieveAssociation)
     {
         IFDBEmp dbEmp = new DBEmployee();
-        return dbEmp.findEmployee(employeeNo, true);
+        return dbEmp.findEmployee(employeeNo, retrieveAssociation);
     }
 
     /**
@@ -80,7 +80,7 @@ public class CtrEmp
         if (!jobTitle.trim().equals("") && !crudClient.trim().equals("") && !crudEmployee.trim().equals("") && !crudMedicine.trim().equals("") && !crudCar.trim().equals("") && ssn.trim().length() == 11 && ssn.substring(6, 7).equals("-") && !firstName.trim().equals("") && !lastName.trim().equals("") && !address.trim().equals("") && !password.trim().equals("") && !inUse.trim().equals("")) {
             IFDBEmp dbEmp = new DBEmployee();
             Employee empObj = new Employee();
-            int employeeID = findEmployee(employeeNoCurrent).getEmployeeID();
+            int employeeID = findEmployee(employeeNoCurrent, false).getEmployeeID();
             empObj.setEmployeeID(employeeID);
             empObj.setEmployeeNo(employeeNoNew);
             empObj.setManagerNo(managerNo);
@@ -110,12 +110,12 @@ public class CtrEmp
         dbEmp.deleteEmployee(employeeNo);
     }
 
-    public ArrayList<Client> findEmployeesClient(int employeeID) {
-        ArrayList<Client> clientList = new ArrayList<Client>();
-        IFDBEmp dbEmp = new DBEmployee();
-        clientList = dbEmp.findEmployeesClients(employeeID);
-        return clientList;
-    }
+//    public ArrayList<Client> findEmployeesClient(int employeeID) {
+//        ArrayList<Client> clientList = new ArrayList<Client>();
+//        IFDBEmp dbEmp = new DBEmployee();
+//        clientList = dbEmp.findEmployeesClients(employeeID);
+//        return clientList;
+//    }
 
     public void associateClientToEmployee(int employeeID, int clientID) {
         IFDBEmployeeClient dbEmpCli = new DBEmployeeClient();

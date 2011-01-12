@@ -9,21 +9,18 @@ import ModelLayer.Employee;
  * @author Gruppe 2 - DM71
  * December 2010
  */
-public class DBEmployee implements IFDBEmp
-{
+public class DBEmployee implements IFDBEmp {
 
     private Connection con;
 
     /** Creates a new instance of DBEmployee*/
-    public DBEmployee()
-    {
+    public DBEmployee() {
         con = DbConnection1.getInstance().getDBcon();
     }
 
-    public Employee findEmployee(String employeeNo, boolean retrieveAssociation)
-    {
+    public Employee findEmployee(String employeeNo, boolean retrieveAssociation) {
         Employee empObj = new Employee();
-        empObj = singleWhere("employeeno = '" + employeeNo + "'", false);
+        empObj = singleWhere("employeeno = '" + employeeNo + "'", retrieveAssociation);
         return empObj;
     }
 
@@ -33,20 +30,17 @@ public class DBEmployee implements IFDBEmp
      * @param retrieveAssociation
      * @return an instance of Employee
      */
-    public Employee findEmployeeByID(int employeeID, boolean retrieveAssociation)
-    {
+    public Employee findEmployeeByID(int employeeID, boolean retrieveAssociation) {
         Employee empObj = new Employee();
         empObj = singleWhere("employee_id = " + employeeID, false);
         return empObj;
     }
 
-    public ArrayList<Employee> getAllEmployees(boolean retriveAssociation)
-    {
+    public ArrayList<Employee> getAllEmployees(boolean retriveAssociation) {
         return miscWhere("", retriveAssociation);
     }
 
-    public int insertEmployee(Employee emp)
-    {
+    public int insertEmployee(Employee emp) {
         int rc = -1;
         String query = "INSERT INTO employee(employeeno, password, managerno, jobtitle, crud_client, crud_employee, crud_medicine, crud_car,  ssn, firstname, middlename, lastname, address, location_id, phoneno, email, start_date, in_use, stop_date)  VALUES('"
                 + emp.getEmployeeNo() + "','"
@@ -151,6 +145,11 @@ public class DBEmployee implements IFDBEmp
             int snr = 0;
             if (results.next()) {
                 empObj = buildEmployee(results);
+                if (retrieveAssociation == true) {
+                    int employeeID = empObj.getEmployeeID();
+                    ArrayList<Client> clientList = findEmployeesClients(employeeID);
+                    empObj.setClientList(clientList);
+                }
                 //missing the test on retriveassociation
 
             }//end if

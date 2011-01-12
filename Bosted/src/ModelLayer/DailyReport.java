@@ -8,23 +8,23 @@ package ModelLayer;
  *
  * @author Kristian Byrialsen
  */
-public class DayliReport
+public class DailyReport
 {
 
     private int dailyReportID;
-    private int clientID;
+    private Client client;
     private String date;
-    private int employeeID;
+    private Employee employee;
     private String text;
 
-    public DayliReport()
+    public DailyReport()
     {
     }
 
-    public DayliReport(int clientID, String date, int employeeID, String text) {
-        this.clientID = clientID;
+    public DailyReport(Client client, String date, Employee employee, String text) {
+        this.client = client;
         this.date = date;
-        this.employeeID = employeeID;
+        this.employee = employee;
         this.text = text;
     }
 
@@ -36,12 +36,12 @@ public class DayliReport
         this.dailyReportID = dailyReportID;
     }
 
-    public int getClientID() {
-        return clientID;
+    public Client getClient() {
+        return client;
     }
 
-    public void setClientID(int clientID) {
-        this.clientID = clientID;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public String getDate() {
@@ -52,12 +52,12 @@ public class DayliReport
         this.date = date;
     }
 
-    public int getEmployeeID() {
-        return employeeID;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setEmployeeID(int employeeID) {
-        this.employeeID = employeeID;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     public String getText() {

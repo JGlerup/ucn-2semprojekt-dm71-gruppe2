@@ -11,7 +11,7 @@ package ModelLayer;
 public class Todo {
 
     private int todoID;
-    private int employeeID;
+    private Employee employee;
     private String date;
     private String text;
 
@@ -26,14 +26,15 @@ public class Todo {
         this.date = date;
     }
 
-    public int getEmployeeID() {
-        return employeeID;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setEmployeeID(int employeeID) {
-        this.employeeID = employeeID;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
+    
     public String getText() {
         return text;
     }

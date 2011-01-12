@@ -14,8 +14,8 @@ public class Reservation
 
     private int reservationID;
     private Car car;
-    private int employeeID;
-    private int clientID;
+    private Employee employee;
+    private Client client;
     private String startDate;
     private String endDate;
     private String reservationDate;
@@ -25,12 +25,12 @@ public class Reservation
 
     }
 
-    public Reservation(int reservationID, Car car, int employeeID, int clientID, String startDate, String endDate, String reservationDate)
+    public Reservation(int reservationID, Car car, Employee employee, Client client, String startDate, String endDate, String reservationDate)
     {
         this.reservationID = reservationID;
         this.car = car;
-        this.employeeID = employeeID;
-        this.clientID = clientID;
+        this.employee = employee;
+        this.client = client;
         this.startDate = startDate;
         this.endDate = endDate;
         this.reservationDate = reservationDate;
@@ -47,25 +47,27 @@ public class Reservation
         this.car = car;
     }
 
-    public int getClientID()
+    public Client getClient()
     {
-        return clientID;
+        return client;
     }
 
-    public void setClientID(int clientID)
+    public void setClient(Client client)
     {
-        this.clientID = clientID;
+        this.client = client;
     }
 
-    public int getEmployeeID()
+    public Employee getEmployee()
     {
-        return employeeID;
+        return employee;
     }
 
-    public void setEmployeeID(int employeeID)
+    public void setEmployee(Employee employee)
     {
-        this.employeeID = employeeID;
+        this.employee = employee;
     }
+
+      
 
     public String getEndDate()
     {
@@ -115,13 +117,8 @@ public class Reservation
 
     public String toString()
     {
-        Car car = new Car();
-        IFDBCar dbCar = new DBCar();
-        car = dbCar.findCarByID(car.getCarID(), true);
-        Client cli = new Client();
-        IFDBClient dbCli = new DBClient();
-        cli = dbCli.findClientByID(clientID, true);
-        return startDate + ", " + cli.toString() + ", " + car.toString();
+        
+        return startDate + ", " + client.toString() + ", " + car.toString();
     }
 
 }

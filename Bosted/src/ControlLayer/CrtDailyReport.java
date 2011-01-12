@@ -12,7 +12,7 @@ import DBLayer.IFDBClient;
 import DBLayer.IFDBDailyReport;
 import DBLayer.IFDBEmp;
 import ModelLayer.Client;
-import ModelLayer.DayliReport;
+import ModelLayer.DailyReport;
 import ModelLayer.Employee;
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,21 +24,21 @@ import java.util.Date;
 public class CrtDailyReport {
 
 
-    public DayliReport findDailyReportByDayliReportID(int dayliReportID)
+    public DailyReport findDailyReportByDayliReportID(int dayliReportID)
     {
         IFDBDailyReport dbDailyReport = new DBDailyReport();
         return dbDailyReport.findDailyReportByDailyReportID(dayliReportID, true);
     }
 
-    public DayliReport findDailyReportByClientID(int clientID)
+    public DailyReport findDailyReportByClientID(int clientID)
     {
         IFDBDailyReport dbDailyReport = new DBDailyReport();
         return dbDailyReport.findDailyReportByClientID(clientID, true);
     }
 
-    public DayliReport findLatestDayliReport(int clientID) {
+    public DailyReport findLatestDayliReport(int clientID) {
         IFDBDailyReport dbDayliReport = new DBDailyReport();
-        DayliReport drObj = new DayliReport();
+        DailyReport drObj = new DailyReport();
         drObj = dbDayliReport.findLatestDayliReport(clientID, true);
         return drObj;
     }
@@ -46,7 +46,7 @@ public class CrtDailyReport {
     public ArrayList getAllDailyReports()
     {
         IFDBDailyReport dbDai = new DBDailyReport();
-        ArrayList allDai = new ArrayList<DayliReport>();
+        ArrayList allDai = new ArrayList<DailyReport>();
         allDai = dbDai.getAllDailyReports(true);
         return allDai;
     }
@@ -54,7 +54,7 @@ public class CrtDailyReport {
     public void insertDailyreport(int clientID, int employeeID, String text)
     {
         IFDBDailyReport dbDailyreport = new DBDailyReport();
-        DayliReport dObj = new DayliReport();
+        DailyReport dObj = new DailyReport();
         dObj.setClientID(clientID);
         dObj.setEmployeeID(employeeID);
         dObj.setText(text);
@@ -65,7 +65,7 @@ public class CrtDailyReport {
     public void updateDailyreport(int dailyReportID, int clientID, int employeeID, String text)
     {
        IFDBDailyReport dbDailyReport = new DBDailyReport();
-        DayliReport dObj = new DayliReport();
+        DailyReport dObj = new DailyReport();
         dObj.setDailyReportID(dailyReportID);
         dObj.setClientID(clientID);
         dObj.setEmployeeID(employeeID);
@@ -96,10 +96,10 @@ public class CrtDailyReport {
         return clientList;
     }
 
-    public ArrayList<DayliReport> buildListOfDailyreports(int clientID)
+    public ArrayList<DailyReport> buildListOfDailyreports(int clientID)
     {
         IFDBDailyReport dbDai = new DBDailyReport();
-        ArrayList allDai = new ArrayList<DayliReport>();
+        ArrayList allDai = new ArrayList<DailyReport>();
         allDai = dbDai.buildListOfDailyreports(clientID);
         return allDai;
     }

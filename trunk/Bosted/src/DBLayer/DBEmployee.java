@@ -244,14 +244,15 @@ public class DBEmployee implements IFDBEmp {
     public ArrayList<Employee> buildListOfEmployees(int clientID) {
         ResultSet results;
         ArrayList<Employee> list = new ArrayList<Employee>();
-        String query = "SELCT * FROM employee WHERE employee_id in(SELECT employee_id FROM employee_client WHERE client_id =  " + clientID + ")";
+        String query = "SELECT * FROM employee WHERE employee_id in(SELECT employee_id FROM employee_client WHERE client_id =  " + clientID + ")";
         try { // read from employee
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(5);
             results = stmt.executeQuery(query);
 
             int snr = 0;
-            while (results.next()) {
+            while (results.next())
+            {
                 Employee empObj = new Employee();
                 empObj = buildEmployee(results);
                 list.add(empObj);

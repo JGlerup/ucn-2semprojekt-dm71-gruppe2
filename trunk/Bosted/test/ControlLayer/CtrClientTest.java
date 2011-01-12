@@ -87,10 +87,12 @@ public class CtrClientTest {
         }
         int phoneNo = 98163044;
         String email = "bananmand@junglen.dk";
+        String startDate = "2000-20-20";
         String inUse = "Yes";
+        String stopDate = "2010-10-10";
         CtrClient instance = new CtrClient();
         try {
-            instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, location, phoneNo, email, inUse);
+            instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, location, phoneNo, email, startDate, inUse, stopDate);
         } catch (Exception e) {
             fail("Exception:" + e.getMessage());
         }
@@ -137,10 +139,12 @@ public class CtrClientTest {
         }
         int phoneNo = 98163044;
         String email = "bananmand@junglen.dk";
+        String startDate = "2000-20-20";
         String inUse = "Yes";
+        String stopDate = null;
         CtrClient instance = new CtrClient();
         try {
-            instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, location, phoneNo, email, inUse);
+            instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, location, phoneNo, email, startDate, inUse, stopDate);
         } catch (Exception e) {
             fail("Exception:" + e.getMessage());
         }
@@ -167,10 +171,11 @@ public class CtrClientTest {
         }
         phoneNo = 983252010;
         email = "sutmin@junglen.dk";
+        startDate = "2000-20-20";
         inUse = "Yes";
+        stopDate = "2010-10-10";
         try {
             instance.updateClient(clientNoCurrent, clientNoNew, description, interests, health, ssn, firstName, middleName, lastName, address, location, phoneNo, email, inUse);
-
         } catch (Exception e) {
             fail("Exception:" + e.getMessage());
         }
@@ -219,10 +224,12 @@ public class CtrClientTest {
         }
         int phoneNo = 98163000;
         String email = "bananmand@junglen.dk";
+        String startDate = "2000-20-20";
         String inUse = "Yes";
+        String stopDate = null;
         CtrClient instance = new CtrClient();
         try {
-            instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, location, phoneNo, email, inUse);
+            instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, location, phoneNo, email, startDate, inUse, stopDate);
         } catch (Exception e) {
             fail("Exception:" + e.getMessage());
         }

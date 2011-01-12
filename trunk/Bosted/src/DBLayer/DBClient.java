@@ -91,10 +91,13 @@ public class DBClient implements IFDBClient
                 + "middlename ='" + cObj.getMiddleName() + "', "
                 + "lastname ='" + cObj.getLastName() + "', "
                 + "address ='" + cObj.getAddress() + "', "
-                + "location_id ='" + cObj.getLocation().getLocationID() + "', "
-                + "phoneno ='" + cObj.getPhoneNo() + "', "
-                + "email ='" + cObj.getEmail() + "' "
-                + " WHERE client_id ='" + cObj.getClientID() + "'";
+                + "location_id =" + cObj.getLocation().getLocationID() + ", "
+                + "phoneno =" + cObj.getPhoneNo() + ", "
+                + "email ='" + cObj.getEmail() + "', "
+                + "start_date ='" + cObj.getStartDate() + "', "
+                + "in_use ='" + cObj.getInUse() + "', "
+                + "stop_date ='" + cObj.getStopDate() + "'"
+                + " WHERE client_id =" + cObj.getClientID();
         System.out.println("Update query:" + query);
         try { // update cloyee
             Statement stmt = con.createStatement();

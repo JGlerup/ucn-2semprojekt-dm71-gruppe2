@@ -185,6 +185,11 @@ public class Client
         this.externalContactList = externalContactList;
     }
 
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+
 
     public String createClientNo()
     {

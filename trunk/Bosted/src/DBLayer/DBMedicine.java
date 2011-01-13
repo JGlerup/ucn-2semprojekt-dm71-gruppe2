@@ -140,12 +140,13 @@ public class DBMedicine implements IFDBMedi
             results = stmt.executeQuery(query);
             if (results.next())
             {
-                IFDBFreq dbFreq = new DBFrequency();
-                mediObj.setFrequency(dbFreq.findFrequencyByID(mediObj.getFrequency().getFrequencyID(), false));
-                IFDBExtCon dbExtCon = new DBExternalContact();
-                mediObj.setExternalContact(dbExtCon.findExternalContact(mediObj.getExternalContact().getExternalContactID(), false));
-                IFDBClient dbCli = new DBClient();
-                mediObj.setClient(dbCli.findClientByID(mediObj.getClient().getClientID(), false));
+                mediObj = buildMedicine(results);
+//                IFDBFreq dbFreq = new DBFrequency();
+//                mediObj.setFrequency(dbFreq.findFrequencyByID(mediObj.getFrequency().getFrequencyID(), false));
+//                IFDBExtCon dbExtCon = new DBExternalContact();
+//                mediObj.setExternalContact(dbExtCon.findExternalContact(mediObj.getExternalContact().getExternalContactID(), false));
+//                IFDBClient dbCli = new DBClient();
+//                mediObj.setClient(dbCli.findClientByID(mediObj.getClient().getClientID(), false));
                 //missing the test on retriveassociation
 
             }//end if

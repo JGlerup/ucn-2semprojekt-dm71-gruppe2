@@ -90,7 +90,6 @@ public class CtrMedi
      */
     public void insertMedicine(Frequency frequency, ExternalContact externalContact, Client client, String name, String description, int quantity)
     {
-        Medicine medi = new Medicine();
         try
         {
             IFDBMedi dbMedi = new DBMedicine();
@@ -102,6 +101,7 @@ public class CtrMedi
             mediObj.setDescription(description);
             mediObj.setThisDate();
             mediObj.setQuantity(quantity);
+            dbMedi.insertMedicine(mediObj);
         }//end try
         catch (Exception ex)
         {

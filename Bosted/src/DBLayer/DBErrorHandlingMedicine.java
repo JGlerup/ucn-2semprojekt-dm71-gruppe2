@@ -1,6 +1,9 @@
 package DBLayer;
 
+import ModelLayer.Client;
+import ModelLayer.Employee;
 import ModelLayer.ErrorHandlingMedicine;
+import ModelLayer.Medicine;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -49,9 +52,9 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
     {  
         int rc = -1;
         String query = "INSERT INTO errorHandlingMedicine(medicine_id, client_id, employee_id, date, episode, quantity)  VALUES("
-                + ehm.getMedicineID() + ","
-                + ehm.getClientID() + ","
-                + ehm.getEmployeeID() + ",'"
+                + ehm.getMedicine().getMedicineID() + ","
+                + ehm.getClient().getClientID() + ","
+                + ehm.getEmployee().getEmployeeID() + ",'"
                 + ehm.getDate() + "','"
                 + ehm.getEpisode() + "',"
                 + ehm.getQuantity() + ")";
@@ -78,9 +81,9 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
         int rc = -1;
 
         String query = "UPDATE errorHandlingMedicine SET "
-                + "medicine_id = " + ehmObj.getMedicineID() + ", "
-                + "client_id = " + ehmObj.getClientID() + ", "
-                + "employee_id = " + ehmObj.getEmployeeID() + ", "
+                + "medicine_id = " + ehmObj.getMedicine().getMedicineID() + ", "
+                + "client_id = " + ehmObj.getClient().getClientID() + ", "
+                + "employee_id = " + ehmObj.getEmployee().getEmployeeID() + ", "
                 + "date ='" + ehmObj.getDate() + "', "
                 + "episode ='" + ehmObj.getEpisode() + "', "
                 + "quantity =" + ehmObj.getQuantity() + " "
@@ -190,9 +193,15 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
         try
         {            
             ehmObj.setErrorHandlingMedicineID(results.getInt(1));
-            ehmObj.setMedicineID(results.getInt(2));
-            ehmObj.setClientID(results.getInt(3));
-            ehmObj.setEmployeeID(results.getInt(4));
+            Medicine medicine = new Medicine();
+            medicine.setMedicineID(results.getInt(2));
+            ehmObj.setMedicine(medicine);
+            Client client = new Client();
+            client.setClientID(results.getInt(3));
+            ehmObj.setClient(client);
+            Employee employee = new Employee();
+            employee.setEmployeeID(results.getInt(4));
+            ehmObj.setEmployee(employee);
             ehmObj.setDate(results.getString(5));
             ehmObj.setEpisode(results.getString(6));
             ehmObj.setQuantity(results.getInt(7));

@@ -88,16 +88,16 @@ public class CtrMedi
      * @param desciption the description of the medicine
      * @param quantity the quantity of the medicine
      */
-    public void insertMedicine(int frequencyID, int externalContactID, int clientID, String name, String description, int quantity)
+    public void insertMedicine(Frequency frequency, ExternalContact externalContact, Client client, String name, String description, int quantity)
     {
         Medicine medi = new Medicine();
         try
         {
             IFDBMedi dbMedi = new DBMedicine();
             Medicine mediObj = new Medicine();
-            mediObj.setFrequencyID(frequencyID);
-            mediObj.setExternalContactID(externalContactID);
-            mediObj.setClientID(clientID);
+            mediObj.setFrequency(frequency);
+            mediObj.setExternalContact(externalContact);
+            mediObj.setClient(client);
             mediObj.setName(name);
             mediObj.setDescription(description);
             mediObj.setThisDate();
@@ -118,16 +118,16 @@ public class CtrMedi
      * @param desciption the description of the medicine
      * @param quantity the quantity of the medicine
      */
-    public void updateMedicine(int medicineID, int frequencyID, int externalContactID, int clientID, String name, String description, String date, int quantity)
+    public void updateMedicine(int medicineID, Frequency frequency, ExternalContact externalContact, Client client, String name, String description, String date, int quantity)
     {
         try
         {
             IFDBMedi dbMedi = new DBMedicine();
             Medicine mediObj = new Medicine();
             mediObj = findMedicineByID(medicineID);
-            mediObj.setFrequencyID(frequencyID);
-            mediObj.setExternalContactID(externalContactID);
-            mediObj.setClientID(clientID);
+            mediObj.setFrequency(frequency);
+            mediObj.setExternalContact(externalContact);
+            mediObj.setClient(client);
             mediObj.setName(name);
             mediObj.setDescription(description);
             mediObj.setDate(date);
@@ -200,11 +200,11 @@ public class CtrMedi
      * @param quantity the quantity of the Medicine
      * @param managerNo the employeeNo the manager of the Employee
      */
-    public void insertErrorHandlingMedicine(int medicineID, int clientID, int employeeID, String episode, int quantity, String managerNo) throws NoManagerNumberErrorHandling
+    public void insertErrorHandlingMedicine(Medicine medicine, Client client, Employee employee, String episode, int quantity, String managerNo) throws NoManagerNumberErrorHandling
     {
         Medicine medi = new Medicine();
-        medi = findMedicineByID(medicineID);
-        if(medi.getExternalContactID() != 0)
+        medi = findMedicineByID(medicine.getMedicineID());
+        if(medi.getExternalContact().getExternalContactID() != 0)
         {
             int newQuantity = medi.getQuantity() - quantity;
             if(medi.getQuantity() > 0 && newQuantity >= 0)
@@ -213,10 +213,10 @@ public class CtrMedi
                     IFDBErrorHandMed dbErHaMedDa = new DBErrorHandlingMedicine();
                     ErrorHandlingMedicine erHaMedObj = new ErrorHandlingMedicine();
                     medi.setQuantity(newQuantity);
-                    updateMedicine(medicineID, medi.getFrequencyID(), medi.getExternalContactID(), medi.getClientID(), medi.getName(), medi.getDescription(), medi.getDate(), medi.getQuantity());
-                    erHaMedObj.setMedicineID(medicineID);
-                    erHaMedObj.setClientID(clientID);
-                    erHaMedObj.setEmployeeID(employeeID);
+                    updateMedicine(medicine.getMedicineID(), medi.getFrequency(), medi.getExternalContact(), medi.getClient(), medi.getName(), medi.getDescription(), medi.getDate(), medi.getQuantity());
+                    erHaMedObj.setMedicine(medicine);
+                    erHaMedObj.setClient(client);
+                    erHaMedObj.setEmployee(employee);
                     erHaMedObj.setThisDate();
                     erHaMedObj.setEpisode(episode);
                     erHaMedObj.setQuantity(quantity);
@@ -244,13 +244,13 @@ public class CtrMedi
      * @param quantity the quantity of the Medicine
      * @param managerNo the employeeNo the manager of the Employee
      */
-    public void updateErrorHandlingMedicine(int errorHandlingMedicineID, int medicineID, int clientID, int employeeID, String date, String episode, int quantity, String managerNo)
+    public void updateErrorHandlingMedicine(int errorHandlingMedicineID, Medicine medicine, Client client, Employee employee, String date, String episode, int quantity, String managerNo)
     {
         Medicine medi = new Medicine();
         ErrorHandlingMedicine erHaMed = new ErrorHandlingMedicine();
         erHaMed = findErrorHandlingMedicineByID(errorHandlingMedicineID);
-        medi = findMedicineByID(medicineID);
-        if(medi.getExternalContactID() != 0 && erHaMed.getQuantity() != quantity)
+        medi = findMedicineByID(medicine.getMedicineID());
+        if(medi.getExternalContact().getExternalContactID() != 0 && erHaMed.getQuantity() != quantity)
         {
              try
              {
@@ -261,9 +261,9 @@ public class CtrMedi
                 IFDBErrorHandMed dbErHaMed = new DBErrorHandlingMedicine();
                 ErrorHandlingMedicine erHaMedObj = new ErrorHandlingMedicine();
                 erHaMedObj.setErrorHandlingMedicineID(errorHandlingMedicineID);
-                erHaMedObj.setMedicineID(medicineID);
-                erHaMedObj.setClientID(clientID);
-                erHaMedObj.setEmployeeID(employeeID);
+                erHaMedObj.setMedicine(medicine);
+                erHaMedObj.setClient(client);
+                erHaMedObj.setEmployee(employee);
                 erHaMedObj.setDate(date);
                 erHaMedObj.setEpisode(episode);
                 erHaMedObj.setQuantity(quantity);
@@ -286,9 +286,9 @@ public class CtrMedi
                 IFDBErrorHandMed dbErHaMed = new DBErrorHandlingMedicine();
                 ErrorHandlingMedicine erHaMedObj = new ErrorHandlingMedicine();
                 erHaMedObj.setErrorHandlingMedicineID(errorHandlingMedicineID);
-                erHaMedObj.setMedicineID(medicineID);
-                erHaMedObj.setClientID(clientID);
-                erHaMedObj.setEmployeeID(employeeID);
+                erHaMedObj.setMedicine(medicine);
+                erHaMedObj.setClient(client);
+                erHaMedObj.setEmployee(employee);
                 erHaMedObj.setDate(date);
                 erHaMedObj.setEpisode(episode);
                 erHaMedObj.setQuantity(quantity);
@@ -311,13 +311,13 @@ public class CtrMedi
      * @param medicineID the ID of the Medicine
      * @param quantity the quantity of the Medicine
      */
-    public void deleteErrorHandlingMedicine(int errorHandlingMedicineID, int medicineID, int quantity)
+    public void deleteErrorHandlingMedicine(int errorHandlingMedicineID, Medicine medicine, int quantity)
     {
         try
         {
             IFDBErrorHandMed dbErHaMed = new DBErrorHandlingMedicine();
-            Medicine medi = findMedicineByID(medicineID);
-            updateMedicine(medicineID, medi.getFrequencyID(), medi.getExternalContactID(), medi.getClientID(), medi.getName(), medi.getDescription(), medi.getDate(), (medi.getQuantity()+ quantity));
+            Medicine medi = findMedicineByID(medicine.getMedicineID());
+            updateMedicine(medicine.getMedicineID(), medi.getFrequency(), medi.getExternalContact(), medi.getClient(), medi.getName(), medi.getDescription(), medi.getDate(), (medi.getQuantity()+ quantity));
             dbErHaMed.deleteErrorHandlingMedicine(errorHandlingMedicineID);
         }//end try
         catch (Exception ex)

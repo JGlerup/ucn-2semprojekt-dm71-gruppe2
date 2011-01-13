@@ -7,9 +7,9 @@ package ModelLayer;
 public class Medicine
 {
     private int medicineID;
-    private int frequencyID;
-    private int externalContactID;
-    private int clientID;
+    private Frequency frequency;
+    private ExternalContact externalContact;
+    private Client client;
     private String name;
     private String description;
     private String date;
@@ -40,34 +40,34 @@ public class Medicine
         this.medicineID = medicineID;
     }
 
-    public int getClientID()
+    public Client getClient()
     {
-        return clientID;
+        return client;
     }
 
-    public void setClientID(int clientID)
+    public void setClient(Client client)
     {
-        this.clientID = clientID;
+        this.client = client;
     }
 
-    public int getExternalContactID()
+    public ExternalContact getExternalContact()
     {
-        return externalContactID;
+        return externalContact;
     }
 
-    public void setExternalContactID(int externalContactID)
+    public void setExternalContact(ExternalContact externalContact)
     {
-        this.externalContactID = externalContactID;
+        this.externalContact = externalContact;
     }
 
-    public int getFrequencyID()
+    public Frequency getFrequency()
     {
-        return frequencyID;
+        return frequency;
     }
 
-    public void setFrequencyID(int frequencyID)
+    public void setFrequency(Frequency frequency)
     {
-        this.frequencyID = frequencyID;
+        this.frequency = frequency;
     }
 
     public String getDate()

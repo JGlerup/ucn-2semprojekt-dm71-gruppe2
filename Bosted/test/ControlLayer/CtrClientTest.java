@@ -87,7 +87,7 @@ public class CtrClientTest {
         }
         int phoneNo = 98163044;
         String email = "bananmand@junglen.dk";
-        String startDate = "2000-20-20";
+        String startDate = "2000-10-1";
         String inUse = "Yes";
         String stopDate = "2010-10-10";
         CtrClient instance = new CtrClient();
@@ -137,11 +137,11 @@ public class CtrClientTest {
         {
             fail("Exception:" + e.getMessage());
         }
-        int phoneNo = 98163044;
+        int phoneNo = 9816344;
         String email = "bananmand@junglen.dk";
-        String startDate = "2000-20-20";
+        String startDate = "2000-10-1";
         String inUse = "Yes";
-        String stopDate = null;
+        String stopDate = "";
         CtrClient instance = new CtrClient();
         try {
             instance.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, location, phoneNo, email, startDate, inUse, stopDate);
@@ -155,7 +155,7 @@ public class CtrClientTest {
         description = "wetoji";
         interests = "wtojitew";
         health = "ktprytry";
-        ssn = "porkye";
+        ssn = "975313-5633";
         firstName = "pkwet";
         middleName = "98awytehph";
         lastName = "aiwhpt9";
@@ -170,8 +170,8 @@ public class CtrClientTest {
             fail("Exception:" + e.getMessage());
         }
         phoneNo = 983252010;
-        email = "sutmin@junglen.dk";
-        startDate = "2000-20-20";
+        email = "test@junglen.dk";
+        startDate = "2000-10-1";
         inUse = "Yes";
         stopDate = "2010-10-10";
         try {
@@ -184,14 +184,14 @@ public class CtrClientTest {
         assertEquals("wetoji", result.getDescription());
         assertEquals("wtojitew", result.getInterests());
         assertEquals("ktprytry", result.getHealth());
-        assertEquals("porkye", result.getSsn());
+        assertEquals("975313-5633", result.getSsn());
         assertEquals("pkwet", result.getFirstName());
         assertEquals("98awytehph", result.getMiddleName());
         assertEquals("aiwhpt9", result.getLastName());
         assertEquals("atpijoew", result.getAddress());
         assertEquals(9000, result.getLocation().getZipCode());
         assertEquals(983252010, result.getPhoneNo());
-        assertEquals("sutmin@junglen.dk", result.getEmail());
+        assertEquals("test@junglen.dk", result.getEmail());
         instance.deleteClient(clientNoNew);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
@@ -224,7 +224,7 @@ public class CtrClientTest {
         }
         int phoneNo = 98163000;
         String email = "bananmand@junglen.dk";
-        String startDate = "2000-20-20";
+        String startDate = "2000-10-1";
         String inUse = "Yes";
         String stopDate = null;
         CtrClient instance = new CtrClient();

@@ -98,10 +98,10 @@ public class DBEmployee implements IFDBEmp {
                 + "address ='" + empObj.getAddress() + "',"
                 + "location_id =" + empObj.getLocation().getLocationID() + ","
                 + "phoneno =" + empObj.getPhoneNo() + ","
-                + "email ='" + empObj.getEmail() + "' "
-                + "start_date ='" + empObj.getStartDate() + "', "
-                + "in_use ='" + empObj.getInUse() + "', "
-                + "stop_date ='" + empObj.getStopDate() + "'"
+                + "email ='" + empObj.getEmail() + "', "
+//                + "start_date =" + empObj.getStartDate() + ", "
+                + "in_use ='" + empObj.getInUse() + "' "
+//                + "stop_date ='" + empObj.getStopDate() + "'"
                 + " WHERE employee_id = " + empObj.getEmployeeID();
         System.out.println("Update query:" + query);
         try { // update employee

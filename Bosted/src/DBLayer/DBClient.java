@@ -61,8 +61,8 @@ public class DBClient implements IFDBClient
                 + c.getPhoneNo() + "','"
                 + c.getEmail() + "','"
                 + c.getStartDate() + "','"
-                + c.getInUse() + "',"
-                + c.getStopDate() + ")";
+                + c.getInUse() + "', '"
+                + c.getStopDate() + "')";
 
         System.out.println("insert : " + query);
         try { // insert new deptloyee

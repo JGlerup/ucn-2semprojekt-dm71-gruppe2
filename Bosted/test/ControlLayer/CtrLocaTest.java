@@ -90,7 +90,8 @@ public class CtrLocaTest {
      * Test of insert method, of class CtrLoca.
      */
     @Test
-    public void testInsert() {
+    public void testInsert()
+    {
         System.out.println("insert location");
         int zipCode = 10001;
         String city = "Super secret city";
@@ -104,9 +105,6 @@ public class CtrLocaTest {
         } catch (NoSuchZipCodeException e) {
             System.out.println(e.getMessage());
         }
-
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
 
     }
 

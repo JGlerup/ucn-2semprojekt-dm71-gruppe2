@@ -68,7 +68,7 @@ public class CtrEmp
             empObj.createEmployeeNo();
             empObj.setThisStartDate();
             empObj.setInUse(inUse);
-            empObj.setStopDate(null);
+            empObj.setStopDate("");
             dbEmp.insertEmployee(empObj);
         } else {
             throw new NullValueException("Fejl: Tjek om følgende felter er udfyldt:");

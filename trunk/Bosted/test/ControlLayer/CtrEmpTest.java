@@ -71,7 +71,7 @@ public class CtrEmpTest {
     @Test
     public void testInsert() {
         System.out.println("insert");
-        String managerNo = "27";
+        String managerNo = "1";
         String jobTitle = "Direktør";
         String crudClient = "Yes";
         String crudEmployee = "Yes";
@@ -88,7 +88,7 @@ public class CtrEmpTest {
         int phoneNo = 98674033;
         String email = "Von@dannebrogsgade.dk";
         String password = "123456";
-        String startDate = "2000-20-20";
+        String startDate = "2000-01-20";
         String inUse = "Yes";
         String stopDate = null;
         CtrEmp instance = new CtrEmp();
@@ -101,7 +101,7 @@ public class CtrEmpTest {
             fail("Exception:" + e.getMessage());
         }
         Employee result = instance.findEmployee("Mjød123456", false);
-        assertEquals("27", result.getManagerNo());
+        assertEquals("1", result.getManagerNo());
         assertEquals("Direktør", result.getJobTitle());
         assertEquals("Yes", result.getCrudClient());
         assertEquals("Yes", result.getCrudEmployee());
@@ -126,13 +126,13 @@ public class CtrEmpTest {
     @Test
     public void testUpdateEmp() {
         System.out.println("insert");
-        String managerNo = "2";
+        String managerNo = "1";
         String jobTitle = "Direktør";
         String crudClient = "Yes";
         String crudEmployee = "Yes";
         String crudMedicine = "Yes";
         String crudCar = "Yes";
-        String ssn = "12345678";
+        String ssn = "123456-5678";
         String firstName = "Karl";
         String middleName = "Von";
         String lastName = "Hansen";
@@ -152,7 +152,7 @@ public class CtrEmpTest {
         }
         System.out.println("updateEmp");
         String employeeNoNew = "uhiu8";
-        managerNo = "2";
+        managerNo = "1";
         jobTitle = "Landstryger";
         crudClient = "No";
         crudEmployee = "No";
@@ -174,7 +174,7 @@ public class CtrEmpTest {
             fail("Exception:" + e.getMessage());
         }
         Employee result = instance.findEmployee("uhiu8", false);
-        assertEquals("2", result.getManagerNo());
+        assertEquals("1", result.getManagerNo());
         assertEquals("Landstryger", result.getJobTitle());
         assertEquals("No", result.getCrudClient());
         assertEquals("No", result.getCrudEmployee());
@@ -206,7 +206,7 @@ public class CtrEmpTest {
         String crudEmployee = "Yes";
         String crudMedicine = "Yes";
         String crudCar = "Yes";
-        String ssn = "123456789";
+        String ssn = "123456-7890";
         String firstName = "Mjød";
         String middleName = "Von";
         String lastName = "Hansen";

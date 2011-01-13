@@ -60,7 +60,7 @@ public class CtrClient {
             cObj.setEmail(email);
             cObj.setStartDate(startDate);
             cObj.setInUse(inUse);
-            cObj.setStopDate(stopDate);
+            cObj.setStopDate("");
             cObj.createClientNo();
             dbClient.insertClient(cObj);
         }
@@ -87,7 +87,9 @@ public class CtrClient {
         cObj.setLocation(location);
         cObj.setPhoneNo(phoneNo);
         cObj.setEmail(email);
+        cObj.setStartDate("");
         cObj.setInUse(inUse);
+        cObj.setStopDate("");
         dbClient.updateClient(cObj);
                 }
         else{

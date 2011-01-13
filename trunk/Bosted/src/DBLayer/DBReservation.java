@@ -92,7 +92,7 @@ public class DBReservation implements IFDBReservation
     public int insertReservation(Reservation r)
     {
         int rc = -1;
-        String query = "INSERT INTO reservation(carID, employeeID, clientID, startDate, endDate, reservationDate)  VALUES("
+        String query = "INSERT INTO reservation(car_id, employee_id, client_id, startDate, endDate, reservationDate)  VALUES("
                 + r.getCar().getCarID() + ", "
                 + r.getEmployee().getEmployeeID() + ", "
                 + r.getClient().getClientID() + ", '"

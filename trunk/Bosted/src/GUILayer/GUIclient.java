@@ -503,6 +503,7 @@ public class GUIclient extends javax.swing.JPanel {
             String stopDate = null;
             ctrCli.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, location, phoneNo, email, startDate, inUse, stopDate);
             resetTabs();
+            JOptionPane.showMessageDialog(this, "Du har nu oprettet klienten med navn: " + firstName + " " + middleName + " " + lastName + "");
         } catch (NumberFormatException nFE) {
             JOptionPane.showMessageDialog(this, "Felterne telefonnr. og postnr. må kun indeholde tal");
         } catch (Exception e) {

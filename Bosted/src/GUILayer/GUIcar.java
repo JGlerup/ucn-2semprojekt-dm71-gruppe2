@@ -339,6 +339,7 @@ public class GUIcar extends javax.swing.JPanel
         LBLbeskrivelse.setText("Beskrivelse");
 
         txtdescription.setColumns(20);
+        txtdescription.setLineWrap(true);
         txtdescription.setRows(5);
         spBeskrivelse.setViewportView(txtdescription);
 

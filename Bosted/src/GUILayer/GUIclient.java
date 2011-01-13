@@ -112,12 +112,14 @@ public class GUIclient extends javax.swing.JPanel {
         });
 
         txtClientDescription.setColumns(20);
+        txtClientDescription.setLineWrap(true);
         txtClientDescription.setRows(5);
         jScrollPane1.setViewportView(txtClientDescription);
 
         jLabel5.setText("Helbred");
 
         txtClientHealth.setColumns(20);
+        txtClientHealth.setLineWrap(true);
         txtClientHealth.setRows(5);
         jScrollPane2.setViewportView(txtClientHealth);
 
@@ -138,6 +140,7 @@ public class GUIclient extends javax.swing.JPanel {
         jLabel14.setText("Interesser");
 
         txtClientInterests.setColumns(20);
+        txtClientInterests.setLineWrap(true);
         txtClientInterests.setRows(5);
         jScrollPane3.setViewportView(txtClientInterests);
 

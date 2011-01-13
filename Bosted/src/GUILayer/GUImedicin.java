@@ -110,6 +110,7 @@ public class GUImedicin extends javax.swing.JPanel {
         jLabel5.setText("Beskrivelse");
 
         txtADescription.setColumns(20);
+        txtADescription.setLineWrap(true);
         txtADescription.setRows(5);
         jScrollPane3.setViewportView(txtADescription);
 
@@ -288,6 +289,7 @@ public class GUImedicin extends javax.swing.JPanel {
         jLabel12.setText("Beskrivelse");
 
         jTextArea4.setColumns(20);
+        jTextArea4.setLineWrap(true);
         jTextArea4.setRows(5);
         jScrollPane4.setViewportView(jTextArea4);
 

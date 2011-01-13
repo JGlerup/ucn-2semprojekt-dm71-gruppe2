@@ -71,7 +71,7 @@ public class CtrEmpTest {
     @Test
     public void testInsert() {
         System.out.println("insert");
-        String managerNo = "1";
+        String managerNo = "27";
         String jobTitle = "Direktør";
         String crudClient = "Yes";
         String crudEmployee = "Yes";
@@ -88,7 +88,9 @@ public class CtrEmpTest {
         int phoneNo = 98674033;
         String email = "Von@dannebrogsgade.dk";
         String password = "123456";
+        String startDate = "2000-20-20";
         String inUse = "Yes";
+        String stopDate = null;
         CtrEmp instance = new CtrEmp();
         try {
             instance.insert(managerNo, jobTitle, crudClient, crudEmployee, crudMedicine, crudCar, ssn, firstName, middleName, lastName, address, location, phoneNo, email, password, inUse);
@@ -99,7 +101,7 @@ public class CtrEmpTest {
             fail("Exception:" + e.getMessage());
         }
         Employee result = instance.findEmployee("Mjød123456", false);
-        assertEquals("1", result.getManagerNo());
+        assertEquals("27", result.getManagerNo());
         assertEquals("Direktør", result.getJobTitle());
         assertEquals("Yes", result.getCrudClient());
         assertEquals("Yes", result.getCrudEmployee());

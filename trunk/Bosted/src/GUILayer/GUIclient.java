@@ -16,6 +16,7 @@ import ControlLayer.CtrEmp;
 import ModelLayer.Client;
 import ModelLayer.Employee;
 import ModelLayer.Location;
+import ModelLayer.ToDaysDate;
 import java.util.ArrayList;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
@@ -494,7 +495,10 @@ public class GUIclient extends javax.swing.JPanel {
             CtrClient ctrCli = new CtrClient();
             CtrLoca ctrLoca = new CtrLoca();
             Location location = ctrLoca.findLocation(zipCode);
-            ctrCli.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, location, phoneNo, email, inUse);
+            ToDaysDate tdd = new ToDaysDate();
+            String startDate = tdd.toString();
+            String stopDate = null;
+            ctrCli.insertClient(description, interests, health, ssn, firstName, middleName, lastName, address, location, phoneNo, email, startDate, inUse, stopDate);
             resetTabs();
         } catch (NumberFormatException nFE) {
             JOptionPane.showMessageDialog(this, "Felterne telefonnr. og postnr. må kun indeholde tal");

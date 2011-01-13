@@ -59,10 +59,12 @@ public class MedicineTest
     public void TestFrequencyID() 
     {
         System.out.println("FrequencyID");
+        Frequency frequency = new Frequency();
         int frequencyID = 2;
+        frequency.setFrequencyID(frequencyID);
         Medicine result = new Medicine();
-        result.setFrequencyID(frequencyID);
-        assertEquals(2, result.getFrequencyID());
+        result.setFrequency(frequency);
+        assertEquals(2, result.getFrequency().getFrequencyID());
         // TODO review the generated test
         //fail("The test case is a prototype.");
     }
@@ -71,10 +73,12 @@ public class MedicineTest
     public void TestExternalContactID()
     {
         System.out.println("ExternalContactID");
+        ExternalContact externalContact = new ExternalContact();
         int externalContactID = 3;
+        externalContact.setExternalContactID(externalContactID);
         Medicine result = new Medicine();
-        result.setExternalContactID(externalContactID);
-        assertEquals(3, result.getExternalContactID());
+        result.setExternalContact(externalContact);
+        assertEquals(3, result.getExternalContact().getExternalContactID());
         // TODO review the generated test
         //fail("The test case is a prototype.");
     }
@@ -83,10 +87,12 @@ public class MedicineTest
     public void TestClientID()
     {
         System.out.println("ClientID");
+        Client client = new Client();
         int clientID = 4;
+        client.setClientID(clientID);
         Medicine result = new Medicine();
-        result.setClientID(clientID);
-        assertEquals(4, result.getClientID());
+        result.setClient(client);
+        assertEquals(4, result.getClient().getClientID());
         // TODO review the generated test
         //fail("The test case is a prototype.");
     }

@@ -140,12 +140,7 @@ public class DBErrorHandlingMedicine implements IFDBErrorHandMed
             results = stmt.executeQuery(query);
             if (results.next())
             {
-                IFDBMedi dbMedi = new DBMedicine();
-                ehmObj.setMedicine(dbMedi.findMedicineByID(ehmObj.getMedicine().getMedicineID(), false));
-                IFDBEmp dbEmp = new DBEmployee();
-                ehmObj.setEmployee(dbEmp.findEmployeeByID(ehmObj.getEmployee().getEmployeeID(), false));
-                IFDBClient dbCli = new DBClient();
-                ehmObj.setClient(dbCli.findClientByID(ehmObj.getClient().getClientID(), false));
+                ehmObj = buildErrorHandlingMedicine(results);
                 //missing the test on retriveassociation
 
             }//end if

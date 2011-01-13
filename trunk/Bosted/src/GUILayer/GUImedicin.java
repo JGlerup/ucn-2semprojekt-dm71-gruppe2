@@ -518,7 +518,7 @@ public class GUImedicin extends javax.swing.JPanel {
         String description = txtADescription.getText();
         CtrMedi ctrMedi = new CtrMedi();
         try {
-            ctrMedi.insertMedicine(f.getFrequencyID(), ext.getExternalContactID(), c.getClientID(), name, description, quantity);
+            ctrMedi.insertMedicine(f, ext, c, name, description, quantity);
             JOptionPane.showMessageDialog(this, "Du har nu oprettet medicinen med navnet: " + name + "\nTil: " + c.getFirstName() + " " + c.getMiddleName() + " " + c.getLastName() + "");
             ArrayList<Medicine> medicineList = ctrMedi.getAllMedicine();
             cmbMedicine.removeAllItems();
@@ -584,7 +584,7 @@ public class GUImedicin extends javax.swing.JPanel {
         String description = txtADescription.getText();
         CtrMedi ctrMedi = new CtrMedi();
         try {
-            ctrMedi.updateMedicine(med.getMedicineID(), f.getFrequencyID(), ext.getExternalContactID(), c.getClientID(), name, description, med.getDate(), quantity);
+            ctrMedi.updateMedicine(med.getMedicineID(), f, ext, c, name, description, med.getDate(), quantity);
             JOptionPane.showMessageDialog(this, "Du har opdateret medicinen");
             ArrayList<Medicine> medicineList = ctrMedi.getAllMedicine();
             cmbMedicine.removeAllItems();
@@ -628,7 +628,7 @@ public class GUImedicin extends javax.swing.JPanel {
             txtADescription.setText(m.getDescription());
             CtrMedi ctrMedi = new CtrMedi();
 
-            Frequency fObj = ctrMedi.findFrequencyByID(m.getFrequencyID(), true);
+            Frequency fObj = ctrMedi.findFrequencyByID(m.getFrequency().getFrequencyID(), true);
             int frequencyID = fObj.getFrequencyID();
             int index = 0;
             boolean found = false;
@@ -643,7 +643,7 @@ public class GUImedicin extends javax.swing.JPanel {
                 index++;
             }
 
-            Client cObj = ctrMedi.findClientByID(m.getClientID(), found);
+            Client cObj = ctrMedi.findClientByID(m.getClient().getClientID(), found);
             int clientID = cObj.getClientID();
             int index1 = 0;
             boolean found1 = false;
@@ -658,7 +658,7 @@ public class GUImedicin extends javax.swing.JPanel {
                 index1++;
             }
 
-            ExternalContact eObj = ctrMedi.findExternalContact(m.getExternalContactID(), true);
+            ExternalContact eObj = ctrMedi.findExternalContact(m.getExternalContact().getExternalContactID(), true);
             int externalContactID = eObj.getExternalContactID();
             int index2 = 0;
             boolean found2 = false;
@@ -684,7 +684,7 @@ public class GUImedicin extends javax.swing.JPanel {
         String description = jTextArea4.getText();
         CtrMedi ctrMedi = new CtrMedi();
         try {
-            ctrMedi.updateFrequency(m.getFrequencyID(), timesPrDay, numberOfItems, description, m.getDate());
+            ctrMedi.updateFrequency(m.getFrequency().getFrequencyID(), timesPrDay, numberOfItems, description, m.getDate());
             JOptionPane.showMessageDialog(this, "Du har opdateret frekvensen");
             ArrayList<Frequency> frequencyList = ctrMedi.getAllFrequency(true);
             jComboBox4.removeAllItems();
@@ -711,7 +711,7 @@ public class GUImedicin extends javax.swing.JPanel {
         int frequencyID = 0;
         CtrMedi ctrMedi = new CtrMedi();
         try {
-            frequencyID = medi.getFrequencyID();
+            frequencyID = medi.getFrequency().getFrequencyID();
             ctrMedi.deleteFrequency(frequencyID);
             JOptionPane.showMessageDialog(this, "Du har nu slettet frekvensen med ID: " + frequencyID + "");
             ArrayList<Frequency> frequencyList = ctrMedi.getAllFrequency(true);

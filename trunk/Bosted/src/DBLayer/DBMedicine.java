@@ -1,5 +1,8 @@
 package DBLayer;
 
+import ModelLayer.Client;
+import ModelLayer.ExternalContact;
+import ModelLayer.Frequency;
 import java.sql.*;
 import java.util.ArrayList;
 import ModelLayer.Medicine;
@@ -48,9 +51,9 @@ public class DBMedicine implements IFDBMedi
     {  
         int rc = -1;
         String query = "INSERT INTO medicine(frequency_id, externalcontact_id, client_id, name, description, date, quantity)  VALUES("
-                + medi.getFrequencyID() + ","
-                + medi.getExternalContactID() + ","
-                + medi.getClientID() + ",'"
+                + medi.getFrequency().getFrequencyID() + ","
+                + medi.getExternalContact().getExternalContactID() + ","
+                + medi.getClient().getClientID() + ",'"
                 + medi.getName() + "','"
                 + medi.getDescription() + "','"
                 + medi.getDate() + "',"
@@ -77,9 +80,9 @@ public class DBMedicine implements IFDBMedi
         int rc = -1;
 
         String query = "UPDATE medicine SET "
-                + "frequency_id = " + mediObj.getFrequencyID() + ","
-                + "externalcontact_id = " + mediObj.getExternalContactID() + ","
-                + "client_id = " + mediObj.getClientID() + ","
+                + "frequency_id = " + mediObj.getFrequency().getFrequencyID() + ","
+                + "externalcontact_id = " + mediObj.getExternalContact().getExternalContactID() + ","
+                + "client_id = " + mediObj.getClient().getClientID() + ","
                 + "name = '" + mediObj.getName() + "',"
                 + "description = '" + mediObj.getDescription() + "',"
                 + "date = '" + mediObj.getDate() + "',"
@@ -190,9 +193,15 @@ public class DBMedicine implements IFDBMedi
         try
         {
             mediObj.setMedicineID(results.getInt(1));
-            mediObj.setFrequencyID(results.getInt(2));
-            mediObj.setExternalContactID(results.getInt(3));
-            mediObj.setClientID(results.getInt(4));
+            Frequency frequency = new Frequency();
+            frequency.setFrequencyID(results.getInt(2));
+            mediObj.setFrequency(frequency);
+            ExternalContact extCon = new ExternalContact();
+            extCon.setExternalContactID(results.getInt(3));
+            mediObj.setExternalContact(extCon);
+            Client client = new Client();
+            client.setClientID(results.getInt(4));
+            mediObj.setClient(client);
             mediObj.setName(results.getString(5));
             mediObj.setDescription(results.getString(6));
             mediObj.setDate(results.getString(7));

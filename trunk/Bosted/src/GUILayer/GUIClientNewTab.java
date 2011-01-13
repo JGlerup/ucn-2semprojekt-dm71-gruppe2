@@ -1498,7 +1498,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         if (choice == 0) {
             if (jCheckBox1.isSelected()) {
                 try {
-                    ctrMedi.insertErrorHandlingMedicine(m.getMedicineID(), client.getClientID(), loggedInEmployee.getEmployeeID(), txtaDescription.getText(), Integer.parseInt(txtQuantity.getText()), loggedInEmployee.getManagerNo());
+                    ctrMedi.insertErrorHandlingMedicine(m, client, loggedInEmployee, txtaDescription.getText(), Integer.parseInt(txtQuantity.getText()), loggedInEmployee.getManagerNo());
                     JTextField[] txtFieldList = {txtQuantity};
                     resetTextFields(txtFieldList);
                     JTextArea[] txtAreaList = {txtaDescription};
@@ -1514,7 +1514,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
                 }
             } else {
                 try {
-                    ctrMedi.insertErrorHandlingMedicine(m.getMedicineID(), client.getClientID(), loggedInEmployee.getEmployeeID(), txtaDescription.getText(), -(Integer.parseInt(txtQuantity.getText())), loggedInEmployee.getManagerNo());
+                    ctrMedi.insertErrorHandlingMedicine(m, client, loggedInEmployee, txtaDescription.getText(), -(Integer.parseInt(txtQuantity.getText())), loggedInEmployee.getManagerNo());
                     JTextField[] txtFieldList = {txtQuantity};
                     resetTextFields(txtFieldList);
                     JTextArea[] txtAreaList = {txtaDescription};
@@ -1555,7 +1555,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         try {
             CtrMedi ctrMedi = new CtrMedi();
             Medicine m = (Medicine) cmbMedi.getSelectedItem();
-            ctrMedi.updateMedicine(m.getMedicineID(), m.getFrequencyID(), m.getExternalContactID(), m.getClientID(), m.getName(), m.getDescription(), m.getDate(), m.getQuantity() - Integer.parseInt(jTextField1.getText()));
+            ctrMedi.updateMedicine(m.getMedicineID(), m.getFrequency(), m.getExternalContact(), m.getClient(), m.getName(), m.getDescription(), m.getDate(), m.getQuantity() - Integer.parseInt(jTextField1.getText()));
             setVisible(false);
         }
         catch (Exception e) {
@@ -1576,7 +1576,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         try {
             CtrMedi ctrMedi = new CtrMedi();
             Medicine m = (Medicine) cmbMedi.getSelectedItem();
-            ctrMedi.updateMedicine(m.getMedicineID(), m.getFrequencyID(), m.getExternalContactID(), m.getClientID(), m.getName(), m.getDescription(), m.getDate(), m.getQuantity() + Integer.parseInt(jTextField1.getText()));
+            ctrMedi.updateMedicine(m.getMedicineID(), m.getFrequency(), m.getExternalContact(), m.getClient(), m.getName(), m.getDescription(), m.getDate(), m.getQuantity() + Integer.parseInt(jTextField1.getText()));
             setVisible(false);
         }
         catch (Exception e) {

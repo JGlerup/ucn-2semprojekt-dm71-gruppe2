@@ -7,9 +7,9 @@ package ModelLayer;
 public class ErrorHandlingMedicine
 {
     private int errorHandlingMedicineID;
-    private int medicineID;
-    private int clientID;
-    private int employeeID;
+    private Medicine medicine;
+    private Client client;
+    private Employee employee;
     private String date;
     private String episode;
     private int quantity;
@@ -20,12 +20,12 @@ public class ErrorHandlingMedicine
 
     }
 
-    public ErrorHandlingMedicine(int errorHandlingMedicineID, int medicineID, int clientID, int employeeID, String episode, int quantity)
+    public ErrorHandlingMedicine(int errorHandlingMedicineID, Medicine medicine, Client client, Employee employee, String episode, int quantity)
     {
         this.errorHandlingMedicineID = errorHandlingMedicineID;
-        this.medicineID = medicineID;
-        this.clientID = clientID;
-        this.employeeID = employeeID;
+        this.medicine = medicine;
+        this.client = client;
+        this.employee = employee;
         this.date = "";
         this.episode = episode;
         this.quantity = quantity;
@@ -33,14 +33,14 @@ public class ErrorHandlingMedicine
         
     }
 
-    public int getClientID()
+    public Client getClient()
     {
-        return clientID;
+        return client;
     }
 
-    public void setClientID(int clientID)
+    public void setClient(Client client)
     {
-        this.clientID = clientID;
+        this.client = client;
     }
 
     public String getDate()
@@ -53,14 +53,14 @@ public class ErrorHandlingMedicine
         this.date = date;
     }
 
-    public int getEmployeeID()
+    public Employee getEmployee()
     {
-        return employeeID;
+        return employee;
     }
 
-    public void setEmployeeID(int employeeID)
+    public void setEmployee(Employee employee)
     {
-        this.employeeID = employeeID;
+        this.employee = employee;
     }
 
     public String getEpisode()
@@ -83,14 +83,14 @@ public class ErrorHandlingMedicine
         this.errorHandlingMedicineID = errorHandlingMedicineID;
     }
 
-    public int getMedicineID()
+    public Medicine getMedicine()
     {
-        return medicineID;
+        return medicine;
     }
 
-    public void setMedicineID(int medicineID)
+    public void setMedicine(Medicine medicine)
     {
-        this.medicineID = medicineID;
+        this.medicine = medicine;
     }
 
     public int getQuantity()

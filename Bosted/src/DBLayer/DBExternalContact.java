@@ -8,6 +8,7 @@ package DBLayer;
 import java.sql.*;
 import java.util.ArrayList;
 import ModelLayer.ExternalContact;
+import ModelLayer.Location;
 
 /**
  *
@@ -41,7 +42,7 @@ public class DBExternalContact implements IFDBExtCon{
                 + extCon.getMiddleName() + "','"
                 + extCon.getLastName() + "','"
                 + extCon.getAddress() + "','"
-                + extCon.getLocationID() + "','"
+                + extCon.getLocation().getLocationID() + "','"
                 + extCon.getPhoneNo() + "','"
                 + extCon.getEmail() + ")";
 
@@ -69,9 +70,9 @@ public class DBExternalContact implements IFDBExtCon{
                 + "middlename ='" + extConObj.getMiddleName() + "', "
                 + "lastname ='" + extConObj.getLastName() + "', "
                 + "address ='" + extConObj.getAddress() + "', "
-                + "location_id ='" + extConObj.getLocationID() + "', "
+                + "location_id ='" + extConObj.getLocation().getLocationID() + "', "
                 + "phoneno ='" + extConObj.getPhoneNo() + "', "
-                + "email ='" + extConObj.getEmail() + "', "
+                + "email ='" + extConObj.getEmail() + "' "
                 + " WHERE externalcontact_id ='" + extConObj.getExternalContactID() + "'";
         System.out.println("Update query:" + query);
         try { // update cloyee
@@ -118,7 +119,8 @@ public class DBExternalContact implements IFDBExtCon{
             results = stmt.executeQuery(query);
             int snr = 0;
             if (results.next()) {
-                extConObj = buildExternalContact(results);
+                IFDBLoca dbLoca = new DBLocation();
+                extConObj.setLocation(dbLoca.findLocation(extConObj.getLocation().getLocationID(), false));
                 //missing the test on retriveassociation
 
             }//end if
@@ -172,7 +174,9 @@ public class DBExternalContact implements IFDBExtCon{
             extConObj.setMiddleName(results.getString(5));
             extConObj.setLastName(results.getString(6));
             extConObj.setAddress(results.getString(7));
-            extConObj.setLocationID(results.getInt(8));
+            Location location = new Location();
+            location.setLocationID(results.getInt(8));
+            extConObj.setLocation(location);
             extConObj.setPhoneNo(results.getInt(9));
             extConObj.setEmail(results.getString(10));
         } catch (Exception e) {

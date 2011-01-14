@@ -184,6 +184,7 @@ public class GUIEmployee extends javax.swing.JPanel {
         btnResetAll = new javax.swing.JButton();
         gUIGetEmployee1 = new GUILayer.GUIGetEmployee();
         gUIClientAssociateEmployee1 = new GUILayer.GUIClientAssociateEmployee();
+        gUIEmployeeExternalContact1 = new GUILayer.GUIEmployeeExternalContact();
 
         tPEmployee.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -443,6 +444,7 @@ public class GUIEmployee extends javax.swing.JPanel {
         tPEmployee.addTab("Håndtering", null, jPanel1, "Her opretter, opdateres og slettes");
         tPEmployee.addTab("Medarbejder", gUIGetEmployee1);
         tPEmployee.addTab("Medarbejdernes klienter", gUIClientAssociateEmployee1);
+        tPEmployee.addTab("Eksterne kontakter", gUIEmployeeExternalContact1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -472,6 +474,7 @@ public class GUIEmployee extends javax.swing.JPanel {
         gUIClientAssociateEmployee1.populateCmbClient();
         gUIClientAssociateEmployee1.populateCmbEmployee();
         gUIGetEmployee1.populateCmbEmployee();
+        gUIEmployeeExternalContact1.populateCmbEmployeeExtCon();
         clearTblAssociatedClients();
     }//GEN-LAST:event_tPEmployeeFocusGained
 
@@ -646,6 +649,7 @@ public class GUIEmployee extends javax.swing.JPanel {
     private javax.swing.JCheckBox cbInUse;
     private javax.swing.JComboBox cmbEmployee;
     private GUILayer.GUIClientAssociateEmployee gUIClientAssociateEmployee1;
+    private GUILayer.GUIEmployeeExternalContact gUIEmployeeExternalContact1;
     private GUILayer.GUIGetEmployee gUIGetEmployee1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

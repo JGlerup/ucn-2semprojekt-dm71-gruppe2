@@ -36,7 +36,7 @@ public class GUIEmployeeExternalContact extends javax.swing.JPanel {
         cmbEmployeeExtCon.removeAllItems();
         cmbEmployeeExtCon.insertItemAt("Vælg her", 0);
         for (ExternalContact ec : employeeExtConList) {
-            cmbEmployeeExtCon.addItem(e);
+            cmbEmployeeExtCon.addItem(ec);
         }
         cmbEmployeeExtCon.removeItem("Vælg her");
     }
@@ -48,7 +48,7 @@ public class GUIEmployeeExternalContact extends javax.swing.JPanel {
             txtEmployeeExtConCity,
             txtEmployeeExtConEmail,
             txtEmployeeExtConFirstName,
-            txtEmployeeExtConJobTitle,
+            txtEmployeeExtConOccupation,
             txtEmployeeExtConLastName,
             txtEmployeeExtConMiddleName,
             txtEmployeeExtConPhoneNo,
@@ -96,7 +96,7 @@ public class GUIEmployeeExternalContact extends javax.swing.JPanel {
         txtEmployeeExtConAddress = new javax.swing.JTextField();
         txtEmployeeExtConZipCode = new javax.swing.JTextField();
         txtEmployeeExtConCity = new javax.swing.JTextField();
-        txtEmployeeExtConJobTitle = new javax.swing.JTextField();
+        txtEmployeeExtConOccupation = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btnResetAllExtCon = new javax.swing.JButton();
@@ -133,6 +133,8 @@ public class GUIEmployeeExternalContact extends javax.swing.JPanel {
         lblCity.setText("By");
 
         lblJobTitle.setText("Job titel");
+
+        txtEmployeeExtConCity.setEditable(false);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -224,7 +226,7 @@ public class GUIEmployeeExternalContact extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblJobTitle)
-                            .addComponent(txtEmployeeExtConJobTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtEmployeeExtConOccupation, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -276,10 +278,10 @@ public class GUIEmployeeExternalContact extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblJobTitle)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtEmployeeExtConJobTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtEmployeeExtConOccupation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(50, 50, 50)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDeleteExtCon)
                     .addComponent(btnUpdateExtCon)
@@ -301,8 +303,8 @@ public class GUIEmployeeExternalContact extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -311,6 +313,7 @@ public class GUIEmployeeExternalContact extends javax.swing.JPanel {
         CtrLoca ctrLoca = new CtrLoca();
         ExternalContact ec = (ExternalContact) cmbEmployeeExtCon.getSelectedItem();
         if (ec != null) {
+            Location l = ctrLoca.findLocation(ec.getLocation().getLocationID());
             txtEmployeeExtConFirstName.setText(ec.getFirstName());
             txtEmployeeExtConMiddleName.setText(ec.getMiddleName());
             txtEmployeeExtConLastName.setText(ec.getLastName());
@@ -318,9 +321,9 @@ public class GUIEmployeeExternalContact extends javax.swing.JPanel {
             txtEmployeeExtConEmail.setText(ec.getEmail());
             txtEmployeeExtConPhoneNo.setText(Integer.toString(ec.getPhoneNo()));
             txtEmployeeExtConAddress.setText(ec.getAddress());
-            txtEmployeeExtConZipCode.setText(Integer.toString(ctrLoca.findLocation(ec.getLocation().getLocationID()).getZipCode()));
-            txtEmployeeExtConCity.setText(ctrLoca.findLocation(ec.getLocation().getLocationID()).getCity());
-            txtEmployeeExtConJobTitle.setText(ec.getJobTitle());
+            txtEmployeeExtConZipCode.setText(Integer.toString(l.getZipCode()));
+            txtEmployeeExtConCity.setText(l.getCity());
+            txtEmployeeExtConOccupation.setText(ec.getOccupation());
         } else {
             System.out.println("No external contacts to select from");
         }
@@ -334,13 +337,12 @@ public class GUIEmployeeExternalContact extends javax.swing.JPanel {
     private void btnCreateEmployeeExtConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateEmployeeExtConActionPerformed
         // TODO add your handling code here:
         String address = txtEmployeeExtConAddress.getText();
-        String city = txtEmployeeExtConCity.getText();
         String email = txtEmployeeExtConEmail.getText();
         String firstName = txtEmployeeExtConFirstName.getText();
         String middleName = txtEmployeeExtConMiddleName.getText();
         String lastName = txtEmployeeExtConLastName.getText();
         int phoneNo = Integer.parseInt(txtEmployeeExtConPhoneNo.getText());
-        String jobTitle = txtEmployeeExtConJobTitle.getText();
+        String occupation = txtEmployeeExtConOccupation.getText();
         String cvr = txtEmployeeExtConCVR.getText();
         int zipCode = Integer.parseInt(txtEmployeeExtConZipCode.getText());
 
@@ -348,7 +350,9 @@ public class GUIEmployeeExternalContact extends javax.swing.JPanel {
         CtrLoca ctrLoca = new CtrLoca();
         try {
             Location location = ctrLoca.findLocationByZipCode(zipCode);
-            ctrExtCon.insert(jobTitle, cvr, firstName, middleName, lastName, address, location, phoneNo, email);
+            ctrExtCon.insertExternalContact(occupation, cvr, firstName, middleName, lastName, address, location, phoneNo, email);
+            JOptionPane.showMessageDialog(this, "Du har nu oprettet den eksterne kontakt med navnet: " + firstName + " " + lastName);
+            populateCmbEmployeeExtCon();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -358,13 +362,12 @@ public class GUIEmployeeExternalContact extends javax.swing.JPanel {
         // TODO add your handling code here:
         ExternalContact extCon = (ExternalContact) cmbEmployeeExtCon.getSelectedItem();
         String address = txtEmployeeExtConAddress.getText();
-        String city = txtEmployeeExtConCity.getText();
         String email = txtEmployeeExtConEmail.getText();
         String firstName = txtEmployeeExtConFirstName.getText();
         String middleName = txtEmployeeExtConMiddleName.getText();
         String lastName = txtEmployeeExtConLastName.getText();
         int phoneNo = Integer.parseInt(txtEmployeeExtConPhoneNo.getText());
-        String jobTitle = txtEmployeeExtConJobTitle.getText();
+        String occupation = txtEmployeeExtConOccupation.getText();
         String cvr = txtEmployeeExtConCVR.getText();
         int zipCode = Integer.parseInt(txtEmployeeExtConZipCode.getText());
 
@@ -372,7 +375,9 @@ public class GUIEmployeeExternalContact extends javax.swing.JPanel {
         CtrLoca ctrLoca = new CtrLoca();
         try {
             Location location = ctrLoca.findLocationByZipCode(zipCode);
-            ctrExtCon.updateExternalContact(jobTitle, cvr, firstName, middleName, lastName, address, location, phoneNo, email);
+            ctrExtCon.updateExternalContact(extCon.getExternalContactID(), cvr, occupation, firstName, middleName, lastName, address, location, phoneNo, email);
+            JOptionPane.showMessageDialog(this, "Du har nu opdateret den eksterne kontakt med navnet: " + firstName + " " + lastName);
+            populateCmbEmployeeExtCon();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -380,16 +385,22 @@ public class GUIEmployeeExternalContact extends javax.swing.JPanel {
 
     private void btnDeleteExtConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteExtConActionPerformed
         // TODO add your handling code here:
-        //deleteExtConDialog.setVisible(true);
-        //String employeeNo = txtEmployeeEmployeeNo.getText();
-        //CtrEmp ctrEmp = new CtrEmp();
-        //Employee e = ctrEmp.findEmployee(employeeNo, false);
-        //if (e.getEmployeeNo() == null) {
-        //    JOptionPane.showMessageDialog(this, "Medarbejderen med brugernavnet " + employeeNo + " kunne ikke findes");
-        //} else {
-        //    ctrEmp.deleteEmp(employeeNo);
-        //    JOptionPane.showMessageDialog(this, "Du har nu slettet medarbejderen med brugernavn: " + employeeNo);
-        //}
+        try {
+            ExternalContact extCon = (ExternalContact) cmbEmployeeExtCon.getSelectedItem();
+            int extConID = extCon.getExternalContactID();
+            CtrExtCon ctrExtCon = new CtrExtCon();
+            ExternalContact ec = ctrExtCon.findExternalContact(extConID);
+            if (ec == null) {
+                JOptionPane.showMessageDialog(this, "Den eksterne kontakt kunne ikke findes");
+            } else {
+                ctrExtCon.deleteExternalContact(extConID);
+                JOptionPane.showMessageDialog(this, "Du har nu slettet den eksterne kontakt med navnet: " + ec.getFirstName() + " " + ec.getLastName());
+                populateCmbEmployeeExtCon();
+            }
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
 }//GEN-LAST:event_btnDeleteExtConActionPerformed
 
 
@@ -418,9 +429,9 @@ public class GUIEmployeeExternalContact extends javax.swing.JPanel {
     private javax.swing.JTextField txtEmployeeExtConCity;
     private javax.swing.JTextField txtEmployeeExtConEmail;
     private javax.swing.JTextField txtEmployeeExtConFirstName;
-    private javax.swing.JTextField txtEmployeeExtConJobTitle;
     private javax.swing.JTextField txtEmployeeExtConLastName;
     private javax.swing.JTextField txtEmployeeExtConMiddleName;
+    private javax.swing.JTextField txtEmployeeExtConOccupation;
     private javax.swing.JTextField txtEmployeeExtConPhoneNo;
     private javax.swing.JTextField txtEmployeeExtConZipCode;
     // End of variables declaration//GEN-END:variables

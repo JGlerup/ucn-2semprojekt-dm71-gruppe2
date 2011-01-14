@@ -492,6 +492,15 @@
             </Constraint>
           </Constraints>
         </Component>
+        <Component class="GUILayer.GUIEmployeeExternalContact" name="gUIEmployeeExternalContact1">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Eksterne kontakter">
+                <Property name="tabTitle" type="java.lang.String" value="Eksterne kontakter"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

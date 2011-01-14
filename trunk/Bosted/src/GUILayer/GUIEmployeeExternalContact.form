@@ -27,8 +27,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -102,7 +102,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblJobTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtEmployeeExtConJobTitle" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                              <Component id="txtEmployeeExtConOccupation" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="jScrollPane1" alignment="0" min="-2" pref="437" max="-2" attributes="0"/>
@@ -165,12 +165,12 @@
                       <Group type="102" attributes="0">
                           <Component id="lblJobTitle" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtEmployeeExtConJobTitle" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtEmployeeExtConOccupation" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="258" max="-2" attributes="0"/>
-                  <EmptySpace pref="114" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnDeleteExtCon" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnUpdateExtCon" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -265,8 +265,11 @@
         <Component class="javax.swing.JTextField" name="txtEmployeeExtConZipCode">
         </Component>
         <Component class="javax.swing.JTextField" name="txtEmployeeExtConCity">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtEmployeeExtConJobTitle">
+        <Component class="javax.swing.JTextField" name="txtEmployeeExtConOccupation">
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>

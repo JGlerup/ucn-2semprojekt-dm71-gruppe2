@@ -17,14 +17,14 @@ public class ExternalContact {
     private String middleName;
     private String lastName;
     private String address;
-    private int locationID;
+    private Location location;
     private int phoneNo;
     private String email;
 
     public ExternalContact() {
     }
 
-    public ExternalContact(int externalContactID, String cbr, String occupation, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email) {
+    public ExternalContact(int externalContactID, String cbr, String occupation, String firstName, String middleName, String lastName, String address, Location location, int phoneNo, String email) {
         this.externalContactID = externalContactID;
         this.cbr = cbr;
         this.occupation = occupation;
@@ -32,7 +32,7 @@ public class ExternalContact {
         this.middleName = middleName;
         this.lastName = lastName;
         this.address = address;
-        this.locationID = locationID;
+        this.location = location;
         this.phoneNo = phoneNo;
         this.email = email;
     }
@@ -85,12 +85,12 @@ public class ExternalContact {
         this.lastName = lastName;
     }
 
-    public int getLocationID() {
-        return locationID;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setLocationID(int locationID) {
-        this.locationID = locationID;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public String getMiddleName() {

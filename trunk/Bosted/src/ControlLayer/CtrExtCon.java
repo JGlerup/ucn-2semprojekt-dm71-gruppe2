@@ -8,6 +8,7 @@ import DBLayer.DBExternalContact;
 import DBLayer.IFDBExtCon;
 import ExceptionsPack.NullValueException;
 import ModelLayer.ExternalContact;
+import ModelLayer.Location;
 import java.util.ArrayList;
 
 /**
@@ -31,7 +32,7 @@ public class CtrExtCon {
         return allExtCon;
     }
 
-    public void insertExternalContact(String cbr, String occupation, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email) throws NullValueException {
+    public void insertExternalContact(String cbr, String occupation, String firstName, String middleName, String lastName, String address, Location location, int phoneNo, String email) throws NullValueException {
         IFDBExtCon dbExtCon = new DBExternalContact();
         ExternalContact extConObj = new ExternalContact();
         extConObj.setCbr(cbr);
@@ -40,13 +41,13 @@ public class CtrExtCon {
         extConObj.setMiddleName(middleName);
         extConObj.setLastName(lastName);
         extConObj.setAddress(address);
-        extConObj.setLocationID(locationID);
+        extConObj.setLocation(location);
         extConObj.setPhoneNo(phoneNo);
         extConObj.setEmail(email);
         dbExtCon.insertExternalContact(extConObj);
     }
 
-    public void updateExternalContact(int externalContactID, String cbr, String occupation, String firstName, String middleName, String lastName, String address, int locationID, int phoneNo, String email) {
+    public void updateExternalContact(int externalContactID, String cbr, String occupation, String firstName, String middleName, String lastName, String address, Location location, int phoneNo, String email) {
         IFDBExtCon dbExtCon = new DBExternalContact();
         ExternalContact extConObj = new ExternalContact();
         extConObj.setExternalContactID(externalContactID);
@@ -56,13 +57,13 @@ public class CtrExtCon {
         extConObj.setMiddleName(middleName);
         extConObj.setLastName(lastName);
         extConObj.setAddress(address);
-        extConObj.setLocationID(locationID);
+        extConObj.setLocation(location);
         extConObj.setPhoneNo(phoneNo);
         extConObj.setEmail(email);
         dbExtCon.updateExternalContact(extConObj);
     }
 
-    public void deleteClient(int externalContactID) {
+    public void deleteExternalContact(int externalContactID) {
         IFDBExtCon dbExtCon = new DBExternalContact();
         dbExtCon.deleteExternalContact(externalContactID);
     }

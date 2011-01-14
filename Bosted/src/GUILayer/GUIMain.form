@@ -22,12 +22,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="tpGUI" alignment="0" pref="800" max="32767" attributes="0"/>
+          <Component id="tpGUI" alignment="0" pref="1027" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="tpGUI" alignment="0" pref="600" max="32767" attributes="0"/>
+          <Component id="tpGUI" alignment="0" pref="617" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -62,18 +62,18 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="228" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="375" max="-2" attributes="0"/>
                       <Component id="jPanel2" max="32767" attributes="0"/>
-                      <EmptySpace pref="229" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="309" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="142" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
                       <Component id="jPanel2" max="32767" attributes="0"/>
-                      <EmptySpace pref="141" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="196" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -200,12 +200,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="gUIclient1" alignment="0" pref="712" max="32767" attributes="0"/>
+                  <Component id="gUIclient1" alignment="0" pref="939" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="gUIclient1" alignment="0" pref="595" max="32767" attributes="0"/>
+                  <Component id="gUIclient1" alignment="0" pref="612" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -232,12 +232,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="gUIcar1" alignment="0" pref="712" max="32767" attributes="0"/>
+                  <Component id="gUIcar1" alignment="0" pref="939" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="gUIcar1" alignment="0" pref="595" max="32767" attributes="0"/>
+                  <Component id="gUIcar1" alignment="0" pref="612" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -259,12 +259,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="gUIemployee1" alignment="0" pref="712" max="32767" attributes="0"/>
+                  <Component id="gUIemployee1" alignment="0" pref="939" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="gUIemployee1" alignment="0" pref="595" max="32767" attributes="0"/>
+                  <Component id="gUIemployee1" alignment="0" pref="612" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -293,12 +293,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="gUImedicin1" alignment="0" pref="712" max="32767" attributes="0"/>
+                  <Component id="gUImedicin1" alignment="0" pref="939" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="gUImedicin1" alignment="1" pref="595" max="32767" attributes="0"/>
+                  <Component id="gUImedicin1" alignment="1" pref="612" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -329,7 +329,7 @@
                               <Component id="btnSøg" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
-                          <Component id="spHjælp" alignment="0" pref="702" max="32767" attributes="0"/>
+                          <Component id="spHjælp" alignment="0" pref="929" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -343,7 +343,7 @@
                           <Component id="txtIndtastHjælp" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="spHjælp" pref="544" max="32767" attributes="0"/>
+                      <Component id="spHjælp" pref="561" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -413,7 +413,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="263" max="32767" attributes="0"/>
                       <Component id="jPanel3" max="32767" attributes="0"/>
-                      <EmptySpace pref="263" max="32767" attributes="0"/>
+                      <EmptySpace pref="490" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -422,7 +422,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace pref="179" max="32767" attributes="0"/>
                       <Component id="jPanel3" max="32767" attributes="0"/>
-                      <EmptySpace pref="179" max="32767" attributes="0"/>
+                      <EmptySpace pref="196" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

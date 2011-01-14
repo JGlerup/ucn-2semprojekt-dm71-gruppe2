@@ -951,30 +951,28 @@
                                           <Component id="lblFornavnKlient1" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
                                               <Component id="lblEfternavnKlient1" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="lblMellemnavnKlient1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                                                  <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="1">
-                                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                                  <Component id="txtClientZipCode" min="-2" pref="120" max="-2" attributes="0"/>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="txtClientCity" max="32767" attributes="0"/>
-                                              </Group>
-                                          </Group>
                                           <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                                              <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="1">
+                                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                              <Component id="txtClientZipCode" min="-2" pref="120" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="txtClientCity" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="1">
                                               <Component id="txtClientMiddleName" min="-2" pref="122" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="txtClientLastName" min="-2" pref="122" max="-2" attributes="0"/>
+                                              <Component id="txtClientLastName" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -992,8 +990,8 @@
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
                                           <Component id="txtClientEmail" pref="120" max="32767" attributes="0"/>
+                                          <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -1563,16 +1561,17 @@
                                       <EmptySpace min="22" pref="22" max="22" attributes="0"/>
                                       <Component id="jScrollPane13" min="-2" pref="289" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="220" pref="220" max="220" attributes="0"/>
-                                      <Component id="jbnewMilestone" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="19" pref="19" max="19" attributes="0"/>
-                                      <Component id="jbupdate" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="17" pref="17" max="17" attributes="0"/>
-                                      <Component id="btnGetMilestone" min="-2" max="-2" attributes="0"/>
-                                  </Group>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace pref="332" max="32767" attributes="0"/>
+                              <Component id="jbnewMilestone" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="19" pref="19" max="19" attributes="0"/>
+                              <Component id="jbupdate" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="17" pref="17" max="17" attributes="0"/>
+                              <Component id="btnGetMilestone" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1599,13 +1598,13 @@
                                   <Component id="jScrollPane11" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jScrollPane13" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="14" pref="14" max="14" attributes="0"/>
+                              <EmptySpace pref="14" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jbnewMilestone" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jbupdate" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnGetMilestone" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>

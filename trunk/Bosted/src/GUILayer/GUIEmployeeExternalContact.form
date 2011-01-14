@@ -1,0 +1,327 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel1" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel1" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblGetEmployee" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="txtEmployeeExtConFirstName" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="cmbEmployeeExtCon" alignment="0" min="-2" pref="127" max="-2" attributes="1"/>
+                              </Group>
+                              <Component id="lblFirstname" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtEmployeeExtConMiddleName" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                              <Component id="lblMiddleName" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtEmployeeExtConLastName" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                              <Component id="lblLastName" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtEmployeeExtConCVR" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                              <Component id="lblSsn" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtEmployeeExtConEmail" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                              <Component id="lblEmail" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblPhoneNo" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtEmployeeExtConPhoneNo" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txtEmployeeExtConAddress" alignment="0" pref="127" max="32767" attributes="1"/>
+                              <Component id="lblAddress" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtEmployeeExtConZipCode" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                              <Component id="lblZipCode" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtEmployeeExtConCity" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                              <Component id="lblCity" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblJobTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtEmployeeExtConJobTitle" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Component id="jScrollPane1" alignment="0" min="-2" pref="437" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="503" max="32767" attributes="0"/>
+                  <Component id="btnResetAllExtCon" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="btnCreateEmployeeExtCon" min="-2" pref="72" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="btnUpdateExtCon" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="btnDeleteExtCon" min="-2" pref="71" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="lblGetEmployee" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="cmbEmployeeExtCon" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblFirstname" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblMiddleName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblSsn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblPhoneNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtEmployeeExtConFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtEmployeeExtConMiddleName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtEmployeeExtConLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtEmployeeExtConCVR" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtEmployeeExtConEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtEmployeeExtConPhoneNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblAddress" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblZipCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCity" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtEmployeeExtConAddress" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtEmployeeExtConZipCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtEmployeeExtConCity" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="lblJobTitle" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="txtEmployeeExtConJobTitle" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="258" max="-2" attributes="0"/>
+                  <EmptySpace pref="114" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnDeleteExtCon" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnUpdateExtCon" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCreateEmployeeExtCon" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnResetAllExtCon" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="lblGetEmployee">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Hent ekstern kontakt"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmbEmployeeExtCon">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbEmployeeExtConItemStateChanged"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblFirstname">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Fornavn"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblMiddleName">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Mellemnavn"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblLastName">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Efternavn"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblSsn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CVR"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblEmail">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="E-mail"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblPhoneNo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Telefonnummer"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtEmployeeExtConFirstName">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtEmployeeExtConMiddleName">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtEmployeeExtConLastName">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtEmployeeExtConCVR">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtEmployeeExtConEmail">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtEmployeeExtConPhoneNo">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblAddress">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Adresse"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblZipCode">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Postnummer"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblCity">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="By"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblJobTitle">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Job titel"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtEmployeeExtConAddress">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtEmployeeExtConZipCode">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtEmployeeExtConCity">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtEmployeeExtConJobTitle">
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTable" name="jTable1">
+              <Properties>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                  <Table columnCount="4" rowCount="4">
+                    <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                  </Table>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JButton" name="btnResetAllExtCon">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nulstil felter"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnResetAllExtConActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnCreateEmployeeExtCon">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Opret"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateEmployeeExtConActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnUpdateExtCon">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Opdater"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateExtConActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnDeleteExtCon">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Slet"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteExtConActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

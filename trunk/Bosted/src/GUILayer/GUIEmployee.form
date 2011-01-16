@@ -26,7 +26,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="tPEmployee" pref="629" max="32767" attributes="0"/>
+              <Component id="tPEmployee" pref="569" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -54,18 +54,18 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel2" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="jPanel2" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanel2" min="-2" pref="483" max="-2" attributes="0"/>
+                      <EmptySpace pref="47" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -83,102 +83,108 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblGetEmployee" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jScrollPane1" pref="852" max="32767" attributes="1"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="txtEmployeeFirstName" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="cmbEmployee" alignment="0" pref="127" max="32767" attributes="1"/>
-                                      </Group>
-                                      <Component id="lblFirstname" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtEmployeeMiddleName" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
-                                      <Component id="lblMiddleName" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtEmployeeLastName" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
-                                      <Component id="lblLastName" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtEmployeeSsn" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
-                                      <Component id="lblSsn" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtEmployeeEmail" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
-                                      <Component id="lblEmail" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblPhoneNo" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtEmployeePhoneNo" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jScrollPane1" alignment="0" max="32767" attributes="1"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txtEmployeeAddress" alignment="0" pref="127" max="32767" attributes="1"/>
-                                          <Component id="lblAddress" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblUsername" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtEmployeeEmployeeNo" alignment="0" max="32767" attributes="1"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="txtEmployeeZipCode" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
-                                                  <Component id="lblZipCode" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="cbCrudClient" min="-2" pref="115" max="-2" attributes="0"/>
+                                      <Component id="lblGetEmployee" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="txtEmployeeFirstName" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="cmbEmployee" alignment="0" pref="127" max="32767" attributes="1"/>
                                               </Group>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="txtEmployeeCity" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
-                                                  <Component id="lblCity" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="cbCrudMedicine" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="txtEmployeeManagerNo" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
-                                                  <Component id="lblManagerNo" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="cbCrudCar" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="txtEmployeePassword" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
-                                                  <Component id="lblPassword" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="cbCrudEmployee" min="-2" max="-2" attributes="0"/>
-                                              </Group>
+                                              <Component id="lblFirstname" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="lblUserPermissions" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txtEmployeeMiddleName" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                                              <Component id="lblMiddleName" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txtEmployeeLastName" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                                              <Component id="lblLastName" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txtEmployeeSsn" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                                              <Component id="lblSsn" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txtEmployeeEmail" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                                              <Component id="lblEmail" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="lblPhoneNo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtEmployeePhoneNo" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="cbInUse" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblJobTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtEmployeeJobTitle" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
-                                          <Component id="lblEmployeed" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="txtEmployeeAddress" alignment="0" pref="127" max="32767" attributes="1"/>
+                                              <Component id="lblAddress" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblUsername" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtEmployeeEmployeeNo" alignment="0" max="32767" attributes="1"/>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="txtEmployeeZipCode" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                                                      <Component id="lblZipCode" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="cbCrudClient" min="-2" pref="115" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="txtEmployeeCity" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                                                      <Component id="lblCity" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="cbCrudMedicine" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="txtEmployeeManagerNo" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                                                      <Component id="lblManagerNo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="cbCrudCar" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="txtEmployeePassword" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                                                      <Component id="lblPassword" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="cbCrudEmployee" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <Component id="lblUserPermissions" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="cbInUse" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblJobTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtEmployeeJobTitle" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                                              <Component id="lblEmployeed" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="btnResetAll" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnCreateEmployee" min="-2" pref="72" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnUpdate" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnDelete" min="-2" pref="71" max="-2" attributes="0"/>
-                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="btnResetAll" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnCreateEmployee" min="-2" pref="72" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="btnUpdate" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="btnDelete" min="-2" pref="71" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -241,15 +247,15 @@
                               <Component id="txtEmployeeEmployeeNo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="290" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="157" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnDelete" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnCreateEmployee" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnResetAll" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

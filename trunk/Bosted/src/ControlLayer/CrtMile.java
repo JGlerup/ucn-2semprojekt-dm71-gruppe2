@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ControlLayer;
 
 import DBLayer.DBMilestone;
@@ -22,7 +21,6 @@ public class CrtMile {
 //        IFDBMilestone dbMilestone = new DBMilestone();
 //        return dbMilestone.findMilestoneByClientID(clientID, true);
 //    }
-
     public ArrayList getAllCMilestone() {
         IFDBMilestone dbMilestone = new DBMilestone();
         ArrayList milestones = new ArrayList<Milestone>();
@@ -31,23 +29,23 @@ public class CrtMile {
     }
 
     public void insertMilestone(Client client, String text, Date succesDate) {
-            IFDBMilestone dbMilestone = new DBMilestone();
-            Milestone mObj = new Milestone();
-            mObj.setClient(client);
-            mObj.setText(text);
-            mObj.setSuccesDate(succesDate);
-            dbMilestone.insertMilestone(mObj);
+        IFDBMilestone dbMilestone = new DBMilestone();
+        Milestone mObj = new Milestone();
+        mObj.setClient(client);
+        mObj.setText(text);
+        mObj.setSuccesDate(succesDate);
+        dbMilestone.insertMilestone(mObj);
 
     }
 
     public void updateMilestone(Client client, String text, Date succesDate) {
 
-            IFDBMilestone dbMilestone = new DBMilestone();
-            Milestone mObj = new Milestone();
-            mObj.setClient(client);
-            mObj.setText(text);
-            mObj.setSuccesDate(succesDate);
-            dbMilestone.updateMilestone(mObj);
+        IFDBMilestone dbMilestone = new DBMilestone();
+        Milestone mObj = new Milestone();
+        mObj.setClient(client);
+        mObj.setText(text);
+        mObj.setSuccesDate(succesDate);
+        dbMilestone.updateMilestone(mObj);
     }
 
     public void deleteMilestone(int clientID) {
@@ -55,13 +53,16 @@ public class CrtMile {
         dbMilestone.deleteMilestone(clientID);
     }
 
-        public ArrayList<Milestone> buildListOfMilestones(int clientID)
-    {
+    public ArrayList<Milestone> buildListOfMilestones(int clientID) {
         IFDBMilestone dbMile = new DBMilestone();
         ArrayList mileList = new ArrayList<Milestone>();
         mileList = dbMile.buildListOfMilestones(clientID);
         return mileList;
     }
+
+    public Milestone findLatestMilestoneMinusSteps(int clientID, int numberOfStepsToGoBack, boolean retrieveAssociation) {
+        IFDBMilestone dbMile = new DBMilestone();
+        Milestone mObj = dbMile.findLatestMilestoneMinusSteps(clientID, numberOfStepsToGoBack, retrieveAssociation);
+        return mObj;
+    }
 }
-
-

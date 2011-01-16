@@ -36,6 +36,12 @@ public class DBMilestone implements IFDBMilestone {
         return miscWhere("", retriveAssociation);
     }
 
+    public Milestone findLatestMilestoneMinusSteps(int clientID, int numberOfStepsToGoBack, boolean retrieveAssociation) {
+        Milestone mObj = new Milestone();
+        mObj = singleWhere ("milestone_id = (select milestone_id from (select ROW_NUMBER() over (order by milestone_id) as Row, milestone_id, client_id, text, date, successdate from milestone where client_id = " + clientID + ") id where Row = (select COUNT(*) from (select ROW_NUMBER() over (order by milestone_id) as Row, milestone_id, client_id, text, date, successdate from milestone where client_id = " + clientID + ") id) - " + numberOfStepsToGoBack + ")", retrieveAssociation);
+        return mObj;
+    }
+
     public int insertMilestone(Milestone m) {  //call to get the next ssn number
         int rc = -1;
         String query = "INSERT INTO milestone(client_id, text, date, successdate)  VALUES('"
@@ -165,12 +171,13 @@ public class DBMilestone implements IFDBMilestone {
         Milestone mObj = new Milestone();
 
         try {
+            mObj.setMilestoneID(results.getInt(1));
             Client client = new Client();
-            client.setClientID(results.getInt(1));
+            client.setClientID(results.getInt(2));
             mObj.setClient(client);
-            mObj.setText(results.getString(2));
-            mObj.setDate(results.getString(3));
-            mObj.setSuccesDate(results.getDate(4));
+            mObj.setText(results.getString(3));
+            mObj.setDate(results.getString(4));
+            mObj.setSuccesDate(results.getDate(5));
         } catch (Exception e) {
             System.out.println("building milestone object");
         }

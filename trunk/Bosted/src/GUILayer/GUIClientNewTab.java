@@ -166,15 +166,15 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         lblnewest = new javax.swing.JLabel();
         lbl2rd = new javax.swing.JLabel();
         jScrollPane12 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
+        txtAMilestone2 = new javax.swing.JTextArea();
         jScrollPane10 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        txtAMilestone1 = new javax.swing.JTextArea();
         lbl3rd = new javax.swing.JLabel();
         lbl4rd = new javax.swing.JLabel();
         jScrollPane11 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        txtAMilestone3 = new javax.swing.JTextArea();
         jScrollPane13 = new javax.swing.JScrollPane();
-        jTextArea5 = new javax.swing.JTextArea();
+        txtAMilestone4 = new javax.swing.JTextArea();
         jbnewMilestone = new javax.swing.JButton();
         jbupdate = new javax.swing.JButton();
         btnGetMilestone = new javax.swing.JButton();
@@ -1065,29 +1065,33 @@ public class GUIClientNewTab extends javax.swing.JPanel {
 
         lbl2rd.setText("Anden nyeste");
 
-        jTextArea4.setColumns(20);
-        jTextArea4.setLineWrap(true);
-        jTextArea4.setRows(5);
-        jScrollPane12.setViewportView(jTextArea4);
+        txtAMilestone2.setColumns(20);
+        txtAMilestone2.setEditable(false);
+        txtAMilestone2.setLineWrap(true);
+        txtAMilestone2.setRows(5);
+        jScrollPane12.setViewportView(txtAMilestone2);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setLineWrap(true);
-        jTextArea2.setRows(5);
-        jScrollPane10.setViewportView(jTextArea2);
+        txtAMilestone1.setColumns(20);
+        txtAMilestone1.setEditable(false);
+        txtAMilestone1.setLineWrap(true);
+        txtAMilestone1.setRows(5);
+        jScrollPane10.setViewportView(txtAMilestone1);
 
         lbl3rd.setText("Tredje nyeste");
 
         lbl4rd.setText("Fjerde nyeste");
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setLineWrap(true);
-        jTextArea3.setRows(5);
-        jScrollPane11.setViewportView(jTextArea3);
+        txtAMilestone3.setColumns(20);
+        txtAMilestone3.setEditable(false);
+        txtAMilestone3.setLineWrap(true);
+        txtAMilestone3.setRows(5);
+        jScrollPane11.setViewportView(txtAMilestone3);
 
-        jTextArea5.setColumns(20);
-        jTextArea5.setLineWrap(true);
-        jTextArea5.setRows(5);
-        jScrollPane13.setViewportView(jTextArea5);
+        txtAMilestone4.setColumns(20);
+        txtAMilestone4.setEditable(false);
+        txtAMilestone4.setLineWrap(true);
+        txtAMilestone4.setRows(5);
+        jScrollPane13.setViewportView(txtAMilestone4);
 
         jbnewMilestone.setText("Skriv ny");
         jbnewMilestone.addActionListener(new java.awt.event.ActionListener() {
@@ -1254,6 +1258,19 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         this.client = client;
     }
 
+    public void setMilestonesText() {
+        CrtMile ctrMile = new CrtMile();
+        int clientID = client.getClientID();
+        String milestone1 = ctrMile.findLatestMilestoneMinusSteps(clientID, 0, false).getText();
+        String milestone2 = ctrMile.findLatestMilestoneMinusSteps(clientID, 1, false).getText();
+        String milestone3 = ctrMile.findLatestMilestoneMinusSteps(clientID, 2, false).getText();
+        String milestone4 = ctrMile.findLatestMilestoneMinusSteps(clientID, 3, false).getText();
+        txtAMilestone1.setText(milestone1);
+        txtAMilestone2.setText(milestone2);
+        txtAMilestone3.setText(milestone3);
+        txtAMilestone4.setText(milestone4);
+    }
+
     public void populateCmbDailyReport() {
         CrtDailyReport ctrDailyReport = new CrtDailyReport();
         ArrayList<DailyReport> daiRepList = ctrDailyReport.buildListOfDailyreports(client.getClientID());
@@ -1329,6 +1346,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         populateCmbDailyReport();
 
         setDailyReportText();
+        setMilestonesText();
 
 
 
@@ -1388,8 +1406,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
                 cmbMedi.addItem(m);
             }
             cmbMedi.removeItemAt(0);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
 }//GEN-LAST:event_jButton5ActionPerformed
@@ -1408,8 +1425,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
                 cmbMedi1.addItem(m);
             }
             cmbMedi1.removeItemAt(0);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
 }//GEN-LAST:event_jButton9ActionPerformed
@@ -1428,11 +1444,10 @@ public class GUIClientNewTab extends javax.swing.JPanel {
                 cmbMedi2.addItem(m);
             }
             cmbMedi2.removeItemAt(0);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-        
+
 }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jbnewMilestoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnewMilestoneActionPerformed
@@ -1440,29 +1455,27 @@ public class GUIClientNewTab extends javax.swing.JPanel {
         newMilestone.setVisible(true);
 
 
-        
+
 
 }//GEN-LAST:event_jbnewMilestoneActionPerformed
 
     private void jbupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbupdateActionPerformed
         // TODO add your handling code here:
         try {
-        update.setVisible(true);
-        CrtMile ctrMile = new CrtMile();
-        ArrayList<Milestone> mileList = ctrMile.buildListOfMilestones(client.getClientID());
-        cmbUpdateMilestone.removeAllItems();
-        cmbUpdateMilestone.insertItemAt("", 0);
-        for (Milestone m : mileList) {
-            cmbUpdateMilestone.addItem(m);
-        }
-        cmbUpdateMilestone.removeItemAt(0);
-        }
-
-        catch (Exception e) {
+            update.setVisible(true);
+            CrtMile ctrMile = new CrtMile();
+            ArrayList<Milestone> mileList = ctrMile.buildListOfMilestones(client.getClientID());
+            cmbUpdateMilestone.removeAllItems();
+            cmbUpdateMilestone.insertItemAt("", 0);
+            for (Milestone m : mileList) {
+                cmbUpdateMilestone.addItem(m);
+            }
+            cmbUpdateMilestone.removeItemAt(0);
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
 
-        
+
 }//GEN-LAST:event_jbupdateActionPerformed
 
     private void btnGetMilestoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetMilestoneActionPerformed
@@ -1470,18 +1483,16 @@ public class GUIClientNewTab extends javax.swing.JPanel {
 
 
         try {
-        getMilestone.setVisible(true);
-        CrtMile ctrMile = new CrtMile();
-        ArrayList<Milestone> mileList = ctrMile.buildListOfMilestones(client.getClientID());
-        cmbGetMilestone.removeAllItems();
-        cmbGetMilestone.insertItemAt("", 0);
-        for (Milestone m : mileList) {
-            cmbGetMilestone.addItem(m);
-        }
-        cmbGetMilestone.removeItemAt(0);
-        }
-
-        catch (Exception e) {
+            getMilestone.setVisible(true);
+            CrtMile ctrMile = new CrtMile();
+            ArrayList<Milestone> mileList = ctrMile.buildListOfMilestones(client.getClientID());
+            cmbGetMilestone.removeAllItems();
+            cmbGetMilestone.insertItemAt("", 0);
+            for (Milestone m : mileList) {
+                cmbGetMilestone.addItem(m);
+            }
+            cmbGetMilestone.removeItemAt(0);
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
 }//GEN-LAST:event_btnGetMilestoneActionPerformed
@@ -1554,8 +1565,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
             Medicine m = (Medicine) cmbMedi.getSelectedItem();
             ctrMedi.updateMedicine(m.getMedicineID(), m.getFrequency(), m.getExternalContact(), m.getClient(), m.getName(), m.getDescription(), m.getDate(), m.getQuantity() - Integer.parseInt(jTextField1.getText()));
             setVisible(false);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
 }//GEN-LAST:event_jButton2ActionPerformed
@@ -1575,8 +1585,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
             Medicine m = (Medicine) cmbMedi.getSelectedItem();
             ctrMedi.updateMedicine(m.getMedicineID(), m.getFrequency(), m.getExternalContact(), m.getClient(), m.getName(), m.getDescription(), m.getDate(), m.getQuantity() + Integer.parseInt(jTextField1.getText()));
             setVisible(false);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
 }//GEN-LAST:event_jButton12ActionPerformed
@@ -1659,8 +1668,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
             ctrMile.insertMilestone(client, txtaNewMilstone.getText(), null);
             JOptionPane.showMessageDialog(this, "Der er nu oprettet et delmål");
             newMilestone.setVisible(false);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(newMilestone, e.getMessage());
         }
 
@@ -1668,16 +1676,16 @@ public class GUIClientNewTab extends javax.swing.JPanel {
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
         // TODO add your handling code here:
         try {
-        CrtMile ctrMile = new CrtMile();
-        ctrMile.updateMilestone(client,txtaUpdateMilestone.getText(), null);
-        JOptionPane.showMessageDialog(update, "Delmål er nu opdateret");
-        }
-        catch (Exception e) {
+            CrtMile ctrMile = new CrtMile();
+            ctrMile.updateMilestone(client, txtaUpdateMilestone.getText(), null);
+            JOptionPane.showMessageDialog(update, "Delmål er nu opdateret");
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(update, e.getMessage());
         }
 
@@ -1703,7 +1711,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
     private void btnAnnullerUpdateMilestoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnnullerUpdateMilestoneActionPerformed
         // TODO add your handling code here:
         update.setVisible(false);
-        
+
     }//GEN-LAST:event_btnAnnullerUpdateMilestoneActionPerformed
 
     private void cmbUpdateMilestoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbUpdateMilestoneActionPerformed
@@ -1720,7 +1728,6 @@ public class GUIClientNewTab extends javax.swing.JPanel {
             }//end if
         }//end if
     }//GEN-LAST:event_cmbGetMilestoneItemStateChanged
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFrame GUICreateDayliReport;
     private javax.swing.JFrame GUIErrorHandlingMedicine;
@@ -1807,10 +1814,6 @@ public class GUIClientNewTab extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTable jTable3;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
-    private javax.swing.JTextArea jTextArea5;
     private javax.swing.JTextArea jTextArea6;
     private javax.swing.JTextArea jTextArea7;
     private javax.swing.JTextField jTextField1;
@@ -1832,6 +1835,10 @@ public class GUIClientNewTab extends javax.swing.JPanel {
     private javax.swing.JLabel lblQuantity;
     private javax.swing.JLabel lblnewest;
     private javax.swing.JFrame newMilestone;
+    private javax.swing.JTextArea txtAMilestone1;
+    private javax.swing.JTextArea txtAMilestone2;
+    private javax.swing.JTextArea txtAMilestone3;
+    private javax.swing.JTextArea txtAMilestone4;
     private javax.swing.JTextField txtClientAddress;
     private javax.swing.JTextField txtClientCity;
     private javax.swing.JTextArea txtClientDescription;

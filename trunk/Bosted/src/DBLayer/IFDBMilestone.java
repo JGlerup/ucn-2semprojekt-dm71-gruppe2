@@ -32,4 +32,5 @@ public interface IFDBMilestone {
     public int deleteMilestone(int clientID);
     //delete a milestone
 
+    public Milestone findLatestMilestoneMinusSteps(int clientID, int numberOfStepsToGoBack, boolean retrieveAssociation);
 }

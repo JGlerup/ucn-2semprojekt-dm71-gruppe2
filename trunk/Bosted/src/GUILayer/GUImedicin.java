@@ -19,6 +19,7 @@ import ModelLayer.Frequency;
 import ModelLayer.Medicine;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -28,9 +29,105 @@ import javax.swing.JTextField;
  */
 public class GUImedicin extends javax.swing.JPanel {
 
+    private int tableRow;
+    private int tableColumn;
     /** Creates new form GUIclient */
     public GUImedicin() {
         initComponents();
+        tableRow = 0;
+        tableColumn = 0;
+    }
+
+    public void setTblMedicine()
+    {
+        CtrMedi ctrMedi = new CtrMedi();
+        ArrayList<Medicine> medicineList =  ctrMedi.getAllMedicine();
+        if(!medicineList.isEmpty())
+        {
+            for(Medicine m : medicineList)
+            {
+                String name = m.getName();
+                String description = m.getDescription();
+                int quantity = m.getQuantity();
+
+                getTblMedicine().setValueAt(name, tableRow, tableColumn);
+                tableColumn++;
+                getTblMedicine().setValueAt(description, tableRow, tableColumn);
+                tableColumn++;
+                getTblMedicine().setValueAt(quantity, tableRow, tableColumn);
+                tableColumn = 0;
+                tableRow++;
+
+            }//end for
+            setTableColumn(0);
+            setTableRow(0);
+        }//end if
+    }
+
+    public JTable getTblMedicine()
+    {
+        return tblMedicine;
+    }
+
+    public void setTblMedicine(JTable tblMedicine)
+    {
+        this.tblMedicine = tblMedicine;
+    }
+
+    public void setTblFrequency()
+    {
+        CtrMedi ctrMedi = new CtrMedi();
+        ArrayList<Frequency> frequencyList =  ctrMedi.getAllFrequency(true);
+        if(!frequencyList.isEmpty())
+        {
+            for(Frequency f : frequencyList)
+            {
+                String description = f.getDescriptionUsage();
+                int tpd = f.getTimesPerDay();
+                int quantity = f.getQuantityEachTime();
+
+                getTblFrequency().setValueAt(description, tableRow, tableColumn);
+                tableColumn++;
+                getTblFrequency().setValueAt(tpd, tableRow, tableColumn);
+                tableColumn++;
+                getTblFrequency().setValueAt(quantity, tableRow, tableColumn);
+                tableColumn = 0;
+                tableRow++;
+
+            }//end for
+            setTableColumn(0);
+            setTableRow(0);
+        }//end if
+    }
+
+    public JTable getTblFrequency()
+    {
+        return tblFrequency;
+    }
+
+    public void setTblFrequency(JTable tblFrequency)
+    {
+        this.tblFrequency = tblFrequency;
+    }
+
+    public void setTableColumn(int tableColumn)
+    {
+        this.tableColumn = tableColumn;
+    }
+
+    public void setTableRow(int tableRow)
+    {
+        this.tableRow = tableRow;
+    }
+
+    public int getTableColumn()
+    {
+        return tableColumn;
+    }
+
+    public int getTableRow()
+    {
+        return tableRow;
     }
 
     /** This method is called from within the constructor to
@@ -59,7 +156,7 @@ public class GUImedicin extends javax.swing.JPanel {
         txtName = new javax.swing.JTextField();
         txtQuantity = new javax.swing.JTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tblMedicine = new javax.swing.JTable();
         jComboBox2 = new javax.swing.JComboBox();
         jLabel8 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox();
@@ -81,7 +178,7 @@ public class GUImedicin extends javax.swing.JPanel {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea4 = new javax.swing.JTextArea();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblFrequency = new javax.swing.JTable();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
@@ -125,18 +222,61 @@ public class GUImedicin extends javax.swing.JPanel {
             }
         });
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tblMedicine.setAutoCreateRowSorter(true);
+        tblMedicine.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Navn", "Beskrivelse", "Antal"
             }
-        ));
-        jScrollPane5.setViewportView(jTable3);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblMedicine.getTableHeader().setReorderingAllowed(false);
+        jScrollPane5.setViewportView(tblMedicine);
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -293,18 +433,60 @@ public class GUImedicin extends javax.swing.JPanel {
         jTextArea4.setRows(5);
         jScrollPane4.setViewportView(jTextArea4);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblFrequency.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Beskrivelse", "Gange pr. dag", "Antal pr. gang"
             }
-        ));
-        jScrollPane6.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblFrequency.getTableHeader().setReorderingAllowed(false);
+        jScrollPane6.setViewportView(tblFrequency);
 
         jButton11.setText("Opret");
         jButton11.addActionListener(new java.awt.event.ActionListener() {
@@ -357,26 +539,26 @@ public class GUImedicin extends javax.swing.JPanel {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 404, Short.MAX_VALUE)))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel13)
+                            .addGap(332, 332, 332))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                            .addContainerGap()))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addGap(332, 332, 332))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel13))
@@ -403,12 +585,11 @@ public class GUImedicin extends javax.swing.JPanel {
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton13)
                             .addComponent(jButton12)
-                            .addComponent(jButton11))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jButton11)))))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -428,8 +609,8 @@ public class GUImedicin extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(190, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Håndtering", null, jPanel1, "Her opretter, opdateres og slettes");
@@ -504,6 +685,9 @@ public class GUImedicin extends javax.swing.JPanel {
         jComboBox4.removeItem("Vælg her");
         jComboBox5.removeItem("Vælg her");
 
+        setTblMedicine();
+        setTblFrequency();
+
         JTextField[] txtFieldList = {txtName, txtQuantity};
         resetTextFields(txtFieldList);
         JTextArea[] txtAreaList = {txtADescription};
@@ -529,6 +713,7 @@ public class GUImedicin extends javax.swing.JPanel {
                 cmbMedicine.addItem(m);
             }
             cmbMedicine.removeItem("Vælg her");
+            setTblMedicine();
 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e.getMessage());
@@ -569,6 +754,7 @@ public class GUImedicin extends javax.swing.JPanel {
             }
             jComboBox4.removeItem("Vælg her");
             jComboBox5.removeItem("Vælg her");
+            setTblFrequency();
 
             } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -595,6 +781,7 @@ public class GUImedicin extends javax.swing.JPanel {
                 cmbMedicine.addItem(m);
             }
             cmbMedicine.removeItem("Vælg her");
+            setTblMedicine();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -616,6 +803,7 @@ public class GUImedicin extends javax.swing.JPanel {
                 cmbMedicine.addItem(m);
             }
             cmbMedicine.removeItem("Vælg her");
+            setTblMedicine();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -701,6 +889,7 @@ public class GUImedicin extends javax.swing.JPanel {
             }
             jComboBox4.removeItem("Vælg her");
             jComboBox5.removeItem("Vælg her");
+            setTblFrequency();
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -729,6 +918,7 @@ public class GUImedicin extends javax.swing.JPanel {
             }
             jComboBox4.removeItem("Vælg her");
             jComboBox5.removeItem("Vælg her");
+            setTblFrequency();
         }
         catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -769,14 +959,14 @@ public class GUImedicin extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea4;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel lblhentmedicin;
+    private javax.swing.JTable tblFrequency;
+    private javax.swing.JTable tblMedicine;
     private javax.swing.JTextArea txtADescription;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtQuantity;

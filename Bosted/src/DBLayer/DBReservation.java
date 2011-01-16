@@ -31,10 +31,10 @@ public class DBReservation implements IFDBReservation
      * @param retrieveAssociation
      * @return an object of Reservation
      */
-    public Reservation findReservation(int clientID, String startDate, boolean retrieveAssociation)
+    public Reservation findReservation(int carID, String startDate, boolean retrieveAssociation)
     {
         Reservation rObj = new Reservation();
-        rObj = singleWhere("client_id = " + clientID + " AND startdate = '" + startDate + "'", retrieveAssociation);
+        rObj = singleWhere("car_id = " + carID + " AND startdate = '" + startDate + "'", retrieveAssociation);
         return rObj;
     }
 
@@ -92,7 +92,7 @@ public class DBReservation implements IFDBReservation
     public int insertReservation(Reservation r)
     {
         int rc = -1;
-        String query = "INSERT INTO reservation(car_id, employee_id, client_id, startDate, endDate, reservationDate)  VALUES("
+        String query = "INSERT INTO reservation(car_id, employee_id, client_id, startdate, enddate, reservationdate)  VALUES("
                 + r.getCar().getCarID() + ", "
                 + r.getEmployee().getEmployeeID() + ", "
                 + r.getClient().getClientID() + ", '"
@@ -127,12 +127,12 @@ public class DBReservation implements IFDBReservation
         int rc = -1;
 
         String query = "UPDATE reservation SET "
-                + "carID = " + rObj.getCar().getCarID() + ", "
-                + "employeeID = " + rObj.getEmployee().getEmployeeID() + ", "
-                + "clientID = " + rObj.getClient().getClientID() + ", "
-                + "startDate = '" + rObj.getStartDate() + "', "
-                + "endDate = '" + rObj.getEndDate() + "', "
-                + "reservationDate = '" + rObj.getReservationDate() + "', "
+                + "car_id = " + rObj.getCar().getCarID() + ", "
+                + "employee_id = " + rObj.getEmployee().getEmployeeID() + ", "
+                + "client_id = " + rObj.getClient().getClientID() + ", "
+                + "startdate = '" + rObj.getStartDate() + "', "
+                + "enddate = '" + rObj.getEndDate() + "', "
+                + "reservationdate = '" + rObj.getReservationDate() + "', "
                 + " WHERE reservation_id = " + rObj.getReservationID();
         System.out.println("Update query:" + query);
         try 

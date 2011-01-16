@@ -52,7 +52,7 @@ public class CtrReservation
         try
         {
             IFDBReservation dbReservation = new DBReservation();
-            allReservation = dbReservation.getAllReservations(false);
+            allReservation = dbReservation.getAllReservations(true);
         }//end try
         catch(Exception e)
         {
@@ -73,23 +73,25 @@ public class CtrReservation
         CtrCar ctrCar = new CtrCar();
         ArrayList<Car> carList = ctrCar.getAllCars();
         ArrayList<Car> avaCarList = new ArrayList();
-        boolean inResList = false;
+
         if(!resList.isEmpty())
         {
             for(Car c : carList)
             {
-                for(Reservation r : resList)
+                int index = 1;
+                boolean found = false;
+                while(resList.size() >= index && !found)
                 {
-                    if(r.getCar().getCarID() == c.getCarID());
+                    if(resList.get(index).getCar().getCarID() == c.getCarID());
                     {
-                        inResList = true;
+                        found = true;
                     }//end if
-                }//end for
-                if(inResList = false)
+                    index++;
+                }//end while
+                if(!found)
                 {
                     avaCarList.add(c);
-                }//end if
-                inResList = false;
+                }
             }//end for
         }//end if
         else
@@ -110,7 +112,7 @@ public class CtrReservation
         try
         {
             IFDBReservation dbReservation = new DBReservation();
-            allReservation = dbReservation.getAllReservations(false);
+            allReservation = dbReservation.getAllReservations(true);
         }//end try
         catch(Exception e)
         {
@@ -152,7 +154,7 @@ public class CtrReservation
         try
         {
             IFDBReservation dbReservation = new DBReservation();
-            allReservation = dbReservation.getAllReservationsByDate(date, false);
+            allReservation = dbReservation.getAllReservationsByDate(date, true);
         }//end try
         catch(Exception e)
         {
@@ -173,7 +175,7 @@ public class CtrReservation
         try
         {
             IFDBReservation dbReservation = new DBReservation();
-            allReservation = dbReservation.getAllReservationsByEmployee(employeeID, false);
+            allReservation = dbReservation.getAllReservationsByEmployee(employeeID, true);
         }//end try
         catch(Exception e)
         {
@@ -310,10 +312,10 @@ public class CtrReservation
      *
      * @param reservationID the reservationID
      */
-    public void deleteReservation(int reservationID)
+    public void deleteReservation(Reservation r)
     {
         IFDBReservation dbReservation = new DBReservation();
-        dbReservation.deleteReservation(reservationID);
+        dbReservation.deleteReservation(r.getReservationID());
     }
 
 }

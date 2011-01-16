@@ -18,6 +18,7 @@ import ModelLayer.ToDaysDate;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
+
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -90,6 +91,23 @@ public class GUIcar extends javax.swing.JPanel
         cmbAvailableCars.removeItem("Vælg her");
     }
 
+    /**
+     *
+     * populate combobox AvailableCars (cmbAvailableCars)
+     */
+    public void populateCmbBiler()
+    {
+         CtrCar ctrCar = new CtrCar();
+        ArrayList<Car> carList = new ArrayList<Car>();
+        carList = ctrCar.getAllCars();
+        cmbbiler.removeAllItems();
+        cmbbiler.insertItemAt("Vælg her", 0);
+        for (Car c : carList)
+        {
+            cmbbiler.addItem(c);
+        }//end for
+        cmbbiler.removeItem("Vælg her");
+    }
     /**
      * 
      * @param clientID the client id
@@ -203,6 +221,52 @@ public class GUIcar extends javax.swing.JPanel
             setTableColumn(0);
             setTableRow(0);
         }//end if
+    }
+
+    public void setTblBiler(String date)
+    {
+        CtrCar ctrCar = new CtrCar();
+        ArrayList<Car> carList =  ctrCar.getAllCars();
+        CtrReservation ctrRes = new CtrReservation();
+        ArrayList<Car> carsAva = ctrRes.findListOfAvailableCarsByDate(date);
+        if(!carList.isEmpty())
+        {
+            for(Car c : carList)
+            {
+                String description = c.getDescription();
+                String regNo = c.getRegNo();
+                String available = "Nej";
+                int index = 1;
+                while(carsAva.size() >= index && available.equals("Nej"))
+                {
+                    if(carsAva.get(index).getCarID() == c.getCarID())
+                    {
+                        available = "Ja";
+                    }//end if
+                    index++;
+                }//end while
+                getTblBiler().setValueAt(description, tableRow, tableColumn);
+                tableColumn++;
+                getTblBiler().setValueAt(regNo, tableRow, tableColumn);
+                tableColumn++;
+                getTblBiler().setValueAt(available, tableRow, tableColumn);
+                tableColumn = 0;
+                tableRow++;
+               
+            }//end for
+            setTableColumn(0);
+            setTableRow(0);
+        }//end if
+    }
+
+    public JTable getTblBiler()
+    {
+        return tblBiler;
+    }
+
+    public void setTblBiler(JTable tblBiler)
+    {
+        this.tblBiler = tblBiler;
     }
 
     public void setTableColumn(int tableColumn)
@@ -347,16 +411,122 @@ public class GUIcar extends javax.swing.JPanel
 
         tblBiler.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Beskrivelse", "Registreringsnummer", "Ledig i dag"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblBiler.setColumnSelectionAllowed(true);
         spBiler.setViewportView(tblBiler);
+        tblBiler.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
         btnOpret.setText("Opret");
         btnOpret.addActionListener(new java.awt.event.ActionListener() {
@@ -496,6 +666,95 @@ public class GUIcar extends javax.swing.JPanel
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
@@ -525,6 +784,95 @@ public class GUIcar extends javax.swing.JPanel
 
         tblListofCars.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
@@ -717,18 +1065,9 @@ public class GUIcar extends javax.swing.JPanel
     }//GEN-LAST:event_txtregnoActionPerformed
 
     private void tpCarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tpCarFocusGained
-        // TODO add your handling code here:
-        CtrCar ctrCar = new CtrCar();
-        ArrayList<Car> carList = new ArrayList<Car>();
-        carList = ctrCar.getAllCars();
-        cmbbiler.removeAllItems();
-        cmbbiler.insertItemAt("Vælg her", 0);
-        for (Car c : carList)
-        {
-            cmbbiler.addItem(c);
-        }//end for
-        cmbbiler.removeItem("Vælg her");
-
+        
+        populateCmbBiler();
+        setTblBiler(getToDaysDate());
 
         JTextField[] txtFieldList = {txtregno};
         resetTextFields(txtFieldList);

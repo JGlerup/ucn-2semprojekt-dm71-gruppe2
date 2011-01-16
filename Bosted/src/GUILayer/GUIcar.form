@@ -226,12 +226,34 @@
                         <Component class="javax.swing.JTable" name="tblBiler">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="4" rowCount="4">
-                                <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                              <Table columnCount="3" rowCount="100">
+                                <Column editable="false" title="Beskrivelse" type="java.lang.Object"/>
+                                <Column editable="false" title="Registreringsnummer" type="java.lang.Object"/>
+                                <Column editable="false" title="Ledig i dag" type="java.lang.Object"/>
                               </Table>
+                            </Property>
+                            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                              <TableColumnModel selectionModel="3">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                              </TableColumnModel>
+                            </Property>
+                            <Property name="columnSelectionAllowed" type="boolean" value="true"/>
+                            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                             </Property>
                           </Properties>
                         </Component>
@@ -442,7 +464,7 @@
                         <Component class="javax.swing.JTable" name="tblReservations">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="4" rowCount="11">
+                              <Table columnCount="4" rowCount="100">
                                 <Column editable="false" title="Dato" type="java.lang.Object"/>
                                 <Column editable="false" title="Medarbejder" type="java.lang.Object"/>
                                 <Column editable="false" title="Klient" type="java.lang.Object"/>
@@ -508,7 +530,7 @@
                         <Component class="javax.swing.JTable" name="tblListofCars">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="3" rowCount="11">
+                              <Table columnCount="3" rowCount="100">
                                 <Column editable="false" title="Beskrivelse" type="java.lang.String"/>
                                 <Column editable="false" title="Registreringsnummer" type="java.lang.String"/>
                                 <Column editable="false" title="Ledig i dag" type="java.lang.String"/>

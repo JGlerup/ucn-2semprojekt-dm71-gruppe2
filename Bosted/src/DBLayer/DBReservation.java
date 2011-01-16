@@ -132,7 +132,7 @@ public class DBReservation implements IFDBReservation
                 + "client_id = " + rObj.getClient().getClientID() + ", "
                 + "startdate = '" + rObj.getStartDate() + "', "
                 + "enddate = '" + rObj.getEndDate() + "', "
-                + "reservationdate = '" + rObj.getReservationDate() + "', "
+                + "reservationdate = '" + rObj.getReservationDate() + "' "
                 + " WHERE reservation_id = " + rObj.getReservationID();
         System.out.println("Update query:" + query);
         try 

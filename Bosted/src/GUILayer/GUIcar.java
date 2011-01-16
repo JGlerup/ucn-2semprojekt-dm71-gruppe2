@@ -10,12 +10,14 @@ import ControlLayer.CtrCar;
 import ControlLayer.CtrClient;
 import ControlLayer.CtrEmp;
 import ControlLayer.CtrReservation;
+import ExceptionsPack.NullValueException;
 import ModelLayer.Car;
 import ModelLayer.Client;
 import ModelLayer.Employee;
 import ModelLayer.Reservation;
 import ModelLayer.ToDaysDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -37,6 +39,7 @@ public class GUIcar extends javax.swing.JPanel
         loggedInEmployee = null;
         tableRow = 0;
         tableColumn = 0;
+        date1 = getToDaysDate();
     }
 
     /**
@@ -48,13 +51,13 @@ public class GUIcar extends javax.swing.JPanel
         CtrReservation ctrRes = new CtrReservation();
         ArrayList<Reservation> reservationList = ctrRes.getAllReservationsByEmployee(getLoggedInEmployee().getEmployeeID());
         cmbYourReservations.removeAllItems();
-        cmbYourReservations.insertItemAt("Vælg her", 0);
+        cmbYourReservations.insertItemAt("Ny reservation", 0);
         for (Reservation r : reservationList)
         {
             cmbYourReservations.addItem(r);
+            cmbYourReservations.removeItem("Ny reservation");
         }
-        cmbYourReservations.addItem("Ny reservation");
-        cmbYourReservations.removeItem("Vælg her");
+        
     }
 
     /**
@@ -107,6 +110,7 @@ public class GUIcar extends javax.swing.JPanel
             cmbbiler.addItem(c);
         }//end for
         cmbbiler.removeItem("Vælg her");
+        
     }
     /**
      * 
@@ -375,7 +379,7 @@ public class GUIcar extends javax.swing.JPanel
         lblReservations = new javax.swing.JLabel();
         spReservationer = new javax.swing.JScrollPane();
         tblReservations = new javax.swing.JTable();
-        btnOpretBooking = new javax.swing.JButton();
+        btnFindAvailableCars = new javax.swing.JButton();
         btnOpdaterBooking = new javax.swing.JButton();
         btnSletBooking = new javax.swing.JButton();
         spListeAfBiler = new javax.swing.JScrollPane();
@@ -386,6 +390,8 @@ public class GUIcar extends javax.swing.JPanel
         jDateChooserReservation = new com.toedter.calendar.JDateChooser();
         lblAvailableCars = new javax.swing.JLabel();
         cmbAvailableCars = new javax.swing.JComboBox();
+        btnOpretBooking = new javax.swing.JButton();
+        lblClient1 = new javax.swing.JLabel();
 
         pCar.setPreferredSize(new java.awt.Dimension(697, 556));
 
@@ -770,16 +776,26 @@ public class GUIcar extends javax.swing.JPanel
         });
         spReservationer.setViewportView(tblReservations);
 
-        btnOpretBooking.setText("Opret");
-        btnOpretBooking.addActionListener(new java.awt.event.ActionListener() {
+        btnFindAvailableCars.setText("Find");
+        btnFindAvailableCars.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOpretBookingActionPerformed(evt);
+                btnFindAvailableCarsActionPerformed(evt);
             }
         });
 
         btnOpdaterBooking.setText("Opdater");
+        btnOpdaterBooking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpdaterBookingActionPerformed(evt);
+            }
+        });
 
         btnSletBooking.setText("Slet");
+        btnSletBooking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSletBookingActionPerformed(evt);
+            }
+        });
 
         tblListofCars.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -917,6 +933,16 @@ public class GUIcar extends javax.swing.JPanel
         cmbClient.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jDateChooserReservation.setDateFormatString("yyyy-MM-dd");
+        jDateChooserReservation.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jDateChooserReservationPropertyChange(evt);
+            }
+        });
+        jDateChooserReservation.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jDateChooserReservationKeyPressed(evt);
+            }
+        });
 
         lblAvailableCars.setText("Ledige biler");
 
@@ -926,6 +952,15 @@ public class GUIcar extends javax.swing.JPanel
                 cmbAvailableCarsItemStatChanged(evt);
             }
         });
+
+        btnOpretBooking.setText("Opret");
+        btnOpretBooking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpretBookingActionPerformed(evt);
+            }
+        });
+
+        lblClient1.setText("Find ledige biler");
 
         javax.swing.GroupLayout pBookingIndholdLayout = new javax.swing.GroupLayout(pBookingIndhold);
         pBookingIndhold.setLayout(pBookingIndholdLayout);
@@ -943,22 +978,24 @@ public class GUIcar extends javax.swing.JPanel
                         .addContainerGap())
                     .addGroup(pBookingIndholdLayout.createSequentialGroup()
                         .addGroup(pBookingIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jDateChooserReservation, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                            .addComponent(cmbClient, javax.swing.GroupLayout.Alignment.TRAILING, 0, 123, Short.MAX_VALUE)
                             .addComponent(lblYourReservation)
-                            .addComponent(cmbYourReservations, 0, 123, Short.MAX_VALUE)
+                            .addComponent(cmbYourReservations, 0, 138, Short.MAX_VALUE)
+                            .addComponent(lbldateReservation)
+                            .addComponent(jDateChooserReservation, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                            .addComponent(lblClient1)
+                            .addComponent(cmbClient, javax.swing.GroupLayout.Alignment.TRAILING, 0, 138, Short.MAX_VALUE)
                             .addComponent(lblClient)
                             .addComponent(lblAvailableCars)
-                            .addComponent(cmbAvailableCars, 0, 123, Short.MAX_VALUE)
-                            .addComponent(lbldateReservation))
+                            .addComponent(cmbAvailableCars, 0, 138, Short.MAX_VALUE)
+                            .addComponent(btnFindAvailableCars, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pBookingIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblReservations)
-                            .addComponent(spReservationer, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE))
+                            .addComponent(spReservationer, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(pBookingIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblListofCars)
-                            .addComponent(spListeAfBiler, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE))
+                            .addComponent(spListeAfBiler, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
                         .addGap(16, 16, 16))))
         );
         pBookingIndholdLayout.setVerticalGroup(
@@ -976,17 +1013,21 @@ public class GUIcar extends javax.swing.JPanel
                     .addGroup(pBookingIndholdLayout.createSequentialGroup()
                         .addComponent(cmbYourReservations, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
+                        .addComponent(lbldateReservation)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jDateChooserReservation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblClient1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnFindAvailableCars)
+                        .addGap(18, 18, 18)
                         .addComponent(lblClient)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(lblAvailableCars)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbAvailableCars, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lbldateReservation)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooserReservation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cmbAvailableCars, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40)
                 .addGroup(pBookingIndholdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSletBooking)
@@ -1075,7 +1116,7 @@ public class GUIcar extends javax.swing.JPanel
 
         populateCmbYourReservations();
         populateCmbClient();
-        populateCmbAvailableCars(getToDaysDate());
+        cmbAvailableCars.removeAllItems();
         setTblListOfCars(getToDaysDate());
         setTblReservations();
         setTblListOfCars(getToDaysDate());
@@ -1145,73 +1186,193 @@ public class GUIcar extends javax.swing.JPanel
     }//GEN-LAST:event_btnOpretActionPerformed
 
     private void cmbYourReservationItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbYourReservationItemStateChanged
-        if (cmbYourReservations.getSelectedItem() != "")
+        if(cmbYourReservations.getSelectedItem() != "" )
         {
             Reservation r = (Reservation) cmbYourReservations.getSelectedItem();
-            Client c = new Client();
-            Car cr = new Car();
             if (r != null)
             {
-                c = findClient(r.getClient().getClientID());
-                cr = findCarByID(r.getCar().getCarID());
-                String dateOfReservation = r.getStartDate();
-                String firstNameOfClient = c.getFirstName();
-                String lastNameOfClient = c.getLastName();
-                String carDescription = cr.getDescription();
-
-//
-//                txtClientAddress.setText(address);
-//                txtClientUserName.setText(clientNo);
-//                txtClientFirstName.setText(firstName);
-//                txtClientDescription.setText(description);
-//                txtClientInterests.setText(interests);
-//                txtClientHealth.setText(health);
-//                txtClientSsn.setText(ssn);
-//                txtClientMiddleName.setText(middleName);
-//                txtClientLastName.setText(lastName);
-//                txtClientAddress.setText(address);
-//                txtClientZipCode.setText(zipCode);
-//                txtClientCity.setText(city);
-//                txtClientPhoneNo.setText(phoneNo);
-//                txtClientEmail.setText(email);
-//
-//                if (cbClientInUse.equals("Yes")) {
-//                    cbClientInUse.setSelected(true);
-//                } else {
-//                    cbClientInUse.setSelected(false);
-//                }
+                
             }//end if
             else
             {
-                System.out.println("No clients to select from");
+                System.out.println("No reservations to select from");
             }//end else
         }//end if
-        else
-        {
-            cmbClient.removeItemAt(0);
-        }//end else
+//        if(cmbYourReservations.getSelectedItem() == "Ny reservation")
+//        {
+//            cmbAvailableCars.removeAllItems();
+//        }
+        
     }//GEN-LAST:event_cmbYourReservationItemStateChanged
 
     private void cmbAvailableCarsItemStatChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbAvailableCarsItemStatChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbAvailableCarsItemStatChanged
 
+    private void btnFindAvailableCarsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindAvailableCarsActionPerformed
+
+        int answer = JOptionPane.showConfirmDialog(this, "Vil du finde biler, der ledige d. " + date1 , "Find ledige biler", JOptionPane.YES_NO_OPTION);
+        if(answer == JOptionPane.YES_OPTION)
+        {
+            populateCmbAvailableCars(date1);
+        }
+    }//GEN-LAST:event_btnFindAvailableCarsActionPerformed
+
     private void btnOpretBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpretBookingActionPerformed
+
+        CtrReservation ctrRes = new CtrReservation();
         Car cr = (Car) cmbAvailableCars.getSelectedItem();
         Client cl = (Client) cmbClient.getSelectedItem();
-        Date d =  jDateChooserReservation.getDate();
-        String date = d.toString();
         Employee e = loggedInEmployee;
-        if(cr != null && cl != null && date != null)
+        if(cr != null && cl != null && e != null)
         {
-            
-        }
+            int answer = JOptionPane.showConfirmDialog(this, "Vil du oprette en reservation " + date1 + "\n"
+                    + "for " + cl.toString() + " og med denne bil: " + cr.toString(), "Opret reservation", JOptionPane.YES_NO_OPTION);
+            if(answer == JOptionPane.YES_OPTION)
+            {
+                try
+                {
+                    ctrRes.insertReservation(cr, e, cl, date1);
+                    JOptionPane.showMessageDialog(this, "Reservationen er oprettet", "Oprettet reservation", JOptionPane.INFORMATION_MESSAGE);
+                    jDateChooserReservation.setDate(null);
+                    populateCmbYourReservations();
+                    cmbAvailableCars.removeAllItems();
+                    populateCmbClient();
+                }//end try
+                catch(NullValueException n)
+                {
+                    JOptionPane.showMessageDialog(this, n.getMessage(), "Oprettelse mislykkedes", JOptionPane.ERROR_MESSAGE);
+                }//end catch
+            }//end if
+        }//end if
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Du mangler at udfylde nogle oplysning,\nVælg både dato, klient og bil", "Manglende oplysninger", JOptionPane.ERROR_MESSAGE);
+        }//end else
+
     }//GEN-LAST:event_btnOpretBookingActionPerformed
+
+    private void jDateChooserReservationKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDateChooserReservationKeyPressed
+        int answer = JOptionPane.showConfirmDialog(this, "Vil du finde biler, der ledige d. " + date1 , "Find ledige biler", JOptionPane.YES_NO_OPTION);
+        if(answer == JOptionPane.YES_OPTION)
+        {
+            populateCmbAvailableCars(date1);
+        }
+    }//GEN-LAST:event_jDateChooserReservationKeyPressed
+
+    private void jDateChooserReservationPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDateChooserReservationPropertyChange
+        if (jDateChooserReservation.getDate() != null)
+        {
+            Calendar calendar = jDateChooserReservation.getCalendar();
+            jDateChooserReservation.getDate();
+            String year = Integer.toString(calendar.get(Calendar.YEAR));
+            String month = Integer.toString(calendar.get(Calendar.MONTH) + 1);
+            if (calendar.get(Calendar.MONTH) + 1 < 10)
+            {
+                month = "0" + month;
+            }
+            String day = Integer.toString(calendar.get(Calendar.DATE));
+            if (calendar.get(Calendar.DATE) + 1 < 10)
+            {
+                day = "0" + day;
+            }
+            date1 = year + "-" + month + "-" + day;
+            //txtACreateTodo.setText(date1);
+        }
+        else
+        {
+        }
+    }//GEN-LAST:event_jDateChooserReservationPropertyChange
+
+    private void btnOpdaterBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpdaterBookingActionPerformed
+        CtrReservation ctrRes = new CtrReservation();
+        Reservation r = (Reservation) cmbYourReservations.getSelectedItem();
+        if(r != null)
+        {
+            String date = null;
+            Client cl = (Client) cmbClient.getSelectedItem();
+            Employee e = loggedInEmployee;
+            Car c = (Car)cmbAvailableCars.getSelectedItem();
+            if(!date1.equals(r.getStartDate()))
+            {
+            date = date1;
+            }
+            else
+            {
+                date = r.getStartDate();
+            }
+            if(cl == null)
+            {
+                cl = r.getClient();
+            }
+            if(c == null)
+            {
+                c = r.getCar();
+            }//end if
+            int answer = JOptionPane.showConfirmDialog(this, "Vil du opdatere reservationen til " + date1 + "\n"
+                + "for " + cl.toString() + " og med denne bil: " + c.toString(), "Opret reservation", JOptionPane.YES_NO_OPTION);
+            if(answer == JOptionPane.YES_OPTION)
+            {
+                ctrRes.updateReservation(r.getReservationID(), c, e, cl, date, date, r.getReservationDate());
+                JOptionPane.showMessageDialog(this, "Reservationen er opdateret", "Opdateret reservation", JOptionPane.INFORMATION_MESSAGE);
+                jDateChooserReservation.setDate(null);
+                populateCmbYourReservations();
+                cmbAvailableCars.removeAllItems();
+                populateCmbClient();
+            }//end if
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Du har ikke valgt en reservation du vil ændre", "Manglende reservation", JOptionPane.ERROR_MESSAGE);
+        }//end else
+
+    }//GEN-LAST:event_btnOpdaterBookingActionPerformed
+
+    private void btnSletBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSletBookingActionPerformed
+        CtrReservation ctrRes = new CtrReservation();
+        Reservation r = (Reservation) cmbYourReservations.getSelectedItem();
+        if(r != null)
+        {
+            int answer = JOptionPane.showConfirmDialog(this, "Vil du slette denne reservationen: " + r.getStartDate() + "\n"
+                + "med " + r.getClient().toString() + " og med denne bil: " + r.getCar().toString(), "Slet reservation", JOptionPane.YES_NO_OPTION);
+            if(answer == JOptionPane.YES_OPTION)
+            {
+                ctrRes.deleteReservation(r);
+                JOptionPane.showMessageDialog(this, "Reservationen er slettet", "Slettet reservation", JOptionPane.INFORMATION_MESSAGE);
+                jDateChooserReservation.setDate(null);
+                populateCmbYourReservations();
+                cmbAvailableCars.removeAllItems();
+                populateCmbClient();
+            }//end if
+            else
+            {
+                jDateChooserReservation.setDate(null);
+                populateCmbYourReservations();
+                cmbAvailableCars.removeAllItems();
+                populateCmbClient();
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Du har ikke valgt en reservation du vil ændre", "Manglende reservation", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnSletBookingActionPerformed
+
+    public String getDate1()
+    {
+        return date1;
+    }
+
+    public void setDate1(String date1)
+    {
+        this.date1 = date1;
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LBLbeskrivelse;
     private javax.swing.JLabel LBLregno;
+    private javax.swing.JButton btnFindAvailableCars;
     private javax.swing.JButton btnOpdaterBooking;
     private javax.swing.JButton btnOpret;
     private javax.swing.JButton btnOpretBooking;
@@ -1225,6 +1386,7 @@ public class GUIcar extends javax.swing.JPanel
     private com.toedter.calendar.JDateChooser jDateChooserReservation;
     private javax.swing.JLabel lblAvailableCars;
     private javax.swing.JLabel lblClient;
+    private javax.swing.JLabel lblClient1;
     private javax.swing.JLabel lblHentBil;
     private javax.swing.JLabel lblListeAfBiler;
     private javax.swing.JLabel lblListofCars;
@@ -1250,4 +1412,5 @@ public class GUIcar extends javax.swing.JPanel
     private Employee loggedInEmployee;
     private int tableRow;
     private int tableColumn;
+    private String date1;
 }

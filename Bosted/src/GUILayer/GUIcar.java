@@ -195,7 +195,7 @@ public class GUIcar extends javax.swing.JPanel
         CtrCar ctrCar = new CtrCar();
         ArrayList<Car> carList =  ctrCar.getAllCars();
         CtrReservation ctrRes = new CtrReservation();
-        ArrayList<Car> carsAva = ctrRes.findListOfAvailableCarsByDate(date);
+        ArrayList<Car> carsAvaList = ctrRes.findListOfAvailableCarsByDate(date);
         if(!carList.isEmpty())
         {
             for(Car c : carList)
@@ -203,20 +203,21 @@ public class GUIcar extends javax.swing.JPanel
                 String description = c.getDescription();
                 String regNo = c.getRegNo();
                 String available = "Nej";
-                for(Car cc : carsAva)
+                for(Car ca : carsAvaList)
                 {
-                    if(cc.getCarID() == c.getCarID())
+                    if(c.getCarID() == ca.getCarID())
                     {
                         available = "Ja";
-                    }
-                }//end for
-                getTblListofCars().setValueAt(description, tableRow, tableColumn);
+                    }//end if
+                }//end while
+                getTblBiler().setValueAt(description, tableRow, tableColumn);
                 tableColumn++;
-                getTblListofCars().setValueAt(regNo, tableRow, tableColumn);
+                getTblBiler().setValueAt(regNo, tableRow, tableColumn);
                 tableColumn++;
-                getTblListofCars().setValueAt(available, tableRow, tableColumn);
+                getTblBiler().setValueAt(available, tableRow, tableColumn);
                 tableColumn = 0;
                 tableRow++;
+
             }//end for
             setTableColumn(0);
             setTableRow(0);
@@ -228,7 +229,7 @@ public class GUIcar extends javax.swing.JPanel
         CtrCar ctrCar = new CtrCar();
         ArrayList<Car> carList =  ctrCar.getAllCars();
         CtrReservation ctrRes = new CtrReservation();
-        ArrayList<Car> carsAva = ctrRes.findListOfAvailableCarsByDate(date);
+        ArrayList<Car> carsAvaList = ctrRes.findListOfAvailableCarsByDate(date);
         if(!carList.isEmpty())
         {
             for(Car c : carList)
@@ -236,14 +237,12 @@ public class GUIcar extends javax.swing.JPanel
                 String description = c.getDescription();
                 String regNo = c.getRegNo();
                 String available = "Nej";
-                int index = 1;
-                while(carsAva.size() >= index && available.equals("Nej"))
+                for(Car ca : carsAvaList)
                 {
-                    if(carsAva.get(index).getCarID() == c.getCarID())
+                    if(c.getCarID() == ca.getCarID())
                     {
                         available = "Ja";
                     }//end if
-                    index++;
                 }//end while
                 getTblBiler().setValueAt(description, tableRow, tableColumn);
                 tableColumn++;

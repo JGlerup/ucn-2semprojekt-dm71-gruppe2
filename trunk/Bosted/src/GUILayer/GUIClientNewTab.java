@@ -531,9 +531,13 @@ public class GUIClientNewTab extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        newMilestone.setMinimumSize(new java.awt.Dimension(400, 300));
+
         jLabel11.setText("Skriv tekst her");
 
         txtaNewMilstone.setColumns(20);
+        txtaNewMilstone.setEditable(false);
+        txtaNewMilstone.setLineWrap(true);
         txtaNewMilstone.setRows(5);
         jScrollPane14.setViewportView(txtaNewMilstone);
 
@@ -582,9 +586,13 @@ public class GUIClientNewTab extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        update.setMinimumSize(new java.awt.Dimension(400, 300));
+
         jLabel12.setText("Skriv tekst her");
 
         txtaUpdateMilestone.setColumns(20);
+        txtaUpdateMilestone.setEditable(false);
+        txtaUpdateMilestone.setLineWrap(true);
         txtaUpdateMilestone.setRows(5);
         jScrollPane15.setViewportView(txtaUpdateMilestone);
 
@@ -621,13 +629,13 @@ public class GUIClientNewTab extends javax.swing.JPanel {
             .addGroup(updateLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(updateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(updateLayout.createSequentialGroup()
-                        .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAnnullerUpdateMilestone))
                     .addComponent(cmbUpdateMilestone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                    .addComponent(jLabel12))
+                    .addComponent(jLabel12)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updateLayout.createSequentialGroup()
+                        .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAnnullerUpdateMilestone)))
                 .addContainerGap())
         );
         updateLayout.setVerticalGroup(
@@ -646,10 +654,13 @@ public class GUIClientNewTab extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        getMilestone.setMinimumSize(new java.awt.Dimension(400, 300));
+
         jLabel13.setText("Skriv tekst her");
 
         txtaGetMilestone.setColumns(20);
         txtaGetMilestone.setEditable(false);
+        txtaGetMilestone.setLineWrap(true);
         txtaGetMilestone.setRows(5);
         jScrollPane16.setViewportView(txtaGetMilestone);
 
@@ -1676,7 +1687,7 @@ public class GUIClientNewTab extends javax.swing.JPanel {
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
+        newMilestone.setVisible(false);
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed

@@ -80,17 +80,8 @@ public Milestone(int milestoneID, Client client, String text, String date, Date 
         date = todaysdate.toString();
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public String toString()
+    {
+        return date;
+    }
 }

@@ -210,11 +210,11 @@ public class GUIcar extends javax.swing.JPanel
                         available = "Ja";
                     }//end if
                 }//end while
-                getTblBiler().setValueAt(description, tableRow, tableColumn);
+                getTblListofCars().setValueAt(description, tableRow, tableColumn);
                 tableColumn++;
-                getTblBiler().setValueAt(regNo, tableRow, tableColumn);
+                getTblListofCars().setValueAt(regNo, tableRow, tableColumn);
                 tableColumn++;
-                getTblBiler().setValueAt(available, tableRow, tableColumn);
+                getTblListofCars().setValueAt(available, tableRow, tableColumn);
                 tableColumn = 0;
                 tableRow++;
 
@@ -1076,6 +1076,7 @@ public class GUIcar extends javax.swing.JPanel
         populateCmbYourReservations();
         populateCmbClient();
         populateCmbAvailableCars(getToDaysDate());
+        setTblListOfCars(getToDaysDate());
         setTblReservations();
         setTblListOfCars(getToDaysDate());
     

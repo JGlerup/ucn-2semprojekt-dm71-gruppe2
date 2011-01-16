@@ -78,16 +78,14 @@ public class CtrReservation
         {
             for(Car c : carList)
             {
-                int index = 1;
                 boolean found = false;
-                while(resList.size() >= index && !found)
+                for(Reservation r : resList)
                 {
-                    if(resList.get(index).getCar().getCarID() == c.getCarID());
+                    if(c.getCarID() == r.getCar().getCarID())
                     {
                         found = true;
                     }//end if
-                    index++;
-                }//end while
+                }//end for
                 if(!found)
                 {
                     avaCarList.add(c);
@@ -96,7 +94,7 @@ public class CtrReservation
         }//end if
         else
         {
-            avaCarList = ctrCar.getAllCars();
+            avaCarList = carList;
         }//end else
         return avaCarList;
     }

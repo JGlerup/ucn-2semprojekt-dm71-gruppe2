@@ -171,6 +171,7 @@ public class GUIcar extends javax.swing.JPanel
         CtrEmp ctrEmp = new CtrEmp();
         CtrClient ctrCli = new CtrClient();
         CtrCar ctrCar = new CtrCar();
+        getTblReservations().removeAll();
         if(!res.isEmpty())
         {
             for(Reservation r : res)
@@ -200,6 +201,7 @@ public class GUIcar extends javax.swing.JPanel
         ArrayList<Car> carList =  ctrCar.getAllCars();
         CtrReservation ctrRes = new CtrReservation();
         ArrayList<Car> carsAvaList = ctrRes.findListOfAvailableCarsByDate(date);
+        getTblListofCars().removeAll();
         if(!carList.isEmpty())
         {
             for(Car c : carList)
@@ -234,6 +236,7 @@ public class GUIcar extends javax.swing.JPanel
         ArrayList<Car> carList =  ctrCar.getAllCars();
         CtrReservation ctrRes = new CtrReservation();
         ArrayList<Car> carsAvaList = ctrRes.findListOfAvailableCarsByDate(date);
+        getTblBiler().removeAll();
         if(!carList.isEmpty())
         {
             for(Car c : carList)
@@ -1238,6 +1241,11 @@ public class GUIcar extends javax.swing.JPanel
                     populateCmbYourReservations();
                     cmbAvailableCars.removeAllItems();
                     populateCmbClient();
+                    setTblListOfCars(getToDaysDate());
+                    setTblReservations();
+
+
+
                 }//end try
                 catch(NullValueException n)
                 {
@@ -1319,6 +1327,8 @@ public class GUIcar extends javax.swing.JPanel
                 populateCmbYourReservations();
                 cmbAvailableCars.removeAllItems();
                 populateCmbClient();
+                setTblListOfCars(getToDaysDate());
+                setTblReservations();
             }//end if
         }
         else
@@ -1343,6 +1353,8 @@ public class GUIcar extends javax.swing.JPanel
                 populateCmbYourReservations();
                 cmbAvailableCars.removeAllItems();
                 populateCmbClient();
+                setTblListOfCars(getToDaysDate());
+                setTblReservations();
             }//end if
             else
             {

@@ -38,7 +38,12 @@ public class DBMilestone implements IFDBMilestone {
 
     public Milestone findLatestMilestoneMinusSteps(int clientID, int numberOfStepsToGoBack, boolean retrieveAssociation) {
         Milestone mObj = new Milestone();
-        mObj = singleWhere ("milestone_id = (select milestone_id from (select ROW_NUMBER() over (order by milestone_id) as Row, milestone_id, client_id, text, date, successdate from milestone where client_id = " + clientID + ") id where Row = (select COUNT(*) from (select ROW_NUMBER() over (order by milestone_id) as Row, milestone_id, client_id, text, date, successdate from milestone where client_id = " + clientID + ") id) - " + numberOfStepsToGoBack + ")", retrieveAssociation);
+        mObj = singleWhere ("milestone_id = (select milestone_id from (select ROW_NUMBER() over "
+                + "(order by milestone_id) as Row, milestone_id, client_id, text, date, successdate "
+                + "from milestone where client_id = " + clientID + ") id where Row = (select COUNT(*) from (select ROW_NUMBER() "
+                + "over (order by milestone_id) as Row, milestone_id, client_id, text, date, "
+                + "successdate from milestone where client_id = " + clientID + ") id) - " + numberOfStepsToGoBack + ")"
+                , retrieveAssociation);
         return mObj;
     }
 
